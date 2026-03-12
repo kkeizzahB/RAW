@@ -1,0 +1,41 @@
+{
+  "endpoints": [
+    {
+      "category": "movie",
+      "name": "dramabox movie trending",
+      "url": "/dramabox/home",
+      "description": "get latest and trending drama movies"
+    },
+    {
+      "category": "movie",
+      "name": "dramabox movie search",
+      "url": "/dramabox/search?q=love",
+      "description": "search using a search term"
+    },
+    {
+      "category": "movie",
+      "name": "dramabox details ",
+      "url": "/dramabox/detail?bookId=42000000606",
+      "description": "Get dramabox details from bookid."
+    },
+    {
+      "category": "movie",
+      "name": "download dramabox movie",
+      "url": "/dramabox/stream?bookId=41000105764&episode=1",
+      "description": "download dramabox movie episodes"
+    },
+    {
+      "category": "movie",
+      "name": "movie search",
+      "url": "/moviebox/search?q=as%20good%20as%20dead",
+      "description": "search your favorite movie from this moviebox search api endpoint"
+    },
+      {
+      "category": "movie",
+      "name": "Movie trailer",
+      "url": "/movie/trailer?q=https://moviebox.ph/detail/as-beautiful-as-you-OHdIesIQzr5",
+      "description": "get your favorite movie trailer .Get url from movieboxsearch api "
+      }
+  
+  ]
+}

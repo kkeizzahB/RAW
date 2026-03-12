@@ -1,0 +1,143 @@
+
+[
+  {
+    "problem": "15 × 8 + 23",
+    "answer": "143",
+    "timeLimit": 15,
+    "points": 20,
+    "difficulty": "Medium"
+  },
+  {
+    "problem": "7² + 4³ - 12",
+    "answer": "65",
+    "timeLimit": 20,
+    "points": 25,
+    "difficulty": "Hard"
+  },
+  {
+    "problem": "48 ÷ 6 × 3",
+    "answer": "24",
+    "timeLimit": 10,
+    "points": 15,
+    "difficulty": "Easy"
+  },
+  {
+    "problem": "√144 + 5²",
+    "answer": "37",
+    "timeLimit": 15,
+    "points": 20,
+    "difficulty": "Medium"
+  },
+  {
+    "problem": "3! + 4! - 5",
+    "answer": "25",
+    "timeLimit": 20,
+    "points": 25,
+    "difficulty": "Hard"
+  },
+  {
+    "problem": "18 + 27 - 15",
+    "answer": "30",
+    "timeLimit": 10,
+    "points": 15,
+    "difficulty": "Easy"
+  },
+  {
+    "problem": "7 × 9 - 13",
+    "answer": "50",
+    "timeLimit": 15,
+    "points": 20,
+    "difficulty": "Medium"
+  },
+  {
+    "problem": "5³ ÷ 5 + 8",
+    "answer": "33",
+    "timeLimit": 20,
+    "points": 25,
+    "difficulty": "Hard"
+  },
+  {
+    "problem": "36 ÷ 4 × 2",
+    "answer": "18",
+    "timeLimit": 10,
+    "points": 15,
+    "difficulty": "Easy"
+  },
+  {
+    "problem": "12 × 11 - 45",
+    "answer": "87",
+    "timeLimit": 15,
+    "points": 20,
+    "difficulty": "Medium"
+  },
+  {
+    "problem": "8! ÷ 7! + 3",
+    "answer": "11",
+    "timeLimit": 25,
+    "points": 30,
+    "difficulty": "Expert"
+  },
+  {
+    "problem": "2⁴ × 3 - 10",
+    "answer": "38",
+    "timeLimit": 15,
+    "points": 20,
+    "difficulty": "Medium"
+  },
+  {
+    "problem": "56 ÷ 8 + 9",
+    "answer": "16",
+    "timeLimit": 10,
+    "points": 15,
+    "difficulty": "Easy"
+  },
+  {
+    "problem": "√169 + √64",
+    "answer": "21",
+    "timeLimit": 15,
+    "points": 20,
+    "difficulty": "Medium"
+  },
+  {
+    "problem": "15% of 200",
+    "answer": "30",
+    "timeLimit": 15,
+    "points": 20,
+    "difficulty": "Medium"
+  },
+  {
+    "problem": "3.14 × 10²",
+    "answer": "314",
+    "timeLimit": 20,
+    "points": 25,
+    "difficulty": "Hard"
+  },
+  {
+    "problem": "9 × 7 - 28",
+    "answer": "35",
+    "timeLimit": 10,
+    "points": 15,
+    "difficulty": "Easy"
+  },
+  {
+    "problem": "2³ + 3² + 4¹",
+    "answer": "21",
+    "timeLimit": 15,
+    "points": 20,
+    "difficulty": "Medium"
+  },
+  {
+    "problem": "100 ÷ 4 × 3",
+    "answer": "75",
+    "timeLimit": 10,
+    "points": 15,
+    "difficulty": "Easy"
+  },
+  {
+    "problem": "log₁₀100 + ln e",
+    "answer": "3",
+    "timeLimit": 25,
+    "points": 30,
+    "difficulty": "Expert"
+  }
+]

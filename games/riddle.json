@@ -1,0 +1,253 @@
+
+[
+  {
+    "question": "What has to be broken before you can use it?",
+    "answer": "egg",
+    "hints": ["It comes from chickens", "Has a shell", "You eat it for breakfast"]
+  },
+  {
+    "question": "I'm tall when I'm young, and I'm short when I'm old. What am I?",
+    "answer": "candle",
+    "hints": ["It produces light", "Has a wick", "Melts when lit"]
+  },
+  {
+    "question": "What month of the year has 28 days?",
+    "answer": "all",
+    "hints": ["Think about calendar", "Not just February", "Every month has this"]
+  },
+  {
+    "question": "What is full of holes but still holds water?",
+    "answer": "sponge",
+    "hints": ["You use it for cleaning", "It's porous", "Found in kitchen"]
+  },
+  {
+    "question": "What can travel around the world while staying in a corner?",
+    "answer": "stamp",
+    "hints": ["Used on letters", "Has adhesive", "Postal service"]
+  },
+  {
+    "question": "What has keys but can't open locks?",
+    "answer": "piano",
+    "hints": ["Musical instrument", "Has black and white keys", "You play it"]
+  },
+  {
+    "question": "What has a head, a tail, is brown, and has no legs?",
+    "answer": "penny",
+    "hints": ["It's money", "Copper color", "Lowest denomination coin"]
+  },
+  {
+    "question": "The more you take, the more you leave behind. What am I?",
+    "answer": "footsteps",
+    "hints": ["You make them when walking", "Leave marks", "Related to shoes"]
+  },
+  {
+    "question": "What has a neck but no head?",
+    "answer": "bottle",
+    "hints": ["Holds liquid", "Has a cap", "Made of glass or plastic"]
+  },
+  {
+    "question": "What gets wet while drying?",
+    "answer": "towel",
+    "hints": ["Bathroom item", "Used after shower", "Absorbs water"]
+  },
+  {
+    "question": "What has a face and two hands but no arms or legs?",
+    "answer": "clock",
+    "hints": ["Tells time", "On the wall", "Has numbers 1-12"]
+  },
+  {
+    "question": "What has a thumb and four fingers but is not alive?",
+    "answer": "glove",
+    "hints": ["Worn in winter", "Covers hand", "Made of wool or leather"]
+  },
+  {
+    "question": "What has a ring but no finger?",
+    "answer": "telephone",
+    "hints": ["You make calls", "Old ones had dials", "Ringtone"]
+  },
+  {
+    "question": "What has a bed but never sleeps?",
+    "answer": "river",
+    "hints": ["Flowing water", "Has banks", "Fish live in it"]
+  },
+  {
+    "question": "What has teeth but cannot bite?",
+    "answer": "comb",
+    "hints": ["Used for hair", "Plastic or wooden", "Gets tangled"]
+  },
+  {
+    "question": "What goes up but never comes down?",
+    "answer": "age",
+    "hints": ["Increases yearly", "Celebrated on birthday", "Number of years"]
+  },
+  {
+    "question": "What has many ears but cannot hear?",
+    "answer": "cornfield",
+    "hints": ["Agricultural crop", "Yellow vegetable", "Grows on stalks"]
+  },
+  {
+    "question": "What has a bank but no money?",
+    "answer": "river",
+    "hints": ["Has flowing water", "Can flood", "Boat travels on it"]
+  },
+  {
+    "question": "What can you catch but not throw?",
+    "answer": "cold",
+    "hints": ["Makes you sneeze", "Seasonal illness", "Contagious"]
+  },
+  {
+    "question": "What has a bottom at the top?",
+    "answer": "leg",
+    "hints": ["Body part", "You walk with it", "Has knee and ankle"]
+  },
+  {
+    "question": "What has cities but no houses, forests but no trees, and rivers but no water?",
+    "answer": "map",
+    "hints": ["Used for navigation", "Shows geography", "Paper document"]
+  },
+  {
+    "question": "What begins with T, ends with T, and has T in it?",
+    "answer": "teapot",
+    "hints": ["Used for tea", "Has a spout", "Kitchen item"]
+  },
+  {
+    "question": "What can run but never walks, has a mouth but never talks, has a head but never weeps, has a bed but never sleeps?",
+    "answer": "river",
+    "hints": ["Natural water flow", "Ends in sea", "Fresh water"]
+  },
+  {
+    "question": "What has hands but cannot clap?",
+    "answer": "clock",
+    "hints": ["Timekeeper", "On wrist or wall", "Ticks"]
+  },
+  {
+    "question": "What is so fragile that saying its name breaks it?",
+    "answer": "silence",
+    "hints": ["Opposite of noise", "Absolute quiet", "Library atmosphere"]
+  },
+  {
+    "question": "What belongs to you but others use it more than you do?",
+    "answer": "name",
+    "hints": ["Personal identifier", "Given at birth", "On documents"]
+  },
+  {
+    "question": "What has words but never speaks?",
+    "answer": "book",
+    "hints": ["Contains stories", "Has pages", "Library item"]
+  },
+  {
+    "question": "What is always in front of you but can't be seen?",
+    "answer": "future",
+    "hints": ["Time ahead", "Not past or present", "What will happen"]
+  },
+  {
+    "question": "What has a heart that doesn't beat?",
+    "answer": "artichoke",
+    "hints": ["Vegetable", "Edible flower bud", "Green and spiky"]
+  },
+  {
+    "question": "What can fill a room but takes up no space?",
+    "answer": "light",
+    "hints": ["From bulb or sun", "Makes things visible", "Natural or artificial"]
+  },
+  {
+    "question": "What has one eye but cannot see?",
+    "answer": "needle",
+    "hints": ["Used for sewing", "Has thread hole", "Sharp point"]
+  },
+  {
+    "question": "What goes through cities and fields but never moves?",
+    "answer": "road",
+    "hints": ["For vehicles", "Has lanes", "Connects places"]
+  },
+  {
+    "question": "What has legs but doesn't walk?",
+    "answer": "table",
+    "hints": ["Furniture item", "Has four legs", "You eat on it"]
+  },
+  {
+    "question": "What can you keep after giving it to someone?",
+    "answer": "word",
+    "hints": ["Promise", "Verbal commitment", "You give your word"]
+  },
+  {
+    "question": "What has a head, can't think, and wears a cap?",
+    "answer": "mushroom",
+    "hints": ["Fungi", "Grows in forest", "Some are edible"]
+  },
+  {
+    "question": "What runs all around a backyard yet never moves?",
+    "answer": "fence",
+    "hints": ["Wooden structure", "Marks boundary", "Keeps things in/out"]
+  },
+  {
+    "question": "What can travel all around the world without leaving its corner?",
+    "answer": "stamp",
+    "hints": ["On envelope", "Collectible item", "Has country name"]
+  },
+  {
+    "question": "What is black when you buy it, red when you use it, and gray when you throw it away?",
+    "answer": "charcoal",
+    "hints": ["Used for BBQ", "Burns red", "Made from wood"]
+  },
+  {
+    "question": "What has many needles but doesn't sew?",
+    "answer": "pine tree",
+    "hints": ["Evergreen tree", "Christmas tree", "Has cones"]
+  },
+  {
+    "question": "What has a single eye but cannot see?",
+    "answer": "hurricane",
+    "hints": ["Weather phenomenon", "Circular storm", "Has center eye"]
+  },
+  {
+    "question": "What gets bigger the more you take away?",
+    "answer": "hole",
+    "hints": ["Empty space", "In ground", "Dug with shovel"]
+  },
+  {
+    "question": "What has a tail and a head but no body?",
+    "answer": "coin",
+    "hints": ["Money", "Heads or tails", "Metallic"]
+  },
+  {
+    "question": "What has a bark but no bite?",
+    "answer": "tree",
+    "hints": ["Plant", "Has trunk", "Provides shade"]
+  },
+  {
+    "question": "What has four fingers and a thumb but is not flesh, bone, or blood?",
+    "answer": "glove",
+    "hints": ["Hand covering", "Winter wear", "Leather or wool"]
+  },
+  {
+    "question": "What has a bank but no teller?",
+    "answer": "river",
+    "hints": ["Water body", "Has current", "Fish habitat"]
+  },
+  {
+    "question": "What is always coming but never arrives?",
+    "answer": "tomorrow",
+    "hints": ["Future day", "After today", "Never present"]
+  },
+  {
+    "question": "What can you break without touching it?",
+    "answer": "promise",
+    "hints": ["Commitment", "Vow", "Word given"]
+  },
+  {
+    "question": "What has a neck but can't swallow?",
+    "answer": "guitar",
+    "hints": ["Musical instrument", "Has strings", "Played with hands"]
+  },
+  {
+    "question": "What can be cracked, made, told, and played?",
+    "answer": "joke",
+    "hints": ["Funny story", "Makes people laugh", "Punchline"]
+  },
+  {
+    "question": "What has a foot but no legs?",
+    "answer": "snail",
+    "hints": ["Slow mover", "Has shell", "Leaves trail"]
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "endpoints": [
+    {
+      "category": "more",
+      "name": "Report any issue",
+      "url": "/tools/report?q=Check%20this%20image&contact=254748387614&name=keith",
+      "description": "Report to developer any issue you are experiencing."
+    },
+    {
+      "category": "more",
+      "name": "Generate keith md pair code",
+      "url": "/keithpair?q=254786989021",
+      "description": "generate pair code for keith md bot."
+    },
+    {
+      "category": "more",
+      "name": "Generate keith md qr code",
+      "url": "/keith/qr",
+      "description": "Generate qr code for keith md bot"
+    },
+        {
+      "category": "more",
+      "name": "Currency exchange",
+      "url": "/finance/exchange?q=KES",
+      "description": "Get your exchange rate"
+    },
+        {
+      "category": "more",
+      "name": "surah list",
+      "url": "/surahlist",
+      "description": "get all surah list"
+    },
+        {
+      "category": "more",
+      "name": "Quran surah number",
+      "url": "/surah?q=1",
+      "description": "get surah"
+    },
+    {
+      "category": "more",
+      "name": "hymnal list",
+      "url": "/hymnallist",
+      "description": "get all hymnal list"
+    },
+    {
+      "category": "more",
+      "name": "get hymn lyrics",
+      "url": "/findhymn?q=6",
+      "description": "Get your hymn lyrics using number or title"
+    },
+    {
+      "category": "more",
+      "name": "Keith Info",
+      "url": "/keith/info",
+      "description": "Get information about Keith."
+    }
+  ]
+}

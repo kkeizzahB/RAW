@@ -1,0 +1,16 @@
+{
+  "endpoints": [
+    {
+      "category": "anime",
+      "name": "Anime Finder",
+      "url": "/anime/animefinder?url=https://files.catbox.moe/lo4spc.jpg",
+      "description": "Find anime from an image."
+    },
+    {
+      "category": "anime",
+      "name": "Anime News",
+      "url": "/anime/animenews",
+      "description": "Search for anime news."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "torch",
+    "url": "/torch",
+    "imageurl": "https://files.catbox.moe/m0jo4x.jpeg",
+    "description": "access your torch using our digital interface "
+  },
+  {
+    "name": "perioduc table",
+    "url": "/periodic-table",
+    "imageurl": "https://files.catbox.moe/klfjs3.png",
+    "description": "gst our digital periodic table."
+  },
+  {
+    "name": "voice recorder",
+    "url": "/voice-recorder",
+    "imageurl": "https://files.catbox.moe/abob3f.png",
+    "description": "voice recorder(not supported in apk )."
+  },
+ {
+    "name": "HD camera",
+    "url": "/camera",
+    "imageurl": "https://files.catbox.moe/1ed8fb.jpeg",
+    "description": "take pictures using our hd camera (not supported in apk )."
+  }, 
+  {
+    "name": "scientific calculator",
+    "url": "/scientific-calculator",
+    "imageurl": "https://files.catbox.moe/v2aiqs.jpeg",
+    "description": "get scientific calculator for free"
+  }
+]  

@@ -1,0 +1,212 @@
+{
+  "endpoints": [
+    {
+      "category": "search",
+      "name": "YouTube Search",
+      "url": "/search/yts?query=spectre",
+      "description": "Search for videos on YouTube."
+    },
+    {
+      "category": "search",
+      "name": "images Search",
+      "url": "/search/images?query=dog",
+      "description": "Search for google images"
+    },
+    {
+      "category": "search",
+      "name": "Bing Search",
+      "url": "/search/bing?query=Cat",
+      "description": "Search for bing."
+    },
+    {
+      "category": "search",
+      "name": "telegram channel Search",
+      "url": "/search/telegramchannel?q=power%20book",
+      "description": "enter any telegram username to search ."
+    },
+
+    {
+      "category": "search",
+      "name": "Whatsapp group Search",
+      "url": "/search/whatsappgroup?q=football",
+      "description": "enter any desired name to search the url of Whatsapp groups."
+    },
+    
+    {
+      "category": "search",
+      "name": "Whatsapp group fetch links",
+      "url": "/fetch/wagrouplink?url=https://whatsgrouplink.com/cristiano-ronaldo-fans-whatsapp-group-links/",
+      "description": "from the search result extract its walinks."
+    },
+     {
+      "category": "search",
+      "name": "brave browser search",
+      "url": "/search/brave?q=Kenya",
+      "description": "Search anything using brave api"
+    },
+     
+    
+    
+    {
+      "category": "search",
+      "name": "apple Search",
+      "url": "/search/apple?q=faded",
+      "description": "Search apple music."
+    },
+    
+    {
+      "category": "search",
+      "name": "Bible Search",
+      "url": "/search/bible?q=john3:16-18,20",
+      "description": "Search for bible chapters and verses."
+    },
+    {
+      "category": "search",
+      "name": "TikTok Trend search",
+      "url": "/download/tiktoktrend?region=KE",
+      "description": "Search trending tiktoks in your region."
+    },
+    {
+      "category": "search",
+      "name": "Lyrics Search 1",
+      "url": "/search/lyrics?query=faded",
+      "description": "Search for song lyrics."
+    },
+    {
+      "category": "search",
+      "name": "Lyrics Search 2",
+      "url": "/search/lyrics2?query=faded",
+      "description": "Search for song lyrics."
+    },
+    {
+      "category": "search",
+      "name": "Lyrics Search 3",
+      "url": "/search/lyrics3?query=faded",
+      "description": "Search for song lyrics."
+    },
+    {
+      "category": "search",
+      "name": "APK search",
+      "url": "/search/apk?q=xender",
+      "description": "search for apk links to download "
+    },
+    {
+      "category": "search",
+      "name": "xvideos search",
+      "url": "/search/searchxvideos?q=porn",
+      "description": "search for apk links to download "
+    },
+    {
+      "category": "search",
+      "name": "MediaFire search",
+      "url": "/mfiresearch?q=Whatsapp",
+      "description": "sesech fo MediaFire trend links"
+    },
+    {
+      "category": "search",
+      "name": "TikTok Search",
+      "url": "/search/tiktoksearch?query=keizzah4189",
+      "description": "provide a username to search in TikTok."
+    },
+    {
+      "category": "search",
+      "name": "TikTok Trend Search",
+      "url": "/search/tiktoktrend?q=KE",
+      "description": "Search for region tiktok trend posts."
+    },
+    {
+      "category": "search",
+      "name": "TikTok story",
+      "url": "/search/tiktokstory?q=arsenalfanpage90",
+      "description": "get tiktok story post"
+    },
+    {
+      "category": "search",
+      "name": "TikTok user posts Search",
+      "url": "/search/tiktokuserposts?user=keizzah4189",
+      "description": "Search for users posts in tiktok."
+    },
+    {
+      "category": "search",
+      "name": "Search Instagram user",
+      "url": "/search/instauser?user=keith_keizzah",
+      "description": "provide an Instagram username."
+    },
+    {
+      "category": "search",
+      "name": "SoundCloud Search",
+      "url": "/search/soundcloud?q=lelena",
+      "description": "Search for audio on SoundCloud."
+    },
+    {
+      "category": "search",
+      "name": "Tweets Search",
+      "url": "/search/searchtweets?q=keithkeizzah",
+      "description": "Search for x tweets."
+    },
+    {
+      "category": "search",
+      "name": "Tweets post",
+      "url": "/search/tweet-posts?q=keithkeizzah",
+      "description": "Search for x tweets posts."
+    },
+    
+    {
+      "category": "search",
+      "name": "Spotify Search",
+      "url": "/search/spotify?q=lelena",
+      "description": "Search for music on Spotify."
+    },
+    
+    {
+      "category": "search",
+      "name": "Sticker Search",
+      "url": "/search/sticker?q=cat",
+      "description": "Search for stickers."
+    },
+    
+    {
+      "category": "search",
+      "name": "telegram Sticker Search",
+      "url": "/search/tgs?q=cat",
+      "description": "Search for telegram stickers."
+    },
+    {
+      "category": "search",
+      "name": "Google Search",
+      "url": "/search/google?q=cat",
+      "description": "Search anything in google."
+    },
+    {
+      "category": "search",
+      "name": "yahoo image Search",
+      "url": "/yahoo/images?q=cat",
+      "description": "Search any image from yahoo."
+    },
+    {
+      "category": "search",
+      "name": "yahoo video Search",
+      "url": "/yahoo/video?q=cat",
+      "description": "Search any video from yahoo."
+    },
+    
+    {
+      "category": "search",
+      "name": "movie Search",
+      "url": "/search/movie?q=Lucifer",
+      "description": "Search for any movie or tv show."
+    },
+    {
+      "category": "search",
+      "name": "Mod WhatsApp Search",
+      "url": "/search/modwhatsapp?q=gbwhatsapp",
+      "description": "Search for modified WhatsApp APKs."
+    },
+    {
+      "category": "search",
+      "name": "HappyMod Search",
+      "url": "/search/happymodSearch?q=car",
+      "description": "Search for apps on HappyMod."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Dramabox movies",
+    "url": "/dramabox",
+    "imageurl": "https://files.catbox.moe/4bjv3w.jpg",
+    "description": "get your favorite drama episodes"
+  },
+  {
+    "name": "Ramogi Tv",
+    "url": "/ramogitv",
+    "imageurl": "https://files.catbox.moe/9c884i.jpg",
+    "description": "stream live ramogi tv."
+  },
+  {
+    "name": "kenya tv",
+    "url": "/kenyatv",
+    "imageurl": "https://files.catbox.moe/s7n6l7.jpg",
+    "description": "get all kenya stream channels."
+  },
+  {
+    "name": "Radio hiphop",
+    "url": "/hiphop",
+    "imageurl": "https://files.catbox.moe/pe7bvm.jpg",
+    "description": "get 24/7 hip hop hits of all time "
+  }
+]  

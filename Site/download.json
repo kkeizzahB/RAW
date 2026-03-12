@@ -1,0 +1,102 @@
+[
+  
+  {
+    "name": "Instagram Downloader",
+    "url": "/instagram",
+    "imageurl": "https://files.catbox.moe/sg3x3o.jpg",
+    "description": "Save photos, videos, and reels from public Instagram posts by pasting the URL."
+  },
+  {
+    "name": "Instagram Downloader 2",
+    "url": "/instagram2",
+    "imageurl": "https://files.catbox.moe/1ssg27.jpg",
+    "description": "An alternative tool for downloading Instagram content, often with different features or API support."
+  },
+
+  {
+    "name": "TikTok Downloader",
+    "url": "/tiktok",
+    "imageurl": "https://files.catbox.moe/umrvmg.jpg",
+    "description": "Download TikTok videos without the watermark for easy saving and sharing."
+  },
+  {
+    "name": "Twitter Downloader",
+    "url": "/twitter",
+    "imageurl": "https://files.catbox.moe/ublyxo.jpg",
+    "description": "Save videos and GIFs from Twitter/X posts quickly and easily."
+  },
+  {
+    "name": "Facebook Downloader",
+    "url": "/facebook",
+    "imageurl": "https://files.catbox.moe/e908ey.jpg",
+    "description": "Download videos from public Facebook posts, reels, and groups."
+  },
+  
+  {
+    "name": "YouTube downloader (ytmp3 & ytmp4 api)",
+    "url": "/ytmp3",
+    "imageurl": "https://files.catbox.moe/mjk2qt.jpg",
+    "description": "download YouTube videos and audios"
+  },
+  {
+    "name": "YouTube downloader (MP4 & mp3 api)",
+    "url": "/mp4",
+    "imageurl": "https://files.catbox.moe/ra2lfo.jpg",
+    "description": "Download YouTube audio and video"
+  },
+  {
+    "name": "YouTube Video downloader (video & video api)",
+    "url": "/audio",
+    "imageurl": "https://files.catbox.moe/ra2lfo.jpg",
+    "description": "download YouTube audio and video."
+  },
+  {
+    "name": "YouTube audio downloader (yta and ytv  api)",
+    "url": "/ytv",
+    "imageurl": "https://files.catbox.moe/vcy2ra.jpg",
+    "description": "Download YouTube audio and video "
+  },
+  {
+    "name": "YouTube Video downloader (yta2 &ytv2 api)",
+    "url": "/ytv2",
+    "imageurl": "https://files.catbox.moe/ra2lfo.jpg",
+    "description": "download YouTube audio and video ."
+  },
+    {
+    "name": "YouTube Video downloader (dlmp3 & dlmp4 api)",
+    "url": "/dlmp3",
+    "imageurl": "https://files.catbox.moe/ra2lfo.jpg",
+    "description": "download YouTube audio and video ."
+  },
+  {
+    "name": "SoundCloud Downloader",
+    "url": "/soundcloud",
+    "imageurl": "https://files.catbox.moe/xx3yvc.jpg",
+    "description": "Download tracks, sets, and playlists from SoundCloud."
+  },
+  {
+    "name": "Pinterest Downloader",
+    "url": "/pinterest",
+    "imageurl": "https://files.catbox.moe/sasf0l.jpg",
+    "description": "Save high-quality images and videos from Pinterest pins and boards."
+  },
+  
+  {
+    "name": "Instagram Posts downloader",
+    "url": "/instaposts",
+    "imageurl": "https://files.catbox.moe/hepcbu.jpg",
+    "description": "A specialized tool focused on downloading standard photo and video posts from Instagram."
+  },
+  {
+    "name": "Instagram story downloader",
+    "url": "/instastories",
+    "imageurl": "https://files.catbox.moe/xcuy1y.jpg",
+    "description": "Download stories from public Instagram accounts before they disappear."
+  },
+  {
+    "name": "MediaFire Downloader",
+    "url": "/mediafire",
+    "imageurl": "https://files.catbox.moe/aqqdmm.jpg",
+    "description": "Generate direct download links for files hosted on MediaFire, bypassing the wait page."
+  }
+]

@@ -1,0 +1,82 @@
+{
+  "endpoints": [
+    {
+      "category": "stalkers",
+      "name": "TikTok Stalk",
+      "url": "/stalker/tiktok?user=keizzah4189",
+      "description": "Stalk TikTok profiles."
+    },
+    {
+      "category": "stalkers",
+      "name": "TikTok Stalk2",
+      "url": "/stalker/tiktok2?user=keizzah4189",
+      "description": "Stalk TikTok profiles."
+    },
+    {
+      "category": "stalkers",
+      "name": "Instagram Stalk",
+      "url": "/stalker/ig?user=keithkeizzah",
+      "description": "Stalk Instagram profile"
+    },
+    {
+      "category": "stalkers",
+      "name": "GitHub Repo Stalk",
+      "url": "/stalker/repostalk?url=https://github.com/Keithkeizzah/KEITH-MD",
+      "description": "Stalk GitHub repository."
+    },
+    {
+      "category": "stalkers",
+      "name": "GitHub Trends",
+      "url": "/stalker/githubtrend?language=python&since=weekly",
+      "description": "Get GitHub trends."
+    },
+    {
+      "category": "stalkers",
+      "name": "Twitter Stalk",
+      "url": "/stalker/twitter?user=keithkeizzah",
+      "description": "Stalk Twitter profile."
+    },
+    {
+      "category": "stalkers",
+      "name": "Youtube channel Stalk",
+      "url": "/stalker/ytchannel?user=keithkeizzah",
+      "description": "Stalk user YouTube channel."
+    },
+    {
+      "category": "stalkers",
+      "name": "wachannel Stalk",
+      "url": "/stalker/wachannel?url=https://whatsapp.com/channel/0029Vaan9TF9Bb62l8wpoD47",
+      "description": "Stalk Whatsapp channel."
+    },
+    {
+      "category": "stalkers",
+      "name": "wachannel Stalk2",
+      "url": "/stalker/wachannel2?url=https://whatsapp.com/channel/0029Vaan9TF9Bb62l8wpoD47",
+      "description": "Stalk Whatsapp channel."
+    },
+    {
+      "category": "stalkers",
+      "name": "Country info Stalk",
+      "url": "/stalker/country?region=Kenya",
+      "description": "Stalk Country Info."
+    },
+    {
+      "category": "stalkers",
+      "name": "NPM Stalk",
+      "url": "/stalker/npm?q=baileys",
+      "description": "Stalk NPM package."
+    },
+    {
+      "category": "stalkers",
+      "name": "Pinterest Stalk",
+      "url": "/stalker/pinterest?q=keithkeizzah",
+      "description": "Stalk Pinterest username."
+    },
+    {
+      "category": "stalkers",
+      "name": "IP Stalk",
+      "url": "/stalker/ip?q=41.90.216.105",
+      "description": "Stalk IP address."
+    }
+  ]
+}

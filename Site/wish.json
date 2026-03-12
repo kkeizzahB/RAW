@@ -1,0 +1,40 @@
+[
+  {
+    "name": "girlfriends day",
+    "url": "/gfday",
+    "imageurl": "https://files.catbox.moe/qo4nf3.jpeg",
+    "description": "wish your girlfriend happy girlfriends day"
+  },
+ {
+    "name": "happy birthday",
+    "url": "/happybirthday",
+    "imageurl": "https://files.catbox.moe/w8y7ey.jpeg",
+    "description": "wish your loved ones happy day"
+  },
+ {
+    "name": "happy valentine",
+    "url": "/happyvalentine",
+    "imageurl": "https://files.catbox.moe/key7ar.jpeg",
+    "description": "wish your loved ones happy Valentine's"
+  },
+  
+   {
+    "name": "Merry Christmas",
+    "url": "/xmas",
+    "imageurl": "https://files.catbox.moe/r7nahv.jpg",
+    "description": "wish your loved ones a merry Christmas"
+  },
+  {
+    "name": "happy new year",
+    "url": "/nyear",
+    "imageurl": "https://files.catbox.moe/ai49yx.jpg",
+    "description": "wish your loved ones a happy new year"
+  },
+
+  {
+    "name": "condolence note",
+    "url": "/condolence",
+    "imageurl": "https://files.catbox.moe/mp0jun.jpeg",
+    "description": "send your loved ones a condolence note"
+  }
+]  

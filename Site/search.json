@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Lyrics search",
+    "url": "/lyrics",
+    "imageurl": "https://files.catbox.moe/tp9cxc.jpg",
+    "description": "Find the complete lyrics for any song by searching with the title and artist name."
+  },
+  {
+    "name": "bible search",
+    "url": "/bible",
+    "imageurl": "https://files.catbox.moe/zbstwf.jpg",
+    "description": "Search through the Bible by book, chapter, verse, or keywords to find specific passages."
+  },
+  {
+    "name": "quran search",
+    "url": "/quran",
+    "imageurl": "https://files.catbox.moe/1b0gnh.jpg",
+    "description": "Search the Quran by Surah, Ayah, or keywords to read and study verses in detail."
+  },
+  {
+    "name": "Tiktok search",
+    "url": "/tiktok-search",
+    "imageurl": "https://files.catbox.moe/uaie48.jpg",
+    "description": "Discover TikTok videos, users, and trends by searching with keywords or hashtags."
+  },
+  {
+    "name": "twitter search",
+    "url": "/twitter-search",
+    "imageurl": "https://files.catbox.moe/cqzg0s.jpg",
+    "description": "Search for tweets, users, or trending topics on Twitter/X in real-time."
+  },
+  {
+    "name": "youtube search",
+    "url": "/youtube-search",
+    "imageurl": "https://files.catbox.moe/derl4b.jpg",
+    "description": "Search for YouTube videos, channels, and playlists directly from our platform."
+  },
+  {
+    "name": "movie search",
+    "url": "/imdb-search",
+    "imageurl": "https://files.catbox.moe/n2v1yq.jpg",
+    "description": "Get detailed information about movies and TV shows, including ratings, cast, and plot summaries."
+  },
+  {
+    "name": "image search",
+    "url": "/image-search",
+    "imageurl": "https://files.catbox.moe/l9j5oh.jpg",
+    "description": "Search for high-quality images across the web using keywords or by uploading an image."
+  },
+  {
+    "name": "wallpaper search",
+    "url": "/wallpaper",
+    "imageurl": "https://files.catbox.moe/b2q434.jpg",
+    "description": "Find and download beautiful HD wallpapers for your desktop, phone, or tablet."
+  },
+  {
+    "name": "wallpaper 2",
+    "url": "/wallpaper2",
+    "imageurl": "https://files.catbox.moe/uqh177.jpg",
+    "description": "An alternative source for wallpapers, offering a different collection of high-quality backgrounds."
+  },
+  {
+    "name": "tiktok trend search",
+    "url": "/tiktok-trend-search",
+    "imageurl": "https://files.catbox.moe/ywo1yh.jpg",
+    "description": "Discover currently trending hashtags, sounds, and challenges on TikTok."
+  },
+  {
+    "name": "tiktok user search",
+    "url": "/tiktok-user-search",
+    "imageurl": "https://files.catbox.moe/bloe5g.jpg",
+    "description": "Search for specific TikTok user profiles to view their content and statistics."
+  },
+  {
+    "name": "SoundCloud search",
+    "url": "/soundcloud-search",
+    "imageurl": "https://files.catbox.moe/bq60um.jpg",
+    "description": "Search for tracks, artists, and playlists on the SoundCloud platform."
+  },
+  {
+    "name": "spotify search",
+    "url": "/spotify-search",
+    "imageurl": "https://files.catbox.moe/uc561z.jpg",
+    "description": "Search Spotify's extensive library for songs, albums, artists, and playlists."
+  },
+  {
+    "name": "random bible inspiration",
+    "url": "/randombible",
+    "imageurl": "https://files.catbox.moe/rf0i5o.jpg",
+    "description": "Get a random, inspirational verse from the Bible for daily reflection and motivation."
+  },
+  {
+    "name": "dictionary",
+    "url": "/dictionary",
+    "imageurl": "https://files.catbox.moe/kr7hv7.jpg",
+    "description": "Look up definitions, synonyms, antonyms, and word origins for any English word."
+  }
+]

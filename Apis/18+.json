@@ -1,0 +1,22 @@
+{
+  "endpoints": [
+  {
+      "category": "18+",
+      "name": "xvideos search",
+      "url": "/search/searchxvideos?q=porn",
+      "description": "search for apk links to download "
+    },
+   {
+      "category": "18+",
+      "name": "xvideo Download  ",
+      "url": "/download/xvideos?url=https://www.xvideos.com/video.hppakie6a79/mia_khalifa_fucks_a_fanboy",
+      "description": "Download xvideos"
+    },
+    {
+      "category": "18+",
+      "name": "hentai videos",
+      "url": "/dl/hentaivid",
+      "description": "Get a random hentaivideo."
+    }
+  ]
+}

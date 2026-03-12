@@ -1,0 +1,318 @@
+
+{
+  "64": {
+    "id": "64",
+    "nm": "BRAZIL: Serie A",
+    "cont": "5",
+    "cn": "28",
+    "st": "1"
+  },
+  "74": {
+    "id": "74",
+    "nm": "ENGLAND: National League",
+    "cont": "1",
+    "cn": "60",
+    "st": "1"
+  },
+  "102": {
+    "id": "102",
+    "nm": "WORLD: International Friendlies",
+    "cont": "0",
+    "cn": "2001",
+    "st": "0"
+  },
+  "302": {
+    "id": "302",
+    "nm": "SLOVAKIA: National cup",
+    "cont": "1",
+    "cn": "164",
+    "st": "0"
+  },
+  "303": {
+    "id": "303",
+    "nm": "SLOVENIA: National cup",
+    "cont": "1",
+    "cn": "165",
+    "st": "0"
+  },
+  "320": {
+    "id": "320",
+    "nm": "WORLD: Club Friendlies",
+    "cont": "0",
+    "cn": "2001",
+    "st": "0"
+  },
+  "773": {
+    "id": "773",
+    "nm": "BELARUS: National cup",
+    "cont": "1",
+    "cn": "19",
+    "st": "0"
+  },
+  "1011": {
+    "id": "1011",
+    "nm": "ASIA: Asian cup, qualification round group stage",
+    "cont": "2",
+    "cn": "2003",
+    "st": "1"
+  },
+  "1222": {
+    "id": "1222",
+    "nm": "WORLD CUP: Europe, Qualification, Group round",
+    "cont": "7",
+    "cn": "2001",
+    "st": "1"
+  },
+  "1340": {
+    "id": "1340",
+    "nm": "EUROPE: European Championship U-21, Qualifying round, Group stage",
+    "cont": "1",
+    "cn": "2002",
+    "st": "1"
+  },
+  "1461": {
+    "id": "1461",
+    "nm": "EUROPE: European Championship U-17, Qualifying Group Stage",
+    "cont": "1",
+    "cn": "2002",
+    "st": "1"
+  },
+  "2237": {
+    "id": "2237",
+    "nm": "ALBANIA: National cup",
+    "cont": "1",
+    "cn": "2",
+    "st": "0"
+  },
+  "2564": {
+    "id": "2564",
+    "nm": "WORLD CUP: CONCACAF, 3rd round",
+    "cont": "7",
+    "cn": "2007",
+    "st": "0"
+  },
+  "2634": {
+    "id": "2634",
+    "nm": "ARMENIA: First division",
+    "cont": "1",
+    "cn": "10",
+    "st": "1"
+  },
+  "2662": {
+    "id": "2662",
+    "nm": "EUROPE: European Championship U-19, Qualifying round",
+    "cont": "1",
+    "cn": "2002",
+    "st": "1"
+  },
+  "2905": {
+    "id": "2905",
+    "nm": "ENGLAND: National League South",
+    "cont": "1",
+    "cn": "60",
+    "st": "1"
+  },
+  "2906": {
+    "id": "2906",
+    "nm": "ENGLAND: National League North",
+    "cont": "1",
+    "cn": "60",
+    "st": "1"
+  },
+  "3042": {
+    "id": "3042",
+    "nm": "ANGOLA: Girabola",
+    "cont": "3",
+    "cn": "6",
+    "st": "1"
+  },
+  "3102": {
+    "id": "3102",
+    "nm": "ALGERIA: Ligue 2",
+    "cont": "3",
+    "cn": "3",
+    "st": "1"
+  },
+  "3108": {
+    "id": "3108",
+    "nm": "CZECH REPUBLIC: 1. Liga U-19",
+    "cont": "1",
+    "cn": "52",
+    "st": "1"
+  },
+  "3290": {
+    "id": "3290",
+    "nm": "WORLD: World Championship U-17, Playoffs",
+    "cont": "0",
+    "cn": "2001",
+    "st": "0"
+  },
+  "3311": {
+    "id": "3311",
+    "nm": "ENGLAND: FA Trophy",
+    "cont": "1",
+    "cn": "60",
+    "st": "0"
+  },
+  "3400": {
+    "id": "3400",
+    "nm": "ENGLAND: NL Premier, Southern South",
+    "cont": "1",
+    "cn": "60",
+    "st": "1"
+  },
+  "3401": {
+    "id": "3401",
+    "nm": "ENGLAND: NL Premier, Isthmian",
+    "cont": "1",
+    "cn": "60",
+    "st": "1"
+  },
+  "3402": {
+    "id": "3402",
+    "nm": "ENGLAND: NL Premier, Northern",
+    "cont": "1",
+    "cn": "60",
+    "st": "1"
+  },
+  "3403": {
+    "id": "3403",
+    "nm": "ENGLAND: Premier League Cup",
+    "cont": "1",
+    "cn": "60",
+    "st": "0"
+  },
+  "3434": {
+    "id": "3434",
+    "nm": "GERMANY: Oberliga, Nordost-Nord",
+    "cont": "1",
+    "cn": "74",
+    "st": "1"
+  },
+  "3449": {
+    "id": "3449",
+    "nm": "ENGLAND: Profesional Development League",
+    "cont": "1",
+    "cn": "60",
+    "st": "1"
+  },
+  "4320": {
+    "id": "4320",
+    "nm": "ENGLAND: NL Premier, Southern Central",
+    "cont": "1",
+    "cn": "60",
+    "st": "1"
+  },
+  "4355": {
+    "id": "4355",
+    "nm": "EUROPE: Premier League International cup, Group Stage",
+    "cont": "1",
+    "cn": "2002",
+    "st": "1"
+  },
+  "4441": {
+    "id": "4441",
+    "nm": "BRAZIL: Copa do Brasil U-20",
+    "cont": "5",
+    "cn": "28",
+    "st": "0"
+  },
+  "4470": {
+    "id": "4470",
+    "nm": "DR CONGO: Super Ligue",
+    "cont": "3",
+    "cn": "45",
+    "st": "1"
+  },
+  "4497": {
+    "id": "4497",
+    "nm": "INDONESIA: Liga 2",
+    "cont": "2",
+    "cn": "89",
+    "st": "1"
+  },
+  "4545": {
+    "id": "4545",
+    "nm": "PORTUGAL: League U-23",
+    "cont": "1",
+    "cn": "148",
+    "st": "1"
+  },
+  "4561": {
+    "id": "4561",
+    "nm": "SERBIA: Prva Liga",
+    "cont": "1",
+    "cn": "204",
+    "st": "1"
+  },
+  "4887": {
+    "id": "4887",
+    "nm": "NETHERLANDS: Divisie U-21, Fall Season",
+    "cont": "1",
+    "cn": "132",
+    "st": "1"
+  },
+  "5894": {
+    "id": "5894",
+    "nm": "ARGENTINA: Primera A, Playoffs - Women",
+    "cont": "5",
+    "cn": "9",
+    "st": "0"
+  },
+  "5919": {
+    "id": "5919",
+    "nm": "MEXICO: Liga Premier Serie B, Apertura",
+    "cont": "4",
+    "cn": "123",
+    "st": "1"
+  },
+  "6091": {
+    "id": "6091",
+    "nm": "CHILE: Primera Division, Relegation",
+    "cont": "5",
+    "cn": "40",
+    "st": "0"
+  },
+  "6293": {
+    "id": "6293",
+    "nm": "ARGENTINA: Superliga Reserve League, Playoffs",
+    "cont": "5",
+    "cn": "9",
+    "st": "0"
+  },
+  "6314": {
+    "id": "6314",
+    "nm": "COLOMBIA: Primera Division, Clausura Quadrangular",
+    "cont": "5",
+    "cn": "43",
+    "st": "1"
+  },
+  "6318": {
+    "id": "6318",
+    "nm": "CROATIA: 3 HNL, West",
+    "cont": "1",
+    "cn": "49",
+    "st": "1"
+  },
+  "6394": {
+    "id": "6394",
+    "nm": "SIERRA LEONE: Premier League",
+    "cont": "3",
+    "cn": "162",
+    "st": "1"
+  },
+  "8502": {
+    "id": "8502",
+    "nm": "AFC: Champions League, Group Stage - Women",
+    "cont": "2",
+    "cn": "2003",
+    "st": "1"
+  },
+  "8995": {
+    "id": "8995",
+    "nm": "WORLD CUP: Asia, QR, Round 5",
+    "cont": "2",
+    "cn": "2003",
+    "st": "0"
+  }
+}

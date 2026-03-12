@@ -1,0 +1,41 @@
+{
+  "endpoints": [
+    {
+      "category": "news",
+      "name": "Citizen news",
+      "url": "/news/citizen",
+      "description": "get latest citizen news."
+    },
+    {
+      "category": "news",
+      "name": "Ntv news",
+      "url": "/news/ntv",
+      "description": "get latest ntv news"
+    },
+    {
+      "category": "news",
+      "name": "Kbc channel 1 news",
+      "url": "/news/kbc",
+      "description": "get latest kbc news"
+    },
+    {
+      "category": "news",
+      "name": "BBC news",
+      "url": "/news/bbc",
+      "description": "get latest BBC news"
+    },
+    
+    {
+      "category": "news",
+      "name": "Tech news",
+      "url": "/news/tech",
+      "description": "get latest Tech news"
+    },
+    {
+      "category": "news",
+      "name": "sport news",
+      "url": "/football/news",
+      "description": "latest football news."
+    }
+  ]
+}

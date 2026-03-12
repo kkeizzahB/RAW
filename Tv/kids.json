@@ -1,0 +1,50 @@
+[
+  {
+    "title": "nickelodeon",
+    "logoUrl": "https://files.catbox.moe/uyg6t3.png",
+    "streamUrl": "https://fl31.moveonjoy.com/NICKELODEON/index.m3u8"
+  },
+  {
+    "title": "NICKTOONS",
+    "logoUrl": "https://files.catbox.moe/5ff2jl.png",
+    "streamUrl": "https://fl1.moveonjoy.com/NICKTOONS/index.m3u8"
+  },
+  {
+    "title": "BABY SHARK",
+    "logoUrl": "https://image.xumo.com/v1/channels/channel/99951209/168x168.png?type=color_onBlack",
+    "streamUrl": "https://c0c65b821b3542c3a4dca92702f59944.mediatailor.us-east-1.amazonaws.com/v1/manifest/04fd913bb278d8775298c26fdca9d9841f37601f/RakutenTV-eu_BabySharkTV/8b9bd650-ce08-47d3-9c67-abf0c9f8eb99/0.m3u8"
+  },
+  {
+    "title": "NINJA KIDS TV",
+    "logoUrl": "https://image.xumo.com/v1/channels/channel/99951229/168x168.png?type=color_onBlack",
+    "streamUrl": "https://dbrb49pjoymg4.cloudfront.net/10001/99951229/hls/playlist.m3u8?ads.xumo_channelId=99951229&ads._fw_ifa_type=&ads._fw_did=4ce5c5b9-44c9"
+  },
+  {
+    "title": "ALL BABIES CHANNEL",
+    "logoUrl": "https://image.xumo.com/v1/channels/channel/99991253/168x168.png?type=color_onBlack",
+    "streamUrl": "https://live-content.xumo.com/186/content/XM0V3UDBAZ1W0Q/26047957/master.m3u8id=4ce5c5b9-44c9"
+  },
+    {
+    "title": "TOON GOGGLES",
+    "logoUrl": "https://image.xumo.com/v1/channels/channel/99991268/168x168.png?type=color_onBlack",
+    "streamUrl": "https://dbrb49pjoymg4.cloudfront.net/10001/99991268/hls/tg.m3u8?ads.xumo_channelId=99991268&ads._fw_ifa_type=&ads._fw_did=75e91"
+  },
+  
+    {
+    "title": "POWER RANGERS",
+    "logoUrl": "https://image.xumo.com/v1/channels/channel/99951441/168x168.png?type=color_onBlack",
+    "streamUrl": "https://dbrb49pjoymg4.cloudfront.net/10001/99951441/hls/8-9-6768.m3u8?ads.xumo_channelId=99951441&ads._fw_ifa_type=&ads._fw_d"
+  },
+  
+    {
+    "title": "TRANSFORMERS",
+    "logoUrl": "https://image.xumo.com/v1/channels/channel/99951441/168x168.png?type=color_onBlack",
+    "streamUrl": "https://dbrb49pjoymg4.cloudfront.net/10001/99951443/hls/8-9-6767.m3u8?ads.xumo_channelId=99951443&ads._fw_ifa_type=&ads._fw_did"
+  },
+  {
+    "title": "DISNEY JUNIOR",
+    "logoUrl": "https://files.catbox.moe/o2y8bd.jpeg",
+    "streamUrl": "https://fl61.moveonjoy.com/DISNEY_JR/index.m3u8"
+  }
+
+]

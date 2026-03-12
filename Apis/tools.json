@@ -1,0 +1,192 @@
+ {
+  "endpoints": [
+    {
+      "category": "tools",
+      "name": "Tiny url",
+      "url": "/shortener/tinyurl?url=https://example.com",
+      "description": "Shorten long URLs."
+    },
+    {
+      "category": "tools",
+      "name": "dagd shortener",
+      "url": "/shortener/dagd?url=https://example.com&name=exampleman",
+      "description": "get shortened url using dagd plus name alias"
+    },
+   {
+      "category": "tools",
+      "name": "vgd shortener",
+      "url": "/shortener/vgd?url=https://example.com&name=myalias",
+      "description": "get shortened url using vgd plus name alias"
+    },
+   {
+      "category": "tools",
+      "name": "tinube shortener",
+      "url": "/shortener/tinube?url=https://example.com&name=custom123",
+      "description": "get shortened url using tinube plus name alias"
+    },
+   
+   {
+
+      "category": "tools",
+      "name": "random shortener",
+      "url": "/shortener/random?url=https://example.com&name=myalias",
+      "description": "get shortened url plus name alias"
+    },
+   {
+      "category": "tools",
+      "name": "GitHub followers",
+      "url": "/github/followers?q=Keithkeizzah",
+      "description": "get all your GitHub followers"
+    },
+   {
+      "category": "tools",
+      "name": "GitHub following",
+      "url": "/github/following?q=Keithkeizzah",
+      "description": "check all GitHub following"
+    },
+       
+    {
+      "category": "tools",
+      "name": "Bitly",
+      "url": "/shortener/bitly?url=https://example.com",
+      "description": "Shorten long URLs."
+    },
+
+   {
+      "category": "tools",
+      "name": "screenshot web",
+      "url": "/tool/screenshot?url=https://apis-keith.vercel.app/",
+      "description": "fancy text with style numbers."
+    },
+   
+    {
+      "category": "tools",
+      "name": "fancy text ",
+      "url": "/fancytext?q=hello&style=3",
+      "description": "fancy text with style numbers."
+    },
+   {
+      "category": "tools",
+      "name": "random fancy text style ",
+      "url": "/fancytext/random?q=hello",
+      "description": "random fancy text style"
+    },
+   {
+      "category": "tools",
+      "name": "fancy text styles",
+      "url": "/fancytext/styles?q=hello",
+      "description": "get all fancy text styles."
+    },
+   
+    {
+      "category": "tools",
+      "name": "Translate",
+      "url": "/translate?text=La%20commande%20vcf%20est%20disponible%20en%20plugins%20,%20Il%20inclus%20le%20noms%20des%20contacts%20si%20disponible%20%3Cprefix%3Epg%20allPour%20voir%20la%20liste%20des%20plugins%20disponibles&to=zh",
+      "description": "Translate text into different languages."
+    },
+       
+    {
+      "category": "tools",
+      "name": "Temp Mail",
+      "url": "/tempmail",
+      "description": "Generate temporary email addresses."
+    },
+          
+    {
+      "category": "tools",
+      "name": "Whatsapp profile picture download",
+      "url": "/whatsapp/profile?query=254748387615",
+      "description": "Download any Whatsapp profile picture "
+    },
+   
+
+   
+    {
+      "category": "tools",
+      "name": "host check https",
+      "url": "/hostcheck/http?q=https://keithkeizzah.site",
+      "description": "host check for https."
+    },
+   
+   
+    {
+      "category": "tools",
+      "name": "host check tcp",
+      "url": "/hostcheck/tcp?q=keithkeizzah.site&port=443",
+      "description": "host check for tcp"
+    },
+   {
+      "category": "tools",
+      "name": "host check ping",
+      "url": "/hostcheck/ping?q=https://keithkeizzah.site",
+      "description": "host check for https."
+    },
+   
+   
+    {
+      "category": "tools",
+      "name": "host check udp",
+      "url": "/hostcheck/udp?q=keithkeizzah.site&port=53",
+      "description": "host check for udp"
+    },
+   
+    {
+      "category": "tools",
+      "name": "host check dns",
+      "url": "/hostcheck/dns?q=keithkeizzah.site&type=A",
+      "description": "host check for dns"
+    },
+      
+    {
+      "category": "tools",
+      "name": "host check info",
+      "url": "/hostcheckinfo?q=8.8.8.8",
+      "description": "host check info"
+    },
+   
+    {
+      "category": "tools",
+      "name": "Ascii generate",
+      "url": "/tools/ascii?q=dragon",
+      "description": "Generate Ascii prompt description"
+    },
+   
+    {
+      "category": "tools",
+      "name": "Ascii generator 2",
+      "url": "/tools/ascii2?q=dragon",
+      "description": "Generate Ascii prompt description"
+    },
+   
+    {
+      "category": "tools",
+      "name": "JavaScript encryption(preemptive)",
+      "url": "/tools/encrypt?q=console.log",
+      "description": "encrypt JavaScript code using preemptive method "
+    },
+   {
+      "category": "tools",
+      "name": "JavaScript encryption(byte hide )",
+      "url": "/tools/encrypt2?q=console.log",
+      "description": "encrypt JavaScript code using byte hide method "
+    },
+   {
+      "category": "tools",
+      "name": "Get Inbox Temp Mail",
+      "url": "/get_inbox_tempmail?q=",
+      "description": "Fetch inbox for temporary email."
+    },
+    {
+      "category": "tools",
+      "name": "Whatsapp link creator",
+      "url": "/tools/walink?q=hi&number=254748387615",
+      "description": "create a Whatsapp link."
+    },
+    {
+      "category": "tools",
+      "name": "Temp Number",
+      "url": "/tempnumber",
+      "description": "Generate temporary phone numbers."
+    }
+  ]
+}

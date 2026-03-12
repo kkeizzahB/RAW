@@ -1,0 +1,138 @@
+
+[
+  {
+    "question": "How many UEFA Champions League titles has Manchester United won?",
+    "answer": "3",
+    "options": ["2", "3", "4", "5"],
+    "difficulty": "medium",
+    "category": "Manchester United",
+    "points": 15,
+    "timeLimit": 20
+  },
+  {
+    "question": "Which player is known as 'The Egyptian King' at Liverpool?",
+    "answer": "Mohamed Salah",
+    "options": ["Sadio Mané", "Mohamed Salah", "Virgil van Dijk", "Alisson Becker"],
+    "difficulty": "easy",
+    "category": "Liverpool",
+    "points": 10,
+    "timeLimit": 15
+  },
+  {
+    "question": "Who is Arsenal's all-time top scorer?",
+    "answer": "Thierry Henry",
+    "options": ["Ian Wright", "Thierry Henry", "Dennis Bergkamp", "Robin van Persie"],
+    "difficulty": "medium",
+    "category": "Arsenal",
+    "points": 15,
+    "timeLimit": 20
+  },
+  {
+    "question": "What number did Didier Drogba wear for Chelsea?",
+    "answer": "11",
+    "options": ["9", "10", "11", "15"],
+    "difficulty": "medium",
+    "category": "Chelsea",
+    "points": 15,
+    "timeLimit": 20
+  },
+  {
+    "question": "Which Manchester City manager won the Premier League in 2012 with a last-minute goal?",
+    "answer": "Roberto Mancini",
+    "options": ["Pep Guardiola", "Roberto Mancini", "Manuel Pellegrini", "Mark Hughes"],
+    "difficulty": "hard",
+    "category": "Manchester City",
+    "points": 20,
+    "timeLimit": 25
+  },
+  {
+    "question": "How many Premier League titles has Sir Alex Ferguson won with Manchester United?",
+    "answer": "13",
+    "options": ["11", "12", "13", "14"],
+    "difficulty": "hard",
+    "category": "Manchester United",
+    "points": 20,
+    "timeLimit": 25
+  },
+  {
+    "question": "Which Liverpool manager won the Champions League in 2005?",
+    "answer": "Rafael Benítez",
+    "options": ["Jürgen Klopp", "Rafael Benítez", "Brendan Rodgers", "Gérard Houllier"],
+    "difficulty": "medium",
+    "category": "Liverpool",
+    "points": 15,
+    "timeLimit": 20
+  },
+  {
+    "question": "Who scored the winning goal for Chelsea in the 2012 Champions League final?",
+    "answer": "Didier Drogba",
+    "options": ["Frank Lampard", "Didier Drogba", "Fernando Torres", "Juan Mata"],
+    "difficulty": "medium",
+    "category": "Chelsea",
+    "points": 15,
+    "timeLimit": 20
+  },
+  {
+    "question": "Which Arsenal player is known as 'The Invincible'?",
+    "answer": "Thierry Henry",
+    "options": ["Patrick Vieira", "Thierry Henry", "Dennis Bergkamp", "Robert Pirès"],
+    "difficulty": "easy",
+    "category": "Arsenal",
+    "points": 10,
+    "timeLimit": 15
+  },
+  {
+    "question": "How many consecutive Premier League titles did Manchester City win from 2021-2023?",
+    "answer": "3",
+    "options": ["2", "3", "4", "5"],
+    "difficulty": "easy",
+    "category": "Manchester City",
+    "points": 10,
+    "timeLimit": 15
+  },
+  {
+    "question": "What position does Kevin De Bruyne play?",
+    "answer": "Midfielder",
+    "options": ["Defender", "Midfielder", "Forward", "Goalkeeper"],
+    "difficulty": "easy",
+    "category": "Manchester City",
+    "points": 10,
+    "timeLimit": 15
+  },
+  {
+    "question": "Which Manchester United player wore number 7 and is known as 'CR7'?",
+    "answer": "Cristiano Ronaldo",
+    "options": ["David Beckham", "Cristiano Ronaldo", "Eric Cantona", "George Best"],
+    "difficulty": "medium",
+    "category": "Manchester United",
+    "points": 15,
+    "timeLimit": 20
+  },
+  {
+    "question": "Who is Liverpool's captain?",
+    "answer": "Virgil van Dijk",
+    "options": ["Mohamed Salah", "Virgil van Dijk", "Trent Alexander-Arnold", "Jordan Henderson"],
+    "difficulty": "easy",
+    "category": "Liverpool",
+    "points": 10,
+    "timeLimit": 15
+  },
+  {
+    "question": "Which Chelsea manager won the Champions League in 2021?",
+    "answer": "Thomas Tuchel",
+    "options": ["Frank Lampard", "Thomas Tuchel", "Antonio Conte", "José Mourinho"],
+    "difficulty": "hard",
+    "category": "Chelsea",
+    "points": 20,
+    "timeLimit": 25
+  },
+  {
+    "question": "Arsenal's stadium is called what?",
+    "answer": "Emirates Stadium",
+    "options": ["Emirates Stadium", "Stamford Bridge", "Anfield", "Old Trafford"],
+    "difficulty": "easy",
+    "category": "Arsenal",
+    "points": 10,
+    "timeLimit": 15
+  }
+]

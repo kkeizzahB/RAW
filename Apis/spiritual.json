@@ -1,0 +1,28 @@
+{
+"endpoints": [
+{
+"category": "spiritual",
+"name": "Bible Search",
+"url": "/bible/search?q=God",
+"description": "Search the Bible for verses about God."
+},
+{
+"category": "spiritual",
+"name": "Adventist Hymnal",
+"url": "/adventist/hymnal?q=10",
+"description": "Find Adventist hymnal songs by number or search term."
+},
+{
+"category": "spiritual",
+"name": "AI Bible",
+"url": "/ai/bible?q=who+is+God",
+"description": "Ask AI questions about the Bible."
+},
+{
+"category": "spiritual",
+"name": "AI Muslim",
+"url": "/ai/muslim?q=who+is+Allah",
+"description": "Ask AI questions about Islam and Allah."
+}
+]
+}

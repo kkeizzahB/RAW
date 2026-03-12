@@ -1,0 +1,28 @@
+{
+  "endpoints": [
+    {
+      "category": "random",
+      "name": "Random video",
+      "url": "/random/randomvideo",
+      "description": "Get a random video."
+    },
+    {
+      "category": "random",
+      "name": "Random bible verse",
+      "url": "/random/bible",
+      "description": "Get a random bible verse"
+    },
+    {
+      "category": "random",
+      "name": "Random ncs music",
+      "url": "/random/ncs",
+      "description": "Get a random ncs music from ncs.io"
+    },
+    {
+      "category": "random",
+      "name": "Random inspiration quote image",
+      "url": "/random/inspirobot",
+      "description": "Get a random inspiration quote images."
+    }
+  ]
+}

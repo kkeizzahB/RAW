@@ -1,0 +1,62 @@
+[
+  {
+    "name": "sport news",
+    "url": "/sportnews",
+    "imageurl": "https://qu.ax/gfxSX.jpg",
+    "description": "explore all sport news all over the world"
+  },
+  {
+    "name": "venu search",
+    "url": "/venue-search",
+    "imageurl": "https://files.catbox.moe/ggx9bo.jpg",
+    "description": "Find detailed information about cricket stadiums and grounds worldwide, including history and statistics."
+  },
+  {
+    "name": "match history",
+    "url": "/match-history",
+    "imageurl": "https://files.catbox.moe/yj95yd.jpg",
+    "description": "Access full scorecards, results, and detailed records of past cricket matches from all formats."
+  },
+  {
+    "name": "player search",
+    "url": "/player-search",
+    "imageurl": "https://files.catbox.moe/s0d0j9.jpg",
+    "description": "Look up comprehensive profiles, career statistics, and performance records for any cricketer."
+  },
+  {
+    "name": "team search",
+    "url": "/team-search",
+    "imageurl": "https://files.catbox.moe/x8ypwx.jpg",
+    "description": "Get detailed information about cricket teams, including squad details, performance history, and rankings."
+  },
+  {
+    "name": "standings",
+    "url": "/standings",
+    "imageurl": "https://files.catbox.moe/9pjhiy.jpg",
+    "description": "View current team rankings and points tables across various tournaments and cricket formats."
+  },
+  {
+    "name": "top scorers",
+    "url": "/top-scorers",
+    "imageurl": "https://files.catbox.moe/k1qlcs.jpg",
+    "description": "See the leading run-scorers and batting performers in ongoing and recent cricket tournaments."
+  },
+  {
+    "name": "upcoming matches",
+    "url": "/upcoming-matches",
+    "imageurl": "https://files.catbox.moe/v90m0q.jpg",
+    "description": "Check the schedule of future cricket matches, series, and tournaments across all formats."
+  },
+  {
+    "name": "LiveScore matches with highlights",
+    "url": "/livescore",
+    "imageurl": "https://qu.ax/qGBPc.jpg",
+    "description": "get live matches and update highlights "
+  },
+  {
+    "name": "live matches",
+    "url": "/matches",
+    "imageurl": "https://files.catbox.moe/yaotaw.jpg",
+    "description": "Follow live cricket matches with real-time score updates, commentary, and match progress."
+  }
+]

@@ -1,0 +1,246 @@
+{
+  "endpoints": [
+        {
+      "category": "gameballs",
+      "name": "player search",
+      "url": "/sport/playersearch?q=bukayo%20Saka",
+      "description": "search for any sport player."
+    },
+    {
+      "category": "gameballs",
+      "name": "Team search",
+      "url": "/sport/teamsearch?q=arsenal",
+      "description": "search for any sport team."
+    },
+    {
+      "category": "gameballs",
+      "name": "venue search",
+      "url": "/sport/venuesearch?q=Emirates",
+      "description": "search for stadium/venue."
+    },
+    {
+      "category": "gameballs",
+      "name": "game events history",
+      "url": "/sport/gameevents?q=Arsenal%20vs%20Chelsea",
+      "description": "search for events like arsenal vs Chelsea"
+    },
+    {
+      "category": "gameballs",
+      "name": "LiveScore updates",
+      "url": "/livescore",
+      "description": "Get current football LiveScores."
+    },
+    {
+      "category": "gameballs",
+      "name": "LiveScore updates with highlights",
+      "url": "/livescore2",
+      "description": "Get current football LiveScores with highlights."
+    },
+    {
+      "category": "gameballs",
+      "name": "EPL Upcoming Matches",
+      "url": "/epl/upcomingmatches",
+      "description": "Get upcoming EPL matches."
+    },
+    
+    {
+      "category": "gameballs",
+      "name": "EPL Matches",
+      "url": "/epl/matches",
+      "description": "Get EPL match details."
+    },
+    {
+      "category": "gameballs",
+      "name": "EPL Standings",
+      "url": "/epl/standings",
+      "description": "Get EPL standings."
+    },
+    
+    {
+      "category": "gameballs",
+      "name": "EPL Top scorers",
+      "url": "/epl/scorers",
+      "description": "Get EPL top scorers."
+    },
+    {
+      "category": "gameballs",
+      "name": "Bundesliga Upcoming Matches",
+      "url": "/bundesliga/upcomingmatches",
+      "description": "Get upcoming Bundesliga matches."
+    },
+    {
+      "category": "gameballs",
+      "name": "Bundesliga Matches",
+      "url": "/bundesliga/matches",
+      "description": "Get Bundesliga match details."
+    },
+    {
+      "category": "gameballs",
+      "name": "Bundesliga Standings",
+      "url": "/bundesliga/standings",
+      "description": "Get Bundesliga standings."
+    },
+    {
+      "category": "gameballs",
+      "name": "Bundesliga Top Scorers",
+      "url": "/bundesliga/scorers",
+      "description": "Get Bundesliga top scorers."
+    },
+    {
+      "category": "gameballs",
+      "name": "Euros Upcoming Matches",
+      "url": "/euros/upcomingmatches",
+      "description": "Get upcoming Euros matches."
+    },
+    {
+      "category": "gameballs",
+      "name": "Euros Matches",
+      "url": "/euros/matches",
+      "description": "Get Euros match details."
+    },
+    {
+      "category": "gameballs",
+      "name": "Euros Standings",
+      "url": "/euros/standings",
+      "description": "Get Euros standings."
+    },
+    {
+      "category": "gameballs",
+      "name": "Euros Top Scorers",
+      "url": "/euros/scorers",
+      "description": "Get Euros top scorers."
+    },
+    {
+      "category": "gameballs",
+      "name": "FIFA Upcoming Matches",
+      "url": "/fifa/upcomingmatches",
+      "description": "Get upcoming FIFA matches."
+    },
+    {
+      "category": "gameballs",
+      "name": "FIFA Matches",
+      "url": "/fifa/matches",
+      "description": "Get FIFA match details."
+    },
+    {
+      "category": "gameballs",
+      "name": "FIFA Standings",
+      "url": "/fifa/standings",
+      "description": "Get FIFA standings."
+    },
+    {
+      "category": "gameballs",
+      "name": "FIFA Top Scorers",
+      "url": "/fifa/scorers",
+      "description": "Get FIFA top scorers."
+    },
+    {
+      "category": "gameballs",
+      "name": "La Liga Upcoming Matches",
+      "url": "/laliga/upcomingmatches",
+      "description": "Get upcoming La Liga matches."
+    },
+    {
+      "category": "gameballs",
+      "name": "La Liga Matches",
+      "url": "/laliga/matches",
+      "description": "Get La Liga match details."
+    },
+    {
+      "category": "gameballs",
+      "name": "La Liga Standings",
+      "url": "/laliga/standings",
+      "description": "Get La Liga standings."
+    },
+    {
+      "category": "gameballs",
+      "name": "La Liga Top Scorers",
+      "url": "/laliga/scorers",
+      "description": "Get La Liga top scorers."
+    },
+    {
+      "category": "gameballs",
+      "name": "Ligue 1 Upcoming Matches",
+      "url": "/ligue1/upcomingmatches",
+      "description": "Get upcoming Ligue 1 matches."
+    },
+    {
+      "category": "gameballs",
+      "name": "Ligue 1 Matches",
+      "url": "/ligue1/matches",
+      "description": "Get Ligue 1 match details."
+    },
+    {
+      "category": "gameballs",
+      "name": "Ligue 1 Standings",
+      "url": "/ligue1/standings",
+      "description": "Get Ligue 1 standings."
+    },
+    {
+      "category": "gameballs",
+      "name": "Ligue 1 Top Scorers",
+      "url": "/ligue1/scorers",
+      "description": "Get Ligue 1 top scorers."
+    },
+    {
+      "category": "gameballs",
+      "name": "Serie A Upcoming Matches",
+      "url": "/seriea/upcomingmatches",
+      "description": "Get upcoming Serie A matches."
+    },
+    {
+      "category": "gameballs",
+      "name": "Serie A Matches",
+      "url": "/seriea/matches",
+      "description": "Get Serie A match details."
+    },
+    {
+      "category": "gameballs",
+      "name": "Serie A Standings",
+      "url": "/seriea/standings",
+      "description": "Get Serie A standings."
+    },
+    {
+      "category": "gameballs",
+      "name": "Serie A Top Scorers",
+      "url": "/seriea/scorers",
+      "description": "Get Serie A top scorers."
+    },
+    {
+      "category": "gameballs",
+      "name": "UCL Upcoming Matches",
+      "url": "/ucl/upcomingmatches",
+      "description": "Get upcoming UCL matches."
+    },
+    {
+      "category": "gameballs",
+      "name": "UCL Matches",
+      "url": "/ucl/matches",
+      "description": "Get UCL match details."
+    },
+    {
+      "category": "gameballs",
+      "name": "UCL Standings",
+      "url": "/ucl/standings",
+      "description": "Get UCL standings."
+    },
+    {
+      "category": "gameballs",
+      "name": "UCL top scorers",
+      "url": "/ucl/scorers",
+      "description": "Get UCL top scorers."
+    },
+     {
+      "category": "gameballs",
+      "name": "Sure bet tips odds",
+      "url": "/bet",
+      "description": "sure bet tips free odds"
+    },
+    {
+      "category": "gameballs",
+      "name": "football news",
+      "url": "/football/news",
+      "description": "Get football news."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "endpoints": [
+    {
+      "category": "fun",
+      "name": "Truth",
+      "url": "/fun/truth",
+      "description": "Get a random truth question."
+    },
+    {
+      "category": "fun",
+      "name": "Dare",
+      "url": "/fun/dare",
+      "description": "Get a random dare."
+    },
+    {
+      "category": "fun",
+      "name": "would you rather",
+      "url": "/fun/would-you-rather",
+      "description": "Get a random would you rather"
+    },
+    {
+      "category": "fun",
+      "name": "Paranoia",
+      "url": "/fun/paranoia",
+      "description": "Get a random paranoia."
+    },
+    {
+      "category": "fun",
+      "name": "pickupline",
+      "url": "/fun/pickuplines",
+      "description": "Get a random pickupline."
+    },
+    {
+      "category": "fun",
+      "name": "fact",
+      "url": "/fun/fact",
+      "description": "Get a random fact."
+    },
+    {
+      "category": "fun",
+      "name": "insult",
+      "url": "/fun/insult",
+      "description": "Get a random insult"
+    },
+    {
+      "category": "fun",
+      "name": "jokes",
+      "url": "/fun/jokes",
+      "description": "Get a random jokes"
+    },
+    {
+      "category": "fun",
+      "name": "meme",
+      "url": "/fun/meme",
+      "description": "Get a random meme images"
+    },
+    {
+      "category": "fun",
+      "name": "question",
+      "url": "/fun/question",
+      "description": "Get a random question."
+    },
+    {
+      "category": "fun",
+      "name": "quote",
+      "url": "/fun/quote",
+      "description": "Get a random quote."
+    },
+    {
+      "category": "fun",
+      "name": "quote audio",
+      "url": "/quote/audio",
+      "description": "Get a random quote audio."
+    },
+    {
+      "category": "fun",
+      "name": "never have i ever",
+      "url": "/fun/never-have-i-ever",
+      "description": "Get a random never have i ever"
+    }
+  ]
+}

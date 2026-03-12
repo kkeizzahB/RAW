@@ -1,0 +1,307 @@
+{
+  "endpoints": [
+    {
+      "category": "downloaders",
+      "name": "YouTube audio download 1",
+      "url": "/download/audio?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as audio files."
+    },
+    {
+      "category": "downloaders",
+      "name": "YouTube video download 1",
+      "url": "/download/video?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos."
+    },
+    {
+      "category": "downloaders",
+      "name": "YouTube audio download 2 (YTMP3)",
+      "url": "/download/ytmp3?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as MP3 files."
+    },
+    {
+      "category": "downloaders",
+      "name": "YouTube video download 2 (YTMP4)",
+      "url": "/download/ytmp4?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as MP4 files."
+    },
+    {
+      "category": "downloaders",
+      "name": "YouTube audio download 3 (dlmp3)",
+      "url": "/download/dlmp3?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as MP3 files."
+    },
+    {
+      "category": "downloaders",
+      "name": "YouTube video download 3 (dlmp4)",
+      "url": "/download/dlmp4?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as MP4 files."
+    },
+    {
+      "category": "downloaders",
+      "name": "YouTube audio download 4 (MP3)",
+      "url": "/download/mp3?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as MP3 files."
+    },
+    
+    {
+      "category": "downloaders",
+      "name": "YouTube video download 4 (MP4)",
+      "url": "/download/mp4?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as MP4 files."
+    },
+    {
+      "category": "downloaders",
+      "name": "YouTube audio download 5 (yta)",
+      "url": "/download/yta?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as MP3 files."
+    },
+    {
+      "category": "downloaders",
+      "name": "YouTube audio download 5 (ytv)",
+      "url": "/download/ytv?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as MP3 files."
+    },
+    {
+      "category": "downloaders",
+      "name": "YouTube audio download 6 (yta2)",
+      "url": "/download/yta2?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as MP3 files."
+    },
+    {
+      "category": "downloaders",
+      "name": "YouTube audio download 6 (ytv2)",
+      "url": "/download/ytv2?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as MP3 files."
+    },
+    {
+      "category": "downloaders",
+      "name": "YouTube audio download 7 (yta3)",
+      "url": "/download/yta3?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as MP3 files."
+    },
+    {
+      "category": "downloaders",
+      "name": "YouTube audio download 7 (ytv3)",
+      "url": "/download/ytv3?url=https://youtube.com/watch?v=60ItHLz5WEA",
+      "description": "Download YouTube videos as MP3 files."
+    },
+    {
+      "category": "downloaders",
+      "name": "Pinterest Download 1",
+      "url": "/download/pinterest?url=https://pin.it/1zdlg6EPT",
+      "description": "Download images or video from Pinterest"
+    },
+    {
+      "category": "downloaders",
+      "name": "Pinterest Download 2",
+      "url": "/download/pindl2?url=https://pin.it/1zdlg6EPT",
+      "description": "Download images or video from Pinterest"
+    },
+    {
+      "category": "downloaders",
+      "name": "Pinterest Download 3",
+      "url": "/download/pindl3?url=https://pin.it/1zdlg6EPT",
+      "description": "Download images or video from Pinterest"
+    },
+    {
+      "category": "downloaders",
+      "name": "Spotify download 1",
+      "url": "/download/spotify?q=spectre",
+      "description": "download spotify audio tracks."
+    },
+    {
+      "category": "downloaders",
+      "name": "Spotify download 2",
+      "url": "/download/spotifydl?url=https://open.spotify.com/track/6IlORXzatD3Y3p1JN386ho",
+      "description": "download spotify audio tracks."
+    },
+    {
+      "category": "downloaders",
+      "name": "TikTok Download 1",
+      "url": "/download/tiktokdl?url=https://vt.tiktok.com/ZSje1Vkup/",
+      "description": "Download videos from TikTok."
+    },
+    {
+      "category": "downloaders",
+      "name": "TikTok Download 2",
+      "url": "/download/tiktokdl2?url=https://vt.tiktok.com/ZSje1Vkup/",
+      "description": "Download videos from TikTok."
+    },
+    {
+      "category": "downloaders",
+      "name": "TikTok Download 3",
+      "url": "/download/tiktokdl3?url=https://vt.tiktok.com/ZSje1Vkup/",
+      "description": "Download videos from TikTok."
+    },
+    {
+      "category": "downloaders",
+      "name": "TikTok Download 4",
+      "url": "/download/tiktokdl4?url=https://vt.tiktok.com/ZSje1Vkup/",
+      "description": "Download videos from TikTok."
+    },
+    {
+      "category": "downloaders",
+      "name": "Instagram posts download",
+      "url": "/download/instaposts?q=ronaldo",
+      "description": "download Instagram posts."
+    },
+    {
+      "category": "downloaders",
+      "name": "Instagram stories download",
+      "url": "/download/instastories?q=ronaldo",
+      "description": "download Instagram stories."
+    },
+    {
+      "category": "downloaders",
+      "name": "Instagram Download 1",
+      "url": "/download/instagramdl?url=https://www.instagram.com/reel/DD6q97IuzxD/?igsh=YzljYTk1ODg3Zg==",
+      "description": "Download videos from Instagram."
+    },
+    {
+      "category": "downloaders",
+      "name": "Instagram Download 2",
+      "url": "/download/instadl?url=https://www.instagram.com/reel/DD6q97IuzxD/?igsh=YzljYTk1ODg3Zg==",
+      "description": "Download videos from Instagram."
+    },
+    {
+      "category": "downloaders",
+      "name": "Instagram Download 3",
+      "url": "/download/instadl3?url=https://www.instagram.com/reel/DD6q97IuzxD/?igsh=YzljYTk1ODg3Zg==",
+      "description": "Download videos from Instagram."
+    },
+    {
+      "category": "downloaders",
+      "name": "Facebook Download 1",
+      "url": "/download/fbdown?url=https://www.facebook.com/share/r/19zyz6X8KJ/",
+      "description": "Download videos from Facebook."
+    },
+    {
+      "category": "downloaders",
+      "name": "Facebook Download 2",
+      "url": "/download/fbdl?url=https://www.facebook.com/share/r/19zyz6X8KJ/",
+      "description": "Download videos from Facebook."
+    },
+    {
+      "category": "downloaders",
+      "name": "all in one Download",
+      "url": "/download/alldl?url=https://www.bilibili.com/video/BV1cy4y1k7A2/",
+      "description": "Download videos images from any social link"
+    },
+    
+    {
+      "category": "downloaders",
+      "name": "Twitter Download",
+      "url": "/download/twitter?url=https://twitter.com/futurism/status/882987478541533189",
+      "description": "Download videos from Twitter."
+    },
+    {
+      "category": "downloaders",
+      "name": "Terabox Download",
+      "url": "/download/terabox?url=https://terabox.com/s/1FtdPSfXTu6BRMzDSe1PMEg",
+      "description": "Download videos from terabox."
+    },
+    {
+      "category": "downloaders",
+      "name": "rednote Download",
+      "url": "/download/rednote?url=https://xhslink.com/a/OAzIdalFCoYcb",
+      "description": "Download videos from rednote"
+    },
+    {
+      "category": "downloaders",
+      "name": "MediaFire Download",
+      "url": "/download/mfire?url=https://www.mediafire.com/file/yce2h1da3kqzh27/WhatsApp+Installer.exe/file",
+      "description": "Download files from MediaFire."
+    },
+    {
+      "category": "downloaders",
+      "name": "APK Download from (aptoide.com ) site",
+      "url": "/search/aptoide?q=xender",
+      "description": "Download apk using a search query."
+    },
+    {
+      "category": "downloaders",
+      "name": "APK Downloader( apk4all.com )",
+      "url": "/download/apk?url=https://apk4all.com.im/apps/xender-share-music-transfer",
+      "description": "Download apk from the search url of apk/search."
+    },
+    {
+      "category": "downloaders",
+      "name": "Mod WhatsApp Download",
+      "url": "/download/modwhatsappdl?url=https://apkdon.net/fouad-whatsapp/",
+      "description": "Download modified WhatsApp APK."
+    },
+    {
+      "category": "downloaders",
+      "name": "Mod WA Download",
+      "url": "/download/modwadl?url=https://apkdon.net/fouad-whatsapp-download-latest-version/",
+      "description": "Download modified WhatsApp APK."
+    },
+    {
+      "category": "downloaders",
+      "name": "SoundCloud Download",
+      "url": "/download/soundcloud?url=https://m.soundcloud.com/nilanhettiarachchi/lelena",
+      "description": "Download audio from SoundCloud."
+    },
+     {
+      "category": "downloaders",
+      "name": "SoundCloud Download2",
+      "url": "/download/soundcloud2?url=https://m.soundcloud.com/nilanhettiarachchi/lelena",
+      "description": "Download audio from SoundCloud."
+    },
+    {
+      "category": "downloaders",
+      "name": "telegram stories Download",
+      "url": "/download/tgstories?q=Shakeena6",
+      "description": "Download telegram stories"
+    },
+    
+    {
+      "category": "downloaders",
+      "name": "Pastebin Download",
+      "url": "/download/pastebin?url=https://pastebin.com/nadATeEJ",
+      "description": "Download pastebin codes"
+    },
+    {
+      "category": "downloaders",
+      "name": "telegram media Download",
+      "url": "/download/telegram?url=https://t.me/keithmd/17022",
+      "description": "Download any telegram media using their channel or group links"
+    },
+    {
+      "category": "downloaders",
+      "name": "xvideo Download  ",
+      "url": "/download/xvideos?url=https://www.xvideos.com/video.hppakie6a79/mia_khalifa_fucks_a_fanboy",
+      "description": "Download xvideos"
+    },
+    {
+      "category": "downloaders",
+      "name": "xvideo Download 2",
+      "url": "/download/porn?url=https://www.xvideos.com/video.hppakie6a79/mia_khalifa_fucks_a_fanboy",
+      "description": "Download xvideos"
+    },
+    {
+      "category": "downloaders",
+      "name": "NCS Download",
+      "url": "/download/ncs?q=alan+walker",
+      "description": "get your favorite artist music from ncs.io site."
+    },
+    {
+      "category": "downloaders",
+      "name": "hentai video",
+      "url": "/dl/hentaivid",
+      "description": "Download random hentai videos."
+    },   
+    {
+      "category": "downloaders",
+      "name": "Appletone Download",
+      "url": "/download/appletone?text=2024",
+      "description": "Download ringtones from Appletone."
+    },
+    {
+      "category": "downloaders",
+      "name": "Appletone DL",
+      "url": "/download/appletonedl?url=https://www.prokerala.com/downloads/ringtones/download.php?id=62159",
+      "description": "Download ringtones from Appletone."
+    }
+  ]
+}
