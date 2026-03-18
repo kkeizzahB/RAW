@@ -4,8 +4,9 @@
   "pencilsketch": "https://m.photofunia.com/categories/all_effects/pencil_drawing",
   "wanted": "https://m.photofunia.com/categories/all_effects/wanted_poster",
 "missing": "https://m.photofunia.com/categories/posters/missing-person",
-"jedi": "https://m.photofunia.com/categories/faces/jedi",
-"bookcover": "https://m.photofunia.com/categories/books/the-book",
+
+  
+  "bookcover": "https://m.photofunia.com/categories/books/the-book",
 "press": "https://m.photofunia.com/categories/tv/press_conference",
 
   "newspaper": "https://m.photofunia.com/categories/all_effects/morning-newspaper",
@@ -18,13 +19,14 @@
   "sepia": "https://m.photofunia.com/categories/filters/sepia",
   "apocalypse": "https://m.photofunia.com/categories/filters/asteroid",
   "aliensky": "https://m.photofunia.com/categories/filters/alien_sky",
-  "jade": "https://m.photofunia.com/categories/filters/jade",
- "retrowave": "https://m.photofunia.com/categories/lab/retro-wave",
- "alien": "https://m.photofunia.com/categories/lab/alien",
- "painting": "https://m.photofunia.com/categories/galleries/large_painting",
-"warrior": "https://m.photofunia.com/categories/faces/warrior",
-"knight": "https://m.photofunia.com/categories/faces/knight-with-sword",
-"cinema": "https://m.photofunia.com/categories/movies/in-the-cinema",
+  
+  "retrowave": "https://m.photofunia.com/categories/lab/retro-wave",
+
+
+
+  "painting": "https://m.photofunia.com/categories/galleries/large_painting",
+
+  "cinema": "https://m.photofunia.com/categories/movies/in-the-cinema",
 
   "dollar": "https://m.photofunia.com/categories/all_effects/100_dollars"
 }
