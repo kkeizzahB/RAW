@@ -47,13 +47,7 @@
      
     
     
-    {
-      "category": "search",
-      "name": "apple Search",
-      "url": "/search/apple?q=faded",
-      "description": "Search apple music."
-    },
-    
+   
     {
       "category": "search",
       "name": "Bible Search",
@@ -90,18 +84,7 @@
       "url": "/search/apk?q=xender",
       "description": "search for apk links to download "
     },
-    {
-      "category": "search",
-      "name": "xvideos search",
-      "url": "/search/searchxvideos?q=porn",
-      "description": "search for apk links to download "
-    },
-    {
-      "category": "search",
-      "name": "MediaFire search",
-      "url": "/mfiresearch?q=Whatsapp",
-      "description": "sesech fo MediaFire trend links"
-    },
+ 
     {
       "category": "search",
       "name": "TikTok Search",
@@ -177,36 +160,15 @@
       "url": "/search/google?q=cat",
       "description": "Search anything in google."
     },
-    {
-      "category": "search",
-      "name": "yahoo image Search",
-      "url": "/yahoo/images?q=cat",
-      "description": "Search any image from yahoo."
-    },
-    {
-      "category": "search",
-      "name": "yahoo video Search",
-      "url": "/yahoo/video?q=cat",
-      "description": "Search any video from yahoo."
-    },
+  
     
     {
       "category": "search",
       "name": "movie Search",
       "url": "/search/movie?q=Lucifer",
       "description": "Search for any movie or tv show."
-    },
-    {
-      "category": "search",
-      "name": "Mod WhatsApp Search",
-      "url": "/search/modwhatsapp?q=gbwhatsapp",
-      "description": "Search for modified WhatsApp APKs."
-    },
-    {
-      "category": "search",
-      "name": "HappyMod Search",
-      "url": "/search/happymodSearch?q=car",
-      "description": "Search for apps on HappyMod."
+    
+    
     }
   ]
 }
