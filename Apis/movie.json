@@ -26,6 +26,12 @@
     },
     {
       "category": "movie",
+      "name": "movie actor search",
+      "url": "/actor/search?q=omari",
+      "description": "search your favorite movie character"
+    },
+    {
+      "category": "movie",
       "name": "movie search",
       "url": "/moviebox/search?q=as%20good%20as%20dead",
       "description": "search your favorite movie from this moviebox search api endpoint"
