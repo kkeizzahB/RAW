@@ -45,8 +45,14 @@
     },
     {
       "category": "news",
-      "name": "kenyans search news",
-      "url": "/kenyans/search?q=Ruto",
+      "name": "kenyans track news",
+      "url": "/news/kenyans/track",
+      "description": "scraped from kenyans.co.ke"
+    },
+    {
+      "category": "news",
+      "name": "kenyans news",
+      "url": "/news/kenyans",
       "description": "scraped from kenyans.co.ke"
     },
     {
