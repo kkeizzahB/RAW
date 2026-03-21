@@ -23,8 +23,8 @@
     {
       "category": "images",
       "name": "Apply photofunia effects",
-      "url": "/effects/apply?effect=sketch&url=https://files.catbox.moe/71jlhh.jpg",
-      "description": "download photofunia image effects."
+      "url": "/logo/photofunia?effect=https://m.photofunia.com/effects/sketch-practicing&url=https://files.catbox.moe/71jlhh.jpg",
+      "description": "supports text and image , image , text only and multiple texts too"
     },
     
     {
