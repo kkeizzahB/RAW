@@ -24,6 +24,18 @@
 "url": "/ai/bible?q=who+is+God",
 "description": "Ask AI questions about the Bible."
 },
+          {
+      "category": "more",
+      "name": "surah list",
+      "url": "/surahlist",
+      "description": "get all surah list"
+    },
+        {
+      "category": "more",
+      "name": "Quran surah number",
+      "url": "/surah?q=1",
+      "description": "get surah"
+    },
   {
 "category": "spiritual",
 "name": "Quran Audio",
