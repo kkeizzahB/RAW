@@ -33,6 +33,24 @@
     },
     {
       "category": "news",
+      "name": "kenyans search news",
+      "url": "/kenyans/search?q=Ruto",
+      "description": "scraped from kenyans.co.ke"
+    },
+    {
+      "category": "news",
+      "name": "kenyans news details",
+      "url": "/kenyans/detail?q=https://www.kenyans.co.ke/news/121363-environment-court-halts-gikomba-market-demolition",
+      "description": "scraped from kenyans.co.ke"
+    },
+    {
+      "category": "news",
+      "name": "kenyans search news",
+      "url": "/kenyans/search?q=Ruto",
+      "description": "scraped from kenyans.co.ke"
+    },
+    {
+      "category": "news",
       "name": "sport news",
       "url": "/football/news",
       "description": "latest football news."
