@@ -8,6 +8,12 @@
 },
 {
 "category": "spiritual",
+"name": "Hymnals",
+"url": "/hymn/wendenyasaye?q=",
+"description": "supports luo, egnlish , swahili , kikuyu and other languages"
+},  
+{
+"category": "spiritual",
 "name": "Adventist Hymnal",
 "url": "/adventist/hymnal?q=10",
 "description": "Find Adventist hymnal songs by number or search term."
