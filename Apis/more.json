@@ -24,30 +24,8 @@
       "url": "/finance/exchange?q=KES",
       "description": "Get your exchange rate"
     },
-        {
-      "category": "more",
-      "name": "surah list",
-      "url": "/surahlist",
-      "description": "get all surah list"
-    },
-        {
-      "category": "more",
-      "name": "Quran surah number",
-      "url": "/surah?q=1",
-      "description": "get surah"
-    },
-    {
-      "category": "more",
-      "name": "hymnal list",
-      "url": "/hymnallist",
-      "description": "get all hymnal list"
-    },
-    {
-      "category": "more",
-      "name": "get hymn lyrics",
-      "url": "/findhymn?q=6",
-      "description": "Get your hymn lyrics using number or title"
-    },
+
+    
     {
       "category": "more",
       "name": "Keith Info",
