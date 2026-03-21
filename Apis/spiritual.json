@@ -18,6 +18,12 @@
 "url": "/ai/bible?q=who+is+God",
 "description": "Ask AI questions about the Bible."
 },
+  {
+"category": "spiritual",
+"name": "Quran Audio",
+"url": "/quran/audio",
+"description": "basheet recites."
+},
 {
 "category": "spiritual",
 "name": "AI Muslim",
