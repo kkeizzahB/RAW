@@ -12,18 +12,7 @@
       "url": "/education/randompoem",
       "description": "Get random poem."
     },
-    {
-      "category": "education",
-      "name": "Maths commands list",
-      "url": "/mathlist",
-      "description": "get math commands list to help in executing math commands"
-    },
-    {
-      "category": "education",
-      "name": "maths",
-      "url": "/math/simplify?expr=2^8",
-      "description": "example of math expression.Use mathlist to get all math commands"
-    },
+
     {
       "category": "education",
       "name": "dictionary",
