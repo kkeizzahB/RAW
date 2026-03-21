@@ -2,9 +2,15 @@
   "endpoints": [
     {
       "category": "images",
-      "name": "Logo",
-      "url": "/logo",
-      "description": "Generate logos."
+      "name": "image editor",
+      "url": "/ai/imageedit?q=make%20him%20brown&url=https://files.catbox.moe/18ql9j.jpg",
+      "description": "image editor ai."
+    },
+        {
+      "category": "images",
+      "name": "image enhancer hd",
+      "url": "/ai/hd?url=https://files.catbox.moe/oug4wu.jpg",
+      "description": "enhance image to hd quality"
     },
     {
       "category": "images",
@@ -12,95 +18,43 @@
       "url": "/download/wallpaper?text=car&page=1",
       "description": "Download wallpapers."
     },
-    {
-      "category": "images",
-      "name": "bing",
-      "url": "/ai/bing?q=dog",
-      "description": "download ai image."
-    },
-    {
-      "category": "images",
-      "name": "list some available photofunia image categories",
-      "url": "/effects/list",
-      "description": "list some available photofunia image categories."
-    },
+  
+   
     {
       "category": "images",
       "name": "Apply photofunia effects",
       "url": "/effects/apply?effect=sketch&url=https://files.catbox.moe/71jlhh.jpg",
       "description": "download photofunia image effects."
     },
-    {
-      "category": "images",
-      "name": "Pinterest images",
-      "url": "/search/pinterest?q=dog",
-      "description": "search Pinterest images."
-    },
-    {
-      "category": "images",
-      "name": "braindance",
-      "url": "/ai/braindance?q=dog",
-      "description": "download ai image."
-    },
+    
     {
       "category": "images",
       "name": "magic studio images",
       "url": "/ai/magicstudio?prompt=dog",
       "description": "generate ai image from magic studio "
     },
-    {
-      "category": "images",
-      "name": "cyberxl",
-      "url": "/ai/cyberxl?q=dog",
-      "description": "download ai image."
-    },
+ 
     {
       "category": "images",
       "name": "remove background",
-      "url": "/ai/removebg?url=https://qu.ax/aNXtm.jpg",
+      "url": "/ai/removebg?url=https://files.catbox.moe/18ql9j.jpg",
       "description": "provide a valid image url to remove its background."
     },
-    {
-      "category": "images",
-      "name": "dalle2",
-      "url": "/ai/dalle2?q=dog",
-      "description": "download ai image."
-    },
-    {
-      "category": "images",
-      "name": "dreamshaper",
-      "url": "/ai/dreamshaper?q=dog",
-      "description": "download ai image."
-    },
+    
+
     {
       "category": "images",
       "name": "ephoto logo",
-      "url": "/logo/ephoto?url=https://en.ephoto360.com/naruto-shippuden-logo-style-text-effect-online-808.html&name=keith%20Keizzah",
-      "description": "download ephoto logo from ephoto url."
+      "url": "/logo/ephoto?url=https://en.ephoto360.com/light-text-effect-futuristic-technology-style-648.html&text1=keith",
+      "description": "supports text1, text2 and text3"
     },
-    {
-      "category": "images",
-      "name": "ephoto2 logo",
-      "url": "/logo/ephoto2?url=https://en.ephoto360.com/create-text-effects-in-the-style-of-the-deadpool-logo-818.html&text1=keith&text2=keizzah",
-      "description": "download ephoto logo from ephoto url using two texts example deadpool."
-    },
+ 
     {
       "category": "images",
       "name": "flux",
       "url": "/ai/flux?q=dog",
       "description": "download ai image."
-    },
-    {
-      "category": "images",
-      "name": "flux pro ultra",
-      "url": "/ai/fluxproultra?q=dog",
-      "description": "download ai image."
-    },
-    {
-      "category": "images",
-      "name": "WallpapersCraft Search",
-      "url": "/search/wallpaperscraft?q=car",
-      "description": "Search for wallpapers on WallpapersCraft."
+  
     }
   ]
 }
