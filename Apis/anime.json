@@ -8,6 +8,12 @@
     },
     {
       "category": "anime",
+      "name": "animasu.app",
+      "url": "/anime/animu/search?q=naruto",
+      "description": "animasu.app"
+    },
+    {
+      "category": "anime",
       "name": "Anime News",
       "url": "/anime/animenews",
       "description": "Search for anime news."
