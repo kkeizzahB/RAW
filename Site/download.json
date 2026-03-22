@@ -1,12 +1,10 @@
 [
-  
   {
     "name": "Instagram Downloader",
     "url": "/instagram",
     "imageurl": "https://files.catbox.moe/sg3x3o.jpg",
     "description": "Save photos, videos, and reels from public Instagram posts by pasting the URL."
   },
- 
   {
     "name": "TikTok Downloader",
     "url": "/tiktok",
@@ -25,14 +23,12 @@
     "imageurl": "https://files.catbox.moe/e908ey.jpg",
     "description": "Download videos from public Facebook posts, reels, and groups."
   },
-  
   {
-    "name": "YouTube downloader (ytmp3 & ytmp4 api)",
+    "name": "YouTube Downloader (ytmp3 & ytmp4 API)",
     "url": "/ytmp3",
     "imageurl": "https://files.catbox.moe/mjk2qt.jpg",
-    "description": "download YouTube videos and audios"
+    "description": "Download YouTube videos and audios"
   },
-
   {
     "name": "SoundCloud Downloader",
     "url": "/soundcloud",
@@ -45,15 +41,14 @@
     "imageurl": "https://files.catbox.moe/sasf0l.jpg",
     "description": "Save high-quality images and videos from Pinterest pins and boards."
   },
-  
   {
-    "name": "Instagram Posts downloader",
+    "name": "Instagram Posts Downloader",
     "url": "/instaposts",
     "imageurl": "https://files.catbox.moe/hepcbu.jpg",
     "description": "A specialized tool focused on downloading standard photo and video posts from Instagram."
   },
   {
-    "name": "Instagram story downloader",
+    "name": "Instagram Story Downloader",
     "url": "/instastories",
     "imageurl": "https://files.catbox.moe/xcuy1y.jpg",
     "description": "Download stories from public Instagram accounts before they disappear."
