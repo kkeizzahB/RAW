@@ -6,13 +6,7 @@
     "imageurl": "https://files.catbox.moe/sg3x3o.jpg",
     "description": "Save photos, videos, and reels from public Instagram posts by pasting the URL."
   },
-  {
-    "name": "Instagram Downloader 2",
-    "url": "/instagram2",
-    "imageurl": "https://files.catbox.moe/1ssg27.jpg",
-    "description": "An alternative tool for downloading Instagram content, often with different features or API support."
-  },
-
+ 
   {
     "name": "TikTok Downloader",
     "url": "/tiktok",
@@ -38,36 +32,7 @@
     "imageurl": "https://files.catbox.moe/mjk2qt.jpg",
     "description": "download YouTube videos and audios"
   },
-  {
-    "name": "YouTube downloader (MP4 & mp3 api)",
-    "url": "/mp4",
-    "imageurl": "https://files.catbox.moe/ra2lfo.jpg",
-    "description": "Download YouTube audio and video"
-  },
-  {
-    "name": "YouTube Video downloader (video & video api)",
-    "url": "/audio",
-    "imageurl": "https://files.catbox.moe/ra2lfo.jpg",
-    "description": "download YouTube audio and video."
-  },
-  {
-    "name": "YouTube audio downloader (yta and ytv  api)",
-    "url": "/ytv",
-    "imageurl": "https://files.catbox.moe/vcy2ra.jpg",
-    "description": "Download YouTube audio and video "
-  },
-  {
-    "name": "YouTube Video downloader (yta2 &ytv2 api)",
-    "url": "/ytv2",
-    "imageurl": "https://files.catbox.moe/ra2lfo.jpg",
-    "description": "download YouTube audio and video ."
-  },
-    {
-    "name": "YouTube Video downloader (dlmp3 & dlmp4 api)",
-    "url": "/dlmp3",
-    "imageurl": "https://files.catbox.moe/ra2lfo.jpg",
-    "description": "download YouTube audio and video ."
-  },
+
   {
     "name": "SoundCloud Downloader",
     "url": "/soundcloud",
