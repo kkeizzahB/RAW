@@ -12,6 +12,13 @@
       "url": "/education/randompoem",
       "description": "Get random poem."
     },
+    {
+      "category": "education",
+      "name": "Grammar check",
+      "url": "/grammarcheck?q=womens+too+many+in+here",
+      "description": "Grammar check."
+    },
+
 
     {
       "category": "education",
