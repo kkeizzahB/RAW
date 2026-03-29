@@ -91,6 +91,12 @@
       "url": "/tempmail",
       "description": "Generate temporary email addresses."
     },
+   {
+      "category": "tools",
+      "name": "onwhatsapp check tool",
+      "url": "/onwhatsapp?q=254748387615",
+      "description": "check if a number is on WhatsApp"
+    },
           
     {
       "category": "tools",
