@@ -18,21 +18,31 @@
       "url": "/grammarcheck?q=womens+too+many+in+here",
       "description": "Grammar check."
     },
-
-
     {
       "category": "education",
       "name": "dictionary",
       "url": "/education/dictionary?q=cat",
       "description": "Get full word definition and analysis."
-    },
-    
+    },    
+     {
+      "category": "education",
+      "name": "physics ai",
+      "url": "/education/physics?q=what+is+newton+law+of+motion",
+      "description": "physics ai."
+    },    
+     {
+      "category": "education",
+      "name": "maths ai",
+      "url": "/education/maths?q=1+1",
+      "description": "maths ai."
+    },    
     {
       "category": "education",
       "name": "chemistry ai",
       "url": "/education/chemistry?q=what%20si%20the%20mass%20number%20of%20sodium",
       "description": "solve any chemistry quiz"
     },
+    
        {
       "category": "education",
       "name": "KCSE results 2025 check",
