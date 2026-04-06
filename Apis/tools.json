@@ -105,56 +105,18 @@
       "description": "Download any Whatsapp profile picture "
     },
    
-
-   
-    {
-      "category": "tools",
-      "name": "host check https",
-      "url": "/hostcheck/http?q=https://keithkeizzah.site",
-      "description": "host check for https."
-    },
-   
-   
-    {
-      "category": "tools",
-      "name": "host check tcp",
-      "url": "/hostcheck/tcp?q=keithkeizzah.site&port=443",
-      "description": "host check for tcp"
-    },
-   {
-      "category": "tools",
-      "name": "host check ping",
-      "url": "/hostcheck/ping?q=https://keithkeizzah.site",
-      "description": "host check for https."
-    },
-   
-   
-    {
-      "category": "tools",
-      "name": "host check udp",
-      "url": "/hostcheck/udp?q=keithkeizzah.site&port=53",
-      "description": "host check for udp"
-    },
-   
-    {
-      "category": "tools",
-      "name": "host check dns",
-      "url": "/hostcheck/dns?q=keithkeizzah.site&type=A",
-      "description": "host check for dns"
-    },
-      
-    {
-      "category": "tools",
-      "name": "host check info",
-      "url": "/hostcheckinfo?q=8.8.8.8",
-      "description": "host check info"
-    },
    
     {
       "category": "tools",
       "name": "Ascii generate",
       "url": "/tools/ascii?q=dragon",
       "description": "Generate Ascii prompt description"
+    },
+   {
+      "category": "tools",
+      "name": "ip lookup",
+      "url": "/ip/lookup?q=41.139.160.3",
+      "description": "get your ip details"
     },
    
     {
