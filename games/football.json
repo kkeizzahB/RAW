@@ -1,138 +1,402 @@
-
 [
   {
-    "question": "How many UEFA Champions League titles has Manchester United won?",
-    "answer": "3",
-    "options": ["2", "3", "4", "5"],
-    "difficulty": "medium",
-    "category": "Manchester United",
-    "points": 15,
-    "timeLimit": 20
+    "question": "Which player scored the fastest hat-trick in the Premier League?",
+    "answer": "Sadio Mane (2 minutes 56 seconds for Southampton vs Aston Villa in 2015)"
   },
   {
-    "question": "Which player is known as 'The Egyptian King' at Liverpool?",
-    "answer": "Mohamed Salah",
-    "options": ["Sadio Mané", "Mohamed Salah", "Virgil van Dijk", "Alisson Becker"],
-    "difficulty": "easy",
-    "category": "Liverpool",
-    "points": 10,
-    "timeLimit": 15
+    "question": "Which player, with 653 games, has made the most Premier League appearances?",
+    "answer": "Gareth Barry"
   },
   {
-    "question": "Who is Arsenal's all-time top scorer?",
-    "answer": "Thierry Henry",
-    "options": ["Ian Wright", "Thierry Henry", "Dennis Bergkamp", "Robin van Persie"],
-    "difficulty": "medium",
-    "category": "Arsenal",
-    "points": 15,
-    "timeLimit": 20
+    "question": "Three players share the record for most Premier League red cards (8). Who are they?",
+    "answer": "Patrick Vieira, Richard Dunne and Duncan Ferguson"
   },
   {
-    "question": "What number did Didier Drogba wear for Chelsea?",
-    "answer": "11",
-    "options": ["9", "10", "11", "15"],
-    "difficulty": "medium",
-    "category": "Chelsea",
-    "points": 15,
-    "timeLimit": 20
+    "question": "With 260 goals, who is the Premier League's all-time top scorer?",
+    "answer": "Alan Shearer"
   },
   {
-    "question": "Which Manchester City manager won the Premier League in 2012 with a last-minute goal?",
-    "answer": "Roberto Mancini",
-    "options": ["Pep Guardiola", "Roberto Mancini", "Manuel Pellegrini", "Mark Hughes"],
-    "difficulty": "hard",
-    "category": "Manchester City",
-    "points": 20,
-    "timeLimit": 25
+    "question": "When was the inaugural Premier League season?",
+    "answer": "1992-93"
   },
   {
-    "question": "How many Premier League titles has Sir Alex Ferguson won with Manchester United?",
-    "answer": "13",
-    "options": ["11", "12", "13", "14"],
-    "difficulty": "hard",
-    "category": "Manchester United",
-    "points": 20,
-    "timeLimit": 25
+    "question": "Which team won the first Premier League title?",
+    "answer": "Manchester United"
   },
   {
-    "question": "Which Liverpool manager won the Champions League in 2005?",
-    "answer": "Rafael Benítez",
-    "options": ["Jürgen Klopp", "Rafael Benítez", "Brendan Rodgers", "Gérard Houllier"],
-    "difficulty": "medium",
-    "category": "Liverpool",
-    "points": 15,
-    "timeLimit": 20
+    "question": "With 202 clean sheets, which goalkeeper has the best record in the Premier League?",
+    "answer": "Petr Cech"
   },
   {
-    "question": "Who scored the winning goal for Chelsea in the 2012 Champions League final?",
-    "answer": "Didier Drogba",
-    "options": ["Frank Lampard", "Didier Drogba", "Fernando Torres", "Juan Mata"],
-    "difficulty": "medium",
-    "category": "Chelsea",
-    "points": 15,
-    "timeLimit": 20
+    "question": "How many clubs competed in the inaugural Premier League season?",
+    "answer": "22"
   },
   {
-    "question": "Which Arsenal player is known as 'The Invincible'?",
-    "answer": "Thierry Henry",
-    "options": ["Patrick Vieira", "Thierry Henry", "Dennis Bergkamp", "Robert Pirès"],
-    "difficulty": "easy",
-    "category": "Arsenal",
-    "points": 10,
-    "timeLimit": 15
+    "question": "Which three players shared the Premier League Golden Boot in 2018-19?",
+    "answer": "Pierre-Emerick Aubameyang, Mohamed Salah and Sadio Mane"
   },
   {
-    "question": "How many consecutive Premier League titles did Manchester City win from 2021-2023?",
-    "answer": "3",
-    "options": ["2", "3", "4", "5"],
-    "difficulty": "easy",
-    "category": "Manchester City",
-    "points": 10,
-    "timeLimit": 15
+    "question": "The fastest goal scored in Premier League history came in 7.69 seconds. Who scored it?",
+    "answer": "Shane Long (for Southampton vs Watford in 2018-19)"
   },
   {
-    "question": "What position does Kevin De Bruyne play?",
-    "answer": "Midfielder",
-    "options": ["Defender", "Midfielder", "Forward", "Goalkeeper"],
-    "difficulty": "easy",
-    "category": "Manchester City",
-    "points": 10,
-    "timeLimit": 15
+    "question": "There have been two World Cup trophies. What was the name of the first?",
+    "answer": "Jules Rimet Trophy / Victory"
   },
   {
-    "question": "Which Manchester United player wore number 7 and is known as 'CR7'?",
-    "answer": "Cristiano Ronaldo",
-    "options": ["David Beckham", "Cristiano Ronaldo", "Eric Cantona", "George Best"],
-    "difficulty": "medium",
-    "category": "Manchester United",
-    "points": 15,
-    "timeLimit": 20
+    "question": "Which country won the first ever World Cup in 1930?",
+    "answer": "Uruguay"
   },
   {
-    "question": "Who is Liverpool's captain?",
-    "answer": "Virgil van Dijk",
-    "options": ["Mohamed Salah", "Virgil van Dijk", "Trent Alexander-Arnold", "Jordan Henderson"],
-    "difficulty": "easy",
-    "category": "Liverpool",
-    "points": 10,
-    "timeLimit": 15
+    "question": "Which country has won the most World Cups?",
+    "answer": "Brazil (5)"
   },
   {
-    "question": "Which Chelsea manager won the Champions League in 2021?",
-    "answer": "Thomas Tuchel",
-    "options": ["Frank Lampard", "Thomas Tuchel", "Antonio Conte", "José Mourinho"],
-    "difficulty": "hard",
-    "category": "Chelsea",
-    "points": 20,
-    "timeLimit": 25
+    "question": "Two countries have won the World Cup twice. Can you name them?",
+    "answer": "France and Uruguay"
   },
   {
-    "question": "Arsenal's stadium is called what?",
-    "answer": "Emirates Stadium",
-    "options": ["Emirates Stadium", "Stamford Bridge", "Anfield", "Old Trafford"],
-    "difficulty": "easy",
-    "category": "Arsenal",
-    "points": 10,
-    "timeLimit": 15
+    "question": "Which country has appeared in three World Cup finals, but never won the competition?",
+    "answer": "Netherlands (1974, 1978, 2010)"
+  },
+  {
+    "question": "The 2026 World Cup will be hosted across three different countries. Can you name them?",
+    "answer": "United States, Canada and Mexico"
+  },
+  {
+    "question": "In which World Cup did Diego Maradona score his infamous 'Hand of God' goal?",
+    "answer": "Mexico 1986"
+  },
+  {
+    "question": "The record number of World Cup goals is 16, scored by who?",
+    "answer": "Miroslav Klose"
+  },
+  {
+    "question": "Three people have won the World Cup as a player and as a coach. Mario Zagallo, Didier Deschamps and... can you name the third?",
+    "answer": "Franz Beckenbauer"
+  },
+  {
+    "question": "Two English players have won the World Cup Golden Boot. Who are they?",
+    "answer": "Gary Lineker (1986) and Harry Kane (2018)"
+  },
+  {
+    "question": "Which Swedish footballer once had a clause inserted into his Premier League contract that prohibited him from travelling into space?",
+    "answer": "Stefan Schwarz"
+  },
+  {
+    "question": "Which Ballon d'Or-winning footballer had a galaxy named after them in 2015?",
+    "answer": "Cristiano Ronaldo - Galaxy Cosmos Redshift 7 (CR7)"
+  },
+  {
+    "question": "Can you name the former Germany international who went on to become a professional wrestler in the WWE?",
+    "answer": "Tim Wiese"
+  },
+  {
+    "question": "Which former England internationals reached number 12 in the UK Singles Chart with the 1987 song 'Diamond Lights'?",
+    "answer": "Chris Waddle and Glenn Hoddle (as 'Glenn and Chris')"
+  },
+  {
+    "question": "The England Euro '96 song 'Three Lions' was a hit by which comedy double act?",
+    "answer": "David Baddiel and Frank Skinner"
+  },
+  {
+    "question": "Which former Tottenham manager has competed in the Dakar Rally?",
+    "answer": "Andre Villas-Boas"
+  },
+  {
+    "question": "What was the name of the hotel Jose Mourinho lived in when he managed Manchester United?",
+    "answer": "The Lowry Hotel"
+  },
+  {
+    "question": "Which Spanish club's nickname is Los Colchoneros, which translates to English as 'The Mattress Makers'?",
+    "answer": "Atletico Madrid"
+  },
+  {
+    "question": "English rock star Elton John was twice the owner of which football club?",
+    "answer": "Watford"
+  },
+  {
+    "question": "Rangers tried to sign which superstar after Alex McLeish was alerted to his ability through popular video game Football Manager?",
+    "answer": "Lionel Messi"
+  },
+  {
+    "question": "Messi began his professional career at Barcelona, but what was his schoolboy team?",
+    "answer": "Newell's Old Boys"
+  },
+  {
+    "question": "Which Portuguese team did Ronaldo play for before signing for Manchester United?",
+    "answer": "Sporting"
+  },
+  {
+    "question": "Ronaldo is synonymous with the No.7, but which other number did he wear at Real Madrid?",
+    "answer": "No.9"
+  },
+  {
+    "question": "Messi infamously retired from international duty in which year before reversing his decision?",
+    "answer": "2016 (after Copa America final loss)"
+  },
+  {
+    "question": "Ronaldo exclaims which word when celebrating a goal?",
+    "answer": "\"Si!\" (Spanish for 'Yes!')"
+  },
+  {
+    "question": "Messi wore the No.30 at the start of his Barca career but is now synonymous with No.10. Which other number did he wear for Barca?",
+    "answer": "No.19"
+  },
+  {
+    "question": "Which Portuguese island off the coast of Africa, which also shares its name with a cake, is Ronaldo from?",
+    "answer": "Madeira"
+  },
+  {
+    "question": "Messi has won a record number of Ballon d'Or awards - how many?",
+    "answer": "Eight Ballon d'Or awards"
+  },
+  {
+    "question": "Ronaldo helped Portugal win the European Championship in which year?",
+    "answer": "2016"
+  },
+  {
+    "question": "Which German multinational sportswear company is Messi an ambassador for?",
+    "answer": "Adidas"
+  },
+  {
+    "question": "Which club has won the most Champions League titles?",
+    "answer": "Real Madrid (15)"
+  },
+  {
+    "question": "Who is the only player to win the Champions League with three different clubs?",
+    "answer": "Clarence Seedorf (Ajax, Real Madrid, AC Milan)"
+  },
+  {
+    "question": "Three people have won the Champions League a record three times as manager. Who are they?",
+    "answer": "Bob Paisley, Pep Guardiola and Zinedine Zidane"
+  },
+  {
+    "question": "In which season was the European Cup rebranded as the Champions League?",
+    "answer": "1992-93"
+  },
+  {
+    "question": "Which team was the first from the UK to win the European Cup?",
+    "answer": "Celtic (1966-67)"
+  },
+  {
+    "question": "The Champions League has been won only once by a team from Romania. Can you name them?",
+    "answer": "Steaua Bucharest (now FCSB)"
+  },
+  {
+    "question": "Liverpool have won six Champions Leagues and Manchester United have won three, but who are England's third most successful team in the competition with two titles?",
+    "answer": "Nottingham Forest (1978-79 and 1979-80)"
+  },
+  {
+    "question": "Who is the Champions League's top goalscorer of all time?",
+    "answer": "Cristiano Ronaldo"
+  },
+  {
+    "question": "The most successful manager in Champions League history guided teams to success five times - who is it?",
+    "answer": "Carlo Ancelotti"
+  },
+  {
+    "question": "Which outfield player appeared in the Champions League final in three different decades?",
+    "answer": "Ryan Giggs"
+  },
+  {
+    "question": "In which year was the first European Championship held?",
+    "answer": "1960"
+  },
+  {
+    "question": "With four titles, which nation has won the most European Championships?",
+    "answer": "Spain"
+  },
+  {
+    "question": "What is the name of the European Championship trophy?",
+    "answer": "Henri Delaunay Trophy"
+  },
+  {
+    "question": "With nine goals, who scored the most goals in a single European Championship tournament?",
+    "answer": "Michel Platini at Euro 84"
+  },
+  {
+    "question": "The Euro 2000 final between France and Italy was decided by Golden Goal. Which player scored the goal?",
+    "answer": "David Trezeguet"
+  },
+  {
+    "question": "England's all-time leading European Championship goalscorers have tallies of seven goals each. Can you name them?",
+    "answer": "Alan Shearer and Harry Kane"
+  },
+  {
+    "question": "Which one of the following three teams has not won the European Championship: Denmark, Belgium or Greece?",
+    "answer": "Belgium (runners up in 1980)"
+  },
+  {
+    "question": "Denmark notably won Euro 92, despite the fact that they did not initially qualify. Which team did they replace?",
+    "answer": "Yugoslavia"
+  },
+  {
+    "question": "In which year did the European Championship expand from 16 teams to 24 teams?",
+    "answer": "Euro 2016"
+  },
+  {
+    "question": "Only one person has won the European Championship as a player and as manager. Can you name them?",
+    "answer": "Berti Vogts (West Germany in 1972 and Germany in 1996)"
+  },
+  {
+    "question": "It took Cristiano Ronaldo 27 games to score his first Champions League goal.",
+    "answer": "True"
+  },
+  {
+    "question": "The phrase 'park the bus' arose when Jose Mourinho was forced to park the Chelsea team bus after the bus driver fell ill.",
+    "answer": "False"
+  },
+  {
+    "question": "Singer in Irish boyband Westlife Nicky Byrne played for Leeds United before moving into music.",
+    "answer": "True"
+  },
+  {
+    "question": "Sir Alex Ferguson managed the Scotland national team.",
+    "answer": "True"
+  },
+  {
+    "question": "Liverpool legend Kenny Dalglish is known as 'King Kenny' because he is related to the British Royal Family.",
+    "answer": "False"
+  },
+  {
+    "question": "Frank Lampard has scored more Premier League goals than Thierry Henry, Robbie Fowler and Michael Owen.",
+    "answer": "True"
+  },
+  {
+    "question": "Bayern Munich star Thomas Muller is a keen chess player and once won a Bavarian chess tournament.",
+    "answer": "False"
+  },
+  {
+    "question": "Former Brazil and Barcelona star Ronaldinho spent time in prison after being found to have used a fake passport.",
+    "answer": "True"
+  },
+  {
+    "question": "David Beckham took ballet lessons during his time at Manchester United in order to improve his agility.",
+    "answer": "False"
+  },
+  {
+    "question": "Brazil icon Pele once starred in a Hollywood movie alongside Michael Caine and Sylvester Stallone.",
+    "answer": "True"
+  },
+  {
+    "question": "With 365 goals, who holds the record for top Bundesliga goalscorer of all time?",
+    "answer": "Gerd Muller"
+  },
+  {
+    "question": "Bayern Munich have won the record number of Bundesliga titles, but which two clubs follow with five titles each?",
+    "answer": "Borussia Monchengladbach and Borussia Dortmund"
+  },
+  {
+    "question": "Can you name the most capped Germany international of all time?",
+    "answer": "Lothar Matthaus (150 caps)"
+  },
+  {
+    "question": "Jurgen Klopp has managed two clubs in Germany, Borussia Dortmund and - can you name the other?",
+    "answer": "Mainz"
+  },
+  {
+    "question": "The record age for youngest head coach in the Bundesliga is 28 years and 205 days. Who was it?",
+    "answer": "Julian Nagelsmann (at Hoffenheim during the 2015-16 season)"
+  },
+  {
+    "question": "FC Koln have which animal on their club crest?",
+    "answer": "A goat"
+  },
+  {
+    "question": "RB Leipzig are otherwise known as...?",
+    "answer": "The Red Bulls"
+  },
+  {
+    "question": "Germany have won the World Cup four times, but how many times have they done so as a unified country?",
+    "answer": "Once (2014 - won in 1954, 1974 and 1990 as West Germany)"
+  },
+  {
+    "question": "Only three German clubs have won the European Cup/Champions League. Can you name them?",
+    "answer": "Bayern Munich, Borussia Dortmund and Hamburg"
+  },
+  {
+    "question": "What is the nickname of Borussia Monchengladbach?",
+    "answer": "Die Fohlen (The Foals)"
+  },
+  {
+    "question": "I made my international debut for Brazil in 1993 and scored in the game. I played in two World Cup finals and my club career saw me play in Brazil, Italy, Angola, Spain, Greece and Uzbekistan.",
+    "answer": "Rivaldo"
+  },
+  {
+    "question": "I've played in Germany, Italy, Austria and France. I have won Serie A and scored the first ever Golden Goal in international football.",
+    "answer": "Oliver Bierhoff"
+  },
+  {
+    "question": "I have played in the Conference, League Two, League One, Championship, Premier League, the UEFA Cup, Champions League and the World Cup.",
+    "answer": "Steve Finnan"
+  },
+  {
+    "question": "I was the first Liverpool player to win the Ballon d'Or. I scored 40 goals for my country and have played in England and Spain.",
+    "answer": "Michael Owen"
+  },
+  {
+    "question": "I was originally a striker before becoming a defender. I played 11 seasons for the same club before managing them. I've won two Bundesliga titles and a Champions League.",
+    "answer": "Jurgen Klopp"
+  },
+  {
+    "question": "I have played for Chelsea and spent time playing in Turkey. I've been crowned African Footballer of the Year four times and the Africa Cup of Nations twice.",
+    "answer": "Samuel Eto'o"
+  },
+  {
+    "question": "I have won league titles in Italy, Germany, Portugal and Austria. I also won the European Cup both as a player and as a manager.",
+    "answer": "Giovanni Trapattoni"
+  },
+  {
+    "question": "I am the manager who first named David Beckham as England captain.",
+    "answer": "Peter Taylor"
+  },
+  {
+    "question": "I've won the World Cup and European Championship at international level and I won the Champions League on two occasions as manager of two different clubs.",
+    "answer": "Jupp Heynckes"
+  },
+  {
+    "question": "I've worn numbers 7, 17, 28 and 9 in my career, playing my football across England, Spain, Italy and Portugal.",
+    "answer": "Cristiano Ronaldo"
+  },
+  {
+    "question": "In what league is the concept of a 'Designated Player' a feature?",
+    "answer": "Major League Soccer (MLS)"
+  },
+  {
+    "question": "Manchester United famously wear red, but what colours did they wear before adopting red?",
+    "answer": "Green and gold"
+  },
+  {
+    "question": "Which club is associated with 'Galacticos'?",
+    "answer": "Real Madrid"
+  },
+  {
+    "question": "Which manager was famously said to have given players 'the Hairdryer Treatment'?",
+    "answer": "Sir Alex Ferguson"
+  },
+  {
+    "question": "Which club is sometimes referred to as FC Hollywood?",
+    "answer": "Bayern Munich"
+  },
+  {
+    "question": "In English football what is 'St Totteringham's Day'?",
+    "answer": "The date on which it is mathematically impossible for Tottenham to finish above Arsenal"
+  },
+  {
+    "question": "After Juventus, AC Milan and Inter, with nine Scudettos, which team has won the most Serie A titles?",
+    "answer": "Genoa"
+  },
+  {
+    "question": "In Spanish football, what is 'the Pichichi'?",
+    "answer": "The award given to the top goalscorer (named after Rafael 'Pichichi' Moreno)"
+  },
+  {
+    "question": "In video game FIFA 20, team Piemonte Calcio represents which real-life club?",
+    "answer": "Juventus"
+  },
+  {
+    "question": "Which MLS franchise team does David Beckham own?",
+    "answer": "Inter Miami"
   }
 ]
