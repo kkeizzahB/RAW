@@ -6,7 +6,20 @@ OK, GUYS — KEITH HERE AGAIN 🥲
 
 I REALLY APPRECIATE ALL OF YOU FOR SUPPORTING ME, DEPLOYING MY BOT, AND CONTINUOUSLY PUSHING ME TO MAKE SURE THERE ARE NO ERRORS IN IT.
 
-SO, STARTING TODAY, I WILL BE GIVING YOU UPDATES ON KEITH MD EVERY THURSDAY AT NOON, ACCORDING TO NAIROBI TIMEZONE.
+SO, STARTING TODAY, I WILL BE GIVING YOU UPDATES ON KEITH MD EVERY THURSDAY AND SUNDAY AT EXACTLY THIS TIME.
+
+I have fixed these 
+ ♤ togroupstatus2
+-here you can send status to group without commanding it their/just right at your dm 
+example .togroupstatus2 120363407510611711@g.us hello guys
+♤fixed image search
+
+fixed mode apk search as 
+♤playfy
+♤youcine♤
+♤termux 
+♤termuxhub 
+and many more to come 
 
 THANK YOU ONCE AGAIN! 🙏
 
