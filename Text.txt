@@ -24,3 +24,10 @@ example below
 *Uptime:* 100 seconds
 
 Use .inbox shantiacha@ggezme.shop 
+
+
+fixed vision 
+this is to analyze image 
+
+example by reply to image 
+.vision answer question 1 to 5 
