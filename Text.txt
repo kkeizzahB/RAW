@@ -2,25 +2,9 @@
 
 ‼️ UPDATE ‼️
 
-OK, GUYS — KEITH HERE AGAIN 🥲
-
-I REALLY APPRECIATE ALL OF YOU FOR SUPPORTING ME, DEPLOYING MY BOT, AND CONTINUOUSLY PUSHING ME TO MAKE SURE THERE ARE NO ERRORS IN IT.
-
-SO, STARTING TODAY, I WILL BE GIVING YOU UPDATES ON KEITH MD EVERY THURSDAY AND SUNDAY AT EXACTLY THIS TIME.
-
-I have fixed these 
- ♤ togroupstatus2
--here you can send status to group without commanding it their/just right at your dm 
-example .togroupstatus2 120363407510611711@g.us hello guys
-♤fixed image search
-
-fixed mode apk search as 
-♤playfy
-♤youcine♤
-♤termux 
-♤termuxhub 
-and many more to come 
-
-THANK YOU ONCE AGAIN! 🙏
-
-BYE 👋
+FIXES 
+IMPROVED GROUP COMMANDS SUCH AS 
+approveall - you won't be getting rate overlimit again ,,you can approve as many as you can 
+demote - you can also tag or quote user message 
+promote - her too like demote 
+kick too reply or tag user to kick 
