@@ -8,3 +8,19 @@ approveall - you won't be getting rate overlimit again ,,you can approve as many
 demote - you can also tag or quote user message 
 promote - her too like demote 
 kick too reply or tag user to kick 
+
+added tools category 
+tempmail services 
+example 
+.tempmail 
+this will generate temporary email 
+and to check inbox use this 
+.inbox and the generated email 
+example below 
+   this is the email generated
+
+*Email:* shantiacha@ggezme.shop
+*Status:* good
+*Uptime:* 100 seconds
+
+Use .inbox shantiacha@ggezme.shop 
