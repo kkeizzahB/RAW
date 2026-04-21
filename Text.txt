@@ -31,3 +31,9 @@ this is to analyze image
 
 example by reply to image 
 .vision answer question 1 to 5 
+
+added also some sticker commands 
+
+.egif - this converts emoji to animated sticker 
+.attp -
+.bratvideo
