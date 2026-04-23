@@ -34,9 +34,9 @@
     },
     {
       "category": "ai",
-      "name": "gpt4 Nano",
-      "url": "/ai/gpt41Nano?q=hi",
-      "description": "Access gpt4 Nano Ai model"
+      "name": "Microsoft copilot",
+      "url": "/ai/copilot?q=hi",
+      "description": "Access Microsoftcopilot ai"
     },
     {
       "category": "ai",
