@@ -141,6 +141,12 @@
       "url": "/ai/grok?q=hi",
       "description": "Access the grok ai."
     },
+    {
+      "category": "ai",
+      "name": "Search ai",
+      "url": "/search/ai?q=who%20is%20God",
+      "description": "search anythingusing the search ai endpoint"
+    },
 
     {
       "category": "ai",
