@@ -37,3 +37,10 @@ added also some sticker commands
 .egif - this converts emoji to animated sticker 
 .attp -
 .bratvideo
+
+added some media uploaders 
+freeimage
+Aws 
+Gofile 
+Uploadf
+
