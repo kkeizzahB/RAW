@@ -1,46 +1,58 @@
-
-
 ‼️ UPDATE ‼️
 
-FIXES 
-IMPROVED GROUP COMMANDS SUCH AS 
-approveall - you won't be getting rate overlimit again ,,you can approve as many as you can 
-demote - you can also tag or quote user message 
-promote - her too like demote 
-kick too reply or tag user to kick 
+FIXES & IMPROVEMENTS
 
-added tools category 
-tempmail services 
-example 
-.tempmail 
-this will generate temporary email 
-and to check inbox use this 
-.inbox and the generated email 
-example below 
-   this is the email generated
+GROUP COMMANDS IMPROVED:
 
-*Email:* shantiacha@ggezme.shop
-*Status:* good
-*Uptime:* 100 seconds
+APPROVEALL - YOU WON'T GET RATE OVERLIMIT AGAIN. YOU CAN APPROVE AS MANY AS YOU CAN.
+DEMOTE - YOU CAN ALSO TAG OR QUOTE A USER MESSAGE.
+PROMOTE - SAME AS DEMOTE.
+KICK - REPLY TO OR TAG A USER TO KICK.
 
-Use .inbox shantiacha@ggezme.shop 
+ADDED TOOLS CATEGORY:
+TEMPMAIL SERVICES
 
+EXAMPLE:
+.TEMPMAIL
+THIS WILL GENERATE A TEMPORARY EMAIL.
 
-fixed vision 
-this is to analyze image 
+TO CHECK THE INBOX, USE:
+.INBOX [GENERATED EMAIL]
 
-example by reply to image 
-.vision answer question 1 to 5 
+EXAMPLE BELOW:
+THIS IS THE GENERATED EMAIL
 
-added also some sticker commands 
+EMAIL: SHANTIACHA@GGEZME.SHOP
+STATUS: GOOD
+UPTIME: 100 SECONDS
 
-.egif - this converts emoji to animated sticker 
-.attp -
-.bratvideo
+USE .INBOX SHANTIACHA@GGEZME.SHOP
 
-added some media uploaders 
-freeimage
-Aws 
-Gofile 
-Uploadf
+FIXED VISION:
+THIS IS USED TO ANALYZE IMAGES.
 
+EXAMPLE: REPLY TO AN IMAGE WITH:
+.VISION ANSWER QUESTION 1 TO 5
+
+ADDED STICKER COMMANDS:
+.EGIF - CONVERTS EMOJI TO ANIMATED STICKER
+.ATTP -
+.BRATVIDEO
+
+ADDED MEDIA UPLOADERS:
+FREEIMAGE
+AWS
+GOFILE
+UPLOADF
+
+LASTLY, FOR HEROKU USERS, IT IS ADVISABLE TO SET YOUR DATABASE URL IN THE DATABASE_URL PATH TO HELP RETAIN YOUR SETTINGS. THIS WILL PREVENT AUTO-RESETTING.
+
+GET A URL FROM neon.tech
+HERE IS A TUTORIAL:
+https://t.me/keithtechsupport/27
+
+LASTLY, FOLLOW THE DEVELOPER:
+
+github.com/kkeizza
+
+SEE YOU AGAIN ON SUNDAY 😁😁😁
