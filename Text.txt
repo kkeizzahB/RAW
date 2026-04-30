@@ -1,16 +1,14 @@
 ‼️ UPDATE ALERT ‼️
 
-Did you know there are some group settings such as 
-Antidemote,  
-antipromote, 
-Antibot - to kick bot users 
-Antibad - to set bad words that can't be used in group 
-Antitag - to check on unnecessary tagging in group
-Events  this to enable welcome or goodbye message 
-Antistatusmention- to delete/ kick/ warn mentioning group in status 
-Antilink of course you know the use
-📝 
-These settings only work in the enabled group
+hello everyone 
+due to WhatsApp updates has interfered with too many bots currently 
+some can't receive messages when bot is logged in 
+I have done too many research of some theories that can work
+
+first try updating your WhatsApp or just reapp 
+if not working delete too many contacts this might be having too many contacts 
+another thing try disabling autolikestatus 
+this sometimes bring the throating feature in WhatsApp moreso when you have too many contacts 
 
 LASTLY, FOR HEROKU USERS, IT IS ADVISABLE TO SET YOUR DATABASE URL IN THE DATABASE_URL PATH TO HELP RETAIN YOUR SETTINGS. THIS WILL PREVENT AUTO-RESETTING.
 
@@ -25,5 +23,5 @@ FOLLOW Keith Md DEVELOPER TO KEEP YOU POSTED
 
 github.com/kkeizza
 
-SEE YOU AGAIN ON THURSDAY 😁😁😁
+SEE YOU AGAIN ON SUNDAY😁😁😁
 <<<<<<<<<>>>>>>>>>>>
