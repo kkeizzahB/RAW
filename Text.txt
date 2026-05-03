@@ -1,17 +1,8 @@
 ‼️ UPDATE ALERT ‼️
-
-hello everyone 
-due to WhatsApp updates has interfered with too many bots currently 
-some can't receive messages when bot is logged in 
-I have done too many research of some theories that can work
-
-first try updating your WhatsApp or just reapp 
-if not working delete too many contacts this might be having too many contacts 
-another thing try disabling autolikestatus 
-this sometimes bring the throating feature in WhatsApp moreso when you have too many contacts 
-
-‼️‼️my team is still working on the cause of the issue though on my side I ain't affected 😤 
-I will notify you in the next update the real cause of the issue 
+new version of alpha md is coming soon ✨️ 
+bringing the old bot back to life 
+using the latest baileys 
+I will inform you when ready 
 
 LASTLY, FOR HEROKU USERS, IT IS ADVISABLE TO SET YOUR DATABASE URL IN THE DATABASE_URL PATH TO HELP RETAIN YOUR SETTINGS. THIS WILL PREVENT AUTO-RESETTING.
 
