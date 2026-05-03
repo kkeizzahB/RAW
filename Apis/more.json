@@ -20,6 +20,19 @@
     },
         {
       "category": "more",
+      "name": "Generate alpha md pair code",
+      "url": "/alphapair?q=254786989021",
+      "description": "generate pair code for alpha md bot."
+    },
+    {
+      "category": "more",
+      "name": "Generate alpha md qr code",
+      "url": "/alpha/qr",
+      "description": "Generate qr code for alpha md bot"
+    },
+    
+        {
+      "category": "more",
       "name": "Currency exchange",
       "url": "/finance/exchange?q=KES",
       "description": "Get your exchange rate"
