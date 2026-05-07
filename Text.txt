@@ -1,21 +1,16 @@
 ‼️ UPDATE ALERT ‼️
-new version of alpha md is coming soon ✨️ 
-bringing the old bot back to life 
-using the latest baileys 
-I will inform you when ready 
+Added new important search tool 
+it is called reverse image 
+this is used find similar images 
+check how it should be used in this image url 
 
-LASTLY, FOR HEROKU USERS, IT IS ADVISABLE TO SET YOUR DATABASE URL IN THE DATABASE_URL PATH TO HELP RETAIN YOUR SETTINGS. THIS WILL PREVENT AUTO-RESETTING.
+*i.ibb.co/SwFrzjng/426adc7bc7c8.jpg*
 
-GET A URL FROM neon.tech
-HERE IS A TUTORIAL:
-https://t.me/keithtechsupport/27
+ Aliases for *similarimage*:
 
+▸ 1. reverse
+▸ 2. similarimg
+▸ 3. reverseimage
+▸ 4. findimage
 
-<<<<<<<<<<>>>>>>>>>>>>
-
-FOLLOW Keith Md DEVELOPER TO KEEP YOU POSTED 
-
-github.com/kkeizza
-
-SEE YOU AGAIN ON THURSDAY 😁😁😁
-<<<<<<<<<>>>>>>>>>>>
+bye 👋 
