@@ -14,6 +14,12 @@
     },
     {
       "category": "search",
+      "name": "reverse images Search(similarimages)",
+      "url": "/search/reverseimage?url=https://i.ibb.co/LhCbd9Jx/30eb14c9722d.jpg",
+      "description": "Search for similar images (reverse image search)"
+    },
+    {
+      "category": "search",
       "name": "Bing Search",
       "url": "/search/bing?query=Cat",
       "description": "Search for bing."
