@@ -18,6 +18,24 @@
       "url": "/iboxtv/search?q=night&page=1",
       "description": "iboxtv search."
     },
+        {
+      "category": "movie",
+      "name": "iboxmovies",
+      "url": "/iboxmovies?page=1",
+      "description": "get the latest trending and shows from ibox"
+    },
+    {
+      "category": "movie",
+      "name": "iboxmovies detail",
+      "url": "/iboxmovies/detail?url=https://ibox-tv.com/show/the-gilded-age-season-3-episode-1-8",
+      "description": "ibox movies detail"
+    },
+    {
+      "category": "movie",
+      "name": "iboxboxmovies search",
+      "url": "/iboxmovies/search?q=night&page=1",
+      "description": "iboxtv search."
+    },
     {
       "category": "movie",
       "name": "download dramabox movie",
