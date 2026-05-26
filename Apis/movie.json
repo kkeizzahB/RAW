@@ -8,9 +8,9 @@
     },
     {
       "category": "movie",
-      "name": "dramabox movie search",
-      "url": "/dramabox/search?q=love",
-      "description": "search using a search term"
+      "name": "iboxtv detail",
+      "url": "/iboxtv/detail?url=https://ibox-tv.com/show/the-gilded-age-season-3-episode-1-8",
+      "description": "ibox tv detail"
     },
     {
       "category": "movie",
