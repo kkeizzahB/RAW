@@ -27,7 +27,7 @@
     {
       "category": "movie",
       "name": "iboxmovies detail",
-      "url": "/iboxmovies/detail?url=https://ibox-tv.com/show/the-gilded-age-season-3-episode-1-8",
+      "url": "/iboxmovies/detail?url=https://movies.ibox-tv.com/show/rush-hour-2",
       "description": "ibox movies detail"
     },
     {
@@ -45,7 +45,7 @@
     {
       "category": "movie",
       "name": "iboxanime detail",
-      "url": "/iboxanime/detail?url=https://ibox-tv.com/show/the-gilded-age-season-3-episode-1-8",
+      "url": "/iboxanime/detail?url=https://anime.ibox-tv.com/show/dragon-ball-z-complete",
       "description": "ibox anime detail"
     },
     {
