@@ -14,9 +14,9 @@
     },
     {
       "category": "movie",
-      "name": "dramabox details ",
-      "url": "/dramabox/detail?bookId=42000000606",
-      "description": "Get dramabox details from bookid."
+      "name": "iboxboxtv search",
+      "url": "/iboxtv/search?q=night&page=1",
+      "description": "iboxtv search."
     },
     {
       "category": "movie",
