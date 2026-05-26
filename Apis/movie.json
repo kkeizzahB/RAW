@@ -2,9 +2,9 @@
   "endpoints": [
     {
       "category": "movie",
-      "name": "dramabox movie trending",
-      "url": "/dramabox/home",
-      "description": "get latest and trending drama movies"
+      "name": "iboxtv",
+      "url": "/iboxtv?page=1",
+      "description": "get the latest trending and shows from ibox"
     },
     {
       "category": "movie",
