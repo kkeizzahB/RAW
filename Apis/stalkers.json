@@ -3,15 +3,10 @@
     {
       "category": "stalkers",
       "name": "TikTok Stalk",
-      "url": "/stalker/tiktok?user=keizzah4189",
-      "description": "Stalk TikTok profiles."
-    },
-    {
-      "category": "stalkers",
-      "name": "TikTok Stalk2",
       "url": "/stalker/tiktok2?user=keizzah4189",
       "description": "Stalk TikTok profiles."
     },
+   
     {
       "category": "stalkers",
       "name": "Instagram Stalk",
