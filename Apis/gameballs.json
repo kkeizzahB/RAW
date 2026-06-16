@@ -26,6 +26,12 @@
     },
     {
       "category": "gameballs",
+      "name": "FIFA 2026 API",
+      "url": "/fifastandings",
+      "description": "Get FIFA 2026 details of current fixtures."
+    },
+    {
+      "category": "gameballs",
       "name": "LiveScore updates",
       "url": "/livescore",
       "description": "Get current football LiveScores."
