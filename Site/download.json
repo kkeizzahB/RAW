@@ -29,30 +29,14 @@
     "imageurl": "https://files.catbox.moe/7xka1w.jpg",
     "description": "Download YouTube videos and audios"
   },
-  {
-    "name": "SoundCloud Downloader",
-    "url": "/soundcloud",
-    "imageurl": "https://files.catbox.moe/xx3yvc.jpg",
-    "description": "Download tracks, sets, and playlists from SoundCloud."
-  },
+
   {
     "name": "Pinterest Downloader",
     "url": "/pinterest",
     "imageurl": "https://files.catbox.moe/sasf0l.jpg",
     "description": "Save high-quality images and videos from Pinterest pins and boards."
   },
-  {
-    "name": "Instagram Posts Downloader",
-    "url": "/instaposts",
-    "imageurl": "https://files.catbox.moe/hepcbu.jpg",
-    "description": "A specialized tool focused on downloading standard photo and video posts from Instagram."
-  },
-  {
-    "name": "Instagram Story Downloader",
-    "url": "/instastories",
-    "imageurl": "https://files.catbox.moe/xcuy1y.jpg",
-    "description": "Download stories from public Instagram accounts before they disappear."
-  },
+  
   {
     "name": "MediaFire Downloader",
     "url": "/mediafire",
