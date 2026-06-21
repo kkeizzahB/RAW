@@ -2,24 +2,17 @@
   {
     "name": "ephoto logos",
     "url": "/ephoto",
-    "description": "get your favori"
+    "description": "get logo from ephoto Api"
+  },
+  
+  {
+    "name": "photofunia",
+    "url": "/photofunia",
+    "description": "photofunia logo"
   },
   {
-    "name": "Ramogi Tv",
-    "url": "/ramogitv",
-    "imageurl": "https://files.catbox.moe/9c884i.jpg",
-    "description": "stream live ramogi tv."
-  },
-  {
-    "name": "kenya tv",
-    "url": "/kenyatv",
-    "imageurl": "https://files.catbox.moe/s7n6l7.jpg",
-    "description": "get all kenya stream channels."
-  },
-  {
-    "name": "Radio hiphop",
-    "url": "/hiphop",
-    "imageurl": "https://files.catbox.moe/pe7bvm.jpg",
-    "description": "get 24/7 hip hop hits of all time "
+    "name": "Ai logo",
+    "url": "/",
+    "description": "Ai logo maker"
   }
 ]  
