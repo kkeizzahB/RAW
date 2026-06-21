@@ -1,1 +1,52 @@
-
+[
+  {
+    "name": "GitHub User Tracker",
+    "url": "/github-user-stalk",
+    "description": "Track and monitor GitHub user profiles"
+  },
+  {
+    "name": "GitHub Repo Tracker",
+    "url": "/github-repo-stalk",
+    "description": "Track and monitor GitHub repositories"
+  },
+  {
+    "name": "TikTok Profile Tracker",
+    "url": "/tiktokstalk",
+    "description": "Track and monitor TikTok profiles"
+  },
+  {
+    "name": "Instagram Profile Tracker",
+    "url": "/instagram-stalk",
+    "description": "Track and monitor Instagram profiles"
+  },
+  {
+    "name": "Twitter Profile Tracker",
+    "url": "/twitter-stalk",
+    "description": "Track and monitor Twitter/X profiles"
+  },
+  {
+    "name": "YouTube Channel Tracker",
+    "url": "/youtube-stalk",
+    "description": "Track and monitor YouTube channels"
+  },
+  {
+    "name": "WhatsApp Channel Tracker",
+    "url": "/whatsapp-stalk",
+    "description": "Track and monitor WhatsApp channels"
+  },
+  {
+    "name": "Country Information Lookup",
+    "url": "/country-info-stalk",
+    "description": "Get detailed information about countries"
+  },
+  {
+    "name": "NPM Package Tracker",
+    "url": "/npm-stalk",
+    "description": "Track and monitor NPM packages"
+  },
+  {
+    "name": "IP Address Tracker",
+    "url": "/ip-stalk",
+    "description": "Track and lookup IP address details"
+  }
+]
