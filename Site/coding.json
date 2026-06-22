@@ -23,12 +23,7 @@
     "imageurl": "https://files.catbox.moe/7yqqmk.jpg",
     "description": "Decode binary code (sequences of 0s and 1s) back into readable text."
   },
-  {
-    "name": "color converter",
-    "url": "/color",
-    "imageurl": "https://files.catbox.moe/9b4lco.jpg",
-    "description": "Convert color values between different formats like HEX, RGB, HSL, and CMYK."
-  },
+  
   {
     "name": "preemptive JavaScript encryptor tool ",
     "url": "/preemptive",
