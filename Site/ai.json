@@ -5,12 +5,7 @@
     "imageurl": "https://files.catbox.moe/xyj25i.jpg",
     "description": "chat with keith ai , generate ai images and videos for free "
   },
-  {
-    "name": "vision ai",
-    "url": "/vision",
-    "imageurl": "https://files.catbox.moe/lbebf3.png",
-    "description": "upload an image to analyze according to your query."
-  },
+  
   {
     "name": "remove background",
     "url": "/removebg",
