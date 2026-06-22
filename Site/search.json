@@ -5,18 +5,6 @@
     "imageurl": "https://files.catbox.moe/tp9cxc.jpg",
     "description": "Find the complete lyrics for any song by searching with the title and artist name."
   },
-  {
-    "name": "bible search",
-    "url": "/bible",
-    "imageurl": "https://files.catbox.moe/zbstwf.jpg",
-    "description": "Search through the Bible by book, chapter, verse, or keywords to find specific passages."
-  },
-  {
-    "name": "quran search",
-    "url": "/quran",
-    "imageurl": "https://files.catbox.moe/1b0gnh.jpg",
-    "description": "Search the Quran by Surah, Ayah, or keywords to read and study verses in detail."
-  },
 
   {
     "name": "movie search",
@@ -35,13 +23,7 @@
     "url": "/reverseimage",
     "description": "check similar image search."
   },
-  
-  {
-    "name": "random bible inspiration",
-    "url": "/randombible",
-    "imageurl": "https://files.catbox.moe/rf0i5o.jpg",
-    "description": "Get a random, inspirational verse from the Bible for daily reflection and motivation."
-  },
+   
   {
     "name": "dictionary",
     "url": "/dictionary",
