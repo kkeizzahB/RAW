@@ -41,30 +41,7 @@
     "imageurl": "https://qu.ax/CaHVQ.jpg",
     "description": "encrypt hard using bytehide obfuscator "
   },
-  {
-    "name": "run JavaScript",
-    "url": "/run-js",
-    "imageurl": "https://files.catbox.moe/mzvo51.jpg",
-    "description": "Execute and test JavaScript code snippets directly in your browser with instant results."
-  },
-  {
-    "name": "run python code",
-    "url": "/run-py",
-    "imageurl": "https://files.catbox.moe/ncwg6l.jpg",
-    "description": "Write, run, and test Python code online without needing to install any software locally."
-  },
-  {
-    "name": "run html code",
-    "url": "/run-html",
-    "imageurl": "https://files.catbox.moe/9bvl2k.jpg",
-    "description": "Create and preview HTML, CSS, and JavaScript code in real-time to see how web pages render."
-  },
-  {
-    "name": "url decoder & encoder",
-    "url": "/urlcode",
-    "imageurl": "https://files.catbox.moe/iolvp1.jpg",
-    "description": "Encode special characters in URLs to make them web-safe, or decode encoded URLs back to readable text."
-  },
+
   {
     "name": "web extract",
     "url": "/web-extract",
