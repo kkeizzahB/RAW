@@ -1,0 +1,22 @@
+[
+  {
+    "name": "holy bible",
+    "url": "/bible",
+    "description": "search for verses chapters theological ai and many more."
+  },
+ 
+  {
+    "name": "holy quran",
+    "url": "/quran",
+    "imageurl": "https://files.catbox.moe/1b0gnh.jpg",
+    "description": "Search the Quran by Surah, Ayah, or keywords to read and study verses in detail."
+  },
+
+  
+  {
+    "name": "random bible inspiration",
+    "url": "/randombible",
+    "imageurl": "https://files.catbox.moe/kr7hv7.jpg",
+    "description": "get random bible inspiration verses and quotes"
+  }
+]
