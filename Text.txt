@@ -1,23 +1,11 @@
 ‼️ UPDATE ALERT ‼️
 
-Added *listonline* this will list all online members in group and there messages tally tracked 
+fixed 
+.imageedit
+.rc - which is remove clothe 
+.addmeta - to add meta to group 
+.removemeta - to remove meta from group 
 
-added also *fifa* command this has all updates of world cup fixtures table matches and everything 
-test them all hope it gonna nice y'all
-
-
-many complaining about autovuew status  i don't understand you guys for me it works pretty fine 
-it doesn't matter if it marked green that means the bot hasn't viewed shiett 
-it works post a status with different number and do the confirmation 
-
-
-
-
-
-for now you can tell me every errors I do the bug fixes remotically  coz I code this bot just make my WhatsApp enjoyable 
-I don't care about your negative opinions or the number of people deploying it 
-
-that person who asked me to share the WhatsApp channel ,, I don't want to market this bro !! you just share the bot errors I do the fixes 
-
-use .report or visit keithsite.top/contact  
-
+and many more fixes 
+raise bot issues here 
+keithsite.top/contact 
