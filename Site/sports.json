@@ -47,14 +47,9 @@
     "imageurl": "https://files.catbox.moe/v90m0q.jpg",
     "description": "Check the schedule of future cricket matches, series, and tournaments across all formats."
   },
+
   {
-    "name": "LiveScore matches with highlights",
-    "url": "/livescore",
-    "imageurl": "https://qu.ax/qGBPc.jpg",
-    "description": "get live matches and update highlights "
-  },
-  {
-    "name": "live matches",
+    "name": "livescore matches",
     "url": "/matches",
     "imageurl": "https://files.catbox.moe/yaotaw.jpg",
     "description": "Follow live cricket matches with real-time score updates, commentary, and match progress."
