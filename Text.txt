@@ -6,6 +6,11 @@ fixed
 .addmeta - to add meta to group 
 .removemeta - to remove meta from group
 .aimusic - to generate ai music 
-and many more fixes 
+and many more fixes
+
+keithsite.top this is a website with very many tools for those who can't access whatsapp bot 
+you can use this site to download,  Ai features , search and any more 
+make sure you install the apk for more efficiency
+
 raise bot issues here 
 keithsite.top/contact 
