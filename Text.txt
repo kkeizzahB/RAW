@@ -4,8 +4,8 @@ fixed
 .imageedit
 .rc - which is remove clothe 
 .addmeta - to add meta to group 
-.removemeta - to remove meta from group 
-
+.removemeta - to remove meta from group
+.aimusic - to generate ai music 
 and many more fixes 
 raise bot issues here 
 keithsite.top/contact 
