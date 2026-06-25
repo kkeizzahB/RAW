@@ -11,6 +11,13 @@
     "imageurl": "https://files.catbox.moe/1b0gnh.jpg",
     "description": "Search the Quran by Surah, Ayah, or keywords to read and study verses in detail."
   },
+  
+  {
+    "name": "Hymnals",
+    "url": "/hymnal",
+    "imageurl": "https://files.catbox.moe/1b0gnh.jpg",
+    "description": "all hymnal melodies are available"
+  },
 
   
   {
