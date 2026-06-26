@@ -1,12 +1,14 @@
 ‼️ UPDATE ALERT ‼️
 
-fixed 
-.imageedit
-.rc - which is remove clothe 
-.addmeta - to add meta to group 
-.removemeta - to remove meta from group
-.aimusic - to generate ai music 
-and many more fixes
+
+Fixed some utility functions 
+♤trim -  to trim audio or video i size of your best fit 
+
+♤amplify - to add add audio to video 
+♤volume- to increase or decrease volume of a media 
+ ♤save- can now save group status too
+
+Use latest uptime of 1hour ago to get the updates
 
 keithsite.top this is a website with very many tools for those who can't access whatsapp bot 
 you can use this site to download,  Ai features , search and any more 
