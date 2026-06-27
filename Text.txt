@@ -7,6 +7,7 @@ Fixed some utility functions
 ♤amplify - to add add audio to video 
 ♤volume- to increase or decrease volume of a media 
  ♤save- can now save group status too
+♤igstory- this to download Instagram stories example igstory nairobi_gossip_club 
 
 Use latest uptime of 1hour ago to get the updates
 
