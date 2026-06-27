@@ -61,6 +61,12 @@
       "url": "/stalker/npm?q=baileys",
       "description": "Stalk NPM package."
     },
+      {
+      "category": "stalkers",
+      "name": "Telegram Stalk",
+      "url": "/stalker/tg?q=keithkeizzah",
+      "description": "Stalk telegram user"
+    },
     {
       "category": "stalkers",
       "name": "Pinterest Stalk",
