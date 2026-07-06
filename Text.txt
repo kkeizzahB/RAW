@@ -1,13 +1,9 @@
 ‼️ UPDATE ALERT ‼️
 
 
-Fixed some utility functions 
-♤trim -  to trim audio or video i size of your best fit 
+_fixed shazam music identify_
+_fixed wormgpt_
 
-♤amplify - to add add audio to video 
-♤volume- to increase or decrease volume of a media 
- ♤save- can now save group status too
-♤igstory- this to download Instagram stories example igstory nairobi_gossip_club 
 
 Use latest uptime of 1hour ago to get the updates
 
