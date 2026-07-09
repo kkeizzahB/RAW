@@ -24,6 +24,13 @@
     "description": "Decode binary code (sequences of 0s and 1s) back into readable text."
   },
   
+    {
+    "name": "zlib compressor/decompress",
+    "url": "/zlib",
+    "imageurl": "https://files.catbox.moe/7yqqmk.jpg",
+    "description": "Decode /encode to zlib"
+  },
+  
   {
     "name": "preemptive JavaScript encryptor tool ",
     "url": "/preemptive",
