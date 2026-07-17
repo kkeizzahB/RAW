@@ -1,15 +1,18 @@
 
 ╭━━⟮ ‼️‼️UPDATE ALERT‼️‼️ ⟯━━┈⊷
+https://github.com/kkeizza/fbot
 
-keith md facebook bot will be live soon 
+Video tutorial will follow on how to deploy Facebook bot 
 
-this will be the first facebook bot made from scratch by a kenyan 
-just finalising then I push ....
+For now use the guidance in readme 
 
-first download this browser from playstore and stay tuned i will hit you when is the next step with it in our keith whatsapp group or telegram 
 
-https://play.google.com/store/apps/details?id=site.mises.browser_stable
-enjoy 
+Star and fork 
+
+Follow the developer
+
+Github.com/kkeizza
+
 this image shows a screenshot of the Facebook bot 
 https://i.ibb.co/35kRLcPP/04b3d3bb2458.jpg
 
