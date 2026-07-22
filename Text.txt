@@ -1,5 +1,15 @@
 
 ╭━━⟮ ‼️‼️UPDATE ALERT‼️‼️ ⟯━━┈⊷
+
+I have decided to create a vcf for keith bot users 
+target is 300 
+that means it should drop by tomorrow evening 
+https://vcff.keithsite.top/
+
+make sure you join this group to get the file 
+https://chat.whatsapp.com/HhUjFM8gjqx8rldREpZhop
+
+
 https://github.com/kkeizza/fbot
 
 Video tutorial will follow on how to deploy Facebook bot 
