@@ -1,32 +1,7 @@
 
 ╭━━⟮ ‼️‼️UPDATE ALERT‼️‼️ ⟯━━┈⊷
 
-I have decided to create a vcf for keith bot users 
-target is 300 
-that means it should drop by tomorrow evening 
-https://vcff.keithsite.top/
-
-make sure you join this group to get the file 
-https://chat.whatsapp.com/HhUjFM8gjqx8rldREpZhop
+today am randomly fixing the bot errors so expect new changes 
 
 
-and this is Facebook bot
-
-https://github.com/kkeizza/fbot
-
-Video tutorial will follow on how to deploy Facebook bot 
-
-For now use the guidance in readme 
-
-
-Star and fork 
-
-Follow the developer
-
-Github.com/kkeizza
-
-this image shows a screenshot of the Facebook bot 
-https://i.ibb.co/35kRLcPP/04b3d3bb2458.jpg
-
-
-so make sure you download the mises browser i will drop a tutorial on how to deploy 
+~Keith~
