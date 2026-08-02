@@ -5,7 +5,12 @@ fixed some random plugins
 fixed stickersearch 
 fixed all stalkers 
 fixed all downloaders 
-fixed a lot ...
+fixed imageedit - this now works but if you misuse it will soon die so be responsible 
+
+fixed a lot ... Just explore in our menu 
+use menu or menu2
+use restart command to get latest updates or wait for your uptimevto change 
+
 
 any error share with me here
 keithsite.top/contact 
