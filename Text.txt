@@ -1,16 +1,25 @@
 
 ╭━━⟮ ‼️‼️UPDATE ALERT‼️‼️ ⟯━━┈⊷
 
-fixed some random plugins 
-fixed stickersearch 
-fixed all stalkers 
-fixed all downloaders 
-fixed imageedit - this now works but if you misuse it will soon die so be responsible 
+Keith md  updates 
+whatsapp username is finally added
+You must insert your whatsapp username when deploying your bot via heroku or whichever platform . Just add any username  this help in sudo help since whatsapp is doing away with numbers 
 
-fixed a lot ... Just explore in our menu 
-use menu or menu2
-use restart command to get latest updates or wait for your uptimevto change 
+To those using panel for you to get latest baileys update delete these files and folders
+.npm
+node_modules
+package-lock.json 
 
+Hence hit restart button
+
+New updates are 
+Stickerpack upgrade / tgs /stickersearch
+
+Whatsapp community management 
+Fixed sudo now can use both jid and username 
+
+You can redeploy if you want to get these fine updates
+## you must use latest zip or sync fork when deploying afresh bot 
 
 any error share with me here
 keithsite.top/contact 
