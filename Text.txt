@@ -1,5 +1,6 @@
 
 ╭━━⟮ ‼️‼️UPDATE ALERT‼️‼️ ⟯━━┈⊷
+//=======================================================================================================================
 
 Keith md  updates 
 whatsapp username is finally added
@@ -13,16 +14,29 @@ package-lock.json
 Hence hit restart button
 
 New updates are 
-Stickerpack upgrade / tgs /stickersearch
+//=======================================================================================================================
+
+○Stickerpack upgrade / tgs /stickersearch
 
 Whatsapp community management 
-Fixed sudo now can use both jid and username 
+○Fixed sudo now can use both jid and username 
 
-fixed rc command (remove clothe) 
+○fixed rc command (remove clothe) 
 don't misuse it or else i deactivate for good 
-fixed aimusic generator 
-fixed whatsapp business profile setup like bizemail, bizwebsite 
-you will see them in your menu 
+○fixed aimusic generator 
+○fixed whatsapp business profile setup like bizemail, bizwebsite 
+you will see them in your menu
+//=======================================================================================================================
+
+since epl is back i have fixed moded apk 
+○ playfy tv
+○cricfy 
+○sportzfy 
+○youcine
+
+stream for free in these sites no adds just chills and vibe 
+//=======================================================================================================================
+
 You can redeploy if you want to get these fine updates
 ## you must use latest zip or sync fork when deploying afresh bot 
 
