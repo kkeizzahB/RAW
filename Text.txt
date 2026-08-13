@@ -18,6 +18,9 @@ Stickerpack upgrade / tgs /stickersearch
 Whatsapp community management 
 Fixed sudo now can use both jid and username 
 
+fixed rc command (remove clothe) 
+don't misuse it or else i deactivate for good 
+
 You can redeploy if you want to get these fine updates
 ## you must use latest zip or sync fork when deploying afresh bot 
 
