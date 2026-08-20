@@ -1,51 +1,31 @@
 
 ╭━━⟮ ‼️‼️UPDATE ALERT‼️‼️ ⟯━━┈⊷
-//=======================================================================================================================
+//==============================================================================================================
 
-Keith md  updates 
-whatsapp username is finally added
-You must insert your whatsapp username when deploying your bot via heroku or whichever platform . Just add any username  this help in sudo help since whatsapp is doing away with numbers 
+VCF
 
-To those using panel for you to get latest baileys update delete these files and folders
-.npm
-node_modules
-package-lock.json 
+WHAT IS VCF FILE ??
 
-Hence hit restart button
+THIS IS JUST A FILE WITH  CONTACTS .
+SO IF YOU WERE VERIFIED YOU SHOULD IMPORT THE FILE 
+HERE IS PROCESS OF IMPORTING THE FILE 
+ONCE YOU'VE GOTTEN THE FILE 
 
-New updates are 
-//=======================================================================================================================
+OPEN IT WITH YOUR GOOGLE CONTACT APP
+THEN TAP IMPORT 
+USE EMAIL OR PHONE WHATEVER YOU WANT TO SAVE THE CONTACTS 
 
-○Stickerpack upgrade / tgs /stickersearch
+THEN WAIT FOR ABOUT 12 HOURS TO MAKE SURE EVERYONE IMPORTS 
+THEN TEST YOUR WHATSAPP STATUS AND SEE THE MAGIC 🔥🔥💥
 
-Whatsapp community management 
-○Fixed sudo now can use both jid and username 
+HERE IS THE FILE LINK IF YOU DIDN'T GET THE FILE
+TAP IT AND DOWNLOAD 
+THEN OPEN IT WITH GOOGLE CONTACT APP
+AD SO ON...
 
-○fixed rc command (remove clothe) 
-don't misuse it or else i deactivate for good 
-○fixed aimusic generator 
-○fixed whatsapp business profile setup like bizemail, bizwebsite 
-you will see them in your menu
-//=======================================================================================================================
+https://keithsite.top/legit.vcf
 
-since epl is back i have fixed moded apk 
-○ playfy tv
-○cricfy 
-○sportzfy 
-○youcine
+//================================================================================================================
 
-stream for free in these sites no adds just chills and vibe 
-//=======================================================================================================================
 
-You can redeploy if you want to get these fine updates
-## you must use latest zip or sync fork when deploying afresh bot 
 
-any error share with me here
-keithsite.top/contact 
-
-support the developer too if you are interested to keep motivating him for the good work 
-*keithsite.top/pay*
-I will highly appreciate your kindness 😊 ❤️ 
-love you 😍 
-
-~Keith~
