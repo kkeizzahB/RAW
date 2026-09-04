@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <title>Keith Candy  Match - Free Sweet Puzzle Game | keithkeizzah</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <meta name="description" content="Play Candy Magic Match by keithkeizzah — a free match-3 puzzle game with magical candies, sweet challenges, and addictive gameplay. Match, crush, and unlock exciting levels online!" />
+    <meta name="keywords" content="candy magic match, match 3 game, free puzzle game, candy puzzle, sweet game, play online, mobile puzzle, addictive match 3, keithkeizzah project" />
+    <meta name="author" content="keithkeizzah project" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://keithkeizzah.site/candy-match" />
+    <meta property="og:title" content="Candy Magic Match - Free Match 3 Puzzle Game" />
+    <meta property="og:description" content="Match candies with magical powers and enjoy free puzzle fun! Play Candy Magic Match by keithkeizzah with colorful graphics and exciting levels." />
+    <!-- REPLACE THIS WITH YOUR PREVIEW IMAGE LINK -->
+    <meta property="og:image" content="YOUR_PREVIEW_IMAGE_LINK_HERE" />
+    <meta property="og:site_name" content="Vivzon Technologies" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://keithkeizzah.site/candy-match" />
+    <meta name="twitter:title" content="Candy Magic Match - Free Puzzle Game" />
+    <meta name="twitter:description" content="Crush magical candies, unlock sweet levels, and play Candy Magic Match online for free!" />
+    <!-- REPLACE THIS WITH YOUR PREVIEW IMAGE LINK -->
+    <meta name="twitter:image" content="YOUR_PREVIEW_IMAGE_LINK_HERE" />
+    
+    <!-- App/AI Engine Optimization (AEO/ASO) -->
+    <meta name="application-name" content="Candy Magic Match" />
+    <meta name="theme-color" content="#ff66cc" />
+    <link rel="canonical" href="https://keithkeizzah.site/candy-match" />
+    <!-- REPLACE THIS WITH YOUR FAVICON LINK -->
+    <link rel="icon" type="image/jpg" sizes="32x32" href="YOUR_FAVICON_LINK_HERE" />
+    <!-- REPLACE THIS WITH YOUR LOGO LINK -->
+    <link rel="apple-touch-icon" href="https://files.catbox.moe/gu0em0.jpg" />
+    
+    <style>
+        :root {
+            --bg-a: #ffd6e0;
+            --bg-b: #c7b7ff;
+            --bg-c: #7dd3fc;
+            --card: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --ui: #06b6d4;
+            --muted: #b6c2d9;
+            --accent: #f472b6;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+        }
+        
+        body {
+            background: radial-gradient(800px 500px at 10% 10%, var(--bg-a) 0%, transparent 20%),
+                        radial-gradient(900px 600px at 90% 90%, var(--bg-b) 0%, transparent 20%),
+                        linear-gradient(180deg, #0f172a 0%, #071026 60%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+        
+        /* floating candies in background (decorative) */
+        .floating {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .float-candy {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            opacity: .08;
+            filter: blur(.6px);
+            animation: floaty 10s linear infinite;
+        }
+        
+        @keyframes floaty {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(90deg); }
+            100% { transform: translateY(0) rotate(180deg); }
+        }
+        
+        .stage {
+            width: 100%;
+            max-width: 920px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            z-index: 1;
+            flex-direction: column;
+        }
+        
+        /* header + HUD card */
+        .topbar {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
+        }
+        
+        .title {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: .2px;
+            color: #eaf2ff;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .pill {
+            padding: 8px 12px;
+            border-radius: 12px;
+            background: var(--card);
+            border: 1px solid var(--glass-border);
+            color: #eaf2ff;
+            font-weight: 700;
+            font-size: 13px;
+        }
+        
+        .btn {
+            cursor: pointer;
+        }
+        
+        /* game card layout */
+        .game-wrap {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            width: 100% !important;
+            height: 100vh;
+            padding: 10px;
+        }
+        
+        /* left: board card */
+        .board-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.06));
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 12px;
+            box-shadow: 0 14px 40px rgba(2, 6, 23, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 320px;
+            flex: 1 1 600px;
+            max-width: 100%;
+            width: 100%;
+            margin: auto;
+        }
+        
+        .board-outer {
+            padding: 10px;
+            border-radius: 14px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0.08));
+        }
+        
+        canvas {
+            display: block;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #071226, #061124);
+            touch-action: none;
+        }
+        
+        /* right: sidebar */
+        .side {
+            width: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .panel {
+            padding: 12px;
+            border-radius: 12px;
+            background: var(--card);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .stat {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            color: #eaf2ff;
+        }
+        
+        .stat strong {
+            font-size: 18px;
+        }
+        
+        /* level select modal */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(2, 6, 23, 0.6);
+            z-index: 120;
+        }
+        
+        .panel-levels {
+            width: min(86vw, 560px);
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .level-btn {
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            color: #eaf2ff;
+        }
+        
+        /* responsive */
+        @media (max-width: 920px) {
+            .game-wrap {
+                flex-direction: column;
+            }
+            
+            .side {
+                width: 100%;
+                order: 2;
+            }
+            
+            .board-card {
+                order: 1;
+            }
+            
+            .levels-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 767px) {
+            canvas {
+                max-width: 340px;
+                max-height: 340px;
+            }
+        }
+        
+        @media (max-width: 420px) {
+            .logo {
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+                border-radius: 10px;
+            }
+            
+            .title {
+                font-size: 16px;
+            }
+            
+            .pill {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+            
+            .side {
+                width: 100%;
+            }
+        }
+        
+        /* subtle progress fill */
+        .progress {
+            height: 12px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        
+        .progress > .fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--ui), #7dd3fc);
+            transition: width .25s linear;
+        }
+        
+        /* nicer small text */
+        .muted {
+            color: var(--muted);
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <!-- decorative floating candies (images loaded from same img/ folder) -->
+    <div class="floating" aria-hidden="true" id="floatingRoot"></div>
+
+    <div class="stage" role="application" aria-label="Candy Match game">
+        <div class="game-wrap" style="width:100%;">
+            <div class="board-card" role="region" aria-label="Game board">
+                <div class="hud" style="width:100%;">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <div id="hud-level" class="pill">Level 1</div>
+                        <div id="hud-score" class="pill">Score: 0</div>
+                        <div style="flex:1"></div>
+                        <div id="hud-moves" class="pill">Moves: 0</div>
+                        <div id="hud-target" class="pill">Target: 0</div>
+                    </div>
+                    <div style="flex:1; display:flex; gap:10px; align-items:center;margin-top: 8px;">
+                        <div class="progress" style="flex:1;"><div id="progressFill" class="fill" style="width:0%"></div></div>
+                        <div id="hud-time" class="pill muted">00:00</div>
+                    </div>
+                </div>
+                
+                <div class="board-outer">
+                    <!-- canvas will be auto sized by JS -->
+                    <canvas id="board" width="600" height="600" aria-label="Candy board"></canvas>
+                </div>
+                <div style="margin-top:8px; width:100%; display:flex; gap:8px; align-items:center;">
+                    <button id="restart" class="pill btn">Restart</button>
+                    <button id="shuffle" class="pill btn">Shuffle</button>
+                    <div class="controls">
+                        <button id="openLevelSelect" class="pill btn">Level Select</button>
+                    </div>
+                    <div style="flex:1"></div>
+                    <div id="bestInfo" class="pill muted">Best: —</div>
+                </div>
+            </div>
+
+            <div class="side">
+                <div class="panel">
+                    <div style="font-weight:800;margin-bottom:6px">Controls</div>
+                    <div style="display:flex;flex-direction:row;gap:8px">
+                        <button id="btn-hint" class="pill btn">Hint (adds move)</button>
+                        <button id="muteBtn" class="pill btn">🔊</button>
+                    </div>
+                </div>
+                <div class="panel stat">
+                    <div style="display:flex;justify-content:space-between">
+                        <div><strong id="stat-level">Level</strong></div>
+                        <div class="muted" id="stat-mode">Mode</div>
+                    </div>
+                    <div style="display:flex;justify-content:space-between">
+                        <div>Score</div><div><strong id="stat-score">0</strong></div>
+                    </div>
+                    <div style="display:flex;justify-content:space-between">
+                        <div>Moves / Time</div><div><strong id="stat-moves">0</strong></div>
+                    </div>
+                    <div style="display:flex;justify-content:space-between">
+                        <div>Target</div><div><strong id="stat-target">0</strong></div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div style="font-weight:800;margin-bottom:6px">Specials</div>
+                    <div class="muted">Striped: clears row/col · Wrapped: 3×3 · Bomb: clears color</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level Select overlay -->
+        <div id="levelOverlay" class="overlay" role="dialog" aria-modal="true">
+            <div class="panel panel-levels">
+                <h3 style="margin:0 0 6px 0">Select Level</h3>
+                <div id="levelsGrid" class="levels-grid"></div>
+                <div style="display:flex;justify-content:flex-end;margin-top:8px"><button id="lvlClose" class="pill btn">Close</button></div>
+            </div>
+        </div>
+
+        <!-- Message overlay -->
+        <div id="overlayMsg" class="overlay" role="dialog" aria-modal="true">
+            <div class="panel">
+                <h3 id="ovTitle">Title</h3>
+                <div id="ovBody" class="muted" style="margin-top:6px"></div>
+                <div style="display:flex;justify-content:flex-end;margin-top:12px"><button id="ovOk" class="pill btn">OK</button></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            // -----------------------
+            // Configuration - REPLACE THESE WITH YOUR IMAGE LINKS
+            // -----------------------
+            const LEVELS = [
+                { id:1, grid:8, mode:'moves', target:1200, moves:22 },
+                { id:2, grid:8, mode:'moves', target:2400, moves:22 },
+                { id:3, grid:9, mode:'moves', target:4200, moves:26 },
+                { id:4, grid:9, mode:'timer', target:6800, time:60 },
+                { id:5, grid:9, mode:'timer', target:9800, time:75 }
+            ];
+            const TYPES = 6;
+            
+            // REPLACE THESE WITH YOUR CANDY IMAGE LINKS
+            const CANDY_IMAGES = [
+                "https://files.catbox.moe/9g85pn.jpg",
+                "https://files.catbox.moe/pb6h9j.jpg", 
+                "https://files.catbox.moe/7d04zq.jpg",
+                "https://files.catbox.moe/4489bb.jpg",
+                "https://files.catbox.moe/46tqfa.jpg",
+                "https://files.catbox.moe/js692b.jpg"
+            ];
+            
+            const CLEAR_POINTS = 20;
+            const SOUND_PATH = '';
+            const SOUNDS = { 
+                swap: 'https://files.catbox.moe/e678at.mp3', 
+                match: 'https://files.catbox.moe/e678at.mp3', 
+                levelup: 'https://files.catbox.moe/b2nzx1.mp3', 
+                gameover: 'https://files.catbox.moe/xz1zbb.mp3', 
+                bg: '' // No background music
+            };
+
+            // tile padding (gap between tile art and cell) in pixels
+            const TILE_PADDING = 2;
+
+            // -----------------------
+            // DOM refs
+            // -----------------------
+            const canvas = document.getElementById('board');
+            const ctx = canvas.getContext('2d');
+            const progressFill = document.getElementById('progressFill');
+            const hudLevel = document.getElementById('hud-level');
+            const hudScore = document.getElementById('hud-score');
+            const hudMoves = document.getElementById('hud-moves');
+            const hudTarget = document.getElementById('hud-target');
+            const hudTime = document.getElementById('hud-time');
+            const bestInfo = document.getElementById('bestInfo');
+
+            const openLevelSelect = document.getElementById('openLevelSelect');
+            const levelOverlay = document.getElementById('levelOverlay');
+            const levelsGrid = document.getElementById('levelsGrid');
+            const lvlClose = document.getElementById('lvlClose');
+
+            const overlayMsg = document.getElementById('overlayMsg');
+            const ovTitle = document.getElementById('ovTitle');
+            const ovBody = document.getElementById('ovBody');
+            const ovOk = document.getElementById('ovOk');
+
+            const btnRestart = document.getElementById('restart');
+            const btnShuffle = document.getElementById('shuffle');
+            const btnHint = document.getElementById('btn-hint');
+
+            const muteBtn = document.getElementById('muteBtn');
+
+            const floatingRoot = document.getElementById('floatingRoot');
+
+            // -----------------------
+            // State
+            // -----------------------
+            let levelIndex = 0;
+            let ROWS = LEVELS[levelIndex].grid, COLS = LEVELS[levelIndex].grid;
+            let grid = [];
+            let sprites = new Array(TYPES).fill(null);
+            let score = 0, moves = 0, target = 0;
+            let ready = false, busy = false, sel = null;
+            let timeLeft = 0, timerInterval = null;
+            let progress = 0;
+            let DPR = Math.max(1, window.devicePixelRatio || 1);
+
+            // persistence keys
+            const LS_UNLOCK = 'candy_unlocked_v1';
+            const LS_BEST = 'candy_best_v1';
+            const LS_MUTE = 'candy_muted_v1';
+
+            let unlocked = JSON.parse(localStorage.getItem(LS_UNLOCK) || '[]');
+            if(!Array.isArray(unlocked) || unlocked.length === 0) unlocked = [1];
+            let bestScores = JSON.parse(localStorage.getItem(LS_BEST) || '{}');
+            let muted = localStorage.getItem(LS_MUTE) === '1';
+
+            // -----------------------
+            // Audio (best-effort)
+            // -----------------------
+            const audio = {};
+            function loadSound(name, path){
+                try{
+                    if (!path) return; // Skip if no path provided
+                    const a = new Audio();
+                    a.src = path;
+                    a.preload = 'auto';
+                    a.loop = (name === 'bg');
+                    a.volume = 0.7;
+                    audio[name] = a;
+                }catch(e){}
+            }
+            function playSound(name){
+                if(muted) return;
+                const a = audio[name];
+                if(!a) return;
+                try{ a.currentTime = 0; a.play(); }catch(e){}
+            }
+            function playMusic(){ if(muted) return; const a = audio['bg']; if(a) try{ a.play(); }catch(e){} }
+            function stopMusic(){ const a = audio['bg']; if(a) try{ a.pause(); a.currentTime = 0; }catch(e){} }
+
+            function updateMuteUI(){ muteBtn.textContent = muted? '🔇' : '🔊'; }
+
+            // -----------------------
+            // Utils & drawing helpers
+            // -----------------------
+            const rnd = n => Math.floor(Math.random() * n);
+            const inBounds = (r,c) => r >= 0 && c >= 0 && r < ROWS && c < COLS;
+
+            function setCanvasSize(){
+                // choose size to fit viewport while honoring columns
+                const pad = 20;
+                const avail = Math.min(window.innerWidth, window.innerHeight - 220);
+                const boardPx = Math.max(300, Math.floor(avail));
+                // compute tile based on COLS
+                const desiredTile = Math.floor(boardPx / COLS);
+                const tile = Math.max(36, desiredTile); // minimum tile size
+                const size = tile * COLS;
+                DPR = Math.max(1, window.devicePixelRatio || 1);
+                canvas.width = size * DPR;
+                canvas.height = size * DPR;
+                canvas.style.width = size + 'px';
+                canvas.style.height = size + 'px';
+                ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+                return tile;
+            }
+
+            // tile size (CSS px). Will be recomputed on resize.
+            let TILE = 48;
+
+            function drawBase(){
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                ctx.globalAlpha = 0.06;
+                ctx.fillStyle = '#fff';
+                for(let r=0;r<ROWS;r++){
+                    for(let c=0;c<COLS;c++){
+                        const x = c * TILE, y = r * TILE;
+                        ctx.fillRect(x + 1, y + 1, TILE - 2, TILE - 2); // subtle grid background
+                    }
+                }
+                ctx.globalAlpha = 1;
+            }
+
+            function drawBoard(){
+                const pad = TILE_PADDING;
+                const artSize = TILE - pad*2;
+                for(let r=0;r<ROWS;r++){
+                    for(let c=0;c<COLS;c++){
+                        const v = grid[r][c];
+                        const x = c * TILE;
+                        const y = r * TILE;
+                        // draw tile background card with small rounded effect
+                        ctx.save();
+                        ctx.fillStyle = 'rgba(255,255,255,0.02)';
+                        roundRect(ctx, x + 2, y + 2, TILE - 4, TILE - 4, 8);
+                        ctx.fill();
+                        ctx.restore();
+
+                        if(v == null) continue;
+                        const img = sprites[v];
+                        if(!img) continue;
+                        // draw image with padding so visible separation exists
+                        ctx.drawImage(img, x + pad, y + pad, artSize, artSize);
+                    }
+                }
+            }
+
+            function drawExcept(skipSet){
+                drawBase();
+                const pad = TILE_PADDING;
+                const artSize = TILE - pad*2;
+                for(let r=0;r<ROWS;r++){
+                    for(let c=0;c<COLS;c++){
+                        if(skipSet && skipSet.has(`${r},${c}`)) continue;
+                        const v = grid[r][c];
+                        if(v == null) continue;
+                        const img = sprites[v];
+                        if(!img) continue;
+                        ctx.drawImage(img, c*TILE + pad, r*TILE + pad, artSize, artSize);
+                    }
+                }
+            }
+
+            function roundRect(ctx, x, y, w, h, r){
+                const rad = Math.min(r, w/2, h/2);
+                ctx.beginPath();
+                ctx.moveTo(x + rad, y);
+                ctx.arcTo(x + w, y, x + w, y + h, rad);
+                ctx.arcTo(x + w, y + h, x, y + h, rad);
+                ctx.arcTo(x, y + h, x, y, rad);
+                ctx.arcTo(x, y, x + w, y, rad);
+                ctx.closePath();
+            }
+
+            // -----------------------
+            // Board logic
+            // -----------------------
+            function createBoard(){
+                grid = Array.from({length: ROWS}, ()=> Array.from({length: COLS}, ()=> null));
+                for(let r=0;r<ROWS;r++){
+                    for(let c=0;c<COLS;c++){
+                        let t;
+                        do{
+                            t = rnd(TYPES);
+                        } while(
+                            (c >= 2 && grid[r][c-1] === t && grid[r][c-2] === t) ||
+                            (r >= 2 && grid[r-1][c] === t && grid[r-2][c] === t)
+                        );
+                        grid[r][c] = t;
+                    }
+                }
+                if(!hasAnyValidMove()) reshuffle(true);
+            }
+
+            function cloneTypes(){ return grid.map(row => row.slice()); }
+
+            function wouldMatchAfterSwap(types, a, b){
+                const A={r:a.r,c:a.c}, B={r:b.r,c:b.c};
+                if(!inBounds(A.r,A.c) || !inBounds(B.r,B.c)) return false;
+                const t = types[A.r][A.c];
+                types[A.r][A.c] = types[B.r][B.c];
+                types[B.r][B.c] = t;
+                // check rows
+                const rowsSet = new Set([A.r,B.r]);
+                for(const r of rowsSet){
+                    let c=0;
+                    while(c<COLS){
+                        const v = types[r][c];
+                        let j=c+1;
+                        while(j<COLS && types[r][j] === v) j++;
+                        if(v != null && j-c >= 3) return true;
+                        c = j;
+                    }
+                }
+                // check cols
+                const colsSet = new Set([A.c,B.c]);
+                for(const c of colsSet){
+                    let r=0;
+                    while(r<ROWS){
+                        const v = types[r][c];
+                        let j=r+1;
+                        while(j<ROWS && types[j][c] === v) j++;
+                        if(v != null && j-r >= 3) return true;
+                        r = j;
+                    }
+                }
+                return false;
+            }
+
+            function hasAnyValidMove(){
+                const types = cloneTypes();
+                for(let r=0;r<ROWS;r++){
+                    for(let c=0;c<COLS;c++){
+                        const a = {r,c};
+                        const nbrs = [{r,c:c+1},{r:r+1,c}];
+                        for(const b of nbrs){
+                            if(inBounds(b.r,b.c) && wouldMatchAfterSwap(types.map(row=>row.slice()), a, b)) return true;
+                        }
+                    }
+                }
+                return false;
+            }
+
+            function findMatches(){
+                const kill = new Set();
+                // rows
+                for(let r=0;r<ROWS;r++){
+                    let c=0;
+                    while(c<COLS){
+                        const v = grid[r][c];
+                        if(v == null){ c++; continue; }
+                        let j = c+1;
+                        while(j<COLS && grid[r][j] === v) j++;
+                        if(j-c >= 3) for(let cc=c; cc<j; cc++) kill.add(`${r},${cc}`);
+                        c = j;
+                    }
+                }
+                // cols
+                for(let c=0;c<COLS;c++){
+                    let r=0;
+                    while(r<ROWS){
+                        const v = grid[r][c];
+                        if(v == null){ r++; continue; }
+                        let j = r+1;
+                        while(j<ROWS && grid[j][c] === v) j++;
+                        if(j-r >= 3) for(let rr=r; rr<j; rr++) kill.add(`${rr},${c}`);
+                        r = j;
+                    }
+                }
+                return kill;
+            }
+
+            // -----------------------
+            // Animations helpers
+            // -----------------------
+            function raf(){ return new Promise(r => requestAnimationFrame(r)); }
+            async function tween(ms, drawFrame){
+                const t0 = performance.now();
+                let done = false;
+                while(!done){
+                    const now = performance.now();
+                    const p = Math.min(1, (now - t0) / ms);
+                    drawFrame(p);
+                    if(p >= 1) done = true;
+                    await raf();
+                }
+            }
+
+            async function animSwap(a,b){
+                const va = grid[a.r][a.c], vb = grid[b.r][b.c];
+                await tween(200, (p) => {
+                    drawBase();
+                    drawExcept(new Set([`${a.r},${a.c}`, `${b.r},${b.c}`]));
+                    const ax = a.c * TILE, ay = a.r * TILE, bx = b.c * TILE, by = b.r * TILE;
+                    const mx = ax + (bx - ax) * p, my = ay + (by - ay) * p;
+                    const nx = bx + (ax - bx) * p, ny = by + (ay - by) * p;
+                    if(sprites[va]) ctx.drawImage(sprites[va], mx + TILE_PADDING, my + TILE_PADDING, TILE - TILE_PADDING*2, TILE - TILE_PADDING*2);
+                    if(sprites[vb]) ctx.drawImage(sprites[vb], nx + TILE_PADDING, ny + TILE_PADDING, TILE - TILE_PADDING*2, TILE - TILE_PADDING*2);
+                });
+            }
+
+            async function animClear(kill){
+                await tween(240, (p) => {
+                    drawExcept(kill);
+                    for(const key of kill){
+                        const [r,c] = key.split(',').map(Number);
+                        const v = grid[r][c];
+                        if(v == null) continue;
+                        ctx.save();
+                        ctx.globalAlpha = 1 - p;
+                        const scale = 1 + 0.2 * p;
+                        const w = (TILE - TILE_PADDING*2) * scale;
+                        const h = w;
+                        const x = c*TILE + TILE_PADDING + ( (TILE - TILE_PADDING*2) - w )/2;
+                        const y = r*TILE + TILE_PADDING + ( (TILE - TILE_PADDING*2) - h )/2;
+                        if(sprites[v]) ctx.drawImage(sprites[v], x, y, w, h);
+                        ctx.restore();
+                    }
+                });
+            }
+
+            function planMoves(){
+                const moves = [];
+                for(let c=0;c<COLS;c++){
+                    const src = [];
+                    for(let r=ROWS-1;r>=0;r--){
+                        if(grid[r][c] != null) src.push(r);
+                    }
+                    const count = src.length;
+                    const start = ROWS - count;
+                    for(let i=0;i<count;i++){
+                        const fromR = src[count-1-i];
+                        const toR = start + i;
+                        if(fromR !== toR) moves.push({c, fromR, toR, v: grid[fromR][c]});
+                    }
+                }
+                return moves;
+            }
+
+            async function animFall(movs){
+                if(!movs.length) return;
+                await tween(260, (p) => {
+                    drawBase();
+                    const movingKeys = new Set(movs.map(m => `${m.fromR},${m.c}`));
+                    drawExcept(movingKeys);
+                    for(const m of movs){
+                        const x = m.c * TILE;
+                        const y0 = m.fromR * TILE;
+                        const y1 = m.toR * TILE;
+                        const y = y0 + (y1 - y0) * p;
+                        if(sprites[m.v]) ctx.drawImage(sprites[m.v], x + TILE_PADDING, y + TILE_PADDING, TILE - TILE_PADDING*2, TILE - TILE_PADDING*2);
+                    }
+                });
+            }
+
+            async function animSpawn(spawns){
+                if(!spawns.length) return;
+                await tween(260, (p) => {
+                    drawBase();
+                    drawBoard();
+                    for(const s of spawns){
+                        const x = s.c * TILE;
+                        const y = (s.r - (1 - p) * s.drop) * TILE;
+                        if(sprites[s.v]) ctx.drawImage(sprites[s.v], x + TILE_PADDING, y + TILE_PADDING, TILE - TILE_PADDING*2, TILE - TILE_PADDING*2);
+                    }
+                });
+            }
+
+            // -----------------------
+            // Mutations & resolve
+            // -----------------------
+            function applyClears(kill){
+                if(!kill || kill.size === 0) return 0;
+                let cleared = 0;
+                for(const key of kill){
+                    const [r,c] = key.split(',').map(Number);
+                    if(inBounds(r,c) && grid[r][c] != null){
+                        grid[r][c] = null;
+                        cleared++;
+                    }
+                }
+                score += cleared * CLEAR_POINTS;
+                progress = Math.min(1, score / target);
+                updateHUD();
+                return cleared;
+            }
+
+            function collapse(){
+                for(let c=0;c<COLS;c++){
+                    let write = ROWS - 1;
+                    for(let r=ROWS-1;r>=0;r--){
+                        const v = grid[r][c];
+                        if(v != null){
+                            grid[write][c] = v;
+                            if(write !== r) grid[r][c] = null;
+                            write--;
+                        }
+                    }
+                    for(let r=write;r>=0;r--) grid[r][c] = null;
+                }
+                draw();
+            }
+
+            function refill(){
+                const spawns = [];
+                for(let c=0;c<COLS;c++){
+                    let blanks = 0;
+                    for(let r=0;r<ROWS;r++) if(grid[r][c] == null) blanks++;
+                    for(let r=0;r<ROWS;r++){
+                        if(grid[r][c] == null){
+                            const v = rnd(TYPES);
+                            grid[r][c] = v;
+                            spawns.push({r, c, v, drop: blanks});
+                        }
+                    }
+                }
+                return spawns;
+            }
+
+            async function resolveAllAnimated(){
+                let loops = 0;
+                while(loops++ < 40){
+                    const kill = findMatches();
+                    if(kill.size === 0) break;
+                    playSound('match');
+                    await animClear(kill);
+                    applyClears(kill);
+                    const planned = planMoves();
+                    await animFall(planned);
+                    collapse();
+                    const spawns = refill();
+                    await animSpawn(spawns);
+                    draw();
+                }
+                if(!hasAnyValidMove()){ toast('No moves — shuffle'); reshuffle(true); draw(); }
+            }
+
+            function resolveAllFast(){
+                let loops = 0;
+                while(loops++ < 50){
+                    const kill = findMatches();
+                    if(kill.size === 0) break;
+                    applyClears(kill);
+                    collapse();
+                    refill();
+                }
+                if(!hasAnyValidMove()) reshuffle(true);
+            }
+
+            function reshuffle(silent=false){
+                for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) if(grid[r][c] == null) grid[r][c] = rnd(TYPES);
+                const flat = grid.flat();
+                for(let i=flat.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [flat[i],flat[j]] = [flat[j],flat[i]]; }
+                let k=0; for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) grid[r][c] = flat[k++];
+                // tweak instant matches
+                for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
+                    const t = grid[r][c];
+                    if((c>=2 && grid[r][c-1]===t && grid[r][c-2]===t) || (r>=2 && grid[r-1][c]===t && grid[r-2][c]===t)){
+                        grid[r][c] = (t+1) % TYPES;
+                    }
+                }
+                if(!silent) toast('Shuffled');
+            }
+
+            // -----------------------
+            // Draw + resize
+            // -----------------------
+            function draw(){
+                drawBase();
+                drawBoard();
+                if(sel){
+                    ctx.save();
+                    ctx.lineWidth = 3;
+                    ctx.strokeStyle = 'rgba(14,165,233,.95)';
+                    ctx.shadowColor = 'rgba(14,165,233,.5)';
+                    ctx.shadowBlur = 8;
+                    roundRect(ctx, sel.c*TILE+2, sel.r*TILE+2, TILE-4, TILE-4, 8);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+
+            function resize(){
+                TILE = setCanvasSize();
+                draw();
+            }
+            window.addEventListener('resize', resize);
+            window.addEventListener('orientationchange', resize);
+
+            // -----------------------
+            // Input & swap
+            // -----------------------
+            function posToCell(x, y){
+                const rect = canvas.getBoundingClientRect();
+                const cx = x - rect.left;
+                const cy = y - rect.top;
+                // Use the actual rendered size from getBoundingClientRect to calculate
+                // the cell, making it robust against CSS scaling/constraints.
+                const c = Math.floor(cx / rect.width * COLS);
+                const r = Math.floor(cy / rect.height * ROWS);
+                return inBounds(r,c) ? {r,c} : null;
+            }
+            const areAdj = (a,b) => Math.abs(a.r - b.r) + Math.abs(a.c - b.c) === 1;
+
+            async function trySwap(a,b){
+                if(busy) return;
+                busy = true;
+                playSound('swap');
+                await animSwap(a,b);
+                [grid[a.r][a.c], grid[b.r][b.c]] = [grid[b.r][b.c], grid[a.r][a.c]];
+                const made = findMatches().size > 0;
+                if(!made){
+                    await animSwap(b,a);
+                    busy = false;
+                    draw();
+                    return;
+                }
+                sel = null;
+                if(LEVELS[levelIndex].mode === 'moves') { moves--; }
+                updateHUD();
+                await resolveAllAnimated();
+                checkEnd();
+                busy = false;
+                draw();
+            }
+
+            // -----------------------
+            // HUD / level end checks
+            // -----------------------
+            function updateHUD(){
+                hudLevel.textContent = `Level ${LEVELS[levelIndex].id}`;
+                hudScore.textContent = `Score: ${score}`;
+                hudMoves.textContent = (LEVELS[levelIndex].mode === 'moves') ? `Moves: ${moves}` : '';
+                hudTarget.textContent = `Target: ${target}`;
+                hudTime.textContent = (LEVELS[levelIndex].mode === 'timer') ? formatTime(timeLeft) : '';
+                progressFill.style.width = `${Math.min(100, Math.floor(progress * 100))}%`;
+                const best = bestScores[LEVELS[levelIndex].id];
+                bestInfo.textContent = best ? `Best: ${best}` : 'Best: —';
+                // sidebar
+                document.getElementById('stat-level').textContent = `Level ${LEVELS[levelIndex].id}`;
+                document.getElementById('stat-mode').textContent = LEVELS[levelIndex].mode.toUpperCase();
+                document.getElementById('stat-score').textContent = score;
+                document.getElementById('stat-target').textContent = target;
+                document.getElementById('stat-moves').textContent = (LEVELS[levelIndex].mode==='moves')? moves : formatTime(timeLeft);
+            }
+
+            function checkEnd(){
+                progress = Math.min(1, score / target);
+                updateHUD();
+                if(score >= target){
+                    playSound('levelup');
+                    // save best & unlock next
+                    const lvlId = LEVELS[levelIndex].id;
+                    const prevBest = bestScores[lvlId] || 0;
+                    if(score > prevBest){ bestScores[lvlId] = score; localStorage.setItem(LS_BEST, JSON.stringify(bestScores)); }
+                    if(!unlocked.includes(lvlId+1) && levelIndex < LEVELS.length - 1){ unlocked.push(lvlId+1); localStorage.setItem(LS_UNLOCK, JSON.stringify(unlocked)); }
+                    stopMusic();
+                    showMessage(`Level ${LEVELS[levelIndex].id} Cleared!`, `Score: ${score}`, () => {
+                        if(levelIndex < LEVELS.length - 1) startLevel(levelIndex + 1);
+                        else showMessage('All levels complete', 'You finished the game!');
+                    });
+                } else if(LEVELS[levelIndex].mode === 'moves' && moves <= 0){
+                    playSound('gameover');
+                    stopMusic();
+                    showMessage('Level Failed', `Target ${target} · Score ${score}`, ()=> startLevel(levelIndex));
+                }
+            }
+
+            // -----------------------
+            // Input handlers (touch-friendly)
+            // -----------------------
+            let dragStart = null;
+            canvas.addEventListener('pointerdown', (e) => {
+                if(!ready || busy) return;
+                const rc = posToCell(e.clientX, e.clientY);
+                if(!rc) return;
+                dragStart = {x: e.clientX, y: e.clientY, rc};
+                sel = rc; draw();
+            }, { passive: true });
+
+            canvas.addEventListener('pointermove', (e) => {
+                if(!ready || !dragStart || busy) return;
+                const dx = e.clientX - dragStart.x, dy = e.clientY - dragStart.y;
+                if(Math.hypot(dx, dy) < 18) return;
+                const dir = Math.abs(dx) > Math.abs(dy) ? {dr:0, dc: dx>0?1:-1} : {dr: dy>0?1:-1, dc:0};
+                const a = dragStart.rc;
+                const b = { r: a.r + dir.dr, c: a.c + dir.dc };
+                if(inBounds(b.r, b.c)) trySwap(a, b);
+                dragStart = null;
+            }, { passive: true });
+
+            canvas.addEventListener('pointerup', (e) => {
+                if(!ready || busy) return;
+                if(!dragStart) return;
+                const a = dragStart.rc;
+                const rc = posToCell(e.clientX, e.clientY) || a;
+                if(sel && rc && areAdj(sel, rc)) trySwap(sel, rc);
+                else if(rc){ sel = rc; draw(); }
+                dragStart = null;
+            }, { passive: true });
+
+            canvas.addEventListener('pointercancel', ()=>{ dragStart = null; });
+
+            // -----------------------
+            // Level Select, messages, controls
+            // -----------------------
+            openLevelSelect.addEventListener('click', ()=>{ populateLevels(); levelOverlay.style.display = 'flex'; });
+            lvlClose.addEventListener('click', ()=> levelOverlay.style.display = 'none');
+            ovOk.addEventListener('click', ()=> overlayMsg.style.display = 'none');
+            btnShuffle.addEventListener('click', ()=>{ if(!ready||busy) return; reshuffle(); draw(); });
+            btnRestart.addEventListener('click', ()=>{ if(!ready||busy) return; startLevel(levelIndex); });
+            btnHint.addEventListener('click', ()=>{ if(!ready||busy) return; if(LEVELS[levelIndex].mode === 'moves') moves++; toast('Hint: +1 move'); updateHUD(); });
+
+            muteBtn.addEventListener('click', ()=>{ muted = !muted; localStorage.setItem(LS_MUTE, muted? '1':'0'); updateMuteUI(); if(muted) stopMusic(); else playMusic(); });
+
+            function populateLevels(){
+                levelsGrid.innerHTML = '';
+                for(let i=0;i<LEVELS.length;i++){
+                    const L = LEVELS[i];
+                    const btn = document.createElement('button');
+                    btn.className = 'level-btn';
+                    btn.textContent = `L${L.id} ${L.mode==='moves'?`(M:${L.moves})`:`(T:${L.time}s)`}`;
+                    if(!unlocked.includes(L.id)){
+                        btn.classList.add('locked');
+                        btn.disabled = true;
+                    } else {
+                        btn.addEventListener('click', ()=>{ levelOverlay.style.display = 'none'; startLevel(i); });
+                    }
+                    levelsGrid.appendChild(btn);
+                }
+            }
+
+            function showMessage(title, body, cb){
+                ovTitle.textContent = title;
+                ovBody.textContent = body || '';
+                overlayMsg.style.display = 'flex';
+                ovOk.onclick = ()=> { overlayMsg.style.display = 'none'; if(cb) cb(); };
+            }
+
+            function toast(text){
+                const el = document.createElement('div');
+                el.textContent = text;
+                el.style.position = 'fixed';
+                el.style.left = '50%'; el.style.top = '18px';
+                el.style.transform = 'translateX(-50%)';
+                el.style.padding = '8px 12px';
+                el.style.borderRadius = '999px';
+                el.style.background = 'rgba(15,23,42,0.9)';
+                el.style.border = '1px solid rgba(148,163,184,0.3)';
+                el.style.color = '#e2e8f0';
+                el.style.fontSize = '14px';
+                el.style.zIndex = 200;
+                document.body.appendChild(el);
+                setTimeout(()=>{ el.style.transition = 'opacity .3s'; el.style.opacity = '0'; setTimeout(()=> el.remove(), 320); }, 900);
+            }
+
+            // -----------------------
+            // Timer & level control
+            // -----------------------
+            function formatTime(s){ const m=Math.floor(s/60),r=s%60; return `${m<10?'0':''}${m}:${r<10?'0':''}${r}`; }
+            function clearTimer(){ if(timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
+            function startTimer(sec){
+                clearTimer();
+                timeLeft = sec;
+                updateHUD();
+                timerInterval = setInterval(()=> {
+                    timeLeft--;
+                    if(timeLeft <= 0){
+                        clearTimer();
+                        playSound('gameover');
+                        stopMusic();
+                        showMessage('Time Up', 'Level failed', ()=> startLevel(levelIndex));
+                    }
+                    updateHUD();
+                }, 1000);
+            }
+
+            function startLevel(idx){
+                levelIndex = idx;
+                const L = LEVELS[levelIndex];
+                ROWS = L.grid; COLS = L.grid;
+                grid = [];
+                score = 0; progress = 0; target = L.target;
+                moves = (L.mode === 'moves') ? L.moves : 0;
+                createBoard();
+                resolveAllFast();
+                updateHUD();
+                TILE = setCanvasSize();
+                sel = null;
+                draw();
+                clearTimer();
+                if(L.mode === 'timer'){
+                    startTimer(L.time);
+                    playMusic();
+                } else {
+                    stopMusic();
+                }
+            }
+
+            // -----------------------
+            // Tests (console)
+            // -----------------------
+            function runTests(){
+                const results = [];
+                results.push({ name: 'T0 sprites-loaded', pass: Array.isArray(sprites) && sprites.length === TYPES && sprites.every(Boolean) });
+                createBoard();
+                const m1 = findMatches().size;
+                results.push({ name: 'T1 no-initial-matches', pass: m1 === 0, detail: `matches=${m1}` });
+                const v1 = hasAnyValidMove();
+                results.push({ name: 'T2 has-valid-move', pass: v1 === true });
+                console.table(results);
+                toast(results.every(r=>r.pass)? 'Tests passed' : 'Some tests failed — see console');
+                createBoard(); resolveAllFast(); draw();
+            }
+
+            // -----------------------
+            // Boot: load sprites, sounds, floating candies, start
+            // -----------------------
+            async function loadCandy(i){
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.decoding = 'async';
+                    img.crossOrigin = "Anonymous"; // Important for loading external images
+                    img.src = CANDY_IMAGES[i-1]; // Use your direct image links
+                    img.onload = () => resolve(img);
+                    img.onerror = () => reject(new Error(`Candy ${i} not found at ${CANDY_IMAGES[i-1]}`));
+                });
+            }
+
+            function spawnFloatingCandies(){
+                // small decorative floating candies using the candy sprites if loaded
+                floatingRoot.innerHTML = '';
+                for(let i=0;i<8;i++){
+                    const el = document.createElement('img');
+                    el.className = 'float-candy';
+                    el.style.left = Math.random() * 100 + '%';
+                    el.style.top = Math.random() * 100 + '%';
+                    el.style.transform = `translate(-50%,-50%) scale(${0.6 + Math.random()*0.9})`;
+                    const idx = (i % TYPES);
+                    if(sprites[idx] && sprites[idx].src) el.src = sprites[idx].src;
+                    else el.src = CANDY_IMAGES[idx]; // fallback to your direct links
+                    el.style.opacity = 0.06 + Math.random()*0.12;
+                    el.style.animationDuration = (8 + Math.random()*8) + 's';
+                    floatingRoot.appendChild(el);
+                }
+            }
+
+            async function boot(){
+                // load sprites robustly
+                try{
+                    const loads = [];
+                    for(let i=1;i<=TYPES;i++) loads.push(loadCandy(i));
+                    const imgs = await Promise.all(loads);
+                    imgs.forEach((img, idx) => sprites[idx] = img);
+                }catch(err){
+                    console.error('Error loading candy images:', err);
+                    // fallback: create colored placeholders
+                    for(let i=0;i<TYPES;i++){
+                        const canvas = document.createElement('canvas');
+                        canvas.width = 64;
+                        canvas.height = 64;
+                        const ctx = canvas.getContext('2d');
+                        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9c74f', '#f9844a', '#90be6d'];
+                        ctx.fillStyle = colors[i];
+                        ctx.beginPath();
+                        ctx.arc(32, 32, 28, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+                        ctx.beginPath();
+                        ctx.arc(20, 20, 10, 0, Math.PI * 2);
+                        ctx.fill();
+                        const img = new Image();
+                        img.src = canvas.toDataURL();
+                        sprites[i] = img;
+                    }
+                }
+
+                // load sounds (best-effort)
+                try{
+                    loadSound('swap', SOUNDS.swap);
+                    loadSound('match', SOUNDS.match);
+                    loadSound('levelup', SOUNDS.levelup);
+                    loadSound('gameover', SOUNDS.gameover);
+                    loadSound('bg', SOUNDS.bg);
+                }catch(e){}
+
+                updateMuteUI();
+
+                // floating candies decoration
+                spawnFloatingCandies();
+
+                // ensure unlocked
+                if(!unlocked.includes(1)){ unlocked = [1]; localStorage.setItem(LS_UNLOCK, JSON.stringify(unlocked)); }
+
+                populateLevels();
+                startLevel(0);
+                ready = true;
+
+                // expose for debug
+                window.candyGame = { runTests, startLevel, sprites, grid, LEVELS };
+            }
+
+            // run boot
+            boot();
+
+            // expose minimal helpers to console
+            window.candyGame = window.candyGame || {};
+            window.candyGame.runTests = runTests;
+            window.candyGame.startLevel = startLevel;
+            window.candyGame.toggleMute = () => { muted = !muted; localStorage.setItem(LS_MUTE, muted? '1':'0'); updateMuteUI(); if(muted) stopMusic(); else playMusic(); };
+
+            // small polish: keyboard support for development (swap with arrow keys while selected)
+            window.addEventListener('keydown', (e) => {
+                if(!ready) return;
+                if(!sel) return;
+                if(busy) return;
+                const mapping = { ArrowUp: {dr:-1,dc:0}, ArrowDown:{dr:1,dc:0}, ArrowLeft:{dr:0,dc:-1}, ArrowRight:{dr:0,dc:1} };
+                if(e.key in mapping){
+                    const d = mapping[e.key];
+                    const a = sel;
+                    const b = { r: a.r + d.dr, c: a.c + d.dc };
+                    if(inBounds(b.r,b.c)) trySwap(a,b);
+                }
+            });
+
+            // small helper: update HUD every 300ms to catch timer updates smoothly
+            setInterval(()=>{ if(ready) updateHUD(); }, 300);
+
+        })();
+    </script>
+</body>
+</html>
