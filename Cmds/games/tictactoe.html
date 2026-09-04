@@ -586,7 +586,7 @@ function newGame(){
   playerTurn = true;
 
   boardEl.style.gridTemplateColumns =
-    \`repeat(\${size},1fr)\`;
+    `repeat(${size},1fr)`;
 
   statusEl.className = "status";
   statusEl.textContent = "Your turn";
@@ -1085,7 +1085,7 @@ function createConfetti(){
       Math.random() * .4 + "s";
 
     piece.style.transform =
-      \`rotate(\${Math.random()*360}deg)\`;
+      `rotate(${Math.random()*360}deg)`;
 
     document.body.appendChild(
       piece
