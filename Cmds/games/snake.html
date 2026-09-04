@@ -64,85 +64,6 @@ h1 {
     opacity: 0.8;
 }
 
-.menu {
-    width: 100%;
-    max-width: 460px;
-    margin: 0 auto;
-    display: grid;
-    gap: 14px;
-}
-
-label {
-    display: block;
-    color: #b7c0e6;
-    font-size: 13px;
-    font-weight: 600;
-    text-align: left;
-    letter-spacing: 0.5px;
-}
-
-select, button {
-    width: 100%;
-    border: 0;
-    outline: none;
-    border-radius: 16px;
-    padding: 16px 18px;
-    font-size: 16px;
-    font-weight: 600;
-    transition: 0.2s ease;
-}
-
-select {
-    background: #262d44;
-    color: #eef3ff;
-    border: 1px solid #3e4663;
-    box-shadow: inset 0 2px 6px rgba(0,0,0,0.3);
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239aa3c9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    background-size: 16px;
-    cursor: pointer;
-}
-
-select:focus {
-    border-color: #4ddcff;
-    box-shadow: 0 0 0 3px rgba(77, 220, 255, 0.3);
-}
-
-#startBtn {
-    margin-top: 6px;
-    background: linear-gradient(135deg, #4ddcff, #2ab8e0);
-    color: #00131c;
-    border: none;
-    box-shadow: 0 8px 24px rgba(77, 220, 255, 0.3);
-    letter-spacing: 1px;
-    cursor: pointer;
-}
-
-#startBtn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(77, 220, 255, 0.4);
-}
-
-#startBtn:active {
-    transform: scale(0.96);
-}
-
-.hidden {
-    display: none !important;
-}
-
-#gameArea {
-    width: 100%;
-    animation: fadeIn 0.4s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 .stats {
     display: flex;
     justify-content: space-between;
@@ -264,36 +185,28 @@ canvas {
     margin: 18px auto 10px;
 }
 
-#menuBtn {
+#restartBtn {
     display: block;
     width: 100%;
-    background: rgba(30, 37, 60, 0.8);
-    backdrop-filter: blur(4px);
-    color: #b7c0e6;
-    border: 1px solid #3e4663;
+    background: linear-gradient(135deg, #4ddcff, #2ab8e0);
+    color: #00131c;
+    border: none;
     border-radius: 16px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
     padding: 16px;
     transition: 0.2s;
     cursor: pointer;
+    box-shadow: 0 8px 24px rgba(77, 220, 255, 0.3);
 }
 
-#menuBtn:hover {
-    background: rgba(45, 54, 85, 0.9);
-    border-color: #4ddcff;
-    color: #fff;
+#restartBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(77, 220, 255, 0.4);
 }
 
-.level-badge {
-    display: inline-block;
-    background: rgba(77, 220, 255, 0.15);
-    border: 1px solid rgba(77, 220, 255, 0.3);
-    border-radius: 12px;
-    padding: 2px 12px;
-    font-size: 12px;
-    color: #4ddcff;
-    margin-left: 6px;
+#restartBtn:active {
+    transform: scale(0.96);
 }
 
 @media (max-width: 420px) {
@@ -322,47 +235,32 @@ canvas {
     <h1>❄️ ICE SNAKE</h1>
     <div class="subtitle">Eat · Grow · Survive</div>
 
-    <div id="menu" class="menu">
-        <label>LEVEL</label>
-        <select id="levelSelect">
-            <option value="1">🌱 LEVEL 1 - EASY</option>
-            <option value="2" selected>🌿 LEVEL 2 - MEDIUM</option>
-            <option value="3">🔥 LEVEL 3 - HARD</option>
-            <option value="4">⚡ LEVEL 4 - EXPERT</option>
-            <option value="5">💀 LEVEL 5 - INSANE</option>
-        </select>
-
-        <button id="startBtn">▶ START GAME</button>
+    <div class="stats">
+        <span>Score: <b id="score">0</b></span>
+        <span>Best: <b id="best">0</b></span>
     </div>
 
-    <div id="gameArea" class="hidden">
-        <div class="stats">
-            <span>Score: <b id="score">0</b></span>
-            <span>Best: <b id="best">0</b> <span class="level-badge" id="levelBadge">Lv.1</span></span>
+    <div id="status" class="status">🐍 Press RESTART to play!</div>
+
+    <div class="game-wrapper">
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <div class="controls">
+            <button class="control empty"></button>
+            <button class="control" data-dir="up">▲</button>
+            <button class="control empty"></button>
+
+            <button class="control" data-dir="left">◀</button>
+            <button class="control" data-dir="down">▼</button>
+            <button class="control" data-dir="right">▶</button>
         </div>
+    </div>
 
-        <div id="status" class="status">🐍 Ready to play!</div>
+    <div class="actions">
+        <button id="restartBtn">▶ RESTART GAME</button>
+    </div>
 
-        <div class="game-wrapper">
-            <canvas id="gameCanvas" width="400" height="400"></canvas>
-            <div class="controls">
-                <button class="control empty"></button>
-                <button class="control" data-dir="up">▲</button>
-                <button class="control empty"></button>
-
-                <button class="control" data-dir="left">◀</button>
-                <button class="control" data-dir="down">▼</button>
-                <button class="control" data-dir="right">▶</button>
-            </div>
-        </div>
-
-        <div class="actions">
-            <button id="menuBtn">☰ MENU</button>
-        </div>
-
-        <div class="message">
-            ⌨️ Arrow Keys / WASD &nbsp;·&nbsp; 📱 Touch Buttons
-        </div>
+    <div class="message">
+        ⌨️ Arrow Keys / WASD &nbsp;·&nbsp; 📱 Touch Buttons
     </div>
 </div>
 
@@ -370,28 +268,14 @@ canvas {
 // Get DOM elements
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-const menu = document.getElementById("menu");
-const gameArea = document.getElementById("gameArea");
 const statusEl = document.getElementById("status");
-const levelSelect = document.getElementById("levelSelect");
 const scoreText = document.getElementById("score");
 const bestText = document.getElementById("best");
-const levelBadge = document.getElementById("levelBadge");
-const startBtn = document.getElementById("startBtn");
-const menuBtn = document.getElementById("menuBtn");
+const restartBtn = document.getElementById("restartBtn");
 
 // Game constants
 const grid = 20;
 const tile = canvas.width / grid;
-
-// Level configurations
-const LEVELS = {
-    1: { speed: 210, label: "EASY", color: "#6fdf9f" },
-    2: { speed: 150, label: "MEDIUM", color: "#f7d44a" },
-    3: { speed: 110, label: "HARD", color: "#ff9f6e" },
-    4: { speed: 75, label: "EXPERT", color: "#ff7b9c" },
-    5: { speed: 50, label: "INSANE", color: "#ff4466" }
-};
 
 // Game variables
 let snake = [];
@@ -403,8 +287,6 @@ let best = parseInt(localStorage.getItem("iceSnakeBest")) || 0;
 let gameRunning = false;
 let gameOver = false;
 let timer = null;
-let currentLevel = 2;
-let speed = 150;
 
 // Sound
 let audioContext = null;
@@ -433,13 +315,6 @@ function playSound(type) {
             gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.25, audioContext.currentTime + 0.01);
             gain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.18);
-        } else if (type === "levelup") {
-            oscillator.type = "sine";
-            oscillator.frequency.setValueAtTime(400, audioContext.currentTime);
-            oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.15);
-            gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.2, audioContext.currentTime + 0.01);
-            gain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.2);
         } else if (type === "gameover") {
             oscillator.type = "sawtooth";
             oscillator.frequency.setValueAtTime(300, audioContext.currentTime);
@@ -458,35 +333,6 @@ function playSound(type) {
     }
 }
 
-// ========== LEVEL SYSTEM ==========
-function getLevelForScore(score) {
-    if (score < 10) return 1;
-    if (score < 25) return 2;
-    if (score < 45) return 3;
-    if (score < 70) return 4;
-    return 5;
-}
-
-function updateLevelDisplay() {
-    const level = getLevelForScore(score);
-    currentLevel = level;
-    const config = LEVELS[level];
-    levelBadge.textContent = `Lv.${level} ${config.label}`;
-    levelBadge.style.color = config.color;
-    
-    if (score > 0 && score % 10 === 0 && gameRunning) {
-        statusEl.className = "status";
-        statusEl.textContent = `⭐ LEVEL ${level} - ${config.label}! ⭐`;
-        playSound("levelup");
-        setTimeout(() => {
-            if (gameRunning && !gameOver) {
-                statusEl.className = "status";
-                statusEl.textContent = "🐍 Keep going!";
-            }
-        }, 1200);
-    }
-}
-
 // ========== GAME FUNCTIONS ==========
 function createFood() {
     let valid = false;
@@ -500,7 +346,6 @@ function createFood() {
         attempts++;
     }
     if (!valid) {
-        // Board is full - win!
         endGame(true);
     }
 }
@@ -513,11 +358,6 @@ function startGame() {
     }
 
     // Reset game state
-    const selectedLevel = parseInt(levelSelect.value);
-    currentLevel = selectedLevel;
-    const config = LEVELS[selectedLevel];
-    speed = config.speed;
-
     snake = [
         {x: 10, y: 10},
         {x: 9, y: 10},
@@ -531,16 +371,14 @@ function startGame() {
     gameOver = false;
 
     scoreText.textContent = score;
-    levelBadge.textContent = `Lv.${selectedLevel} ${config.label}`;
-    levelBadge.style.color = config.color;
     statusEl.className = "status";
-    statusEl.textContent = `🐍 Level ${selectedLevel} - ${config.label}`;
+    statusEl.textContent = "🐍 Playing...";
 
     createFood();
     draw();
 
-    // Start game loop
-    timer = setInterval(gameLoop, speed);
+    // Start game loop at 150ms speed
+    timer = setInterval(gameLoop, 150);
 }
 
 function gameLoop() {
@@ -586,22 +424,6 @@ function gameLoop() {
             localStorage.setItem("iceSnakeBest", best);
         }
 
-        updateLevelDisplay();
-
-        // Speed up gradually
-        const levelConfig = LEVELS[currentLevel];
-        const baseSpeed = levelConfig.speed;
-        const speedReduction = Math.min(score * 1.2, baseSpeed - 40);
-        const newSpeed = Math.max(40, baseSpeed - speedReduction);
-        
-        if (newSpeed !== speed) {
-            speed = newSpeed;
-            if (timer) {
-                clearInterval(timer);
-                timer = setInterval(gameLoop, speed);
-            }
-        }
-
         createFood();
     } else {
         snake.pop();
@@ -621,13 +443,12 @@ function endGame(win = false) {
     if (win) {
         statusEl.className = "status win";
         statusEl.textContent = "🎉 YOU WIN! Board is full! 🎉";
-        playSound("levelup");
     } else {
         statusEl.className = "status lose";
         statusEl.textContent = "💀 GAME OVER!";
         playSound("gameover");
     }
-    startBtn.textContent = "▶ PLAY AGAIN";
+    restartBtn.textContent = "🔄 PLAY AGAIN";
     draw();
 }
 
@@ -717,7 +538,7 @@ function draw() {
         ctx.shadowBlur = 0;
         ctx.fillStyle = "#8892b5";
         ctx.font = "18px 'Segoe UI', Arial";
-        ctx.fillText(`Score: ${score}  ·  Level ${currentLevel}`, canvas.width / 2, canvas.height / 2 + 30);
+        ctx.fillText(`Score: ${score}`, canvas.width / 2, canvas.height / 2 + 30);
     }
 }
 
@@ -821,41 +642,13 @@ document.querySelectorAll(".control").forEach(button => {
     });
 });
 
-// ========== MENU / START BUTTONS ==========
-// Start button - this is the important fix
-startBtn.onclick = function(e) {
+// ========== RESTART BUTTON ==========
+restartBtn.onclick = function(e) {
     e.preventDefault();
-    console.log("Start button clicked!"); // Debug log
-    
-    // Hide menu, show game
-    menu.classList.add("hidden");
-    gameArea.classList.remove("hidden");
-    
-    // Start the game
     startGame();
 };
 
-// Menu button - go back to menu
-menuBtn.onclick = function(e) {
-    e.preventDefault();
-    console.log("Menu button clicked!"); // Debug log
-    
-    // Stop the game
-    gameRunning = false;
-    gameOver = true;
-    if (timer) {
-        clearInterval(timer);
-        timer = null;
-    }
-    
-    // Show menu, hide game
-    gameArea.classList.add("hidden");
-    menu.classList.remove("hidden");
-    startBtn.textContent = "▶ START GAME";
-};
-
 // ========== INITIAL DRAW ==========
-// Set initial snake for display
 snake = [
     {x: 10, y: 10},
     {x: 9, y: 10},
@@ -866,7 +659,7 @@ nextDirection = "right";
 createFood();
 draw();
 
-console.log("Game loaded! Click START GAME to play.");
+console.log("Game loaded! Click RESTART GAME to play.");
 </script>
 </body>
 </html>
