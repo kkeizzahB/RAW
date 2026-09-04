@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hill Climber Racing</title>
+    <title>Hill Climber Racing · 2D</title>
     <style>
         * {
             -webkit-tap-highlight-color: transparent;
@@ -28,133 +28,133 @@
         }
         .game-container {
             width: 100%;
-            max-width: 450px;
+            max-width: 470px;
             margin: auto;
-            padding: 10px;
+            padding: 12px;
         }
         .card-wrapper {
             background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 24px;
+            border-radius: 28px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            box-shadow: 0 24px 56px rgba(0,0,0,0.7);
             position: relative;
         }
         .header-bar {
-            padding: 14px 18px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 16px 20px 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(180deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.4) 100%);
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.3) 100%);
         }
         .brand-sub {
-            font-size: 9px;
-            letter-spacing: 1.8px;
+            font-size: 10px;
+            letter-spacing: 2px;
             color: #64748b;
             font-weight: 800;
             text-transform: uppercase;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
         }
         .brand-title {
-            font-size: 19px;
+            font-size: 20px;
             font-weight: 900;
             color: #f8fafc;
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
             gap: 6px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 12px rgba(0,0,0,0.6);
         }
         .score-group {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
         }
         .stat-box {
             text-align: right;
         }
         .score-val {
-            font-size: 19px;
+            font-size: 20px;
             font-weight: 900;
             color: #facc15;
-            text-shadow: 0 0 14px rgba(250,204,21,0.5);
+            text-shadow: 0 0 16px rgba(250,204,21,0.5);
             font-family: monospace, sans-serif;
         }
         .coins-val {
-            font-size: 11px;
+            font-size: 12px;
             color: #f59e0b;
             font-weight: 800;
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            gap: 3px;
+            gap: 4px;
         }
         .best-val {
-            font-size: 10px;
+            font-size: 11px;
             color: #94a3b8;
             font-weight: 700;
-            margin-top: 1px;
+            margin-top: 2px;
         }
 
         .canvas-wrapper {
             position: relative;
             width: 100%;
-            padding: 10px;
-            background: rgba(0,0,0,0.25);
+            padding: 12px;
+            background: rgba(0,0,0,0.3);
         }
         canvas#game {
             width: 100%;
             height: auto;
-            border-radius: 16px;
+            border-radius: 18px;
             display: block;
             background: #38bdf8;
-            border: 1px solid rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.12);
             touch-action: none;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.35);
         }
 
         .controls-bar {
             display: flex;
-            gap: 12px;
-            padding: 8px 12px 14px;
+            gap: 14px;
+            padding: 10px 16px 18px;
             background: rgba(15, 23, 42, 0.9);
         }
         .ctrl-btn {
             flex: 1;
             border: 1px solid rgba(255,255,255,0.2);
             color: #fff;
-            padding: 14px 0;
-            border-radius: 16px;
-            font-size: 15px;
+            padding: 16px 0;
+            border-radius: 18px;
+            font-size: 16px;
             font-weight: 900;
             text-align: center;
             cursor: pointer;
             user-select: none;
             transition: all 0.1s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            letter-spacing: 0.5px;
+            gap: 10px;
+            letter-spacing: 0.6px;
         }
         .ctrl-btn:active, .ctrl-btn.active {
-            transform: translateY(2px) scale(0.96);
+            transform: translateY(3px) scale(0.96);
         }
         .ctrl-btn.brake {
-            background: linear-gradient(180deg, rgba(239,68,68,0.45) 0%, rgba(185,28,28,0.7) 100%);
+            background: linear-gradient(180deg, rgba(239,68,68,0.5) 0%, rgba(185,28,28,0.75) 100%);
             border-color: rgba(248,113,113,0.6);
-            box-shadow: 0 8px 20px rgba(239,68,68,0.25);
+            box-shadow: 0 8px 24px rgba(239,68,68,0.3);
         }
         .ctrl-btn.gas {
-            background: linear-gradient(180deg, rgba(34,197,94,0.45) 0%, rgba(21,128,61,0.7) 100%);
+            background: linear-gradient(180deg, rgba(34,197,94,0.5) 0%, rgba(21,128,61,0.75) 100%);
             border-color: rgba(74,222,128,0.6);
-            box-shadow: 0 8px 20px rgba(34,197,94,0.25);
+            box-shadow: 0 8px 24px rgba(34,197,94,0.3);
         }
 
         .overlay {
@@ -163,71 +163,71 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(15, 23, 42, 0.92);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.94);
+            backdrop-filter: blur(12px);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             z-index: 10;
-            padding: 20px;
+            padding: 24px;
             text-align: center;
-            border-radius: 24px;
+            border-radius: 28px;
             animation: fadeIn 0.2s ease;
         }
         .overlay.hidden {
             display: none !important;
         }
         .title-main {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 900;
             color: #facc15;
             letter-spacing: -0.5px;
-            text-shadow: 0 4px 20px rgba(250,204,21,0.5);
+            text-shadow: 0 4px 24px rgba(250,204,21,0.5);
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         .subtitle-main {
-            font-size: 13px;
+            font-size: 14px;
             color: #cbd5e1;
             font-weight: 600;
-            max-width: 280px;
-            line-height: 1.4;
+            max-width: 300px;
+            line-height: 1.5;
         }
         .btn-action {
             background: linear-gradient(180deg, #fde047 0%, #eab308 100%);
             color: #0f172a;
             border: none;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 900;
-            padding: 13px 36px;
-            border-radius: 30px;
+            padding: 14px 40px;
+            border-radius: 34px;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(250,204,21,0.4);
+            box-shadow: 0 8px 28px rgba(250,204,21,0.45);
             transition: transform 0.1s, box-shadow 0.1s;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         .btn-action:active {
             transform: scale(0.95);
         }
         .sound-toggle {
             position: absolute;
-            top: 14px;
-            right: 14px;
+            top: 16px;
+            right: 16px;
             background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(255,255,255,0.2);
             color: #fff;
             border-radius: 50%;
-            width: 34px;
-            height: 34px;
-            font-size: 14px;
+            width: 38px;
+            height: 38px;
+            font-size: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -242,15 +242,15 @@
 
         .stats-card {
             background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 14px;
-            padding: 10px 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 12px 24px;
             width: 100%;
-            max-width: 260px;
+            max-width: 280px;
             display: flex;
             justify-content: space-around;
-            gap: 10px;
-            margin: 4px 0;
+            gap: 12px;
+            margin: 6px 0;
         }
         .stat-item {
             text-align: center;
@@ -262,7 +262,7 @@
             text-transform: uppercase;
         }
         .stat-val {
-            font-size: 16px;
+            font-size: 18px;
             color: #f8fafc;
             font-weight: 900;
         }
@@ -279,11 +279,11 @@
     <div class="header-bar">
       <div>
         <div class="brand-sub">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12h20"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12h20"/></svg>
           ARCADE 2D
         </div>
         <div class="brand-title">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#facc15"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4h14v4z"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#facc15"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4h14v4z"/></svg>
           HILL CLIMBER
         </div>
       </div>
@@ -303,7 +303,7 @@
 
       <div id="startOverlay" class="overlay">
         <h1 class="title-main">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="#facc15"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/></svg>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#facc15"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/></svg>
           HILL CLIMBER
         </h1>
         <div class="subtitle-main">Conquer the hills! Keep balance to avoid flipping!</div>
@@ -314,18 +314,18 @@
           </div>
           <div class="stat-item">
             <div class="stat-lbl">Control</div>
-            <div class="stat-val" style="font-size: 13px; margin-top:2px;">Gas / Brake</div>
+            <div class="stat-val" style="font-size: 14px; margin-top:2px;">Gas / Brake</div>
           </div>
         </div>
         <button id="btnStart" class="btn-action" type="button">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           START DRIVE
         </button>
       </div>
 
       <div id="gameOverOverlay" class="overlay hidden">
         <h1 id="gameOverTitle" class="title-main" style="color: #ef4444;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="#ef4444"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#ef4444"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
           CRASHED!
         </h1>
         <div class="stats-card">
@@ -343,7 +343,7 @@
           </div>
         </div>
         <button id="btnRetry" class="btn-action" type="button">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
           RETRY
         </button>
       </div>
@@ -353,12 +353,12 @@
 
     <div class="controls-bar">
       <div id="btnBrake" class="ctrl-btn brake">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
         BRAKE
       </div>
       <div id="btnGas" class="ctrl-btn gas">
         GAS
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
       </div>
     </div>
   </div>
@@ -705,7 +705,7 @@
     playSoundEffect('crash');
 
     if (gameOverTitle) {
-      gameOverTitle.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" fill="#ef4444"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg> ' + reasonText;
+      gameOverTitle.innerHTML = '<svg width="30" height="30" viewBox="0 0 24 24" fill="#ef4444"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg> ' + reasonText;
     }
     finalScoreEl.textContent = Math.floor(distance) + 'm';
     finalCoinsEl.textContent = '🪙 ' + coins;
