@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fishing Master</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0b0e14;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  .game {
+    width: 380px;
+    max-width: 95vw;
+    background: #10131c;
+    border: 2px solid #1e2636;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: #141926;
+    border-bottom: 1px solid #232a3b;
+  }
+  .hud .title {
+    color: #4fc3f7;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  .hud .stat { color: #7CFC00; font-weight: bold; font-size: 14px; }
+  .hud .reset {
+    background: #d64545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(#0a2a4a, #072038);
+    cursor: pointer;
+  }
+  .tapbar {
+    text-align: center;
+    padding: 14px;
+  }
+  .tapbtn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+    background: linear-gradient(90deg, #1fc8ff, #0a84ff);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .tapbtn:active { filter: brightness(0.9); }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 14px 14px;
+    color: #7a8399;
+    font-size: 11px;
+  }
+</style>
+</head>
+<body>
+
+<div class="game">
+  <div class="hud">
+    <div class="title">🎣 FISHING MASTER</div>
+    <div class="stat">FISH: <span id="fishCount">0</span></div>
+    <button class="reset" id="resetBtn">RESET</button>
+  </div>
+  <canvas id="c" width="380" height="420"></canvas>
+  <div class="tapbar">
+    <button class="tapbtn" id="tapBtn">CAST / REEL (TAP)</button>
+  </div>
+  <div class="footer">
+    <span>Coins: <span id="coinCount">0</span></span>
+    <span>Tap to drop hook, tap again to reel!</span>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height;
+
+let fishCaught = 0;
+let coins = 0;
+const fishCountEl = document.getElementById('fishCount');
+const coinCountEl = document.getElementById('coinCount');
+
+// Boat position
+const boat = { x: W/2, y: 40 };
+
+// Hook state
+let hook = { active: false, y: boat.y + 20, dropping: false, dir: 1, caught: null };
+const waterTop = 70;
+const waterBottom = H - 20;
+
+// Fish
+const colors = ['#ff6b6b', '#ffd93d', '#4fd39a', '#5bc8ff', '#ff9f5b'];
+function makeFish() {
+  const y = waterTop + 20 + Math.random() * (waterBottom - waterTop - 40);
+  const dir = Math.random() < 0.5 ? 1 : -1;
+  return {
+    x: dir === 1 ? -20 : W + 20,
+    y,
+    dir,
+    speed: 0.6 + Math.random() * 1.4,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    size: 14 + Math.random() * 10,
+    value: Math.floor(5 + Math.random() * 15)
+  };
+}
+
+let fishes = [];
+for (let i = 0; i < 5; i++) fishes.push(makeFish());
+
+let bubbles = [];
+for (let i = 0; i < 15; i++) {
+  bubbles.push({ x: Math.random() * W, y: waterTop + Math.random() * (waterBottom - waterTop), r: 1 + Math.random() * 2, speed: 0.2 + Math.random() * 0.5 });
+}
+
+let sunAngle = 0;
+
+function drawScene() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Sky
+  const skyGrad = ctx.createLinearGradient(0, 0, 0, waterTop);
+  skyGrad.addColorStop(0, '#1a3a5c');
+  skyGrad.addColorStop(1, '#2f6690');
+  ctx.fillStyle = skyGrad;
+  ctx.fillRect(0, 0, W, waterTop);
+
+  // Sun
+  ctx.beginPath();
+  ctx.fillStyle = '#ffe066';
+  ctx.arc(40, 30, 16, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Water
+  const waterGrad = ctx.createLinearGradient(0, waterTop, 0, waterBottom);
+  waterGrad.addColorStop(0, '#0d4d78');
+  waterGrad.addColorStop(1, '#04213a');
+  ctx.fillStyle = waterGrad;
+  ctx.fillRect(0, waterTop, W, waterBottom - waterTop);
+
+  // Waterline
+  ctx.fillStyle = '#1c6ea4';
+  ctx.fillRect(0, waterTop, W, 3);
+
+  // Bubbles
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  bubbles.forEach(b => {
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+    ctx.fill();
+    b.y -= b.speed;
+    if (b.y < waterTop) { b.y = waterBottom; b.x = Math.random() * W; }
+  });
+
+  // Boat
+  ctx.fillStyle = '#c0392b';
+  ctx.beginPath();
+  ctx.moveTo(boat.x - 25, boat.y);
+  ctx.lineTo(boat.x + 25, boat.y);
+  ctx.lineTo(boat.x + 18, boat.y + 14);
+  ctx.lineTo(boat.x - 18, boat.y + 14);
+  ctx.closePath();
+  ctx.fill();
+  ctx.fillStyle = '#e67e22';
+  ctx.fillRect(boat.x - 3, boat.y - 18, 6, 18);
+  ctx.fillStyle = '#fff';
+  ctx.beginPath();
+  ctx.moveTo(boat.x, boat.y - 18);
+  ctx.lineTo(boat.x + 14, boat.y - 8);
+  ctx.lineTo(boat.x, boat.y - 4);
+  ctx.closePath();
+  ctx.fill();
+
+  // Fish
+  fishes.forEach(f => {
+    f.x += f.dir * f.speed;
+    if (f.dir === 1 && f.x > W + 30) f.x = -30;
+    if (f.dir === -1 && f.x < -30) f.x = W + 30;
+
+    ctx.save();
+    ctx.translate(f.x, f.y);
+    if (f.dir === -1) ctx.scale(-1, 1);
+    ctx.fillStyle = f.color;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, f.size, f.size * 0.55, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(-f.size, 0);
+    ctx.lineTo(-f.size - 8, -6);
+    ctx.lineTo(-f.size - 8, 6);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = '#111';
+    ctx.beginPath();
+    ctx.arc(f.size * 0.5, -2, 1.6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  });
+
+  // Fishing line + hook
+  if (hook.active) {
+    ctx.strokeStyle = '#ddd';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(boat.x, boat.y + 2);
+    ctx.lineTo(boat.x, hook.y);
+    ctx.stroke();
+
+    ctx.fillStyle = '#ffd166';
+    ctx.beginPath();
+    ctx.arc(boat.x, hook.y, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#ffd166';
+    ctx.beginPath();
+    ctx.arc(boat.x, hook.y + 4, 4, 0.2 * Math.PI, 1.3 * Math.PI);
+    ctx.stroke();
+
+    // caught fish rides up with hook
+    if (hook.caught) {
+      const f = hook.caught;
+      f.x = boat.x;
+      f.y = hook.y + 6;
+    }
+  }
+
+  requestAnimationFrame(drawScene);
+}
+
+function checkCatch() {
+  if (hook.caught) return;
+  for (const f of fishes) {
+    if (Math.abs(f.x - boat.x) < f.size + 4 && Math.abs(f.y - hook.y) < f.size + 4) {
+      hook.caught = f;
+      break;
+    }
+  }
+}
+
+function tap() {
+  if (!hook.active) {
+    // cast
+    hook.active = true;
+    hook.dropping = true;
+    hook.y = boat.y + 10;
+    hook.caught = null;
+  } else if (hook.dropping) {
+    // start reeling in
+    hook.dropping = false;
+  }
+}
+
+document.getElementById('tapBtn').addEventListener('click', tap);
+canvas.addEventListener('click', tap);
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  fishCaught = 0;
+  coins = 0;
+  fishCountEl.textContent = fishCaught;
+  coinCountEl.textContent = coins;
+  fishes = [];
+  for (let i = 0; i < 5; i++) fishes.push(makeFish());
+  hook = { active: false, y: boat.y + 20, dropping: false, dir: 1, caught: null };
+});
+
+function tick() {
+  if (hook.active) {
+    if (hook.dropping) {
+      hook.y += 3;
+      if (hook.y >= waterBottom - 10) hook.dropping = false;
+      checkCatch();
+    } else {
+      hook.y -= 4;
+      checkCatch();
+      if (hook.y <= boat.y + 10) {
+        hook.active = false;
+        if (hook.caught) {
+          fishCaught++;
+          coins += hook.caught.value;
+          fishCountEl.textContent = fishCaught;
+          coinCountEl.textContent = coins;
+          const idx = fishes.indexOf(hook.caught);
+          if (idx > -1) fishes.splice(idx, 1);
+          fishes.push(makeFish());
+          hook.caught = null;
+        }
+      }
+    }
+  }
+  requestAnimationFrame(tick);
+}
+
+drawScene();
+tick();
+</script>
+
+</body>
+</html>
