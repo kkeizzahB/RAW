@@ -1,48 +1,248 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Bubble Shooter with Pointers</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>Bubble Shooter</title>
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      background: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: sans-serif;
-      touch-action: none;
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
+
+    html {
+      width: 100%;
+      min-height: 100%;
+      background: transparent;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #1a1e2f 0%, #2a2f4a 100%);
+      color: #f0f4ff;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: 20px 0;
+    }
+
+    .game {
+      width: 100%;
+      max-width: 520px;
+      padding: 20px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(4px);
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    h1 {
+      width: 100%;
+      text-align: center;
+      margin: 0 0 4px 0;
+      font-size: 34px;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #b7baff, #7a8cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      width: 100%;
+      text-align: center;
+      color: #9aa3c9;
+      margin: 0 0 24px 0;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .menu {
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      width: 100%;
+      color: #b7c0e6;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: left;
+      letter-spacing: 0.5px;
+    }
+
+    select,
+    button {
+      width: 100%;
+      border: 0;
+      outline: none;
+      border-radius: 16px;
+      padding: 16px 18px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    select {
+      display: block;
+      width: 100%;
+      background: #262d44;
+      color: #eef3ff;
+      border: 1px solid #3e4663;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.3);
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239aa3c9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 16px;
+    }
+
+    select:focus {
+      border-color: #7a8cff;
+      box-shadow: 0 0 0 3px rgba(122, 140, 255, 0.3);
+    }
+
+    #start {
+      margin-top: 6px;
+      background: linear-gradient(135deg, #7a8cff, #5b6ee0);
+      color: #fff;
+      border: none;
+      box-shadow: 0 8px 24px rgba(91, 110, 224, 0.4);
+      letter-spacing: 1px;
+    }
+
+    #start:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(91, 110, 224, 0.5);
+    }
+
+    #start:active {
+      transform: scale(0.96);
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #gameArea {
+      width: 100%;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .score {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin: 16px 0 18px;
+    }
+
+    .scoreBox {
+      width: 100%;
+      background: rgba(22, 27, 44, 0.7);
+      backdrop-filter: blur(4px);
+      border: 1px solid #3a4365;
+      border-radius: 18px;
+      padding: 12px 5px;
+      text-align: center;
+      transition: 0.2s;
+    }
+
+    .scoreBox small {
+      display: block;
+      color: #8892b5;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .scoreBox strong {
+      font-size: 26px;
+      font-weight: 700;
+      color: #f0f4ff;
+    }
+
+    .scoreBox:first-child strong { color: #7a8cff; }
+    .scoreBox:last-child strong { color: #ff7b9c; }
+
+    .status {
+      width: 100%;
+      height: 28px;
+      text-align: center;
+      color: #b7c0e6;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      transition: 0.25s;
+    }
+
     .game-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 12px;
+      width: 100%;
     }
+
     canvas {
       display: block;
+      width: min(90vw, 460px);
+      aspect-ratio: 271/392;
       background: black;
-      border: 2px solid #333;
-      border-radius: 8px;
+      border-radius: 22px;
+      box-shadow: inset 0 4px 12px rgba(0,0,0,0.5), 0 8px 32px rgba(0,0,0,0.4);
       touch-action: none;
     }
+
     .controls {
       display: flex;
-      gap: 24px;
+      gap: 20px;
       align-items: center;
       justify-content: center;
       width: 100%;
+      max-width: 460px;
+      margin: 6px auto 0;
     }
+
     .ctrl-btn {
-      background: #222;
+      background: #262d44;
       color: white;
-      border: 2px solid #666;
+      border: 2px solid #3e4663;
       border-radius: 60px;
       width: 70px;
       height: 70px;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: bold;
       display: flex;
       align-items: center;
@@ -52,52 +252,153 @@
       transition: 0.15s;
       touch-action: manipulation;
       box-shadow: 0 4px 0 #111;
+      padding: 0;
     }
+
     .ctrl-btn:active {
       transform: scale(0.92);
       background: #333;
       box-shadow: 0 2px 0 #111;
     }
+
     .ctrl-btn.left {
       background: #2a2a4a;
+      border-color: #4a4a7a;
     }
+
     .ctrl-btn.right {
       background: #2a4a2a;
+      border-color: #4a7a4a;
     }
+
     .ctrl-btn.fire {
       background: #6a2a2a;
-      width: 90px;
       border-color: #aa5555;
-      font-size: 28px;
+      width: 90px;
+      font-size: 26px;
     }
+
     .ctrl-btn:focus-visible {
       outline: 2px solid #ffaa00;
     }
-    @media (max-width: 500px) {
+
+    .actions {
+      width: min(90vw, 460px);
+      margin: 18px auto 10px;
+    }
+
+    #menuBtn {
+      display: block;
+      width: 100%;
+      background: rgba(30, 37, 60, 0.8);
+      backdrop-filter: blur(4px);
+      color: #b7c0e6;
+      border: 1px solid #3e4663;
+      border-radius: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 16px;
+      transition: 0.2s;
+    }
+
+    #menuBtn:hover {
+      background: rgba(45, 54, 85, 0.9);
+      border-color: #5b6ee0;
+      color: #fff;
+    }
+
+    .confetti {
+      position: fixed;
+      width: 9px;
+      height: 9px;
+      pointer-events: none;
+      z-index: 99;
+      border-radius: 2px;
+      animation: confettiFall 1.4s linear forwards;
+    }
+
+    @keyframes confettiFall {
+      0% { transform: translateY(-30px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+
+    @media (max-width: 420px) {
+      .game {
+        padding: 16px 12px 30px;
+        border-radius: 28px;
+      }
+      h1 { font-size: 28px; }
       .ctrl-btn {
         width: 60px;
         height: 60px;
-        font-size: 26px;
+        font-size: 24px;
       }
       .ctrl-btn.fire {
         width: 75px;
+        font-size: 22px;
+      }
+      .scoreBox strong {
         font-size: 22px;
       }
     }
   </style>
 </head>
 <body>
-<div class="game-wrapper">
-  <canvas width="271" height="392" id="game"></canvas>
-  <div class="controls">
-    <button class="ctrl-btn left" id="leftBtn">◀</button>
-    <button class="ctrl-btn fire" id="fireBtn">🔥</button>
-    <button class="ctrl-btn right" id="rightBtn">▶</button>
+
+<div class="game">
+  <h1>✦ BUBBLE SHOOTER ✦</h1>
+  <div class="subtitle">AIM · SHOOT · POP</div>
+
+  <div id="menu" class="menu">
+    <label>DIFFICULTY</label>
+    <select id="difficulty">
+      <option value="easy">EASY</option>
+      <option value="medium" selected>MEDIUM</option>
+      <option value="hard">HARD</option>
+    </select>
+
+    <button id="start">▶ START GAME</button>
+  </div>
+
+  <div id="gameArea" class="hidden">
+    <div class="score">
+      <div class="scoreBox"><small>YOU</small><strong id="userScore">0</strong></div>
+      <div class="scoreBox"><small>DRAW</small><strong id="drawScore">0</strong></div>
+      <div class="scoreBox"><small>ROBOT</small><strong id="robotScore">0</strong></div>
+    </div>
+
+    <div id="status" class="status">Your turn</div>
+
+    <div class="game-wrapper">
+      <canvas width="271" height="392" id="game"></canvas>
+      <div class="controls">
+        <button class="ctrl-btn left" id="leftBtn">◀</button>
+        <button class="ctrl-btn fire" id="fireBtn">🔥</button>
+        <button class="ctrl-btn right" id="rightBtn">▶</button>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="menuBtn">☰ MENU</button>
+    </div>
   </div>
 </div>
+
 <script>
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
+
+const menu = document.getElementById("menu");
+const gameArea = document.getElementById("gameArea");
+const statusEl = document.getElementById("status");
+const difficultyEl = document.getElementById("difficulty");
+
+const userScoreEl = document.getElementById("userScore");
+const robotScoreEl = document.getElementById("robotScore");
+const drawScoreEl = document.getElementById("drawScore");
+
+let score = { user: 0, robot: 0, draw: 0 };
+let audioCtx = null;
 
 // Grid and constants
 const grid = 32;
@@ -112,17 +413,31 @@ const colorMap = {
 };
 const colors = Object.values(colorMap);
 
-const level1 = [
-  ['R','R','Y','Y','B','B','G','G'],
-  ['R','R','Y','Y','B','B','G'],
-  ['B','B','G','G','R','R','Y','Y'],
-  ['B','G','G','R','R','Y','Y']
-];
-
 let bubbles = [];
 let particles = [];
+let gameOver = false;
+let difficulty = "medium";
 
-// Helpers
+// Level generation based on difficulty
+function generateLevel() {
+  const rows = difficulty === "easy" ? 3 : difficulty === "medium" ? 4 : 5;
+  const level = [];
+  const colorKeys = ['R', 'G', 'B', 'Y'];
+  
+  for (let r = 0; r < rows; r++) {
+    const row = [];
+    const cols = r % 2 === 0 ? 8 : 7;
+    for (let c = 0; c < cols; c++) {
+      row.push(colorKeys[Math.floor(Math.random() * colorKeys.length)]);
+    }
+    level.push(row);
+  }
+  return level;
+}
+
+let currentLevel = generateLevel();
+
+// Helper functions
 function degToRad(deg) { return (deg * Math.PI) / 180; }
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -141,7 +456,40 @@ function rotatePoint(x, y, angle) {
   return { x: x * c - y * s, y: x * s + y * c };
 }
 
-// Closest bubble (active or inactive)
+function audioStart() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === "suspended") audioCtx.resume();
+}
+
+function sound(type) {
+  audioStart();
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  let freq = 500, duration = 0.08;
+  if (type === "shoot") { freq = 600; duration = 0.06; }
+  if (type === "pop") { freq = 800; duration = 0.1; }
+  if (type === "win") { freq = 700; duration = 0.18; }
+  if (type === "lose") { freq = 180; duration = 0.25; }
+  if (type === "bounce") { freq = 300; duration = 0.05; }
+
+  osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+  if (type === "win") osc.frequency.exponentialRampToValueAtTime(1100, audioCtx.currentTime + duration);
+  if (type === "lose") osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + duration);
+
+  gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+  osc.start();
+  osc.stop(audioCtx.currentTime + duration + 0.02);
+}
+
+// Closest bubble
 function getClosestBubble(obj, activeState = false) {
   const candidates = bubbles.filter(b => b.active === activeState && collides(obj, b));
   if (!candidates.length) return null;
@@ -150,7 +498,7 @@ function getClosestBubble(obj, activeState = false) {
     .sort((a, b) => a.distance - b.distance)[0].bubble;
 }
 
-// Create bubble (color = null => inactive)
+// Create bubble
 function createBubble(x, y, color) {
   const row = Math.floor(y / grid);
   const col = Math.floor(x / grid);
@@ -165,17 +513,20 @@ function createBubble(x, y, color) {
   });
 }
 
-// Build grid
-for (let row = 0; row < 10; row++) {
-  const cols = row % 2 === 0 ? 8 : 7;
-  for (let col = 0; col < cols; col++) {
-    const key = level1[row] && level1[row][col] ? level1[row][col] : null;
-    const color = key ? colorMap[key] : null;
-    createBubble(col * grid, row * grid, color);
+function buildGrid() {
+  bubbles = [];
+  particles = [];
+  for (let row = 0; row < 10; row++) {
+    const cols = row % 2 === 0 ? 8 : 7;
+    for (let col = 0; col < cols; col++) {
+      const key = currentLevel[row] && currentLevel[row][col] ? currentLevel[row][col] : null;
+      const color = key ? colorMap[key] : null;
+      createBubble(col * grid, row * grid, color);
+    }
   }
 }
 
-// Neighbors (hex directions)
+// Neighbors
 function getNeighbors(bubble) {
   const neighbors = [];
   const dirs = [
@@ -194,7 +545,6 @@ function getNeighbors(bubble) {
   return neighbors;
 }
 
-// Remove matching groups
 function removeMatch(targetBubble) {
   const matches = [targetBubble];
   bubbles.forEach(b => b.processed = false);
@@ -211,11 +561,15 @@ function removeMatch(targetBubble) {
     }
   }
   if (matches.length >= 3) {
-    matches.forEach(b => b.active = false);
+    matches.forEach(b => {
+      b.active = false;
+      sound("pop");
+    });
+    return true;
   }
+  return false;
 }
 
-// Drop floating bubbles
 function dropFloatingBubbles() {
   const activeBubbles = bubbles.filter(b => b.active);
   activeBubbles.forEach(b => b.processed = false);
@@ -259,64 +613,108 @@ const curBubble = {
 let shootDeg = 0;
 const minDeg = degToRad(-60);
 const maxDeg = degToRad(60);
-let shootDir = 0; // -1 left, 1 right, 0 none
+let shootDir = 0;
 
 function getNewBubble() {
   curBubble.x = curBubblePos.x;
   curBubble.y = curBubblePos.y;
   curBubble.dx = 0;
   curBubble.dy = 0;
-  curBubble.color = colors[getRandomInt(0, colors.length - 1)];
+  const available = colors.filter(c => {
+    return bubbles.some(b => b.active && b.color === c);
+  });
+  curBubble.color = available.length > 0 ? 
+    available[getRandomInt(0, available.length - 1)] : 
+    colors[getRandomInt(0, colors.length - 1)];
 }
 
 function handleCollision(bubble) {
   if (!bubble) {
-    window.alert('Game Over');
-    window.location.reload();
+    gameOver = true;
+    statusEl.className = "status lose";
+    statusEl.textContent = "💔 GAME OVER!";
+    sound("lose");
+    score.robot++;
+    updateScore();
+    setTimeout(() => {
+      currentLevel = generateLevel();
+      buildGrid();
+      getNewBubble();
+      gameOver = false;
+      statusEl.className = "status";
+      statusEl.textContent = "Your turn";
+    }, 1500);
     return;
   }
   bubble.color = curBubble.color;
   bubble.active = true;
-  getNewBubble();
-  removeMatch(bubble);
+  sound("pop");
+  
+  const matched = removeMatch(bubble);
   dropFloatingBubbles();
+  
+  getNewBubble();
+  
+  // Check win condition
+  const active = bubbles.filter(b => b.active);
+  if (active.length === 0) {
+    gameOver = true;
+    statusEl.className = "status win";
+    statusEl.textContent = "🎉 YOU WIN! 🎉";
+    sound("win");
+    score.user++;
+    updateScore();
+    createConfetti();
+    setTimeout(() => {
+      currentLevel = generateLevel();
+      buildGrid();
+      getNewBubble();
+      gameOver = false;
+      statusEl.className = "status";
+      statusEl.textContent = "Your turn";
+    }, 1800);
+  }
 }
 
-// ----- GAME LOOP -----
+// Game loop
 function loop() {
   requestAnimationFrame(loop);
   context.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Aiming
-  shootDeg += degToRad(2) * shootDir;
-  if (shootDeg < minDeg) shootDeg = minDeg;
-  if (shootDeg > maxDeg) shootDeg = maxDeg;
+  if (!gameOver) {
+    // Aiming
+    shootDeg += degToRad(2) * shootDir;
+    if (shootDeg < minDeg) shootDeg = minDeg;
+    if (shootDeg > maxDeg) shootDeg = maxDeg;
 
-  // Move current bubble
-  curBubble.x += curBubble.dx;
-  curBubble.y += curBubble.dy;
+    // Move current bubble
+    curBubble.x += curBubble.dx;
+    curBubble.y += curBubble.dy;
 
-  // Wall collisions (left/right)
-  if (curBubble.x - grid / 2 < wallSize) {
-    curBubble.x = wallSize + grid / 2;
-    curBubble.dx *= -1;
-  } else if (curBubble.x + grid / 2 > canvas.width - wallSize) {
-    curBubble.x = canvas.width - wallSize - grid / 2;
-    curBubble.dx *= -1;
-  }
+    // Wall collisions
+    if (curBubble.x - grid / 2 < wallSize) {
+      curBubble.x = wallSize + grid / 2;
+      curBubble.dx *= -1;
+      sound("bounce");
+    } else if (curBubble.x + grid / 2 > canvas.width - wallSize) {
+      curBubble.x = canvas.width - wallSize - grid / 2;
+      curBubble.dx *= -1;
+      sound("bounce");
+    }
 
-  // Top wall collision
-  if (curBubble.y - grid / 2 < wallSize) {
-    const closest = getClosestBubble(curBubble, false);
-    handleCollision(closest);
-  }
-
-  // Collision with active bubbles
-  for (let b of bubbles) {
-    if (b.active && collides(curBubble, b)) {
+    // Top wall collision
+    if (curBubble.y - grid / 2 < wallSize) {
       const closest = getClosestBubble(curBubble, false);
       handleCollision(closest);
-      break;
+    }
+
+    // Collision with active bubbles
+    for (let b of bubbles) {
+      if (b.active && collides(curBubble, b)) {
+        const closest = getClosestBubble(curBubble, false);
+        handleCollision(closest);
+        break;
+      }
     }
   }
 
@@ -337,6 +735,11 @@ function loop() {
     context.beginPath();
     context.arc(b.x, b.y, b.radius, 0, 2 * Math.PI);
     context.fill();
+    // Glow effect
+    context.shadowColor = b.color;
+    context.shadowBlur = 8;
+    context.fill();
+    context.shadowBlur = 0;
   });
 
   // Draw aiming arrow
@@ -345,37 +748,41 @@ function loop() {
   context.rotate(shootDeg);
   context.translate(0, -grid / 2 * 4.5);
   context.strokeStyle = 'white';
-  context.lineWidth = 2;
+  context.lineWidth = 3;
+  context.shadowColor = 'rgba(255,255,255,0.3)';
+  context.shadowBlur = 10;
   context.beginPath();
   context.moveTo(0, 0);
   context.lineTo(0, grid * 2);
   context.moveTo(0, 0);
-  context.lineTo(-10, grid * 0.4);
+  context.lineTo(-12, grid * 0.4);
   context.moveTo(0, 0);
-  context.lineTo(10, grid * 0.4);
+  context.lineTo(12, grid * 0.4);
   context.stroke();
+  context.shadowBlur = 0;
   context.restore();
 
   // Draw current bubble
+  context.shadowColor = curBubble.color;
+  context.shadowBlur = 20;
   context.fillStyle = curBubble.color;
   context.beginPath();
   context.arc(curBubble.x, curBubble.y, curBubble.radius, 0, 2 * Math.PI);
   context.fill();
+  context.shadowBlur = 0;
 }
 
-// ----- POINTER CONTROLS (buttons + keyboard) -----
-function setShootDir(dir) {
-  shootDir = dir;
-}
-
+// Controls
+function setShootDir(dir) { shootDir = dir; }
 function fireBubble() {
-  if (curBubble.dx === 0 && curBubble.dy === 0) {
+  if (!gameOver && curBubble.dx === 0 && curBubble.dy === 0) {
     curBubble.dx = Math.sin(shootDeg) * curBubble.speed;
     curBubble.dy = -Math.cos(shootDeg) * curBubble.speed;
+    sound("shoot");
   }
 }
 
-// Buttons
+// Button events
 document.getElementById('leftBtn').addEventListener('mousedown', (e) => { e.preventDefault(); setShootDir(-1); });
 document.getElementById('leftBtn').addEventListener('mouseup', (e) => { e.preventDefault(); if (shootDir === -1) setShootDir(0); });
 document.getElementById('leftBtn').addEventListener('mouseleave', (e) => { if (shootDir === -1) setShootDir(0); });
@@ -393,7 +800,7 @@ document.getElementById('rightBtn').addEventListener('touchcancel', (e) => { if 
 document.getElementById('fireBtn').addEventListener('click', (e) => { fireBubble(); });
 document.getElementById('fireBtn').addEventListener('touchstart', (e) => { e.preventDefault(); fireBubble(); });
 
-// Keyboard (still works)
+// Keyboard
 document.addEventListener('keydown', (e) => {
   if (e.code === 'ArrowLeft') setShootDir(-1);
   else if (e.code === 'ArrowRight') setShootDir(1);
@@ -406,6 +813,49 @@ document.addEventListener('keyup', (e) => {
   if (e.code === 'ArrowLeft' && shootDir === -1) setShootDir(0);
   else if (e.code === 'ArrowRight' && shootDir === 1) setShootDir(0);
 });
+
+// Menu controls
+document.getElementById("start").onclick = () => {
+  audioStart();
+  difficulty = difficultyEl.value;
+  currentLevel = generateLevel();
+  buildGrid();
+  getNewBubble();
+  gameOver = false;
+  statusEl.className = "status";
+  statusEl.textContent = "Your turn";
+  menu.classList.add("hidden");
+  gameArea.classList.remove("hidden");
+  updateScore();
+};
+
+document.getElementById("menuBtn").onclick = () => {
+  gameArea.classList.add("hidden");
+  menu.classList.remove("hidden");
+};
+
+function updateScore() {
+  userScoreEl.textContent = score.user;
+  robotScoreEl.textContent = score.robot;
+  drawScoreEl.textContent = score.draw;
+}
+
+function createConfetti() {
+  const colors2 = ['#7a8cff', '#ff7b9c', '#f7d44a', '#6fdf9f', '#ff9f6e', '#b47aff'];
+  for (let i = 0; i < 60; i++) {
+    const piece = document.createElement("div");
+    piece.className = "confetti";
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.top = "-10px";
+    piece.style.background = colors2[Math.floor(Math.random() * colors2.length)];
+    piece.style.animationDelay = Math.random() * 0.5 + "s";
+    piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+    piece.style.width = (Math.random() * 6 + 4) + 'px';
+    piece.style.height = (Math.random() * 6 + 4) + 'px';
+    document.body.appendChild(piece);
+    setTimeout(() => piece.remove(), 1800);
+  }
+}
 
 // Start
 getNewBubble();
