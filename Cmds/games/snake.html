@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<title>❄️ ICE SNAKE</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #06131f, #0b2638);
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.game {
+    width: min(95vw, 520px);
+    text-align: center;
+}
+
+h1 {
+    font-size: 38px;
+    margin-bottom: 8px;
+    color: #9eeaff;
+    text-shadow: 0 0 15px #00cfff;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.08);
+    padding: 10px 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+canvas {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #061923;
+    border: 3px solid #64ddff;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0,210,255,0.35);
+    display: block;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+#startBtn {
+    margin-top: 12px;
+    padding: 12px 28px;
+    border-radius: 10px;
+    background: #4ddcff;
+    color: #00131c;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.controls {
+    width: 210px;
+    margin: 15px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 65px);
+    gap: 7px;
+    justify-content: center;
+}
+
+.control {
+    height: 58px;
+    border-radius: 12px;
+    background: #12394d;
+    color: #a9eeff;
+    font-size: 25px;
+    box-shadow: 0 0 8px rgba(0,210,255,.2);
+}
+
+.control:active {
+    transform: scale(.92);
+    background: #1e6685;
+}
+
+.empty {
+    visibility: hidden;
+}
+
+.message {
+    margin-top: 8px;
+    color: #b8dbe5;
+    font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="game">
+
+    <h1>❄️ ICE SNAKE</h1>
+
+    <div class="stats">
+        <span>Score: <b id="score">0</b></span>
+        <span>Best: <b id="best">0</b></span>
+    </div>
+
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+    <button id="startBtn">START GAME</button>
+
+    <div class="controls">
+        <button class="control empty"></button>
+        <button class="control" data-dir="up">▲</button>
+        <button class="control empty"></button>
+
+        <button class="control" data-dir="left">◀</button>
+        <button class="control" data-dir="down">▼</button>
+        <button class="control" data-dir="right">▶</button>
+    </div>
+
+    <div class="message">
+        PC: Arrow Keys / WASD • Phone: Touch Buttons
+    </div>
+
+</div>
+
+<script>
+
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+const scoreText = document.getElementById("score");
+const bestText = document.getElementById("best");
+const startBtn = document.getElementById("startBtn");
+
+const grid = 20;
+const tile = canvas.width / grid;
+
+/* =========================
+   GAME VARIABLES
+========================= */
+
+let snake;
+let food;
+
+let direction;
+let nextDirection;
+
+let score = 0;
+let best = localStorage.getItem("iceSnakeBest") || 0;
+
+let gameRunning = false;
+let gameOver = false;
+
+let timer;
+
+/*
+    EASY START
+    Lower number = faster
+*/
+
+const START_SPEED = 210;  // Very easy
+const HARD_SPEED = 55;    // Maximum difficulty
+
+let speed = START_SPEED;
+
+bestText.textContent = best;
+
+
+/* =========================
+   ZAP SOUND
+========================= */
+
+let audioContext;
+
+function playZapSound() {
+
+    try {
+
+        if (!audioContext) {
+            audioContext =
+                new (window.AudioContext ||
+                window.webkitAudioContext)();
+        }
+
+        if (audioContext.state === "suspended") {
+            audioContext.resume();
+        }
+
+        const oscillator =
+            audioContext.createOscillator();
+
+        const gain =
+            audioContext.createGain();
+
+        oscillator.type = "sawtooth";
+
+        oscillator.frequency.setValueAtTime(
+            180,
+            audioContext.currentTime
+        );
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+            900,
+            audioContext.currentTime + 0.08
+        );
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+            250,
+            audioContext.currentTime + 0.16
+        );
+
+        gain.gain.setValueAtTime(
+            0.0001,
+            audioContext.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.25,
+            audioContext.currentTime + 0.01
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.0001,
+            audioContext.currentTime + 0.18
+        );
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        oscillator.start();
+
+        oscillator.stop(
+            audioContext.currentTime + 0.2
+        );
+
+    } catch (error) {
+        console.log("Audio unavailable");
+    }
+}
+
+
+/* =========================
+   START GAME
+========================= */
+
+function startGame() {
+
+    clearInterval(timer);
+
+    snake = [
+        {x: 10, y: 10},
+        {x: 9, y: 10},
+        {x: 8, y: 10}
+    ];
+
+    direction = "right";
+    nextDirection = "right";
+
+    score = 0;
+
+    /*
+        Reset to EASY every new game
+    */
+
+    speed = START_SPEED;
+
+    scoreText.textContent = score;
+
+    gameRunning = true;
+    gameOver = false;
+
+    startBtn.textContent = "RESTART";
+
+    createFood();
+
+    draw();
+
+    timer = setInterval(
+        gameLoop,
+        speed
+    );
+}
+
+
+/* =========================
+   GAME LOOP
+========================= */
+
+function gameLoop() {
+
+    direction = nextDirection;
+
+    const head = {
+        x: snake[0].x,
+        y: snake[0].y
+    };
+
+    if (direction === "up")
+        head.y--;
+
+    if (direction === "down")
+        head.y++;
+
+    if (direction === "left")
+        head.x--;
+
+    if (direction === "right")
+        head.x++;
+
+
+    /* WALL COLLISION */
+
+    if (
+        head.x < 0 ||
+        head.x >= grid ||
+        head.y < 0 ||
+        head.y >= grid
+    ) {
+
+        endGame();
+        return;
+    }
+
+
+    /* SELF COLLISION */
+
+    for (let part of snake) {
+
+        if (
+            head.x === part.x &&
+            head.y === part.y
+        ) {
+
+            endGame();
+            return;
+        }
+    }
+
+
+    snake.unshift(head);
+
+
+    /* =========================
+       EAT ICE BALL
+    ========================= */
+
+    if (
+        head.x === food.x &&
+        head.y === food.y
+    ) {
+
+        score++;
+
+        scoreText.textContent = score;
+
+        /* ZAP! ⚡ */
+
+        playZapSound();
+
+
+        /* BEST SCORE */
+
+        if (score > best) {
+
+            best = score;
+
+            bestText.textContent = best;
+
+            localStorage.setItem(
+                "iceSnakeBest",
+                best
+            );
+        }
+
+
+        /*
+            GRADUAL DIFFICULTY
+
+            Every point makes the game
+            slightly faster.
+
+            It starts at 210ms and slowly
+            approaches 55ms.
+
+            Once 55ms is reached,
+            it stays there.
+        */
+
+        const difficultyIncrease = 4;
+
+        speed = Math.max(
+            HARD_SPEED,
+            START_SPEED -
+            (score * difficultyIncrease)
+        );
+
+
+        /*
+            Restart timer with new speed
+        */
+
+        clearInterval(timer);
+
+        timer = setInterval(
+            gameLoop,
+            speed
+        );
+
+
+        createFood();
+
+    } else {
+
+        snake.pop();
+    }
+
+    draw();
+}
+
+
+/* =========================
+   CREATE FOOD
+========================= */
+
+function createFood() {
+
+    let valid = false;
+
+    while (!valid) {
+
+        food = {
+            x: Math.floor(
+                Math.random() * grid
+            ),
+
+            y: Math.floor(
+                Math.random() * grid
+            )
+        };
+
+        valid = !snake.some(
+            part =>
+                part.x === food.x &&
+                part.y === food.y
+        );
+    }
+}
+
+
+/* =========================
+   DRAW EVERYTHING
+========================= */
+
+function draw() {
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    ctx.fillStyle = "#061923";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    /* GRID */
+
+    ctx.strokeStyle =
+        "rgba(100,220,255,0.06)";
+
+    ctx.lineWidth = 1;
+
+    for (let i = 0; i <= grid; i++) {
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            i * tile,
+            0
+        );
+
+        ctx.lineTo(
+            i * tile,
+            canvas.height
+        );
+
+        ctx.stroke();
+
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            0,
+            i * tile
+        );
+
+        ctx.lineTo(
+            canvas.width,
+            i * tile
+        );
+
+        ctx.stroke();
+    }
+
+
+    drawFood();
+
+
+    /* BODY */
+
+    for (
+        let i = snake.length - 1;
+        i >= 1;
+        i--
+    ) {
+
+        const part = snake[i];
+
+        const gradient =
+            ctx.createLinearGradient(
+                part.x * tile,
+                part.y * tile,
+                (part.x + 1) * tile,
+                (part.y + 1) * tile
+            );
+
+        gradient.addColorStop(
+            0,
+            "#69e8ff"
+        );
+
+        gradient.addColorStop(
+            1,
+            "#087fa3"
+        );
+
+        ctx.fillStyle = gradient;
+
+        roundRect(
+            part.x * tile + 2,
+            part.y * tile + 2,
+            tile - 4,
+            tile - 4,
+            5
+        );
+    }
+
+
+    /* ICE HEAD */
+
+    drawIceHead(
+        snake[0].x * tile,
+        snake[0].y * tile
+    );
+
+
+    /* GAME OVER */
+
+    if (gameOver) {
+
+        ctx.fillStyle =
+            "rgba(0,0,0,0.65)";
+
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        ctx.fillStyle = "#a9efff";
+
+        ctx.textAlign = "center";
+
+        ctx.font =
+            "bold 34px Arial";
+
+        ctx.fillText(
+            "GAME OVER",
+            canvas.width / 2,
+            canvas.height / 2 - 15
+        );
+
+        ctx.font =
+            "18px Arial";
+
+        ctx.fillText(
+            "Score: " + score,
+            canvas.width / 2,
+            canvas.height / 2 + 20
+        );
+    }
+}
+
+
+/* =========================
+   ICE HEAD
+========================= */
+
+function drawIceHead(x, y) {
+
+    const cx = x + tile / 2;
+    const cy = y + tile / 2;
+
+    ctx.shadowColor = "#6eeaff";
+    ctx.shadowBlur = 15;
+
+    const gradient =
+        ctx.createRadialGradient(
+            cx - 3,
+            cy - 4,
+            2,
+            cx,
+            cy,
+            tile / 2
+        );
+
+    gradient.addColorStop(
+        0,
+        "#ffffff"
+    );
+
+    gradient.addColorStop(
+        0.35,
+        "#b8f5ff"
+    );
+
+    gradient.addColorStop(
+        1,
+        "#31acd0"
+    );
+
+    ctx.fillStyle = gradient;
+
+    roundRect(
+        x + 1,
+        y + 1,
+        tile - 2,
+        tile - 2,
+        7
+    );
+
+    ctx.shadowBlur = 0;
+
+
+    /* ICE SPIKES */
+
+    ctx.fillStyle = "#d9fbff";
+
+    ctx.beginPath();
+
+    ctx.moveTo(cx - 6, y + 3);
+    ctx.lineTo(cx - 2, y - 5);
+    ctx.lineTo(cx + 1, y + 3);
+
+    ctx.moveTo(cx + 3, y + 3);
+    ctx.lineTo(cx + 7, y - 5);
+    ctx.lineTo(cx + 10, y + 3);
+
+    ctx.fill();
+
+
+    /* EYES */
+
+    ctx.fillStyle = "#06202d";
+
+    let eye1;
+    let eye2;
+
+    if (direction === "right") {
+
+        eye1 = [cx + 4, cy - 4];
+        eye2 = [cx + 4, cy + 4];
+
+    } else if (direction === "left") {
+
+        eye1 = [cx - 4, cy - 4];
+        eye2 = [cx - 4, cy + 4];
+
+    } else if (direction === "up") {
+
+        eye1 = [cx - 4, cy - 4];
+        eye2 = [cx + 4, cy - 4];
+
+    } else {
+
+        eye1 = [cx - 4, cy + 4];
+        eye2 = [cx + 4, cy + 4];
+    }
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        eye1[0],
+        eye1[1],
+        2,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        eye2[0],
+        eye2[1],
+        2,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+}
+
+
+/* =========================
+   ICE FOOD
+========================= */
+
+function drawFood() {
+
+    const cx =
+        food.x * tile + tile / 2;
+
+    const cy =
+        food.y * tile + tile / 2;
+
+
+    ctx.shadowColor = "#00eaff";
+    ctx.shadowBlur = 18;
+
+    ctx.fillStyle = "#ffffff";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        cx,
+        cy,
+        6,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+    ctx.shadowBlur = 0;
+
+
+    ctx.strokeStyle = "#58e6ff";
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+
+    ctx.moveTo(cx, cy - 9);
+    ctx.lineTo(cx, cy + 9);
+
+    ctx.moveTo(cx - 9, cy);
+    ctx.lineTo(cx + 9, cy);
+
+    ctx.moveTo(cx - 6, cy - 6);
+    ctx.lineTo(cx + 6, cy + 6);
+
+    ctx.moveTo(cx + 6, cy - 6);
+    ctx.lineTo(cx - 6, cy + 6);
+
+    ctx.stroke();
+}
+
+
+/* =========================
+   ROUNDED RECTANGLE
+========================= */
+
+function roundRect(
+    x,
+    y,
+    w,
+    h,
+    r
+) {
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        x + r,
+        y
+    );
+
+    ctx.lineTo(
+        x + w - r,
+        y
+    );
+
+    ctx.quadraticCurveTo(
+        x + w,
+        y,
+        x + w,
+        y + r
+    );
+
+    ctx.lineTo(
+        x + w,
+        y + h - r
+    );
+
+    ctx.quadraticCurveTo(
+        x + w,
+        y + h,
+        x + w - r,
+        y + h
+    );
+
+    ctx.lineTo(
+        x + r,
+        y + h
+    );
+
+    ctx.quadraticCurveTo(
+        x,
+        y + h,
+        x,
+        y + h - r
+    );
+
+    ctx.lineTo(
+        x,
+        y + r
+    );
+
+    ctx.quadraticCurveTo(
+        x,
+        y,
+        x + r,
+        y
+    );
+
+    ctx.closePath();
+
+    ctx.fill();
+}
+
+
+/* =========================
+   CHANGE DIRECTION
+========================= */
+
+function changeDirection(newDirection) {
+
+    if (!gameRunning)
+        return;
+
+
+    if (
+        newDirection === "up" &&
+        direction !== "down"
+    ) {
+        nextDirection = "up";
+    }
+
+
+    if (
+        newDirection === "down" &&
+        direction !== "up"
+    ) {
+        nextDirection = "down";
+    }
+
+
+    if (
+        newDirection === "left" &&
+        direction !== "right"
+    ) {
+        nextDirection = "left";
+    }
+
+
+    if (
+        newDirection === "right" &&
+        direction !== "left"
+    ) {
+        nextDirection = "right";
+    }
+}
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(e) {
+
+        const keys = [
+            "ArrowUp",
+            "ArrowDown",
+            "ArrowLeft",
+            "ArrowRight",
+            "w",
+            "a",
+            "s",
+            "d",
+            "W",
+            "A",
+            "S",
+            "D"
+        ];
+
+        if (keys.includes(e.key)) {
+            e.preventDefault();
+        }
+
+
+        if (
+            e.key === "ArrowUp" ||
+            e.key === "w" ||
+            e.key === "W"
+        ) {
+            changeDirection("up");
+        }
+
+
+        if (
+            e.key === "ArrowDown" ||
+            e.key === "s" ||
+            e.key === "S"
+        ) {
+            changeDirection("down");
+        }
+
+
+        if (
+            e.key === "ArrowLeft" ||
+            e.key === "a" ||
+            e.key === "A"
+        ) {
+            changeDirection("left");
+        }
+
+
+        if (
+            e.key === "ArrowRight" ||
+            e.key === "d" ||
+            e.key === "D"
+        ) {
+            changeDirection("right");
+        }
+    }
+);
+
+
+/* =========================
+   PHONE CONTROLS
+========================= */
+
+document
+.querySelectorAll(".control")
+.forEach(button => {
+
+    button.addEventListener(
+        "pointerdown",
+        function(e) {
+
+            e.preventDefault();
+
+            const dir =
+                this.dataset.dir;
+
+            if (dir) {
+                changeDirection(dir);
+            }
+        }
+    );
+});
+
+
+/* START BUTTON */
+
+startBtn.addEventListener(
+    "click",
+    startGame
+);
+
+
+/* =========================
+   INITIAL SCREEN
+========================= */
+
+snake = [
+    {x: 10, y: 10},
+    {x: 9, y: 10},
+    {x: 8, y: 10}
+];
+
+direction = "right";
+nextDirection = "right";
+
+createFood();
+
+draw();
+
+
+/* =========================
+   GAME OVER
+========================= */
+
+function endGame() {
+
+    gameRunning = false;
+    gameOver = true;
+
+    clearInterval(timer);
+
+    startBtn.textContent =
+        "PLAY AGAIN";
+
+    draw();
+}
+
+</script>
+
+</body>
+</html>
