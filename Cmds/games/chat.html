@@ -1,883 +1,740 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-<title>Community Chat</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,1" />
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Community Chat · compact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,1" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 12px;
+    }
+    .chat-card {
+      max-width: 380px;
+      width: 100%;
+      background: #f0f2f5;
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.1s;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    /* header */
+    .chat-header {
+      background: #075e54;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .avatar-icon {
+      width: 36px; height: 36px;
+      background: #ffffff33;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .avatar-icon span { font-size: 20px; }
+    .header-info { flex: 1; min-width: 0; }
+    .header-info h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.2px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .header-info .status {
+      font-size: 11px;
+      color: #b0d8d1;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .header-actions {
+      display: flex;
+      gap: 2px;
+    }
+    .header-actions button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .header-actions button:hover { background: #ffffff22; }
+    .header-actions .material-symbols-outlined { font-size: 20px; }
 
-  :root {
-    --teal-dark: #075E54;
-    --teal: #128C7E;
-    --green: #25D366;
-    --green-bubble: #DCF8C6;
-    --wallpaper: #ECE5DD;
-    --header-icon: #FFFFFF;
-    --text-dark: #111B21;
-    --text-muted: #667781;
-    --divider: #E9EDEF;
-    --panel: #FFFFFF;
-    --check-blue: #53BDEB;
-  }
+    /* login overlay */
+    .login-overlay {
+      position: absolute;
+      inset: 0;
+      background: #f0f2f5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 20px;
+      z-index: 10;
+      gap: 14px;
+      border-radius: 24px;
+    }
+    .login-overlay.hidden { display: none; }
+    .login-overlay .brand {
+      color: #075e54;
+      font-size: 22px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .login-overlay .brand span {
+      background: #075e54;
+      color: #fff;
+      padding: 6px;
+      border-radius: 50%;
+      font-size: 24px;
+    }
+    .login-overlay .sub { color: #667781; font-size: 13px; margin-top: -6px; }
+    .login-form {
+      width: 100%;
+      max-width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #fff;
+      padding: 18px 16px;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .login-form input {
+      background: #f0f2f5;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: #111b21;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .login-form input:focus { border-color: #128c7e; }
+    .login-form input::placeholder { color: #8696a0; }
+    .login-form button {
+      background: #25d366;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #073b2f;
+      cursor: pointer;
+      transition: background 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .login-form button:hover { background: #1fbd5a; }
+    .login-error { color: #d3383f; font-size: 12px; text-align: center; min-height: 18px; }
 
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #d9dbd3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 12px;
-  }
+    /* messages */
+    .messages-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px 10px 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background-color: #ece5dd;
+      background-image:
+        radial-gradient(circle at 8% 12%, rgba(0,0,0,0.028) 0, transparent 38%),
+        radial-gradient(circle at 32% 68%, rgba(0,0,0,0.028) 0, transparent 34%),
+        radial-gradient(circle at 58% 22%, rgba(0,0,0,0.026) 0, transparent 36%),
+        radial-gradient(circle at 78% 78%, rgba(0,0,0,0.028) 0, transparent 34%),
+        radial-gradient(circle at 88% 35%, rgba(0,0,0,0.024) 0, transparent 30%);
+      background-size: 280px 280px;
+      scroll-behavior: smooth;
+      max-height: 360px;
+      min-height: 240px;
+    }
+    .messages-area::-webkit-scrollbar { width: 4px; }
+    .messages-area::-webkit-scrollbar-track { background: transparent; }
+    .messages-area::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 12px; }
 
-  .chat-container {
-    max-width: 480px;
-    width: 100%;
-    height: 780px;
-    background: var(--wallpaper);
-    border-radius: 10px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
-  }
+    .day-divider {
+      align-self: center;
+      background: #e1f2fa;
+      color: #4a5b62;
+      font-size: 11px;
+      padding: 3px 12px;
+      border-radius: 6px;
+      margin: 6px 0;
+    }
+    .message-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 82%;
+      margin-bottom: 2px;
+    }
+    .message-row.own { align-items: flex-end; align-self: flex-end; }
 
-  /* ---------------- Header ---------------- */
+    .message-bubble {
+      background: #fff;
+      padding: 5px 8px 6px 9px;
+      border-radius: 7px;
+      color: #111b21;
+      font-size: 13.5px;
+      line-height: 1.35;
+      word-break: break-word;
+      position: relative;
+      box-shadow: 0 1px 0.5px rgba(0,0,0,0.1);
+      max-width: 100%;
+    }
+    .message-row.own .message-bubble { background: #dcf8c6; }
 
-  .chat-header {
-    background: var(--teal-dark);
-    padding: 12px 14px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
-    z-index: 5;
-  }
-  .avatar-group {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #ffffff33;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    color: #fff;
-    flex-shrink: 0;
-  }
-  .avatar-group span { font-size: 22px; }
-  .header-info { flex: 1; min-width: 0; }
-  .header-info h2 {
-    font-size: 16.5px;
-    font-weight: 600;
-    color: #fff;
-    letter-spacing: 0.1px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .header-info .status {
-    font-size: 12.5px;
-    color: #d8f0eb;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .header-actions { display: flex; gap: 2px; }
-  .header-actions button {
-    background: transparent;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    padding: 7px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.15s;
-  }
-  .header-actions button:hover { background: #ffffff22; }
-  .header-actions .material-symbols-outlined { font-size: 21px; }
+    .message-row.theirs .message-bubble::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -6px;
+      width: 0; height: 0;
+      border-style: solid;
+      border-width: 0 8px 8px 0;
+      border-color: transparent #fff transparent transparent;
+    }
+    .message-row.own .message-bubble::before {
+      content: '';
+      position: absolute;
+      top: 0; right: -6px;
+      width: 0; height: 0;
+      border-style: solid;
+      border-width: 0 0 8px 8px;
+      border-color: transparent transparent transparent #dcf8c6;
+    }
 
-  /* ---------------- Login overlay ---------------- */
+    .msg-author {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 1px;
+      color: #d6774e;
+    }
+    .msg-author.is-admin { color: #075e54; }
+    .admin-pill {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #fff;
+      background: #128c7e;
+      padding: 0 5px;
+      border-radius: 4px;
+      margin-left: 4px;
+      vertical-align: 1px;
+    }
+    .msg-body { white-space: pre-wrap; }
 
-  .login-overlay {
-    position: absolute;
-    inset: 0;
-    background: var(--wallpaper);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 32px 24px;
-    z-index: 10;
-    gap: 18px;
-  }
-  .login-overlay.hidden { display: none; }
-  .login-overlay .brand {
-    color: var(--teal-dark);
-    font-size: 26px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .login-overlay .brand span {
-    background: var(--teal-dark);
-    color: #fff;
-    padding: 10px;
-    border-radius: 50%;
-    font-size: 28px;
-  }
-  .login-overlay .sub { color: var(--text-muted); font-size: 14px; margin-top: -8px; }
-  .login-form {
-    width: 100%;
-    max-width: 320px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    background: var(--panel);
-    padding: 22px;
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-  }
-  .login-form input {
-    background: #f0f2f5;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    padding: 13px 14px;
-    font-size: 15px;
-    color: var(--text-dark);
-    outline: none;
-    transition: border 0.2s;
-  }
-  .login-form input:focus { border-color: var(--teal); }
-  .login-form input::placeholder { color: #8696a0; }
-  .login-form button {
-    background: var(--green);
-    border: none;
-    border-radius: 8px;
-    padding: 13px;
-    font-weight: 600;
-    font-size: 15.5px;
-    color: #073b2f;
-    cursor: pointer;
-    transition: background 0.15s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .login-form button:hover { background: #1fbd5a; }
-  .login-error { color: #d3383f; font-size: 13px; text-align: center; min-height: 20px; }
+    .msg-footer {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      float: right;
+      margin: 2px -2px -3px 6px;
+      transform: translateY(1px);
+    }
+    .msg-footer .time { font-size: 10px; color: #667781; }
+    .msg-footer .edited { font-size: 9.5px; color: #667781; font-style: italic; }
+    .msg-footer .ticks { font-size: 13px; color: #53bdeb; line-height: 1; }
 
-  /* ---------------- Messages / wallpaper ---------------- */
+    .message-actions {
+      display: flex;
+      gap: 2px;
+      margin-top: 2px;
+    }
+    .message-actions button {
+      background: rgba(255,255,255,0.8);
+      border: none;
+      color: #667781;
+      font-size: 10px;
+      cursor: pointer;
+      padding: 1px 6px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.06);
+    }
+    .message-actions button .material-symbols-outlined { font-size: 13px; }
+    .message-actions button:hover { background: #fff; color: #111b21; }
+    .message-actions .delete-btn:hover { color: #d3383f; }
 
-  .messages-area {
-    flex: 1;
-    overflow-y: auto;
-    padding: 14px 5% 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    background-color: var(--wallpaper);
-    background-image:
-      radial-gradient(circle at 8% 12%, rgba(0,0,0,0.028) 0, transparent 38%),
-      radial-gradient(circle at 32% 68%, rgba(0,0,0,0.028) 0, transparent 34%),
-      radial-gradient(circle at 58% 22%, rgba(0,0,0,0.026) 0, transparent 36%),
-      radial-gradient(circle at 78% 78%, rgba(0,0,0,0.028) 0, transparent 34%),
-      radial-gradient(circle at 88% 35%, rgba(0,0,0,0.024) 0, transparent 30%),
-      radial-gradient(circle at 15% 85%, rgba(0,0,0,0.024) 0, transparent 30%),
-      radial-gradient(circle at 45% 45%, rgba(0,0,0,0.02) 0, transparent 28%);
-    background-size: 340px 340px;
-    scroll-behavior: smooth;
-  }
-  .messages-area::-webkit-scrollbar { width: 5px; }
-  .messages-area::-webkit-scrollbar-track { background: transparent; }
-  .messages-area::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 12px; }
+    .empty-state {
+      margin: auto;
+      color: #667781;
+      text-align: center;
+      padding: 28px 12px;
+      font-size: 13px;
+      background: #ffffffcc;
+      border-radius: 10px;
+    }
 
-  .day-divider {
-    align-self: center;
-    background: #E1F2FA;
-    color: #4a5b62;
-    font-size: 12.5px;
-    padding: 5px 12px;
-    border-radius: 8px;
-    margin: 10px 0;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.08);
-  }
+    /* input bar */
+    .input-bar {
+      background: #f0f2f5;
+      padding: 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+      border-top: 1px solid #e9edef;
+    }
+    .icon-btn {
+      background: transparent;
+      border: none;
+      color: #54656f;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-btn:hover { background: #e4e6e8; }
+    .icon-btn .material-symbols-outlined { font-size: 20px; }
+    .input-bar input {
+      flex: 1;
+      background: #fff;
+      border: none;
+      border-radius: 18px;
+      padding: 8px 14px;
+      color: #111b21;
+      font-size: 14px;
+      outline: none;
+      min-width: 0;
+    }
+    .input-bar input::placeholder { color: #8696a0; }
+    .send-btn {
+      background: #128c7e;
+      border: none;
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+    .send-btn:hover { background: #075e54; }
+    .send-btn:disabled { opacity: 0.5; cursor: default; }
+    .send-btn .material-symbols-outlined { font-size: 18px; }
 
-  .message-row {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 80%;
-    margin-bottom: 3px;
-  }
-  .message-row.own { align-items: flex-end; align-self: flex-end; }
+    .chat-card { position: relative; }
 
-  .message-bubble {
-    background: var(--panel);
-    padding: 6px 8px 8px 9px;
-    border-radius: 8px;
-    color: var(--text-dark);
-    font-size: 14.3px;
-    line-height: 1.4;
-    word-break: break-word;
-    position: relative;
-    box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
-    max-width: 100%;
-  }
-  .message-row.own .message-bubble { background: var(--green-bubble); }
-
-  /* speech-bubble tails, WhatsApp-style */
-  .message-row.theirs .message-bubble::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -7px;
-    width: 0; height: 0;
-    border-style: solid;
-    border-width: 0 9px 9px 0;
-    border-color: transparent var(--panel) transparent transparent;
-  }
-  .message-row.own .message-bubble::before {
-    content: '';
-    position: absolute;
-    top: 0; right: -7px;
-    width: 0; height: 0;
-    border-style: solid;
-    border-width: 0 0 9px 9px;
-    border-color: transparent transparent transparent var(--green-bubble);
-  }
-
-  .msg-author {
-    font-size: 12.8px;
-    font-weight: 600;
-    margin-bottom: 2px;
-    color: #d6774e;
-  }
-  .msg-author.is-admin { color: var(--teal-dark); }
-  .admin-pill {
-    display: inline-block;
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    color: #fff;
-    background: var(--teal);
-    padding: 1px 5px;
-    border-radius: 5px;
-    margin-left: 5px;
-    vertical-align: 1px;
-  }
-
-  .msg-body { white-space: pre-wrap; }
-
-  .msg-footer {
-    display: inline-flex;
-    align-items: center;
-    gap: 3px;
-    float: right;
-    margin: 3px -2px -3px 8px;
-    transform: translateY(2px);
-  }
-  .msg-footer .time { font-size: 11px; color: var(--text-muted); }
-  .msg-footer .edited { font-size: 10.5px; color: var(--text-muted); font-style: italic; }
-  .msg-footer .ticks { font-size: 15px; color: var(--check-blue); line-height: 1; }
-
-  .message-actions {
-    display: flex;
-    gap: 2px;
-    margin-top: 2px;
-  }
-  .message-actions button {
-    background: rgba(255,255,255,0.75);
-    border: none;
-    color: var(--text-muted);
-    font-size: 12px;
-    cursor: pointer;
-    padding: 3px 7px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.08);
-  }
-  .message-actions button .material-symbols-outlined { font-size: 14px; }
-  .message-actions button:hover { background: #fff; color: var(--text-dark); }
-  .message-actions .delete-btn:hover { color: #d3383f; }
-
-  .empty-state {
-    margin: auto;
-    color: var(--text-muted);
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 14px;
-    background: #ffffffcc;
-    border-radius: 10px;
-  }
-
-  /* ---------------- Composer ---------------- */
-
-  .input-bar {
-    background: #F0F2F5;
-    padding: 8px 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-  }
-  .icon-btn {
-    background: transparent;
-    border: none;
-    color: #54656F;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .icon-btn:hover { background: #e4e6e8; }
-  .icon-btn .material-symbols-outlined { font-size: 24px; }
-  .input-bar input {
-    flex: 1;
-    background: #fff;
-    border: none;
-    border-radius: 22px;
-    padding: 11px 16px;
-    color: var(--text-dark);
-    font-size: 15px;
-    outline: none;
-    min-width: 0;
-  }
-  .input-bar input::placeholder { color: #8696a0; }
-  .send-btn {
-    background: var(--teal);
-    border: none;
-    border-radius: 50%;
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.15s;
-    flex-shrink: 0;
-  }
-  .send-btn:hover { background: var(--teal-dark); }
-  .send-btn:disabled { opacity: 0.5; cursor: default; }
-  .send-btn .material-symbols-outlined { font-size: 21px; }
-
-  @media (max-width: 500px) {
-    .chat-container { height: 95vh; border-radius: 0; }
-    body { padding: 0; }
-    .message-row { max-width: 88%; }
-  }
-</style>
+    @media (max-width: 420px) {
+      .chat-card { max-width: 100%; border-radius: 16px; }
+      .messages-area { max-height: 300px; min-height: 200px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="chat-container" id="app">
-    <!-- Login overlay -->
-    <div class="login-overlay" id="loginOverlay">
-      <div class="brand">
-        <span class="material-symbols-outlined">chat</span> Community
-      </div>
-      <div class="sub">Sign in with phone &amp; name</div>
-      <form class="login-form" id="loginForm">
-        <input type="text" id="phoneInput" placeholder="Phone (e.g. 254712345678)">
-        <input type="text" id="nameInput" placeholder="Your name">
-        <button type="submit" id="loginBtn">
-          <span class="material-symbols-outlined">login</span> Sign in
-        </button>
-        <div class="login-error" id="loginError"></div>
-      </form>
+<div class="chat-card" id="app">
+  <!-- Login overlay -->
+  <div class="login-overlay" id="loginOverlay">
+    <div class="brand">
+      <span class="material-symbols-outlined">chat</span> Community
     </div>
-
-    <!-- Header -->
-    <div class="chat-header">
-      <div class="avatar-group">
-        <span class="material-symbols-outlined">group</span>
-      </div>
-      <div class="header-info">
-        <h2>Community Chat</h2>
-        <div class="status">
-          <span id="userStatus">loading...</span>
-        </div>
-      </div>
-      <div class="header-actions">
-        <button id="clearRoomBtn" title="Clear room (admin only)" style="display:none;">
-          <span class="material-symbols-outlined">delete_sweep</span>
-        </button>
-        <button id="logoutBtn" title="Sign out">
-          <span class="material-symbols-outlined">logout</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Messages -->
-    <div class="messages-area" id="messagesArea">
-      <div class="empty-state">Loading messages…</div>
-    </div>
-
-    <!-- Input bar -->
-    <div class="input-bar">
-      <button class="icon-btn" type="button" tabindex="-1" title="Emoji">
-        <span class="material-symbols-outlined">mood</span>
+    <div class="sub">Sign in with phone &amp; name</div>
+    <form class="login-form" id="loginForm">
+      <input type="text" id="phoneInput" placeholder="Phone (e.g. 254712345678)">
+      <input type="text" id="nameInput" placeholder="Your name">
+      <button type="submit" id="loginBtn">
+        <span class="material-symbols-outlined">login</span> Sign in
       </button>
-      <button class="icon-btn" type="button" tabindex="-1" title="Attach">
-        <span class="material-symbols-outlined">attach_file</span>
+      <div class="login-error" id="loginError"></div>
+    </form>
+  </div>
+
+  <!-- Header -->
+  <div class="chat-header">
+    <div class="avatar-icon"><span class="material-symbols-outlined">group</span></div>
+    <div class="header-info">
+      <h3>Community Chat</h3>
+      <div class="status"><span id="userStatus">loading...</span></div>
+    </div>
+    <div class="header-actions">
+      <button id="clearRoomBtn" title="Clear room (admin only)" style="display:none;">
+        <span class="material-symbols-outlined">delete_sweep</span>
       </button>
-      <input type="text" id="messageInput" placeholder="Type a message" maxlength="4000">
-      <button id="sendBtn" class="send-btn">
-        <span class="material-symbols-outlined">send</span>
+      <button id="logoutBtn" title="Sign out">
+        <span class="material-symbols-outlined">logout</span>
       </button>
     </div>
   </div>
 
+  <!-- Messages -->
+  <div class="messages-area" id="messagesArea">
+    <div class="empty-state">Loading messages…</div>
+  </div>
+
+  <!-- Input bar -->
+  <div class="input-bar">
+    <button class="icon-btn" type="button" tabindex="-1" title="Emoji">
+      <span class="material-symbols-outlined">mood</span>
+    </button>
+    <button class="icon-btn" type="button" tabindex="-1" title="Attach">
+      <span class="material-symbols-outlined">attach_file</span>
+    </button>
+    <input type="text" id="messageInput" placeholder="Type a message" maxlength="4000">
+    <button id="sendBtn" class="send-btn">
+      <span class="material-symbols-outlined">send</span>
+    </button>
+  </div>
+</div>
+
 <script>
+  (function() {
+    // --- CONFIG ---
+    const API_BASE = 'https://chat12345-9a7d914a952f.herokuapp.com';
+    const POLL_INTERVAL = 3000;
 
-    (function() {
-      // ---------- CONFIG ----------
-      // Point this at your deployed backend. It must have CORS +
-      // cross-site cookies enabled for whatever origin THIS file is
-      // served from — see the "Calling this API from a frontend on a
-      // different domain" section of the project README.
-      const API_BASE = 'https://chat12345-9a7d914a952f.herokuapp.com';
-      const POLL_INTERVAL = 3000;
+    // --- state ---
+    let currentUser = null;
+    let messages = [];
+    let pollingTimer = null;
+    let isPolling = false;
 
-      // ---------- state ----------
-      let currentUser = null;
-      let messages = [];
-      let pollingTimer = null;
-      let isPolling = false;
+    // DOM refs
+    const loginOverlay = document.getElementById('loginOverlay');
+    const loginForm = document.getElementById('loginForm');
+    const phoneInput = document.getElementById('phoneInput');
+    const nameInput = document.getElementById('nameInput');
+    const loginError = document.getElementById('loginError');
+    const loginBtn = document.getElementById('loginBtn');
+    const messagesArea = document.getElementById('messagesArea');
+    const messageInput = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const clearRoomBtn = document.getElementById('clearRoomBtn');
+    const userStatus = document.getElementById('userStatus');
 
-      // DOM refs
-      const loginOverlay = document.getElementById('loginOverlay');
-      const loginForm = document.getElementById('loginForm');
-      const phoneInput = document.getElementById('phoneInput');
-      const nameInput = document.getElementById('nameInput');
-      const loginError = document.getElementById('loginError');
-      const loginBtn = document.getElementById('loginBtn');
-      const messagesArea = document.getElementById('messagesArea');
-      const messageInput = document.getElementById('messageInput');
-      const sendBtn = document.getElementById('sendBtn');
-      const logoutBtn = document.getElementById('logoutBtn');
-      const clearRoomBtn = document.getElementById('clearRoomBtn');
-      const userStatus = document.getElementById('userStatus');
+    // --- helpers ---
+    function formatTime(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+    function getUserName(user) { return user && user.name ? user.name : 'unknown'; }
+    function isOwnMessage(msg) {
+      if (!currentUser) return false;
+      return msg.user && msg.user.id === currentUser.id;
+    }
+    function canDeleteMessage(msg) {
+      if (!currentUser) return false;
+      if (isOwnMessage(msg)) return true;
+      if (currentUser.isAdmin) return true;
+      return false;
+    }
+    function canEditMessage(msg) {
+      if (!currentUser) return false;
+      return isOwnMessage(msg);
+    }
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
 
-      // ---------- helpers ----------
-      function formatTime(iso) {
-        if (!iso) return '';
-        const d = new Date(iso);
-        return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    // --- API ---
+    async function apiFetch(path, options = {}) {
+      const url = `${API_BASE}${path}`;
+      const opts = {
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        ...options,
+      };
+      if (options.body && typeof options.body === 'object') opts.body = JSON.stringify(options.body);
+      try {
+        const res = await fetch(url, opts);
+        let data = {};
+        const ct = res.headers.get('content-type');
+        if (ct && ct.includes('application/json')) data = await res.json();
+        else data = { message: await res.text() };
+        return { status: res.status, data };
+      } catch (err) {
+        return { status: 0, data: { error: err.message } };
       }
+    }
 
-      function getUserName(user) {
-        return user && user.name ? user.name : 'unknown';
+    async function fetchMessages(limit = 50) {
+      const { status, data } = await apiFetch(`/api/messages?limit=${Math.min(limit, 200)}`);
+      if (status === 200 && data.messages) return data.messages;
+      return [];
+    }
+
+    async function postMessage(body) {
+      const { status, data } = await apiFetch('/api/messages', { method: 'POST', body: { body } });
+      if (status === 201 && data.message) return data.message;
+      throw new Error(data.error || 'Failed to send');
+    }
+
+    async function deleteMessageById(id) {
+      const { status, data } = await apiFetch(`/api/messages/${id}`, { method: 'DELETE' });
+      if (status === 200) return true;
+      throw new Error(data.error || 'Delete failed');
+    }
+
+    async function editMessageById(id, newBody) {
+      const { status, data } = await apiFetch(`/api/messages/${id}`, { method: 'PUT', body: { body: newBody } });
+      if (status === 200 && data.message) return data.message;
+      throw new Error(data.error || 'Edit failed');
+    }
+
+    async function clearRoom() {
+      const { status, data } = await apiFetch('/api/messages/clear', { method: 'POST' });
+      if (status === 200) return true;
+      throw new Error(data.error || 'Clear failed');
+    }
+
+    async function login(phone, name) {
+      const { status, data } = await apiFetch('/api/auth/login', { method: 'POST', body: { phone, name } });
+      if (status === 200 && data.user) return data.user;
+      throw new Error(data.error || data.message || 'Login failed');
+    }
+
+    async function logout() {
+      await apiFetch('/api/auth/logout', { method: 'POST' });
+      currentUser = null;
+      messages = [];
+      renderMessages();
+      loginOverlay.classList.remove('hidden');
+      userStatus.textContent = 'signed out';
+      clearRoomBtn.style.display = 'none';
+      if (pollingTimer) { clearInterval(pollingTimer); pollingTimer = null; }
+    }
+
+    async function fetchMe() {
+      const { status, data } = await apiFetch('/api/auth/me');
+      if (status === 200 && data.user) return data.user;
+      return null;
+    }
+
+    // --- render ---
+    function sameDay(a,b) { return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
+    function dayLabel(date) {
+      const today = new Date();
+      const yesterday = new Date(); yesterday.setDate(today.getDate()-1);
+      if (sameDay(date, today)) return 'Today';
+      if (sameDay(date, yesterday)) return 'Yesterday';
+      return date.toLocaleDateString([], { day:'numeric', month:'long', year:'numeric' });
+    }
+
+    function renderMessages() {
+      if (!messagesArea) return;
+      if (!messages || messages.length === 0) {
+        messagesArea.innerHTML = `<div class="empty-state">No messages yet. Say hello!</div>`;
+        return;
       }
+      const sorted = [...messages].sort((a,b) => new Date(a.createdAt) - new Date(b.createdAt));
+      let html = '';
+      let lastDay = null;
+      for (const msg of sorted) {
+        const isOwn = isOwnMessage(msg);
+        const name = getUserName(msg.user);
+        const created = new Date(msg.createdAt);
+        const time = formatTime(msg.createdAt);
+        const edited = msg.isEdited;
+        const canDel = canDeleteMessage(msg);
+        const canEdit = canEditMessage(msg);
+        const isAdminMsg = !!(msg.user && msg.user.isAdmin);
 
-      function isOwnMessage(msg) {
-        if (!currentUser) return false;
-        return msg.user && msg.user.id === currentUser.id;
-      }
-
-      function canDeleteMessage(msg) {
-        if (!currentUser) return false;
-        if (isOwnMessage(msg)) return true;
-        if (currentUser.isAdmin) return true;
-        return false;
-      }
-
-      function canEditMessage(msg) {
-        if (!currentUser) return false;
-        return isOwnMessage(msg);
-      }
-
-      function escapeHtml(text) {
-        if (!text) return '';
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-      }
-
-      // ---------- API calls ----------
-      async function apiFetch(path, options = {}) {
-        const url = `${API_BASE}${path}`;
-
-        const opts = {
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          ...options,
-        };
-
-        if (options.body && typeof options.body === 'object') {
-          opts.body = JSON.stringify(options.body);
+        if (!lastDay || !sameDay(lastDay, created)) {
+          html += `<div class="day-divider">${dayLabel(created)}</div>`;
+          lastDay = created;
         }
 
-        try {
-          const res = await fetch(url, opts);
-
-          let data = {};
-          const contentType = res.headers.get('content-type');
-          if (contentType && contentType.includes('application/json')) {
-            data = await res.json();
-          } else {
-            const text = await res.text();
-            data = { message: text };
+        html += `<div class="message-row ${isOwn ? 'own' : 'theirs'}">`;
+        html += `<div class="message-bubble">`;
+        if (!isOwn) {
+          html += `<div class="msg-author${isAdminMsg ? ' is-admin' : ''}">${escapeHtml(name)}${isAdminMsg ? '<span class="admin-pill">ADMIN</span>' : ''}</div>`;
+        }
+        html += `<span class="msg-body">${escapeHtml(msg.body)}</span>`;
+        html += `<span class="msg-footer">`;
+        if (edited) html += `<span class="edited">edited</span>`;
+        html += `<span class="time">${time}</span>`;
+        if (isOwn) html += `<span class="ticks">&#10003;&#10003;</span>`;
+        html += `</span>`;
+        html += `</div>`;
+        if (canDel || canEdit) {
+          html += `<div class="message-actions">`;
+          if (canEdit) {
+            html += `<button class="edit-btn" data-id="${msg.id}" data-body="${escapeHtml(msg.body)}" title="Edit"><span class="material-symbols-outlined">edit</span>Edit</button>`;
           }
-
-          return { status: res.status, data };
-        } catch (err) {
-          console.error('Fetch error:', err);
-          return { status: 0, data: { error: err.message } };
-        }
-      }
-
-      async function fetchMessages(limit = 50) {
-        const url = `/api/messages?limit=${Math.min(limit, 200)}`;
-        const { status, data } = await apiFetch(url);
-        if (status === 200 && data.messages) {
-          return data.messages;
-        }
-        console.warn('Failed to fetch messages:', status, data);
-        return [];
-      }
-
-      async function postMessage(body) {
-        const { status, data } = await apiFetch('/api/messages', {
-          method: 'POST',
-          body: { body }
-        });
-        if (status === 201 && data.message) {
-          return data.message;
-        }
-        throw new Error(data.error || 'Failed to send');
-      }
-
-      async function deleteMessageById(id) {
-        const { status, data } = await apiFetch(`/api/messages/${id}`, {
-          method: 'DELETE'
-        });
-        if (status === 200) return true;
-        throw new Error(data.error || 'Delete failed');
-      }
-
-      async function editMessageById(id, newBody) {
-        const { status, data } = await apiFetch(`/api/messages/${id}`, {
-          method: 'PUT',
-          body: { body: newBody }
-        });
-        if (status === 200 && data.message) {
-          return data.message;
-        }
-        throw new Error(data.error || 'Edit failed');
-      }
-
-      async function clearRoom() {
-        const { status, data } = await apiFetch('/api/messages/clear', {
-          method: 'POST'
-        });
-        if (status === 200) return true;
-        throw new Error(data.error || 'Clear failed');
-      }
-
-      // ---------- auth ----------
-      async function login(phone, name) {
-        const { status, data } = await apiFetch('/api/auth/login', {
-          method: 'POST',
-          body: { phone, name }
-        });
-
-        if (status === 200 && data.user) {
-          return data.user;
-        }
-        throw new Error(data.error || data.message || 'Login failed');
-      }
-
-      async function logout() {
-        await apiFetch('/api/auth/logout', { method: 'POST' });
-        currentUser = null;
-        messages = [];
-        renderMessages();
-        loginOverlay.classList.remove('hidden');
-        userStatus.textContent = 'signed out';
-        clearRoomBtn.style.display = 'none';
-        if (pollingTimer) {
-          clearInterval(pollingTimer);
-          pollingTimer = null;
-        }
-      }
-
-      async function fetchMe() {
-        const { status, data } = await apiFetch('/api/auth/me');
-        if (status === 200 && data.user) {
-          return data.user;
-        }
-        return null;
-      }
-
-      // ---------- render messages ----------
-      function sameDay(a, b) {
-        return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
-      }
-
-      function dayLabel(date) {
-        const today = new Date();
-        const yesterday = new Date(); yesterday.setDate(today.getDate() - 1);
-        if (sameDay(date, today)) return 'Today';
-        if (sameDay(date, yesterday)) return 'Yesterday';
-        return date.toLocaleDateString([], { day: 'numeric', month: 'long', year: 'numeric' });
-      }
-
-      function renderMessages() {
-        if (!messagesArea) return;
-        if (!messages || messages.length === 0) {
-          messagesArea.innerHTML = `<div class="empty-state">No messages yet. Say hello!</div>`;
-          return;
-        }
-
-        const sorted = [...messages].sort((a,b) => new Date(a.createdAt) - new Date(b.createdAt));
-        let html = '';
-        let lastDay = null;
-
-        for (const msg of sorted) {
-          const isOwn = isOwnMessage(msg);
-          const name = getUserName(msg.user);
-          const created = new Date(msg.createdAt);
-          const time = formatTime(msg.createdAt);
-          const edited = msg.isEdited;
-          const canDel = canDeleteMessage(msg);
-          const canEdit = canEditMessage(msg);
-          const isAdminMsg = !!(msg.user && msg.user.isAdmin);
-
-          if (!lastDay || !sameDay(lastDay, created)) {
-            html += `<div class="day-divider">${dayLabel(created)}</div>`;
-            lastDay = created;
+          if (canDel) {
+            html += `<button class="delete-btn" data-id="${msg.id}" title="Delete"><span class="material-symbols-outlined">delete</span>Delete</button>`;
           }
-
-          html += `<div class="message-row ${isOwn ? 'own' : 'theirs'}">`;
-          html += `<div class="message-bubble">`;
-          if (!isOwn) {
-            html += `<div class="msg-author${isAdminMsg ? ' is-admin' : ''}">${escapeHtml(name)}${isAdminMsg ? '<span class="admin-pill">ADMIN</span>' : ''}</div>`;
-          }
-          html += `<span class="msg-body">${escapeHtml(msg.body)}</span>`;
-          html += `<span class="msg-footer">`;
-          if (edited) html += `<span class="edited">edited</span>`;
-          html += `<span class="time">${time}</span>`;
-          if (isOwn) html += `<span class="ticks">&#10003;&#10003;</span>`;
-          html += `</span>`;
-          html += `</div>`; // .message-bubble
-
-          if (canDel || canEdit) {
-            html += `<div class="message-actions">`;
-            if (canEdit) {
-              html += `<button class="edit-btn" data-id="${msg.id}" data-body="${escapeHtml(msg.body)}" title="Edit"><span class="material-symbols-outlined">edit</span>Edit</button>`;
-            }
-            if (canDel) {
-              html += `<button class="delete-btn" data-id="${msg.id}" title="Delete"><span class="material-symbols-outlined">delete</span>Delete</button>`;
-            }
-            html += `</div>`;
-          }
-          html += `</div>`; // .message-row
+          html += `</div>`;
         }
-        messagesArea.innerHTML = html;
+        html += `</div>`;
+      }
+      messagesArea.innerHTML = html;
 
-        document.querySelectorAll('.delete-btn').forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const id = btn.dataset.id;
-            if (id) deleteMessage(id);
-          });
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const id = btn.dataset.id;
+          if (id) deleteMessage(id);
         });
-        document.querySelectorAll('.edit-btn').forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const id = btn.dataset.id;
-            const currentBody = btn.dataset.body;
-            if (id) editMessage(id, currentBody);
-          });
+      });
+      document.querySelectorAll('.edit-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const id = btn.dataset.id;
+          const currentBody = btn.dataset.body;
+          if (id) editMessage(id, currentBody);
         });
+      });
 
-        messagesArea.scrollTop = messagesArea.scrollHeight;
+      messagesArea.scrollTop = messagesArea.scrollHeight;
+    }
+
+    // --- polling ---
+    async function pollMessages() {
+      if (isPolling) return;
+      isPolling = true;
+      try {
+        const fetched = await fetchMessages(50);
+        if (fetched && fetched.length) {
+          const map = new Map();
+          for (const m of messages) map.set(m.id, m);
+          for (const m of fetched) map.set(m.id, m);
+          messages = Array.from(map.values());
+          renderMessages();
+        } else if (messages.length === 0) {
+          renderMessages();
+        }
+      } catch (e) { /* ignore */ }
+      finally { isPolling = false; }
+    }
+
+    function startPolling() {
+      if (pollingTimer) clearInterval(pollingTimer);
+      pollMessages();
+      pollingTimer = setInterval(pollMessages, POLL_INTERVAL);
+    }
+
+    // --- actions ---
+    async function handleSend() {
+      const body = messageInput.value.trim();
+      if (!body || !currentUser) return;
+      try {
+        await postMessage(body);
+        messageInput.value = '';
+        await pollMessages();
+      } catch (err) { alert(err.message); }
+    }
+
+    async function deleteMessage(id) {
+      if (!id || !confirm('Delete this message?')) return;
+      try { await deleteMessageById(id); await pollMessages(); } catch (err) { alert(err.message); }
+    }
+
+    async function editMessage(id, currentBody) {
+      if (!id) return;
+      const newBody = prompt('Edit your message:', currentBody);
+      if (newBody === null || newBody.trim() === currentBody) return;
+      if (!newBody.trim()) { alert('Message cannot be empty'); return; }
+      try { await editMessageById(id, newBody.trim()); await pollMessages(); } catch (err) { alert(err.message); }
+    }
+
+    async function handleClearRoom() {
+      if (!currentUser || !currentUser.isAdmin) { alert('Admin only'); return; }
+      if (!confirm('⚠️ Clear ALL messages?')) return;
+      try { await clearRoom(); await pollMessages(); } catch (err) { alert(err.message); }
+    }
+
+    // --- login ---
+    async function handleLogin(e) {
+      e.preventDefault();
+      const phone = phoneInput.value.trim();
+      const name = nameInput.value.trim();
+      if (!phone || !name) { loginError.textContent = 'Phone and name required'; return; }
+      if (phone.length < 6) { loginError.textContent = 'Phone too short'; return; }
+
+      loginError.textContent = 'Signing in...';
+      loginBtn.disabled = true;
+      loginBtn.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Signing in...';
+
+      try {
+        const user = await login(phone, name);
+        currentUser = user;
+        loginOverlay.classList.add('hidden');
+        userStatus.textContent = user.isAdmin ? '👑 Admin' : `👤 ${user.name}`;
+        clearRoomBtn.style.display = user.isAdmin ? 'flex' : 'none';
+        await pollMessages();
+        startPolling();
+        loginBtn.disabled = false;
+        loginBtn.innerHTML = '<span class="material-symbols-outlined">login</span> Sign in';
+        loginError.textContent = '';
+      } catch (err) {
+        loginError.textContent = err.message || 'Login error';
+        loginBtn.disabled = false;
+        loginBtn.innerHTML = '<span class="material-symbols-outlined">login</span> Sign in';
       }
+    }
 
-      // ---------- polling ----------
-      async function pollMessages() {
-        if (isPolling) return;
-        isPolling = true;
-        try {
-          const fetched = await fetchMessages(50);
-          if (fetched && fetched.length) {
-            const map = new Map();
-            for (const m of messages) map.set(m.id, m);
-            for (const m of fetched) map.set(m.id, m);
-            messages = Array.from(map.values());
-            renderMessages();
-          } else if (messages.length === 0) {
-            renderMessages();
-          }
-        } catch (e) {
-          console.warn('Poll error:', e);
-        } finally {
-          isPolling = false;
-        }
-      }
-
-      function startPolling() {
-        if (pollingTimer) clearInterval(pollingTimer);
-        pollMessages();
-        pollingTimer = setInterval(pollMessages, POLL_INTERVAL);
-      }
-
-      // ---------- UI actions ----------
-      async function handleSend() {
-        const body = messageInput.value.trim();
-        if (!body) return;
-        if (!currentUser) {
-          alert('Please sign in first');
-          return;
-        }
-        try {
-          await postMessage(body);
-          messageInput.value = '';
-          await pollMessages();
-        } catch (err) {
-          alert(err.message);
-        }
-      }
-
-      async function deleteMessage(id) {
-        if (!id) return;
-        if (!confirm('Delete this message?')) return;
-        try {
-          await deleteMessageById(id);
-          await pollMessages();
-        } catch (err) {
-          alert(err.message);
-        }
-      }
-
-      async function editMessage(id, currentBody) {
-        if (!id) return;
-        const newBody = prompt('Edit your message:', currentBody);
-        if (newBody === null || newBody.trim() === currentBody) return;
-        if (!newBody.trim()) {
-          alert('Message cannot be empty');
-          return;
-        }
-        try {
-          await editMessageById(id, newBody.trim());
-          await pollMessages();
-        } catch (err) {
-          alert(err.message);
-        }
-      }
-
-      async function handleClearRoom() {
-        if (!currentUser || !currentUser.isAdmin) {
-          alert('Admin only');
-          return;
-        }
-        if (!confirm('⚠️ Clear ALL messages? This cannot be undone.')) return;
-        try {
-          await clearRoom();
-          await pollMessages();
-        } catch (err) {
-          alert(err.message);
-        }
-      }
-
-      // ---------- login flow ----------
-      async function handleLogin(e) {
-        e.preventDefault();
-
-        const phone = phoneInput.value.trim();
-        const name = nameInput.value.trim();
-
-        if (!phone || !name) {
-          loginError.textContent = 'Phone and name required';
-          return;
-        }
-        if (phone.length < 6) {
-          loginError.textContent = 'Phone too short';
-          return;
-        }
-
-        loginError.textContent = 'Signing in...';
-        loginBtn.disabled = true;
-        loginBtn.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Signing in...';
-
-        try {
-          const user = await login(phone, name);
-
+    // --- init ---
+    async function init() {
+      try {
+        const user = await fetchMe();
+        if (user) {
           currentUser = user;
           loginOverlay.classList.add('hidden');
           userStatus.textContent = user.isAdmin ? '👑 Admin' : `👤 ${user.name}`;
           clearRoomBtn.style.display = user.isAdmin ? 'flex' : 'none';
-
           await pollMessages();
           startPolling();
-
-          loginBtn.disabled = false;
-          loginBtn.innerHTML = '<span class="material-symbols-outlined">login</span> Sign in';
-          loginError.textContent = '';
-
-        } catch (err) {
-          console.error('Login error:', err);
-          loginError.textContent = err.message || 'Login error - check console';
-          loginBtn.disabled = false;
-          loginBtn.innerHTML = '<span class="material-symbols-outlined">login</span> Sign in';
-        }
-      }
-
-      // ---------- init ----------
-      async function init() {
-        try {
-          const user = await fetchMe();
-
-          if (user) {
-            currentUser = user;
-            loginOverlay.classList.add('hidden');
-            userStatus.textContent = user.isAdmin ? '👑 Admin' : `👤 ${user.name}`;
-            clearRoomBtn.style.display = user.isAdmin ? 'flex' : 'none';
-            await pollMessages();
-            startPolling();
-          } else {
-            loginOverlay.classList.remove('hidden');
-            userStatus.textContent = 'not signed in';
-          }
-        } catch (e) {
-          console.error('Init error:', e);
+        } else {
           loginOverlay.classList.remove('hidden');
-          userStatus.textContent = 'error';
+          userStatus.textContent = 'not signed in';
         }
-
-        loginForm.addEventListener('submit', handleLogin);
-        sendBtn.addEventListener('click', handleSend);
-        messageInput.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            handleSend();
-          }
-        });
-        logoutBtn.addEventListener('click', () => {
-          if (confirm('Sign out?')) logout();
-        });
-        clearRoomBtn.addEventListener('click', handleClearRoom);
+      } catch (e) {
+        loginOverlay.classList.remove('hidden');
+        userStatus.textContent = 'error';
       }
 
-      init();
-    })();
-  
+      loginForm.addEventListener('submit', handleLogin);
+      sendBtn.addEventListener('click', handleSend);
+      messageInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+      });
+      logoutBtn.addEventListener('click', () => { if (confirm('Sign out?')) logout(); });
+      clearRoomBtn.addEventListener('click', handleClearRoom);
+    }
+
+    init();
+  })();
 </script>
 </body>
 </html>
