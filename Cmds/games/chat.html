@@ -28,10 +28,8 @@ html,body{
   overflow:hidden;
 }
 #app{height:100%;width:100%;display:flex;flex-direction:column;}
-
-/* ---------------- shared ---------------- */
 button{font-family:inherit;}
-input{font-family:inherit;}
+input,textarea{font-family:inherit;}
 .hidden{display:none !important;}
 
 /* ---------------- login ---------------- */
@@ -112,96 +110,31 @@ input{font-family:inherit;}
 .menuPop button:hover{background:var(--panel);}
 .menuPop button.danger{color:var(--danger);}
 
+/* ---------------- canvas chat feed (this is the part any board/canvas
+   capture tool will pick up, just like the game boards) ---------------- */
 .chatBody{
-  flex:1;min-height:0;overflow-y:auto;position:relative;
+  flex:1;min-height:0;position:relative;overflow:hidden;
   background-color:var(--wallpaper);
   background-image:
     radial-gradient(circle at 20% 20%, rgba(0,0,0,0.025) 0, rgba(0,0,0,0.025) 2px, transparent 2px),
     radial-gradient(circle at 60% 70%, rgba(0,0,0,0.025) 0, rgba(0,0,0,0.025) 2px, transparent 2px),
     radial-gradient(circle at 85% 30%, rgba(0,0,0,0.02) 0, rgba(0,0,0,0.02) 2px, transparent 2px);
   background-size:90px 90px, 130px 130px, 70px 70px;
-  padding:14px 4% 10px;
 }
-.loadOlderWrap{display:flex;justify-content:center;margin:6px 0 14px;}
+#chatCanvas{display:block;width:100%;height:100%;touch-action:none;}
+
+.loadOlderWrap{
+  position:absolute;top:8px;left:0;right:0;display:flex;justify-content:center;
+  z-index:6;pointer-events:none;
+}
 .loadOlderBtn{
-  background:rgba(255,255,255,0.85);border:1px solid var(--border);color:var(--teal);
+  pointer-events:auto;
+  background:rgba(255,255,255,0.92);border:1px solid var(--border);color:var(--teal);
   font-size:12.5px;font-weight:600;padding:7px 16px;border-radius:16px;cursor:pointer;
+  box-shadow:0 1px 4px rgba(0,0,0,0.15);
 }
 .loadOlderBtn:hover{background:#fff;}
 .loadOlderBtn:disabled{opacity:0.6;cursor:default;}
-
-.dateDivider{display:flex;justify-content:center;margin:14px 0;}
-.dateDivider span{
-  background:#dcf1ee;color:#3f5d59;font-size:11.5px;font-weight:600;
-  padding:5px 12px;border-radius:8px;box-shadow:0 1px 1px rgba(0,0,0,0.08);
-}
-
-.emptyState{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  height:100%;color:var(--text-secondary);text-align:center;padding:30px;
-}
-.emptyState svg{width:56px;height:56px;fill:#c4cbce;margin-bottom:10px;}
-.emptyState p{margin:0;font-size:13.5px;max-width:240px;line-height:1.5;}
-
-.msgRow{display:flex;margin-bottom:2px;max-width:100%;position:relative;}
-.msgRow.groupStart{margin-top:10px;}
-.msgRow.out{justify-content:flex-end;}
-.msgRow.in{justify-content:flex-start;}
-
-.msgAvatar{
-  width:28px;height:28px;border-radius:50%;flex:0 0 auto;margin-right:6px;
-  display:flex;align-items:center;justify-content:center;color:#fff;
-  font-size:11px;font-weight:700;align-self:flex-end;visibility:hidden;
-}
-.msgRow.groupStart .msgAvatar{visibility:visible;}
-.msgRow.out .msgAvatar{display:none;}
-
-.bubbleWrap{max-width:76%;position:relative;}
-.bubble{
-  background:var(--bubble-in);border-radius:8px;padding:6px 9px 8px 9px;
-  box-shadow:0 1px 0.5px rgba(0,0,0,0.13);position:relative;
-}
-.msgRow.out .bubble{background:var(--bubble-out);}
-.senderName{font-size:12.5px;font-weight:700;margin-bottom:2px;}
-.msgBody{font-size:14.2px;line-height:1.35;white-space:pre-wrap;word-break:break-word;padding-right:52px;}
-.msgMeta{
-  display:flex;align-items:center;justify-content:flex-end;gap:3px;
-  font-size:10.5px;color:var(--text-secondary);margin-top:1px;
-  position:absolute;right:9px;bottom:6px;
-}
-.msgMeta .edited{font-style:italic;}
-.msgMeta svg{width:15px;height:15px;fill:#53bdeb;}
-
-.msgActions{
-  position:absolute;top:-6px;right:-6px;width:24px;height:24px;border-radius:50%;
-  background:rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;
-  cursor:pointer;opacity:0;transition:opacity .12s;
-}
-.bubbleWrap:hover .msgActions{opacity:1;}
-.msgActions svg{width:15px;height:15px;fill:var(--text-secondary);}
-.actionMenu{
-  position:absolute;top:16px;right:0;background:#fff;border-radius:8px;
-  box-shadow:0 4px 18px rgba(0,0,0,0.25);min-width:130px;overflow:hidden;z-index:15;
-  display:none;
-}
-.actionMenu.show{display:block;}
-.actionMenu button{
-  width:100%;text-align:left;padding:10px 14px;border:none;background:none;
-  font-size:13.5px;cursor:pointer;color:var(--text-primary);
-}
-.actionMenu button:hover{background:var(--panel);}
-.actionMenu button.danger{color:var(--danger);}
-
-.editArea textarea{
-  width:100%;border:1px solid var(--green-accent);border-radius:6px;padding:6px 8px;
-  font-size:14px;font-family:inherit;resize:none;outline:none;min-height:44px;
-}
-.editRow{display:flex;gap:6px;margin-top:6px;justify-content:flex-end;}
-.editRow button{
-  border:none;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;
-}
-.editRow .save{background:var(--green-accent);color:#fff;}
-.editRow .cancel{background:var(--panel);color:var(--text-primary);}
 
 .jumpBtn{
   position:absolute;bottom:14px;right:16px;background:#fff;border:none;border-radius:50%;
@@ -214,6 +147,39 @@ input{font-family:inherit;}
   position:absolute;top:-2px;right:-2px;width:10px;height:10px;border-radius:50%;
   background:var(--green-accent);border:2px solid #fff;
 }
+
+/* floating action menu (edit/delete), positioned near the tapped bubble */
+.floatMenu{
+  position:fixed;background:#fff;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,0.28);
+  min-width:150px;overflow:hidden;z-index:70;display:none;
+}
+.floatMenu.show{display:block;}
+.floatMenu button{
+  width:100%;text-align:left;padding:11px 16px;border:none;background:none;
+  font-size:14px;cursor:pointer;color:var(--text-primary);
+}
+.floatMenu button:hover{background:var(--panel);}
+.floatMenu button.danger{color:var(--danger);}
+
+/* edit / confirm modal */
+.modalOverlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.45);display:none;
+  align-items:center;justify-content:center;z-index:80;padding:16px;
+}
+.modalOverlay.show{display:flex;}
+.modalCard{background:#fff;border-radius:12px;padding:18px;width:100%;max-width:340px;box-shadow:0 12px 40px rgba(0,0,0,0.3);}
+.modalCard h3{margin:0 0 10px;font-size:15px;}
+.modalCard p{margin:0 0 12px;font-size:13.5px;color:var(--text-secondary);line-height:1.5;}
+.modalCard textarea{
+  width:100%;min-height:70px;border:1px solid var(--border);border-radius:8px;
+  padding:8px 10px;font-size:14px;font-family:inherit;resize:vertical;outline:none;
+}
+.modalCard textarea:focus{border-color:var(--green-accent);}
+.modalActions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px;}
+.modalActions button{border:none;border-radius:8px;padding:8px 16px;font-size:13.5px;font-weight:600;cursor:pointer;}
+.modalActions .cancel{background:var(--panel);color:var(--text-primary);}
+.modalActions .save{background:var(--green-accent);color:#fff;}
+.modalActions .del{background:var(--danger);color:#fff;}
 
 .chatFooter{
   flex:0 0 auto;background:var(--panel);padding:8px 10px;
@@ -303,11 +269,12 @@ input{font-family:inherit;}
       </div>
     </div>
 
+    <!-- Message feed lives on a <canvas>, same pattern as the game boards -->
     <div class="chatBody" id="chatBody">
+      <canvas id="chatCanvas" width="400" height="700"></canvas>
       <div class="loadOlderWrap hidden" id="loadOlderWrap">
         <button class="loadOlderBtn" id="loadOlderBtn">Load earlier messages</button>
       </div>
-      <div id="msgList"></div>
       <button class="jumpBtn" id="jumpBtn" aria-label="Jump to latest">
         <span class="dot hidden" id="jumpDot"></span>
         <svg viewBox="0 0 24 24"><path d="M12 16l-6-6h12l-6 6z"/></svg>
@@ -329,6 +296,48 @@ input{font-family:inherit;}
 
 </div>
 
+<!-- floating per-message action menu (Edit / Delete) -->
+<div class="floatMenu" id="floatMenu">
+  <button id="fmEdit" class="hidden">Edit</button>
+  <button id="fmDelete" class="danger hidden">Delete</button>
+</div>
+
+<!-- edit modal -->
+<div class="modalOverlay" id="editOverlay">
+  <div class="modalCard">
+    <h3>Edit message</h3>
+    <textarea id="editTextarea" maxlength="4000"></textarea>
+    <div class="modalActions">
+      <button class="cancel" id="editCancel">Cancel</button>
+      <button class="save" id="editSave">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- delete confirm modal -->
+<div class="modalOverlay" id="deleteOverlay">
+  <div class="modalCard">
+    <h3>Delete message?</h3>
+    <p>This can't be undone.</p>
+    <div class="modalActions">
+      <button class="cancel" id="deleteCancel">Cancel</button>
+      <button class="del" id="deleteConfirm">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- clear room confirm modal -->
+<div class="modalOverlay" id="clearOverlay">
+  <div class="modalCard">
+    <h3>Clear the room?</h3>
+    <p>This deletes every message for everyone.</p>
+    <div class="modalActions">
+      <button class="cancel" id="clearCancel">Cancel</button>
+      <button class="del" id="clearConfirm">Clear room</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -343,10 +352,15 @@ var messages=[];         // oldest -> newest, currently loaded
 var hasMoreOlder=true;
 var loadingOlder=false;
 var pollTimer=null;
-var isNearBottom=true;
-var openActionMenuId=null;
-var editingId=null;
 var sending=false;
+var editingId=null;
+var pendingDeleteId=null;
+
+/* canvas render state */
+var rows=[];              // computed layout rows (date dividers + messages)
+var contentHeight=0;
+var scrollOffset=0;
+var cssW=400, cssH=700, dpr=1;
 
 /* ---------------- DOM refs ---------------- */
 var loginScreen=document.getElementById('loginScreen');
@@ -362,7 +376,8 @@ var menuPop=document.getElementById('menuPop');
 var clearBtn=document.getElementById('clearBtn');
 var logoutBtn=document.getElementById('logoutBtn');
 var chatBody=document.getElementById('chatBody');
-var msgList=document.getElementById('msgList');
+var canvas=document.getElementById('chatCanvas');
+var ctx=canvas.getContext('2d');
 var loadOlderWrap=document.getElementById('loadOlderWrap');
 var loadOlderBtn=document.getElementById('loadOlderBtn');
 var jumpBtn=document.getElementById('jumpBtn');
@@ -370,6 +385,19 @@ var jumpDot=document.getElementById('jumpDot');
 var msgInput=document.getElementById('msgInput');
 var sendBtn=document.getElementById('sendBtn');
 var toastEl=document.getElementById('toast');
+var floatMenu=document.getElementById('floatMenu');
+var fmEdit=document.getElementById('fmEdit');
+var fmDelete=document.getElementById('fmDelete');
+var editOverlay=document.getElementById('editOverlay');
+var editTextarea=document.getElementById('editTextarea');
+var editCancel=document.getElementById('editCancel');
+var editSave=document.getElementById('editSave');
+var deleteOverlay=document.getElementById('deleteOverlay');
+var deleteCancel=document.getElementById('deleteCancel');
+var deleteConfirm=document.getElementById('deleteConfirm');
+var clearOverlay=document.getElementById('clearOverlay');
+var clearCancel=document.getElementById('clearCancel');
+var clearConfirm=document.getElementById('clearConfirm');
 
 /* ---------------- helpers ---------------- */
 function showToast(text){
@@ -377,12 +405,9 @@ function showToast(text){
     toastEl.classList.add('show');
     setTimeout(function(){toastEl.classList.remove('show');},2600);
 }
-function esc(s){return s==null?'':String(s);}
-
 var AVATAR_COLORS=['#7F66FF','#00A884','#F5A623','#FF6F61','#4EA1D3','#E67AA6','#9B59B6','#2FA36B','#D98A3D'];
 function colorFor(key){
-    var h=0;
-    key=String(key||'');
+    var h=0;key=String(key||'');
     for(var i=0;i<key.length;i++)h=(h*31+key.charCodeAt(i))>>>0;
     return AVATAR_COLORS[h%AVATAR_COLORS.length];
 }
@@ -416,6 +441,47 @@ function dateLabel(iso){
 function normalizePhoneClient(p){
     return String(p||'').replace(/[\s-]/g,'').replace(/^\+/,'');
 }
+function roundRectPath(x,y,w,h,r){
+    r=Math.min(r,w/2,h/2);
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.arcTo(x+w,y,x+w,y+h,r);
+    ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r);
+    ctx.arcTo(x,y,x+w,y,r);
+    ctx.closePath();
+}
+function wrapText(text,font,maxWidth){
+    ctx.font=font;
+    var out=[];
+    var paragraphs=String(text||'').split('\n');
+    for(var p=0;p<paragraphs.length;p++){
+        var words=paragraphs[p].split(' ');
+        var line='';
+        if(words.length===0 || (words.length===1 && words[0]==='')){out.push('');continue;}
+        for(var i=0;i<words.length;i++){
+            var test=line?(line+' '+words[i]):words[i];
+            if(ctx.measureText(test).width>maxWidth && line){
+                out.push(line);
+                line=words[i];
+                // break very long single words
+                while(ctx.measureText(line).width>maxWidth && line.length>1){
+                    var lo=0,hi=line.length;
+                    while(lo<hi){
+                        var mid=(lo+hi+1)>>1;
+                        if(ctx.measureText(line.slice(0,mid)).width<=maxWidth)lo=mid; else hi=mid-1;
+                    }
+                    out.push(line.slice(0,lo));
+                    line=line.slice(lo);
+                }
+            } else {
+                line=test;
+            }
+        }
+        out.push(line);
+    }
+    return out;
+}
 
 /* ---------------- API wrapper ---------------- */
 function apiFetch(path,opts){
@@ -441,6 +507,7 @@ function apiFetch(path,opts){
 
 /* ---------------- session bootstrap ---------------- */
 function boot(){
+    resizeCanvas();
     apiFetch('/api/auth/me').then(function(data){
         if(data && data.user){
             user=data.user;
@@ -460,7 +527,6 @@ loginForm.addEventListener('submit',function(e){
     loginBtn.disabled=true;loginBtn.textContent='Signing in…';
     apiFetch('/api/auth/login',{method:'POST',body:JSON.stringify({phone:phone,name:name})})
         .then(function(data){
-            // confirm the session cookie actually stuck (see backend README §6)
             return apiFetch('/api/auth/me').then(function(meData){
                 if(meData && meData.user){
                     user=meData.user;
@@ -499,8 +565,8 @@ function enterChat(){
     chatScreen.classList.add('show');
     hSub.textContent=user.name+(user.isAdmin?' \u00b7 super admin':'');
     clearBtn.classList.toggle('hidden',!user.isAdmin);
-    messages=[];hasMoreOlder=true;
-    msgList.innerHTML='';
+    messages=[];hasMoreOlder=true;scrollOffset=0;
+    resizeCanvas();
     loadInitial();
     startPolling();
 }
@@ -510,19 +576,21 @@ function loadInitial(){
     apiFetch('/api/messages?limit=50').then(function(data){
         messages=(data.messages||[]).slice().sort(function(a,b){return a.createdAt<b.createdAt?-1:1;});
         hasMoreOlder=messages.length>=50;
-        renderAll();
-        scrollToBottom(true);
+        layoutAndRender();
+        scrollOffset=maxScroll();
+        requestDraw();
+        updateChrome();
     }).catch(function(err){
         if(err.code!==401)showToast(err.message||'Could not load messages');
     });
 }
 
 function pollLatest(){
-    if(editingId)return; // avoid yanking the DOM while someone is editing
+    if(editingId)return;
     apiFetch('/api/messages?limit=50').then(function(data){
         var fetched=(data.messages||[]).slice().sort(function(a,b){return a.createdAt<b.createdAt?-1:1;});
         if(fetched.length===0){
-            if(messages.length>0){messages=[];renderAll();}
+            if(messages.length>0){messages=[];layoutAndRender();updateChrome();}
             return;
         }
         var windowStart=fetched[0].createdAt;
@@ -531,21 +599,22 @@ function pollLatest(){
         var newMessages=older.concat(fetched);
         var changed=JSON.stringify(newMessages.map(function(m){return m.id+m.body+m.isEdited;}))
                   !==JSON.stringify(messages.map(function(m){return m.id+m.body+m.isEdited;}));
+        var wasNearBottom=isNearBottom();
         messages=newMessages;
         if(changed){
-            var wasNearBottom=isNearBottom;
-            renderAll();
+            layoutAndRender();
             var hasNewest=fetched.length && fetched[fetched.length-1].id!==prevNewestId;
-            if(wasNearBottom || (fetched.length && fetched[fetched.length-1].userId===(user&&user.id))){
-                scrollToBottom(false);
+            var lastIsOwn=fetched.length && user && fetched[fetched.length-1].user && fetched[fetched.length-1].user.id===user.id;
+            if(wasNearBottom || lastIsOwn){
+                scrollOffset=maxScroll();
+                requestDraw();
             } else if(hasNewest){
                 jumpDot.classList.remove('hidden');
                 jumpBtn.classList.add('show');
             }
+            updateChrome();
         }
-    }).catch(function(err){
-        if(err.code!==401){/* transient network hiccup, ignore */}
-    });
+    }).catch(function(err){ /* transient network hiccup, ignore */ });
 }
 
 function startPolling(){
@@ -562,14 +631,16 @@ loadOlderBtn.addEventListener('click',function(){
     loadOlderBtn.disabled=true;
     loadOlderBtn.textContent='Loading\u2026';
     var before=messages[0].createdAt;
-    var prevHeight=chatBody.scrollHeight;
+    var prevContentHeight=contentHeight;
     apiFetch('/api/messages?limit=50&before='+encodeURIComponent(before)).then(function(data){
         var older=(data.messages||[]).slice().sort(function(a,b){return a.createdAt<b.createdAt?-1:1;});
         hasMoreOlder=older.length>=50;
         messages=older.concat(messages);
-        renderAll();
-        var newHeight=chatBody.scrollHeight;
-        chatBody.scrollTop=newHeight-prevHeight;
+        layoutAndRender();
+        var added=contentHeight-prevContentHeight;
+        scrollOffset=Math.max(0,Math.min(maxScroll(),scrollOffset+added));
+        requestDraw();
+        updateChrome();
     }).catch(function(err){
         if(err.code!==401)showToast(err.message||'Could not load older messages');
     }).finally(function(){
@@ -579,220 +650,330 @@ loadOlderBtn.addEventListener('click',function(){
     });
 });
 
-/* ---------------- rendering ---------------- */
-function scrollToBottom(instant){
-    requestAnimationFrame(function(){
-        chatBody.scrollTop=chatBody.scrollHeight;
-    });
-    jumpBtn.classList.remove('show');
-    jumpDot.classList.add('hidden');
+/* ---------------- canvas sizing ---------------- */
+function resizeCanvas(){
+    var rect=chatBody.getBoundingClientRect();
+    cssW=Math.max(200,rect.width||360);
+    cssH=Math.max(200,rect.height||500);
+    dpr=Math.min(2,window.devicePixelRatio||1);
+    canvas.width=Math.round(cssW*dpr);
+    canvas.height=Math.round(cssH*dpr);
+    canvas.style.width=cssW+'px';
+    canvas.style.height=cssH+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    layoutAndRender();
+    scrollOffset=Math.min(scrollOffset,maxScroll());
+    requestDraw();
 }
-chatBody.addEventListener('scroll',function(){
-    var dist=chatBody.scrollHeight-chatBody.scrollTop-chatBody.clientHeight;
-    isNearBottom=dist<80;
-    if(isNearBottom){jumpBtn.classList.remove('show');jumpDot.classList.add('hidden');}
-});
-jumpBtn.addEventListener('click',function(){scrollToBottom(false);});
+window.addEventListener('resize',resizeCanvas);
+window.addEventListener('orientationchange',resizeCanvas);
 
-function renderAll(){
-    loadOlderWrap.classList.toggle('hidden',!hasMoreOlder || messages.length===0);
-    msgList.innerHTML='';
+/* ---------------- layout ---------------- */
+var PAD_X=14, PAD_TOP=14, PAD_BOTTOM=14;
+var BUBBLE_PAD_X=10, BUBBLE_PAD_TOP=8, BUBBLE_PAD_BOTTOM=8;
+var LINE_HEIGHT=19, NAME_HEIGHT=17, META_HEIGHT=16;
+var AVATAR_SIZE=28, AVATAR_GAP=6;
+var GROUP_GAP=10, ROW_GAP=3, DATE_DIVIDER_H=32;
+var BODY_FONT='14.2px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif';
+var NAME_FONT='700 12.5px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif';
+var META_FONT='10.5px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif';
+var DATE_FONT='600 11.5px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif';
 
-    if(messages.length===0){
-        var empty=document.createElement('div');
-        empty.className='emptyState';
-        empty.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.4 1.05 4.57 2.77 6.19L4 22l5.11-1.34C10.03 20.87 11 21 12 21c5.52 0 10-4.03 10-9s-4.48-10-10-10z"/></svg>';
-        var p=document.createElement('p');
-        p.textContent='No messages yet. Say hello to start the conversation.';
-        empty.appendChild(p);
-        msgList.appendChild(empty);
-        return;
-    }
-
+function layoutAndRender(){
+    rows=[];
+    var y=PAD_TOP;
+    var bubbleMax=Math.min(cssW*0.76, cssW-2*PAD_X-AVATAR_SIZE-AVATAR_GAP);
     var lastDateKey=null,lastSenderId=null;
+
     for(var i=0;i<messages.length;i++){
         var m=messages[i];
         var dk=dateKey(m.createdAt);
         if(dk!==lastDateKey){
-            var div=document.createElement('div');
-            div.className='dateDivider';
-            var span=document.createElement('span');
-            span.textContent=dateLabel(m.createdAt);
-            div.appendChild(span);
-            msgList.appendChild(div);
+            rows.push({type:'date',y:y,height:DATE_DIVIDER_H,label:dateLabel(m.createdAt)});
+            y+=DATE_DIVIDER_H;
             lastDateKey=dk;lastSenderId=null;
         }
         var isOwn=user && m.user && m.user.id===user.id;
-        var groupStart=m.user && m.user.id!==lastSenderId;
-        msgList.appendChild(renderRow(m,isOwn,groupStart));
+        var groupStart=!m.user || m.user.id!==lastSenderId;
+
+        var lines=wrapText(m.body,BODY_FONT,bubbleMax-BUBBLE_PAD_X*2);
+        var nameShown=(!isOwn && groupStart);
+        var nameText=m.user?m.user.name:'Unknown';
+
+        ctx.font=BODY_FONT;
+        var maxLineW=0;
+        for(var li=0;li<lines.length;li++)maxLineW=Math.max(maxLineW,ctx.measureText(lines[li]).width);
+        var metaW=(m.isEdited?ctx.measureText('edited ').width:0);
+        ctx.font=META_FONT;
+        metaW+=ctx.measureText(fmtTime(m.createdAt)).width+(isOwn?18:0);
+        var nameW=0;
+        if(nameShown){ctx.font=NAME_FONT;nameW=ctx.measureText(nameText).width;}
+
+        var bubbleW=Math.min(bubbleMax,Math.max(60,maxLineW,metaW,nameW)+BUBBLE_PAD_X*2);
+        var bubbleH=BUBBLE_PAD_TOP+(nameShown?NAME_HEIGHT:0)+lines.length*LINE_HEIGHT+4+META_HEIGHT+BUBBLE_PAD_BOTTOM;
+
+        var rowTop=y+(groupStart?(i===0?0:GROUP_GAP):ROW_GAP);
+        var bx=isOwn?(cssW-PAD_X-bubbleW):(PAD_X+AVATAR_SIZE+AVATAR_GAP);
+
+        rows.push({
+            type:'msg', id:m.id, y:rowTop, height:bubbleH,
+            x:bx, w:bubbleW, isOwn:isOwn, groupStart:groupStart,
+            lines:lines, nameShown:nameShown, nameText:nameText,
+            avatarColor:colorFor(m.user?m.user.id:nameText),
+            initials:initialsFor(nameText),
+            timeText:fmtTime(m.createdAt), edited:!!m.isEdited,
+            canEdit:isOwn, canDelete:isOwn||(user&&user.isAdmin)
+        });
+        y=rowTop+bubbleH;
         lastSenderId=m.user?m.user.id:null;
     }
+    y+=PAD_BOTTOM;
+    contentHeight=Math.max(y,cssH);
 }
+function maxScroll(){return Math.max(0,contentHeight-cssH);}
+function isNearBottom(){return (maxScroll()-scrollOffset)<80;}
 
-function renderRow(m,isOwn,groupStart){
-    var row=document.createElement('div');
-    row.className='msgRow '+(isOwn?'out':'in')+(groupStart?' groupStart':'');
-    row.dataset.id=m.id;
-
-    if(!isOwn){
-        var av=document.createElement('div');
-        av.className='msgAvatar';
-        av.style.background=colorFor(m.user?m.user.id:m.user&&m.user.name);
-        av.textContent=initialsFor(m.user?m.user.name:'?');
-        row.appendChild(av);
+/* ---------------- drawing ---------------- */
+var drawScheduled=false;
+function requestDraw(){
+    if(drawScheduled)return;
+    drawScheduled=true;
+    requestAnimationFrame(function(){drawScheduled=false;draw();});
+}
+function draw(){
+    ctx.clearRect(0,0,cssW,cssH);
+    if(messages.length===0){
+        ctx.fillStyle='#8a9a96';
+        ctx.font='13.5px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif';
+        ctx.textAlign='center';ctx.textBaseline='middle';
+        ctx.fillText('No messages yet. Say hello to start the conversation.',cssW/2,cssH/2);
+        return;
     }
-
-    var wrap=document.createElement('div');
-    wrap.className='bubbleWrap';
-    var bubble=document.createElement('div');
-    bubble.className='bubble';
-
-    if(!isOwn && groupStart){
-        var sname=document.createElement('div');
-        sname.className='senderName';
-        sname.style.color=colorFor(m.user?m.user.id:m.user&&m.user.name);
-        sname.textContent=m.user?m.user.name:'Unknown';
-        bubble.appendChild(sname);
+    ctx.save();
+    ctx.beginPath();ctx.rect(0,0,cssW,cssH);ctx.clip();
+    ctx.translate(0,-scrollOffset);
+    for(var i=0;i<rows.length;i++){
+        var r=rows[i];
+        if(r.y+r.height<scrollOffset-40)continue;
+        if(r.y>scrollOffset+cssH+40)break;
+        if(r.type==='date')drawDateDivider(r);
+        else drawMessageRow(r);
     }
-
-    var body=document.createElement('div');
-    body.className='msgBody';
-    body.textContent=m.body;
-    bubble.appendChild(body);
-
-    var meta=document.createElement('div');
-    meta.className='msgMeta';
-    if(m.isEdited){
-        var ed=document.createElement('span');
-        ed.className='edited';ed.textContent='edited';
-        meta.appendChild(ed);
-    }
-    var time=document.createElement('span');
-    time.textContent=fmtTime(m.createdAt);
-    meta.appendChild(time);
-    if(isOwn){
-        meta.insertAdjacentHTML('beforeend','<svg viewBox="0 0 24 24"><path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17l-3.75-3.75-1.41 1.41 5.16 5.16L23.66 7l-1.42-1.41zM.41 13.59L5.66 18.83l1.41-1.41-5.25-5.25-1.41 1.42z"/></svg>');
-    }
-    bubble.appendChild(meta);
-
-    var canDelete=isOwn||(user&&user.isAdmin);
-    var canEdit=isOwn;
-    if(canDelete||canEdit){
-        var actTrigger=document.createElement('div');
-        actTrigger.className='msgActions';
-        actTrigger.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>';
-        var actMenu=document.createElement('div');
-        actMenu.className='actionMenu';
-        if(canEdit){
-            var editBtn=document.createElement('button');
-            editBtn.textContent='Edit';
-            editBtn.addEventListener('click',function(id,bodyText){
-                return function(e){e.stopPropagation();closeActionMenus();startEdit(id,bodyText);};
-            }(m.id,m.body));
-            actMenu.appendChild(editBtn);
+    ctx.restore();
+}
+function drawDateDivider(r){
+    ctx.font=DATE_FONT;
+    var text=r.label;
+    var w=ctx.measureText(text).width+22;
+    var cx=cssW/2, cy=r.y+r.height/2;
+    ctx.fillStyle='#dcf1ee';
+    roundRectPath(cx-w/2,cy-11,w,22,8);ctx.fill();
+    ctx.fillStyle='#3f5d59';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(text,cx,cy+0.5);
+}
+function drawMessageRow(r){
+    if(!r.isOwn){
+        if(r.groupStart){
+            var acx=PAD_X+AVATAR_SIZE/2, acy=r.y+r.height-AVATAR_SIZE/2;
+            ctx.fillStyle=r.avatarColor;
+            ctx.beginPath();ctx.arc(acx,acy,AVATAR_SIZE/2,0,Math.PI*2);ctx.fill();
+            ctx.fillStyle='#fff';ctx.font='700 11px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif';
+            ctx.textAlign='center';ctx.textBaseline='middle';
+            ctx.fillText(r.initials,acx,acy+0.5);
         }
-        if(canDelete){
-            var delBtn=document.createElement('button');
-            delBtn.className='danger';
-            delBtn.textContent='Delete';
-            delBtn.addEventListener('click',function(id){
-                return function(e){e.stopPropagation();closeActionMenus();confirmDelete(id);};
-            }(m.id));
-            actMenu.appendChild(delBtn);
-        }
-        actTrigger.addEventListener('click',function(el){
-            return function(e){
-                e.stopPropagation();
-                var willOpen=!el.classList.contains('show');
-                closeActionMenus();
-                if(willOpen)el.classList.add('show');
-            };
-        }(actMenu));
-        wrap.appendChild(actTrigger);
-        wrap.appendChild(actMenu);
     }
+    ctx.fillStyle=r.isOwn?'#d9fdd3':'#ffffff';
+    ctx.shadowColor='rgba(0,0,0,0.13)';ctx.shadowBlur=1;ctx.shadowOffsetY=0.5;
+    roundRectPath(r.x,r.y,r.w,r.height,8);ctx.fill();
+    ctx.shadowColor='transparent';ctx.shadowBlur=0;
 
-    wrap.appendChild(bubble);
-    row.appendChild(wrap);
-    return row;
-}
-function closeActionMenus(){
-    var open=document.querySelectorAll('.actionMenu.show');
-    for(var i=0;i<open.length;i++)open[i].classList.remove('show');
-}
-document.addEventListener('click',function(){closeActionMenus();menuPop.classList.remove('show');});
+    var textX=r.x+BUBBLE_PAD_X;
+    var cy=r.y+BUBBLE_PAD_TOP;
+    ctx.textAlign='left';ctx.textBaseline='top';
 
-/* ---------------- edit ---------------- */
-function startEdit(id,currentBody){
-    if(editingId)cancelEdit();
-    editingId=id;
-    var row=msgList.querySelector('.msgRow[data-id="'+cssEscape(id)+'"]');
-    if(!row)return;
-    var bubble=row.querySelector('.bubble');
-    var bodyEl=bubble.querySelector('.msgBody');
-    var metaEl=bubble.querySelector('.msgMeta');
-    bodyEl.style.display='none';
-    metaEl.style.display='none';
-
-    var wrapDiv=document.createElement('div');
-    wrapDiv.className='editArea';
-    var ta=document.createElement('textarea');
-    ta.value=currentBody;
-    ta.maxLength=4000;
-    wrapDiv.appendChild(ta);
-    var actions=document.createElement('div');
-    actions.className='editRow';
-    var cancel=document.createElement('button');
-    cancel.className='cancel';cancel.textContent='Cancel';
-    cancel.addEventListener('click',function(){cancelEdit();});
-    var save=document.createElement('button');
-    save.className='save';save.textContent='Save';
-    save.addEventListener('click',function(){saveEdit(id,ta.value);});
-    actions.appendChild(cancel);actions.appendChild(save);
-    wrapDiv.appendChild(actions);
-    bubble.appendChild(wrapDiv);
-    ta.focus();
-    var len=ta.value.length;ta.setSelectionRange(len,len);
+    if(r.nameShown){
+        ctx.fillStyle=r.avatarColor;
+        ctx.font=NAME_FONT;
+        ctx.fillText(r.nameText,textX,cy);
+        cy+=NAME_HEIGHT;
+    }
+    ctx.fillStyle='#111b21';
+    ctx.font=BODY_FONT;
+    for(var i=0;i<r.lines.length;i++){
+        ctx.fillText(r.lines[i],textX,cy);
+        cy+=LINE_HEIGHT;
+    }
+    cy+=4;
+    ctx.font=META_FONT;
+    ctx.fillStyle='#667781';
+    ctx.textAlign='right';
+    var metaX=r.x+r.w-BUBBLE_PAD_X;
+    var metaText=(r.edited?'edited ':'')+r.timeText;
+    ctx.fillText(metaText,r.isOwn?metaX-16:metaX,cy+2);
+    if(r.isOwn){
+        ctx.strokeStyle='#53bdeb';ctx.lineWidth=1.4;ctx.lineCap='round';ctx.lineJoin='round';
+        var chx=r.x+r.w-BUBBLE_PAD_X-13, chy=cy+8;
+        ctx.beginPath();ctx.moveTo(chx-4,chy);ctx.lineTo(chx-1,chy+3);ctx.lineTo(chx+5,chy-5);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(chx,chy);ctx.lineTo(chx+3,chy+3);ctx.lineTo(chx+9,chy-5);ctx.stroke();
+    }
 }
-function cancelEdit(){
+
+/* ---------------- canvas interaction: scroll + tap ---------------- */
+var drag=null;
+canvas.addEventListener('pointerdown',function(e){
+    drag={startY:e.clientY,startX:e.clientX,startScroll:scrollOffset,moved:false};
+    try{canvas.setPointerCapture(e.pointerId);}catch(err){}
+});
+canvas.addEventListener('pointermove',function(e){
+    if(!drag)return;
+    var dy=drag.startY-e.clientY;
+    if(Math.abs(dy)>6 || Math.abs(drag.startX-e.clientX)>6)drag.moved=true;
+    if(drag.moved){
+        scrollOffset=Math.max(0,Math.min(maxScroll(),drag.startScroll+dy));
+        requestDraw();
+        if(isNearBottom()){jumpBtn.classList.remove('show');jumpDot.classList.add('hidden');}
+    }
+});
+function endDrag(e){
+    if(!drag)return;
+    if(!drag.moved)handleTap(e.clientX,e.clientY);
+    drag=null;
+}
+canvas.addEventListener('pointerup',endDrag);
+canvas.addEventListener('pointercancel',function(){drag=null;});
+canvas.addEventListener('wheel',function(e){
+    e.preventDefault();
+    scrollOffset=Math.max(0,Math.min(maxScroll(),scrollOffset+e.deltaY));
+    requestDraw();
+    if(isNearBottom()){jumpBtn.classList.remove('show');jumpDot.classList.add('hidden');}
+},{passive:false});
+
+function handleTap(clientX,clientY){
+    var rect=canvas.getBoundingClientRect();
+    var cx=clientX-rect.left;
+    var cyContent=(clientY-rect.top)+scrollOffset;
+    for(var i=rows.length-1;i>=0;i--){
+        var r=rows[i];
+        if(r.type!=='msg')continue;
+        if(cx>=r.x && cx<=r.x+r.w && cyContent>=r.y && cyContent<=r.y+r.height){
+            if(r.canEdit||r.canDelete)openFloatMenu(r,clientX,clientY);
+            return;
+        }
+    }
+}
+
+/* ---------------- floating action menu ---------------- */
+var floatMenuRow=null;
+function openFloatMenu(row,clientX,clientY){
+    floatMenuRow=row;
+    fmEdit.classList.toggle('hidden',!row.canEdit);
+    fmDelete.classList.toggle('hidden',!row.canDelete);
+    floatMenu.classList.add('show');
+    var fw=160,fh=(row.canEdit&&row.canDelete)?86:44;
+    var left=Math.min(window.innerWidth-fw-10,Math.max(10,clientX-fw/2));
+    var top=Math.min(window.innerHeight-fh-10,clientY+8);
+    floatMenu.style.left=left+'px';
+    floatMenu.style.top=top+'px';
+}
+function closeFloatMenu(){
+    floatMenu.classList.remove('show');
+    floatMenuRow=null;
+}
+document.addEventListener('click',function(e){
+    if(!floatMenu.contains(e.target) && e.target!==canvas)closeFloatMenu();
+    menuPop.classList.remove('show');
+});
+fmEdit.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(!floatMenuRow)return;
+    var msg=messages.find(function(m){return m.id===floatMenuRow.id;});
+    closeFloatMenu();
+    if(msg)openEditModal(msg);
+});
+fmDelete.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(!floatMenuRow)return;
+    pendingDeleteId=floatMenuRow.id;
+    closeFloatMenu();
+    deleteOverlay.classList.add('show');
+});
+
+/* ---------------- edit modal ---------------- */
+function openEditModal(msg){
+    editingId=msg.id;
+    editTextarea.value=msg.body;
+    editOverlay.classList.add('show');
+    setTimeout(function(){editTextarea.focus();},50);
+}
+editCancel.addEventListener('click',function(){
+    editOverlay.classList.remove('show');
     editingId=null;
-    renderAll();
-}
-function saveEdit(id,newBody){
-    newBody=newBody.trim();
+});
+editSave.addEventListener('click',function(){
+    var newBody=editTextarea.value.trim();
     if(!newBody){showToast('Message cannot be empty');return;}
+    var id=editingId;
     apiFetch('/api/messages/'+id,{method:'PUT',body:JSON.stringify({body:newBody})}).then(function(data){
         var idx=messages.findIndex(function(m){return m.id===id;});
         if(idx>-1)messages[idx]=data.message;
+        editOverlay.classList.remove('show');
         editingId=null;
-        renderAll();
+        layoutAndRender();requestDraw();
     }).catch(function(err){
         if(err.code!==401)showToast(err.message||'Could not save edit');
     });
-}
-function cssEscape(s){return String(s).replace(/["\\]/g,'\\$&');}
+});
 
-/* ---------------- delete / clear ---------------- */
-function confirmDelete(id){
-    if(!window.confirm('Delete this message?'))return;
+/* ---------------- delete modal ---------------- */
+deleteCancel.addEventListener('click',function(){
+    deleteOverlay.classList.remove('show');
+    pendingDeleteId=null;
+});
+deleteConfirm.addEventListener('click',function(){
+    var id=pendingDeleteId;
+    if(!id)return;
     apiFetch('/api/messages/'+id,{method:'DELETE'}).then(function(){
         messages=messages.filter(function(m){return m.id!==id;});
-        renderAll();
+        layoutAndRender();requestDraw();updateChrome();
     }).catch(function(err){
         if(err.code!==401)showToast(err.message||'Could not delete message');
+    }).finally(function(){
+        deleteOverlay.classList.remove('show');
+        pendingDeleteId=null;
     });
-}
+});
+
+/* ---------------- clear room modal ---------------- */
 clearBtn.addEventListener('click',function(e){
     e.stopPropagation();
     menuPop.classList.remove('show');
-    if(!window.confirm('Clear the entire room? This deletes every message for everyone.'))return;
+    clearOverlay.classList.add('show');
+});
+clearCancel.addEventListener('click',function(){clearOverlay.classList.remove('show');});
+clearConfirm.addEventListener('click',function(){
     apiFetch('/api/messages/clear',{method:'POST'}).then(function(){
         messages=[];
-        renderAll();
+        layoutAndRender();requestDraw();updateChrome();
         showToast('Room cleared');
     }).catch(function(err){
         if(err.code!==401)showToast(err.message||'Could not clear room');
+    }).finally(function(){
+        clearOverlay.classList.remove('show');
     });
+});
+
+/* ---------------- chrome (load-older button visibility) ---------------- */
+function updateChrome(){
+    loadOlderWrap.classList.toggle('hidden',!hasMoreOlder||messages.length===0);
+}
+
+/* ---------------- jump to latest ---------------- */
+jumpBtn.addEventListener('click',function(){
+    scrollOffset=maxScroll();
+    requestDraw();
+    jumpBtn.classList.remove('show');
+    jumpDot.classList.add('hidden');
 });
 
 /* ---------------- menu / logout ---------------- */
@@ -805,20 +986,14 @@ logoutBtn.addEventListener('click',function(e){
     menuPop.classList.remove('show');
     apiFetch('/api/auth/logout',{method:'POST'}).finally(function(){
         stopPolling();
-        user=null;messages=[];
-        msgList.innerHTML='';
+        user=null;messages=[];rows=[];
         chatScreen.classList.remove('show');
         loginScreen.style.display='flex';
         nameInput.value='';phoneInput.value='';
         loginErr.classList.remove('show');
     });
 });
-emojiClickNote();
-function emojiClickNote(){
-    document.getElementById('emojiBtn').addEventListener('click',function(){
-        msgInput.focus();
-    });
-}
+document.getElementById('emojiBtn').addEventListener('click',function(){msgInput.focus();});
 
 /* ---------------- sending ---------------- */
 function autoGrow(){
@@ -845,8 +1020,10 @@ function doSend(){
         if(!exists)messages.push(data.message);
         msgInput.value='';
         autoGrow();
-        renderAll();
-        scrollToBottom(false);
+        layoutAndRender();
+        scrollOffset=maxScroll();
+        requestDraw();
+        updateChrome();
     }).catch(function(err){
         if(err.code!==401)showToast(err.message||'Could not send message');
     }).finally(function(){
