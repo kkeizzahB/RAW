@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Fruit Crash Match & Smash 💥</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 50% 0%, #1a0f2e 0%, #0a0a0f 70%);
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      color: #eee;
+      touch-action: manipulation;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 8px;
+    }
+    .wrap {
+      width: 100%;
+      max-width: 480px;
+      margin: auto;
+      padding: 10px;
+    }
+    .box {
+      background: #12131c;
+      border: 1px solid #2a2d42;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px #000, 0 0 0 1px #f1c40f15 inset;
+    }
+    .head {
+      padding: 12px 16px;
+      border-bottom: 1px solid #222536;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(#1c1e2e, #181a26);
+    }
+    .title {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      color: #f1c40f;
+      text-shadow: 0 0 12px #f1c40f80;
+    }
+    .subtitle {
+      font-size: 8px;
+      color: #e67e22;
+      letter-spacing: 1.5px;
+      font-weight: bold;
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .stat {
+      text-align: right;
+    }
+    .label {
+      font-size: 7px;
+      color: #a4b0be;
+      font-weight: bold;
+      letter-spacing: .5px;
+    }
+    .value {
+      font-size: 13px;
+      font-weight: 900;
+      color: #2ecc71;
+      font-variant-numeric: tabular-nums;
+    }
+    .value.moves {
+      color: #e67e22;
+    }
+    .sound {
+      background: #222536;
+      border: 1px solid #f1c40f;
+      border-radius: 8px;
+      padding: 5px 8px;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+    }
+    .content {
+      padding: 14px;
+      background: #0c0d14;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 4px;
+      background: #050508;
+      padding: 8px;
+      border-radius: 14px;
+      border: 2px solid #222536;
+      aspect-ratio: 1;
+      touch-action: none;
+    }
+    .cell {
+      background: #181a26;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(14px, 4.5vw, 26px);
+      cursor: pointer;
+      transition: transform .08s ease, background .15s ease;
+      position: relative;
+      will-change: transform;
+    }
+    .cell:active {
+      transform: scale(.92);
+    }
+    .cell.selected {
+      background: #2c3e50;
+      box-shadow: 0 0 0 2px #f1c40f, 0 0 12px #f1c40f80;
+      transform: scale(1.05);
+      z-index: 2;
+    }
+    .cell.swap-hint {
+      animation: swapPulse .4s ease;
+    }
+    @keyframes swapPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(.85); }
+    }
+    .cell.matched {
+      animation: smash .35s forwards;
+    }
+    @keyframes smash {
+      0% { transform: scale(1.2); background: #f1c40f; }
+      40% { transform: scale(1.35) rotate(10deg); background: #e74c3c; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+    .cell.falling {
+      animation: fall .25s ease-out;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    .score-pop {
+      position: absolute;
+      font-size: 11px;
+      font-weight: 900;
+      color: #f1c40f;
+      text-shadow: 0 0 8px #f1c40f;
+      pointer-events: none;
+      animation: popUp .7s forwards;
+      z-index: 10;
+    }
+    @keyframes popUp {
+      0% { transform: translateY(0) scale(.8); opacity: 1; }
+      100% { transform: translateY(-35px) scale(1.2); opacity: 0; }
+    }
+    .combo-banner {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      font-weight: 900;
+      color: #f1c40f;
+      text-shadow: 0 0 20px #f1c40f, 0 0 40px #e67e22;
+      pointer-events: none;
+      animation: comboAnim .9s forwards;
+      z-index: 20;
+      letter-spacing: 2px;
+    }
+    @keyframes comboAnim {
+      0% { transform: translate(-50%, -50%) scale(.3); opacity: 0; }
+      30% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+      70% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%, -90%) scale(.8); opacity: 0; }
+    }
+    .grid-wrap {
+      position: relative;
+    }
+    .bottom-bar {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: transform .1s;
+    }
+    .btn:active {
+      transform: scale(.96);
+    }
+    .btn.shuffle {
+      background: linear-gradient(#9b59b6, #8e44ad);
+      color: #fff;
+      box-shadow: 0 4px 15px #9b59b64d;
+    }
+    .btn.reset {
+      background: linear-gradient(#34495e, #2c3e50);
+      color: #eee;
+      box-shadow: 0 4px 15px #34495e4d;
+    }
+    #status {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 11px;
+      color: #a4b0be;
+      font-weight: bold;
+      min-height: 16px;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: #0a0a0fdd;
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      z-index: 30;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+    .overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .overlay-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: #f1c40f;
+      text-shadow: 0 0 15px #f1c40f;
+      margin-bottom: 8px;
+    }
+    .overlay-sub {
+      font-size: 12px;
+      color: #a4b0be;
+      margin-bottom: 16px;
+    }
+    .overlay-btn {
+      padding: 12px 28px;
+      background: linear-gradient(#f1c40f, #e67e22);
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 900;
+      color: #000;
+      cursor: pointer;
+      box-shadow: 0 4px 15px #f1c40f4d;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="box">
+      <div class="head">
+        <div>
+          <div class="title">FRUIT CRASH 💥</div>
+          <div class="subtitle">MATCH & SMASH • 8X8</div>
+        </div>
+        <div class="right">
+          <div class="stat">
+            <div class="label">SCORE</div>
+            <div class="value" id="score">0</div>
+          </div>
+          <div class="stat">
+            <div class="label">MOVES</div>
+            <div class="value moves" id="moves">30</div>
+          </div>
+          <div class="sound" id="btnSound">🔊</div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="grid-wrap">
+          <div class="grid" id="grid"></div>
+          <div class="overlay" id="overlay">
+            <div class="overlay-title" id="overlayTitle">GAME OVER</div>
+            <div class="overlay-sub" id="overlaySub">Final Score: 0</div>
+            <button class="overlay-btn" id="overlayBtn">PLAY AGAIN</button>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <button class="btn shuffle" id="btnShuffle">🔀 SHUFFLE (5)</button>
+          <button class="btn reset" id="btnReset">🔄 RESET</button>
+        </div>
+        <div id="status">Tap two adjacent fruits to swap & smash!</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    // ============ CONFIG ============
+    var FRUITS = ['🍒','🍋','🍉','🍇','🔔','🍎','🍓','💎'];
+    var SIZE = 8;
+    var TOTAL_MOVES = 30;
+    var SHUFFLE_COUNT = 5;
+
+    // ============ STATE ============
+    var board = [];
+    var score = 0;
+    var moves = TOTAL_MOVES;
+    var shuffles = SHUFFLE_COUNT;
+    var selected = null;
+    var busy = false;
+    var sound = true;
+    var audioCtx = null;
+
+    // ============ DOM ============
+    var gridEl = document.getElementById('grid');
+    var scoreEl = document.getElementById('score');
+    var movesEl = document.getElementById('moves');
+    var statusEl = document.getElementById('status');
+    var overlayEl = document.getElementById('overlay');
+    var overlayTitleEl = document.getElementById('overlayTitle');
+    var overlaySubEl = document.getElementById('overlaySub');
+    var overlayBtnEl = document.getElementById('overlayBtn');
+    var shuffleBtn = document.getElementById('btnShuffle');
+
+    // ============ AUDIO ============
+    function audio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      return audioCtx;
+    }
+
+    function tone(f, d, type, v) {
+      if (!sound) return;
+      try {
+        var a = audio(), o = a.createOscillator(), g = a.createGain();
+        o.type = type || 'sine';
+        o.frequency.value = f;
+        g.gain.setValueAtTime(v || .1, a.currentTime);
+        g.gain.exponentialRampToValueAtTime(.0001, a.currentTime + d);
+        o.connect(g); g.connect(a.destination);
+        o.start(); o.stop(a.currentTime + d + .05);
+      } catch(e) {}
+    }
+
+    function sfxSelect()   { tone(600, .06, 'sine', .08); }
+    function sfxSwap()     { tone(400, .08, 'square', .06); }
+    function sfxMatch(n)   { tone(440 + n * 80, .12, 'triangle', .15); }
+    function sfxCombo(n)   {
+      // Rising arpeggio per combo level
+      var base = 523 + n * 60;
+      [0, 4, 7].forEach(function(semi, i){
+        setTimeout(function(){
+          tone(base * Math.pow(2, semi/12), .18, 'triangle', .16);
+        }, i * 70);
+      });
+    }
+    function sfxInvalid()  { tone(160, .15, 'sawtooth', .1); }
+    function sfxGameOver() {
+      [660, 550, 440, 330].forEach(function(f, i){
+        setTimeout(function(){ tone(f, .3, 'triangle', .15); }, i * 140);
+      });
+    }
+
+    // ============ HELPERS ============
+    function randFruit() {
+      return FRUITS[Math.floor(Math.random() * FRUITS.length)];
+    }
+
+    function idx(r, c) { return r * SIZE + c; }
+
+    function isAdjacent(a, b) {
+      var ar = Math.floor(a / SIZE), ac = a % SIZE;
+      var br = Math.floor(b / SIZE), bc = b % SIZE;
+      return Math.abs(ar - br) + Math.abs(ac - bc) === 1;
+    }
+
+    // ============ BOARD SETUP ============
+    // Generate a board with no initial 3-in-a-row matches
+    function makeBoard() {
+      board = [];
+      for (var r = 0; r < SIZE; r++) {
+        board[r] = [];
+        for (var c = 0; c < SIZE; c++) {
+          var f;
+          var guard = 0;
+          do {
+            f = randFruit();
+            guard++;
+          } while (guard < 50 && createsMatchAt(r, c, f));
+          board[r][c] = f;
+        }
+      }
+    }
+
+    // Check if placing fruit at (r,c) would immediately form a 3-line
+    function createsMatchAt(r, c, f) {
+      // Check left
+      if (c >= 2 && board[r][c-1] === f && board[r][c-2] === f) return true;
+      // Check up
+      if (r >= 2 && board[r-1] && board[r-1][c] === f && board[r-2] && board[r-2][c] === f) return true;
+      return false;
+    }
+
+    // ============ RENDER ============
+    function render() {
+      gridEl.innerHTML = '';
+      for (var i = 0; i < SIZE * SIZE; i++) {
+        var r = Math.floor(i / SIZE), c = i % SIZE;
+        var cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.dataset.index = i;
+        cell.textContent = board[r][c];
+        cell.addEventListener('click', onCellClick);
+        gridEl.appendChild(cell);
+      }
+      updateHUD();
+    }
+
+    function getCellEl(i) {
+      return gridEl.children[i];
+    }
+
+    function updateHUD() {
+      scoreEl.textContent = score;
+      movesEl.textContent = moves;
+      shuffleBtn.textContent = '🔀 SHUFFLE (' + shuffles + ')';
+      if (shuffles <= 0) shuffleBtn.style.opacity = .4;
+      else shuffleBtn.style.opacity = 1;
+    }
+
+    // ============ MATCH DETECTION ============
+    function findMatches() {
+      var matched = new Set();
+
+      // Horizontal runs
+      for (var r = 0; r < SIZE; r++) {
+        var runStart = 0;
+        for (var c = 1; c <= SIZE; c++) {
+          if (c < SIZE && board[r][c] && board[r][runStart] && board[r][c] === board[r][runStart]) {
+            continue;
+          }
+          var runLen = c - runStart;
+          if (runLen >= 3) {
+            for (var k = runStart; k < c; k++) matched.add(idx(r, k));
+          }
+          runStart = c;
+        }
+      }
+
+      // Vertical runs
+      for (var c2 = 0; c2 < SIZE; c2++) {
+        var runStart2 = 0;
+        for (var r2 = 1; r2 <= SIZE; r2++) {
+          if (r2 < SIZE && board[r2] && board[r2][c2] && board[runStart2] && board[runStart2][c2] && board[r2][c2] === board[runStart2][c2]) {
+            continue;
+          }
+          var runLen2 = r2 - runStart2;
+          if (runLen2 >= 3) {
+            for (var k2 = runStart2; k2 < r2; k2++) matched.add(idx(k2, c2));
+          }
+          runStart2 = r2;
+        }
+      }
+
+      return matched;
+    }
+
+    // ============ SWAP & RESOLVE ============
+    function onCellClick(e) {
+      if (busy) return;
+      var i = parseInt(e.currentTarget.dataset.index, 10);
+
+      if (selected === null) {
+        selected = i;
+        getCellEl(i).classList.add('selected');
+        sfxSelect();
+        return;
+      }
+
+      if (selected === i) {
+        getCellEl(i).classList.remove('selected');
+        selected = null;
+        return;
+      }
+
+      if (!isAdjacent(selected, i)) {
+        // Switch selection to the new cell
+        getCellEl(selected).classList.remove('selected');
+        selected = i;
+        getCellEl(i).classList.add('selected');
+        sfxSelect();
+        return;
+      }
+
+      var a = selected, b = i;
+      getCellEl(a).classList.remove('selected');
+      selected = null;
+      attemptSwap(a, b);
+    }
+
+    function attemptSwap(a, b) {
+      busy = true;
+      swapInBoard(a, b);
+
+      var matches = findMatches();
+      if (matches.size === 0) {
+        // Invalid swap — swap back
+        sfxInvalid();
+        swapInBoard(a, b);
+        render();
+        statusEl.textContent = '❌ No match! Try another swap.';
+        busy = false;
+        return;
+      }
+
+      // Valid swap!
+      sfxSwap();
+      moves--;
+      updateHUD();
+      render();
+      resolveMatches(1);
+    }
+
+    function swapInBoard(a, b) {
+      var ar = Math.floor(a / SIZE), ac = a % SIZE;
+      var br = Math.floor(b / SIZE), bc = b % SIZE;
+      var tmp = board[ar][ac];
+      board[ar][ac] = board[br][bc];
+      board[br][bc] = tmp;
+    }
+
+    // Cascade resolution with combo multiplier
+    function resolveMatches(combo) {
+      var matches = findMatches();
+      if (matches.size === 0) {
+        // Done cascading
+        busy = false;
+        checkGameOver();
+        return;
+      }
+
+      // Score: base 10 per fruit × combo multiplier
+      var gained = matches.size * 10 * combo;
+      score += gained;
+      updateHUD();
+
+      // Play combo sound
+      if (combo >= 2) {
+        sfxCombo(Math.min(combo, 5));
+        showComboBanner(combo);
+      } else {
+        sfxMatch(1);
+      }
+
+      // Visual: pop matched cells
+      matches.forEach(function(i) {
+        var el = getCellEl(i);
+        if (el) {
+          el.classList.add('matched');
+          spawnScorePop(el, '+' + (10 * combo));
+        }
+      });
+
+      // Wait for smash animation, then clear + drop
+      setTimeout(function() {
+        // Clear matched cells
+        matches.forEach(function(i) {
+          var r = Math.floor(i / SIZE), c = i % SIZE;
+          board[r][c] = null;
+        });
+
+        // Drop fruits down
+        dropFruits();
+
+        // Fill empty top cells with new fruits
+        fillTop();
+
+        render();
+
+        // Re-check for cascades
+        setTimeout(function() {
+          resolveMatches(combo + 1);
+        }, 180);
+      }, 350);
+    }
+
+    function dropFruits() {
+      for (var c = 0; c < SIZE; c++) {
+        var writeRow = SIZE - 1;
+        for (var r = SIZE - 1; r >= 0; r--) {
+          if (board[r][c] !== null) {
+            board[writeRow][c] = board[r][c];
+            if (writeRow !== r) board[r][c] = null;
+            writeRow--;
+          }
+        }
+      }
+    }
+
+    function fillTop() {
+      for (var c = 0; c < SIZE; c++) {
+        for (var r = 0; r < SIZE; r++) {
+          if (board[r][c] === null) {
+            board[r][c] = randFruit();
+          }
+        }
+      }
+    }
+
+    // ============ EFFECTS ============
+    function spawnScorePop(cellEl, text) {
+      var pop = document.createElement('div');
+      pop.className = 'score-pop';
+      pop.textContent = text;
+      pop.style.left = '50%';
+      pop.style.top = '50%';
+      pop.style.transform = 'translate(-50%, -50%)';
+      cellEl.style.position = 'relative';
+      cellEl.appendChild(pop);
+      setTimeout(function() { pop.remove(); }, 700);
+    }
+
+    function showComboBanner(combo) {
+      var banner = document.createElement('div');
+      banner.className = 'combo-banner';
+      banner.textContent = 'COMBO x' + combo + '!';
+      gridEl.parentElement.appendChild(banner);
+      setTimeout(function() { banner.remove(); }, 900);
+    }
+
+    // ============ SHUFFLE & RESET ============
+    function doShuffle() {
+      if (busy || shuffles <= 0) return;
+      busy = true;
+      shuffles--;
+      updateHUD();
+      sfxCombo(2);
+      statusEl.textContent = '🔀 Shuffling board...';
+
+      // Rebuild board avoiding initial matches
+      makeBoard();
+      render();
+
+      // Ensure at least one valid move exists
+      var guard = 0;
+      while (!hasValidMove() && guard < 20) {
+        makeBoard();
+        guard++;
+      }
+      render();
+
+      setTimeout(function() {
+        busy = false;
+        statusEl.textContent = '🔀 Board shuffled! ' + shuffles + ' left.';
+      }, 300);
+    }
+
+    function doReset() {
+      if (busy) return;
+      score = 0;
+      moves = TOTAL_MOVES;
+      shuffles = SHUFFLE_COUNT;
+      selected = null;
+      overlayEl.classList.remove('show');
+      makeBoard();
+      // Ensure playable
+      var guard = 0;
+      while (!hasValidMove() && guard < 20) { makeBoard(); guard++; }
+      render();
+      statusEl.textContent = 'Tap two adjacent fruits to swap & smash!';
+    }
+
+    // ============ GAME OVER ============
+    function checkGameOver() {
+      if (moves <= 0) {
+        sfxGameOver();
+        overlayTitleEl.textContent = 'GAME OVER';
+        overlaySubEl.textContent = 'Final Score: ' + score;
+        overlayEl.classList.add('show');
+        statusEl.textContent = '🏁 No moves left!';
+        return;
+      }
+      // Check if any valid move remains
+      if (!hasValidMove()) {
+        // Auto-shuffle
+        statusEl.textContent = '🔀 No moves left — shuffling...';
+        setTimeout(function() {
+          makeBoard();
+          var guard = 0;
+          while (!hasValidMove() && guard < 20) { makeBoard(); guard++; }
+          render();
+          statusEl.textContent = 'Board reshuffled! Keep smashing!';
+        }, 600);
+      }
+    }
+
+    function hasValidMove() {
+      // Try swapping each cell with right and down neighbors
+      for (var r = 0; r < SIZE; r++) {
+        for (var c = 0; c < SIZE; c++) {
+          if (c + 1 < SIZE) {
+            swapInBoard(idx(r,c), idx(r,c+1));
+            if (findMatches().size > 0) {
+              swapInBoard(idx(r,c), idx(r,c+1));
+              return true;
+            }
+            swapInBoard(idx(r,c), idx(r,c+1));
+          }
+          if (r + 1 < SIZE) {
+            swapInBoard(idx(r,c), idx(r+1,c));
+            if (findMatches().size > 0) {
+              swapInBoard(idx(r,c), idx(r+1,c));
+              return true;
+            }
+            swapInBoard(idx(r,c), idx(r+1,c));
+          }
+        }
+      }
+      return false;
+    }
+
+    // ============ EVENT LISTENERS ============
+    shuffleBtn.addEventListener('click', doShuffle);
+    document.getElementById('btnReset').addEventListener('click', doReset);
+    overlayBtnEl.addEventListener('click', doReset);
+
+    document.getElementById('btnSound').addEventListener('click', function() {
+      sound = !sound;
+      this.textContent = sound ? '🔊' : '🔇';
+      this.style.borderColor = sound ? '#f1c40f' : '#e74c3c';
+    });
+
+    // ============ INIT ============
+    function init() {
+      makeBoard();
+      var guard = 0;
+      while (!hasValidMove() && guard < 20) { makeBoard(); guard++; }
+      render();
+    }
+
+    init();
+  })();
+  </script>
+</body>
+</html>
