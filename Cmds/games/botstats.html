@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KEITH-MD Server Live · Realtime🗿 Monitor</title>
+    <title>Server Live · Realtime Monitor</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            background: #0b0f1c;
+            background: #0b0f1c; /* deep space base */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -33,7 +33,7 @@
             border: 1px solid rgba(80, 140, 255, 0.2);
         }
 
-        /* ✦ galaxy starfield overlay */
+        /* ✦ galaxy starfield overlay (subtle, elegant) */
         .galaxy-bg {
             position: relative;
             overflow: hidden;
@@ -86,8 +86,8 @@
         .head {
             background: linear-gradient(145deg, #152a4e, #1f3f7a);
             border-radius: 22px;
-            padding: 14px 18px;
-            margin-bottom: 10px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
             border: 1px solid rgba(90, 150, 255, 0.4);
             box-shadow: 0 0 22px rgba(50, 120, 255, 0.4);
             position: relative;
@@ -98,7 +98,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 800;
             letter-spacing: 0.5px;
             color: #ffffff;
@@ -111,17 +111,17 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 600;
             color: #b8d4ff;
-            margin-top: 5px;
+            margin-top: 4px;
             position: relative;
             z-index: 3;
         }
 
         .head .dot {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: #24e07a;
             box-shadow: 0 0 14px #24e07a;
@@ -133,21 +133,21 @@
             50% { opacity: 0.35; transform: scale(0.9); }
         }
 
-        /* ── Uptime card ── */
+        /* ── uptime card ── */
         .up {
             background: rgba(20, 40, 70, 0.7);
             border: 1px solid rgba(100, 180, 255, 0.35);
             border-radius: 20px;
-            padding: 14px 12px;
+            padding: 12px 10px;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             box-shadow: inset 0 0 20px rgba(0, 80, 200, 0.2), 0 6px 10px -6px black;
             position: relative;
             z-index: 2;
         }
 
         .up .l {
-            font-size: 9.5px;
+            font-size: 9px;
             font-weight: 700;
             color: #a0c8ff;
             letter-spacing: 1.5px;
@@ -157,11 +157,11 @@
         }
 
         .up .v {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 800;
             color: #d0e6ff;
             font-variant-numeric: tabular-nums;
-            margin: 5px 0 3px;
+            margin: 4px 0 2px;
             letter-spacing: 0.5px;
             text-shadow: 0 0 15px #3f7eff;
             position: relative;
@@ -169,22 +169,22 @@
         }
 
         .up .s {
-            font-size: 10.5px;
+            font-size: 10px;
             color: #8aa9dd;
             font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
             position: relative;
             z-index: 3;
         }
 
-        /* ── Metric bars (THICK) ── */
+        /* ── metric bars ── */
         .bar {
-            background: rgba(8, 20, 40, 0.85);
-            border: 1px solid rgba(100, 160, 255, 0.25);
-            border-radius: 18px;
-            padding: 12px 16px 14px;
-            margin-bottom: 9px;
+            background: rgba(8, 20, 40, 0.8);
+            border: 1px solid rgba(100, 160, 255, 0.2);
+            border-radius: 16px;
+            padding: 10px 14px;
+            margin-bottom: 7px;
             backdrop-filter: blur(2px);
-            box-shadow: 0 6px 12px -6px black, inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            box-shadow: 0 4px 8px -4px black;
             position: relative;
             z-index: 2;
         }
@@ -192,57 +192,49 @@
         .bar .r {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            font-size: 12.5px;
-            margin-bottom: 9px;
+            font-size: 11.5px;
+            margin-bottom: 6px;
             position: relative;
             z-index: 3;
         }
 
         .bar .r .n {
-            font-weight: 800;
-            color: #b6c8ec;
-            letter-spacing: 1.2px;
-            font-size: 12px;
+            font-weight: 700;
+            color: #a6b9e0;
+            letter-spacing: 0.8px;
         }
 
         .bar .r .p {
             font-weight: 800;
-            color: #ffffff;
+            color: #f0f6ff;
             font-variant-numeric: tabular-nums;
-            background: rgba(0, 70, 150, 0.7);
-            padding: 3px 10px;
+            background: rgba(0, 60, 130, 0.5);
+            padding: 0 6px;
             border-radius: 40px;
-            font-size: 12px;
-            letter-spacing: 0.4px;
-            border: 1px solid rgba(100, 180, 255, 0.3);
-            box-shadow: 0 0 10px rgba(50, 130, 255, 0.3);
+            font-size: 11px;
         }
 
-        /* ── THICK progress track ── */
         .bar .pg {
-            height: 18px;
-            background: #060d1c;
-            border-radius: 14px;
+            height: 8px;
+            background: #0a1428;
+            border-radius: 20px;
             overflow: hidden;
             position: relative;
             z-index: 3;
-            box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(80, 130, 220, 0.2);
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8);
         }
 
-        /* ── THICK fill ── */
         .bar .pg .f {
             height: 100%;
-            border-radius: 14px;
+            border-radius: 20px;
             width: 0%;
             transition: width 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.1), background 0.5s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 16px rgba(100, 180, 255, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 12px rgba(100, 180, 255, 0.5);
         }
 
-        /* vibrant palette */
+        /* ── new vibrant palette ── */
         .level-green {
             background: linear-gradient(90deg, #1db954, #3ae87a);
         }
@@ -260,7 +252,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             animation: shimmer 3s infinite;
         }
 
@@ -269,45 +261,44 @@
             100% { left: 100%; }
         }
 
-        /* ── Info grid ── */
+        /* ── info grid ── */
         .g2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-bottom: 8px;
+            gap: 7px;
+            margin-bottom: 7px;
             position: relative;
             z-index: 2;
         }
 
         .box {
-            background: rgba(10, 22, 45, 0.85);
-            border: 1px solid rgba(90, 150, 255, 0.25);
+            background: rgba(10, 22, 45, 0.8);
+            border: 1px solid rgba(90, 150, 255, 0.2);
             border-radius: 16px;
-            padding: 10px 13px;
+            padding: 9px 12px;
             backdrop-filter: blur(2px);
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s;
             position: relative;
             z-index: 2;
         }
 
         .box:hover {
-            border-color: rgba(120, 200, 255, 0.7);
-            box-shadow: 0 0 18px rgba(60, 140, 255, 0.25);
+            border-color: rgba(120, 200, 255, 0.6);
         }
 
         .box .l {
-            font-size: 9px;
-            font-weight: 800;
+            font-size: 8.5px;
+            font-weight: 700;
             color: #7d97c2;
             margin-bottom: 4px;
-            letter-spacing: 1.1px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             position: relative;
             z-index: 3;
         }
 
         .box .v {
-            font-size: 12.5px;
+            font-size: 12px;
             font-weight: 700;
             color: #e3eeff;
             font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
@@ -321,25 +312,24 @@
             grid-column: 1 / -1;
         }
 
-        /* ── Footer ── */
+        /* ── footer ── */
         .foot {
-            font-size: 10px;
+            font-size: 9.5px;
             font-weight: 600;
             color: #7a90b5;
             text-align: left;
-            margin-top: 10px;
+            margin-top: 8px;
             padding-left: 6px;
             letter-spacing: 0.6px;
-            opacity: 0.85;
-            position: relative;
-            z-index: 2;
+            opacity: 0.8;
         }
 
-        /* monospace for numbers & code */
+        /* better font stack for code and numbers */
         .v, .s, .p, .up .v {
             font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Roboto Mono', monospace;
         }
 
+        /* extra polish for uptime fields */
         #botUptime, #sysUptime {
             font-variant-numeric: tabular-nums;
         }
@@ -349,15 +339,15 @@
     <div class="wrapper">
         <!-- Header -->
         <div class="head galaxy-bg">
-            <div class="t1">📡 KEITH-MD SERVER LIVE</div>
-            <div class="t2"><span class="dot"></span> REALTIME MONITOR · LATENCY ms</div>
+            <div class="t1">📡 SERVER LIVE</div>
+            <div class="t2"><span class="dot"></span> REALTIME MONITOR · %LATENCY% ms</div>
         </div>
 
         <!-- Uptime -->
         <div class="up galaxy-bg">
             <div class="l">BOT UPTIME – RUNNING REALTIME</div>
             <div class="v" id="botUptime">0d 0h 0m 0s</div>
-            <div class="s">PLATFORM uptime: <span id="sysUptime">0d 0h 0m 0s</span></div>
+            <div class="s">%PLATFORM% uptime: <span id="sysUptime">0d 0h 0m 0s</span></div>
         </div>
 
         <!-- CPU -->
@@ -380,40 +370,41 @@
 
         <!-- Info grid -->
         <div class="g2">
-            <div class="box galaxy-bg"><div class="l">OS</div><div class="v">OS_INFO</div></div>
-            <div class="box galaxy-bg"><div class="l">ARCH</div><div class="v">ARCH_INFO</div></div>
-            <div class="box galaxy-bg"><div class="l">CPU</div><div class="v">CPU_CORES core</div></div>
-            <div class="box galaxy-bg"><div class="l">HEAP / RSS</div><div class="v">HEAP_USED MB / RSS_MEM MB</div></div>
+            <div class="box galaxy-bg"><div class="l">OS</div><div class="v">%OS_INFO%</div></div>
+            <div class="box galaxy-bg"><div class="l">ARCH</div><div class="v">%ARCH_INFO%</div></div>
+            <div class="box galaxy-bg"><div class="l">CPU</div><div class="v">%CPU_CORES% core</div></div>
+            <div class="box galaxy-bg"><div class="l">HEAP / RSS</div><div class="v">%HEAP_USED% MB / %RSS_MEM% MB</div></div>
             <div class="box galaxy-bg"><div class="l">SWAP</div><div class="v">0 MB</div></div>
             <div class="box galaxy-bg"><div class="l">PRIMARY IP</div><div class="v">172.18.0.43</div></div>
-            <div class="box full galaxy-bg"><div class="l">NODE VERSION</div><div class="v">NODE_INFO</div></div>
+            <div class="box full galaxy-bg"><div class="l">NODE VERSION</div><div class="v">%NODE_INFO%</div></div>
         </div>
 
         <div class="foot">©keith • 2026</div>
     </div>
 
     <script>
-        // --- Uptime variables ---
-        let currentBotSec = Math.floor(parseFloat("BOTUPTIME") || 0);
-        let currentSysSec = Math.floor(parseFloat("SYSTEMUPTIME") || 0);
+        // --- Uptime variables (converted to English format) ---
+        let currentBotSec = Math.floor(parseFloat("%BOTUPTIME%") || 0);
+        let currentSysSec = Math.floor(parseFloat("%SYSTEMUPTIME%") || 0);
 
-        // baseline metrics
+        // baseline metrics (simulated)
         let baseCpu = 20;
         let baseRam = 80;
         let baseDisk = 20;
 
-        // English time format
+        // ---- English time format: days, hours, minutes, seconds ----
         function formatUptime(seconds) {
             const d = Math.floor(seconds / 86400);
             const h = Math.floor((seconds % 86400) / 3600);
             const m = Math.floor((seconds % 3600) / 60);
             const s = Math.floor(seconds % 60);
 
+            // clean English notation: Xd Xh Xm Xs
             if (d > 0) return `${d}d ${h}h ${m}m ${s}s`;
             return `${h}h ${m}m ${s}s`;
         }
 
-        // live uptime counters
+        // ---- live uptime counters ----
         setInterval(() => {
             currentBotSec++;
             currentSysSec++;
@@ -421,7 +412,7 @@
             document.getElementById('sysUptime').innerText = formatUptime(currentSysSec);
         }, 1000);
 
-        // color based on value
+        // ---- bar color based on value ----
         function getColorClass(val) {
             const num = parseFloat(val);
             if (num <= 35.0) return 'level-green';
@@ -429,7 +420,7 @@
             return 'level-red';
         }
 
-        // update bar width, text & color
+        // ---- update bar width, text and color ----
         function applyBarState(elementId, textId, value) {
             const barEl = document.getElementById(elementId);
             const textEl = document.getElementById(textId);
@@ -438,7 +429,7 @@
             barEl.className = 'f ' + getColorClass(value);
         }
 
-        // refresh metrics
+        // ---- refresh metrics with slight random variation ----
         function updateBars() {
             let liveCpu = Math.min(100, Math.max(2, (baseCpu + (Math.random() * 20 - 10)))).toFixed(1);
             let liveRam = Math.min(100, Math.max(5, (baseRam + (Math.random() * 16 - 8)))).toFixed(1);
@@ -449,11 +440,13 @@
             applyBarState('diskBar', 'diskText', liveDisk);
         }
 
-        // initialize
+        // ---- initialize everything on DOM ready ----
         window.addEventListener('DOMContentLoaded', () => {
+            // set initial uptime (English format)
             document.getElementById('botUptime').innerText = formatUptime(currentBotSec);
             document.getElementById('sysUptime').innerText = formatUptime(currentSysSec);
 
+            // initial bar values (no random, just baseline)
             let initCpu = Math.min(100, Math.max(2, baseCpu)).toFixed(1);
             let initRam = Math.min(100, Math.max(5, baseRam)).toFixed(1);
             let initDisk = Math.min(100, Math.max(2, baseDisk)).toFixed(1);
@@ -462,6 +455,7 @@
             applyBarState('ramBar', 'ramText', initRam);
             applyBarState('diskBar', 'diskText', initDisk);
 
+            // start live updates
             setTimeout(updateBars, 120);
             setInterval(updateBars, 2500);
         });
