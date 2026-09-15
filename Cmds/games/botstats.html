@@ -1,213 +1,470 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; }
-body { background:transparent; color:#e2e8f0; }
-.wrapper { max-width:420px; padding:6px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEITH-MD Server Live · Realtime Monitor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.galaxy-bg {
-    position: relative;
-    overflow: hidden;
-}
-.galaxy-bg::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: 
-        radial-gradient(1px 1px at 12px 15px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1.5px 1.5px at 55px 35px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 95px 10px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1.5px 1.5px at 140px 40px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 180px 20px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 220px 50px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 260px 15px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1.5px 1.5px at 300px 45px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 340px 25px, #ffffff, rgba(0,0,0,0));
-    background-size: 350px 60px;
-    opacity: 0.6;
-    animation: galaxyTwinkle 4s ease-in-out infinite alternate;
-    pointer-events: none;
-    z-index: 1;
-}
-.galaxy-bg::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: 
-        radial-gradient(1.5px 1.5px at 35px 45px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 75px 15px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 115px 25px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 155px 5px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1.5px 1.5px at 195px 35px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 235px 55px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1.5px 1.5px at 275px 20px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 315px 50px, #ffffff, rgba(0,0,0,0));
-    background-size: 320px 50px;
-    opacity: 0.4;
-    animation: galaxyTwinkle 6s ease-in-out infinite alternate-reverse;
-    pointer-events: none;
-    z-index: 1;
-}
-@keyframes galaxyTwinkle {
-    0% { opacity: 0.3; transform: translateY(0px); }
-    50% { opacity: 0.8; }
-    100% { opacity: 0.4; transform: translateY(-2px); }
-}
+        body {
+            background: #0b0f1c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #eef2ff;
+            padding: 12px;
+        }
 
-.head { background:linear-gradient(135deg,#1e3a8a,#2563eb); border-radius:16px; padding:10px 12px; margin-bottom:6px; box-shadow:0 0 20px rgba(37,99,235,0.3); }
-.head .t1 { display:flex; align-items:center; gap:6px; font-size:15px; font-weight:800; color:#fff; position:relative; z-index:2; }
-.head .t2 { display:flex; align-items:center; gap:5px; font-size:10px; font-weight:600; color:#bfdbfe; margin-top:2px; position:relative; z-index:2; }
-.head .dot { width:6px; height:6px; border-radius:50%; background:#22c55e; box-shadow:0 0 8px #22c55e; animation:pulse 1.5s infinite; }
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+        .wrapper {
+            max-width: 440px;
+            width: 100%;
+            background: rgba(12, 18, 34, 0.75);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 12px;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(120, 160, 255, 0.15);
+            border: 1px solid rgba(80, 140, 255, 0.2);
+        }
 
-.up { background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.3); border-radius:14px; padding:8px; text-align:center; margin-bottom:6px; }
-.up .l { font-size:9px; font-weight:700; color:#4ade80; letter-spacing:1px; position:relative; z-index:2; }
-.up .v { font-size:17px; font-weight:800; color:#22c55e; font-variant-numeric:tabular-nums; margin:2px 0; position:relative; z-index:2; }
-.up .s { font-size:9px; color:#94a3b8; font-family:monospace; position:relative; z-index:2; }
+        /* ✦ galaxy starfield overlay */
+        .galaxy-bg {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
 
-.bar { background:rgba(15,23,42,0.8); border:1px solid rgba(148,163,184,0.1); border-radius:10px; padding:8px 10px; margin-bottom:5px; }
-.bar .r { display:flex; justify-content:space-between; font-size:11px; margin-bottom:4px; position:relative; z-index:2; }
-.bar .r .n { font-weight:700; color:#94a3b8; }
-.bar .r .p { font-weight:800; color:#fff; font-variant-numeric:tabular-nums; }
-.bar .pg { height:8px; background:#0f172a; border-radius:6px; overflow:hidden; position:relative; z-index:2; }
-.bar .pg .f { 
-    height:100%; 
-    border-radius:6px; 
-    width:0%; 
-    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1), background 1s ease-in-out;
-    position:relative;
-    overflow:hidden;
-}
+        .galaxy-bg::before,
+        .galaxy-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.7;
+        }
 
-.level-green { background: linear-gradient(90deg, #10b981, #34d399) !important; }
-.level-blue { background: linear-gradient(90deg, #3b82f6, #60a5fa) !important; }
-.level-red { background: linear-gradient(90deg, #ef4444, #f87171) !important; }
+        .galaxy-bg::before {
+            background-image: 
+                radial-gradient(1.5px 1.5px at 10% 20%, #ffffff, rgba(255, 255, 255, 0)),
+                radial-gradient(1.2px 1.2px at 32% 70%, #ffffff, rgba(255, 255, 255, 0)),
+                radial-gradient(2px 2px at 68% 15%, #ffffff, rgba(255, 255, 255, 0)),
+                radial-gradient(1.2px 1.2px at 85% 55%, #ffffff, rgba(255, 255, 255, 0)),
+                radial-gradient(2px 2px at 45% 90%, #ffffff, rgba(255, 255, 255, 0)),
+                radial-gradient(1.8px 1.8px at 92% 30%, #ffffff, rgba(255, 255, 255, 0)),
+                radial-gradient(1.2px 1.2px at 15% 85%, #ffffff, rgba(255, 255, 255, 0)),
+                radial-gradient(1.5px 1.5px at 55% 45%, #ffffff, rgba(255, 255, 255, 0));
+            background-size: 400px 400px;
+            animation: twinkle 8s infinite alternate ease-in-out;
+        }
 
-.bar .pg .f::after {
-    content:'';
-    position:absolute;
-    top:0; left:-100%;
-    width:100%; height:100%;
-    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-    animation:shimmer 2.5s infinite;
-}
-@keyframes shimmer { 0% { left:-100%; } 100% { left:100%; } }
+        .galaxy-bg::after {
+            background-image: 
+                radial-gradient(1.8px 1.8px at 5% 40%, #ffffff, rgba(255, 255, 255, 0)),
+                radial-gradient(1.2px 1.2px at 78% 65%, #ffffff, rgba(255, 255, 255, 0)),
+                radial-gradient(2.2px 2.2px at 28% 12%, #ffffff, rgba(255, 255, 255, 0)),
+                radial-gradient(1.5px 1.5px at 62% 82%, #ffffff, rgba(255, 255, 255, 0)),
+                radial-gradient(1.2px 1.2px at 40% 55%, #ffffff, rgba(255, 255, 255, 0)),
+                radial-gradient(2px 2px at 88% 10%, #ffffff, rgba(255, 255, 255, 0));
+            background-size: 360px 360px;
+            animation: twinkle 11s infinite alternate-reverse;
+        }
 
-.g2 { display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:5px; }
-.box { background:rgba(15,23,42,0.8); border:1px solid rgba(148,163,184,0.1); border-radius:10px; padding:7px 9px; }
-.box .l { font-size:8px; font-weight:700; color:#64748b; margin-bottom:2px; position:relative; z-index:2; }
-.box .v { font-size:11px; font-weight:700; color:#e2e8f0; font-family:monospace; position:relative; z-index:2; }
-.full { grid-column:1/-1; }
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: translateY(0) scale(1); }
+            50% { opacity: 0.9; }
+            100% { opacity: 0.4; transform: translateY(-3px) scale(1.01); }
+        }
 
-.foot { font-size:9px; font-weight:600; color:#94a3b8; text-align:left; margin-top:6px; padding-left:2px; letter-spacing:0.3px; }
-</style>
+        /* ── Header ── */
+        .head {
+            background: linear-gradient(145deg, #152a4e, #1f3f7a);
+            border-radius: 22px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(90, 150, 255, 0.4);
+            box-shadow: 0 0 22px rgba(50, 120, 255, 0.4);
+            position: relative;
+            z-index: 2;
+        }
+
+        .head .t1 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            text-shadow: 0 0 12px rgba(100, 180, 255, 0.8);
+            position: relative;
+            z-index: 3;
+        }
+
+        .head .t2 {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #b8d4ff;
+            margin-top: 5px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .head .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #24e07a;
+            box-shadow: 0 0 14px #24e07a;
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(0.9); }
+        }
+
+        /* ── Uptime card ── */
+        .up {
+            background: rgba(20, 40, 70, 0.7);
+            border: 1px solid rgba(100, 180, 255, 0.35);
+            border-radius: 20px;
+            padding: 14px 12px;
+            text-align: center;
+            margin-bottom: 10px;
+            box-shadow: inset 0 0 20px rgba(0, 80, 200, 0.2), 0 6px 10px -6px black;
+            position: relative;
+            z-index: 2;
+        }
+
+        .up .l {
+            font-size: 9.5px;
+            font-weight: 700;
+            color: #a0c8ff;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 3;
+        }
+
+        .up .v {
+            font-size: 24px;
+            font-weight: 800;
+            color: #d0e6ff;
+            font-variant-numeric: tabular-nums;
+            margin: 5px 0 3px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 15px #3f7eff;
+            position: relative;
+            z-index: 3;
+        }
+
+        .up .s {
+            font-size: 10.5px;
+            color: #8aa9dd;
+            font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* ── Metric bars (THICK) ── */
+        .bar {
+            background: rgba(8, 20, 40, 0.85);
+            border: 1px solid rgba(100, 160, 255, 0.25);
+            border-radius: 18px;
+            padding: 12px 16px 14px;
+            margin-bottom: 9px;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 6px 12px -6px black, inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            position: relative;
+            z-index: 2;
+        }
+
+        .bar .r {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12.5px;
+            margin-bottom: 9px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .bar .r .n {
+            font-weight: 800;
+            color: #b6c8ec;
+            letter-spacing: 1.2px;
+            font-size: 12px;
+        }
+
+        .bar .r .p {
+            font-weight: 800;
+            color: #ffffff;
+            font-variant-numeric: tabular-nums;
+            background: rgba(0, 70, 150, 0.7);
+            padding: 3px 10px;
+            border-radius: 40px;
+            font-size: 12px;
+            letter-spacing: 0.4px;
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            box-shadow: 0 0 10px rgba(50, 130, 255, 0.3);
+        }
+
+        /* ── THICK progress track ── */
+        .bar .pg {
+            height: 18px;
+            background: #060d1c;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            z-index: 3;
+            box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(80, 130, 220, 0.2);
+        }
+
+        /* ── THICK fill ── */
+        .bar .pg .f {
+            height: 100%;
+            border-radius: 14px;
+            width: 0%;
+            transition: width 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.1), background 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 16px rgba(100, 180, 255, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        /* vibrant palette */
+        .level-green {
+            background: linear-gradient(90deg, #1db954, #3ae87a);
+        }
+        .level-blue {
+            background: linear-gradient(90deg, #3b8bff, #6aa6ff);
+        }
+        .level-red {
+            background: linear-gradient(90deg, #f43f5e, #ff7a8f);
+        }
+
+        .bar .pg .f::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* ── Info grid ── */
+        .g2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .box {
+            background: rgba(10, 22, 45, 0.85);
+            border: 1px solid rgba(90, 150, 255, 0.25);
+            border-radius: 16px;
+            padding: 10px 13px;
+            backdrop-filter: blur(2px);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .box:hover {
+            border-color: rgba(120, 200, 255, 0.7);
+            box-shadow: 0 0 18px rgba(60, 140, 255, 0.25);
+        }
+
+        .box .l {
+            font-size: 9px;
+            font-weight: 800;
+            color: #7d97c2;
+            margin-bottom: 4px;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 3;
+        }
+
+        .box .v {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #e3eeff;
+            font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
+            letter-spacing: -0.2px;
+            position: relative;
+            z-index: 3;
+            word-break: break-word;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        /* ── Footer ── */
+        .foot {
+            font-size: 10px;
+            font-weight: 600;
+            color: #7a90b5;
+            text-align: left;
+            margin-top: 10px;
+            padding-left: 6px;
+            letter-spacing: 0.6px;
+            opacity: 0.85;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* monospace for numbers & code */
+        .v, .s, .p, .up .v {
+            font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Roboto Mono', monospace;
+        }
+
+        #botUptime, #sysUptime {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
 </head>
 <body>
-<div class="wrapper">
-    <div class="head galaxy-bg">
-        <div class="t1">📡 SERVER LIVE</div>
-        <div class="t2"><span class="dot"></span> REALTIME MONITOR · %LATENCY% ms</div>
+    <div class="wrapper">
+        <!-- Header -->
+        <div class="head galaxy-bg">
+            <div class="t1">📡 KEITH-MD SERVER LIVE</div>
+            <div class="t2"><span class="dot"></span> REALTIME MONITOR · LATENCY ms</div>
+        </div>
+
+        <!-- Uptime -->
+        <div class="up galaxy-bg">
+            <div class="l">BOT UPTIME – RUNNING REALTIME</div>
+            <div class="v" id="botUptime">0d 0h 0m 0s</div>
+            <div class="s">PLATFORM uptime: <span id="sysUptime">0d 0h 0m 0s</span></div>
+        </div>
+
+        <!-- CPU -->
+        <div class="bar galaxy-bg">
+            <div class="r"><span class="n">CPU LOAD</span><span class="p" id="cpuText">0.0%</span></div>
+            <div class="pg"><div class="f level-green" id="cpuBar" style="width:0%"></div></div>
+        </div>
+
+        <!-- RAM -->
+        <div class="bar galaxy-bg">
+            <div class="r"><span class="n">RAM</span><span class="p" id="ramText">0.0%</span></div>
+            <div class="pg"><div class="f level-green" id="ramBar" style="width:0%"></div></div>
+        </div>
+
+        <!-- DISK -->
+        <div class="bar galaxy-bg">
+            <div class="r"><span class="n">DISK</span><span class="p" id="diskText">0.0%</span></div>
+            <div class="pg"><div class="f level-green" id="diskBar" style="width:0%"></div></div>
+        </div>
+
+        <!-- Info grid -->
+        <div class="g2">
+            <div class="box galaxy-bg"><div class="l">OS</div><div class="v">OS_INFO</div></div>
+            <div class="box galaxy-bg"><div class="l">ARCH</div><div class="v">ARCH_INFO</div></div>
+            <div class="box galaxy-bg"><div class="l">CPU</div><div class="v">CPU_CORES core</div></div>
+            <div class="box galaxy-bg"><div class="l">HEAP / RSS</div><div class="v">HEAP_USED MB / RSS_MEM MB</div></div>
+            <div class="box galaxy-bg"><div class="l">SWAP</div><div class="v">0 MB</div></div>
+            <div class="box galaxy-bg"><div class="l">PRIMARY IP</div><div class="v">172.18.0.43</div></div>
+            <div class="box full galaxy-bg"><div class="l">NODE VERSION</div><div class="v">NODE_INFO</div></div>
+        </div>
+
+        <div class="foot">©keith • 2026</div>
     </div>
 
-    <div class="up galaxy-bg">
-        <div class="l">BOT UPTIME – BERJALAN REALTIME</div>
-        <div class="v" id="botUptime">0j 0m 0d</div>
-        <div class="s">%PLATFORM% uptime: <span id="sysUptime">0j 0m 0d</span></div>
-    </div>
+    <script>
+        // --- Uptime variables ---
+        let currentBotSec = Math.floor(parseFloat("BOTUPTIME") || 0);
+        let currentSysSec = Math.floor(parseFloat("SYSTEMUPTIME") || 0);
 
-    <div class="bar galaxy-bg">
-        <div class="r"><span class="n">CPU LOAD</span><span class="p" id="cpuText">0.0%</span></div>
-        <div class="pg"><div class="f level-green" id="cpuBar" style="width:0%"></div></div>
-    </div>
+        // baseline metrics
+        let baseCpu = 20;
+        let baseRam = 80;
+        let baseDisk = 20;
 
-    <div class="bar galaxy-bg">
-        <div class="r"><span class="n">RAM</span><span class="p" id="ramText">0.0%</span></div>
-        <div class="pg"><div class="f level-green" id="ramBar" style="width:0%"></div></div>
-    </div>
+        // English time format
+        function formatUptime(seconds) {
+            const d = Math.floor(seconds / 86400);
+            const h = Math.floor((seconds % 86400) / 3600);
+            const m = Math.floor((seconds % 3600) / 60);
+            const s = Math.floor(seconds % 60);
 
-    <div class="bar galaxy-bg">
-        <div class="r"><span class="n">DISK</span><span class="p" id="diskText">0.0%</span></div>
-        <div class="pg"><div class="f level-green" id="diskBar" style="width:0%"></div></div>
-    </div>
+            if (d > 0) return `${d}d ${h}h ${m}m ${s}s`;
+            return `${h}h ${m}m ${s}s`;
+        }
 
-    <div class="g2">
-        <div class="box galaxy-bg"><div class="l">OS</div><div class="v">%OS_INFO%</div></div>
-        <div class="box galaxy-bg"><div class="l">ARCH</div><div class="v">%ARCH_INFO%</div></div>
-        <div class="box galaxy-bg"><div class="l">CPU</div><div class="v">%CPU_CORES% core</div></div>
-        <div class="box galaxy-bg"><div class="l">HEAP / RSS</div><div class="v">%HEAP_USED% MB / %RSS_MEM% MB</div></div>
-        <div class="box galaxy-bg"><div class="l">SWAP</div><div class="v">0 MB</div></div>
-        <div class="box galaxy-bg"><div class="l">IP PRIMER</div><div class="v">172.18.0.43</div></div>
-        <div class="box full galaxy-bg"><div class="l">NODE VERSION</div><div class="v">%NODE_INFO%</div></div>
-    </div>
+        // live uptime counters
+        setInterval(() => {
+            currentBotSec++;
+            currentSysSec++;
+            document.getElementById('botUptime').innerText = formatUptime(currentBotSec);
+            document.getElementById('sysUptime').innerText = formatUptime(currentSysSec);
+        }, 1000);
 
-    <div class="foot">©keith • 2026</div>
-</div>
+        // color based on value
+        function getColorClass(val) {
+            const num = parseFloat(val);
+            if (num <= 35.0) return 'level-green';
+            if (num <= 75.0) return 'level-blue';
+            return 'level-red';
+        }
 
-<script>
-let currentBotSec = Math.floor(parseFloat("%BOTUPTIME%") || 0);
-let currentSysSec = Math.floor(parseFloat("%SYSTEMUPTIME%") || 0);
+        // update bar width, text & color
+        function applyBarState(elementId, textId, value) {
+            const barEl = document.getElementById(elementId);
+            const textEl = document.getElementById(textId);
+            barEl.style.width = value + '%';
+            textEl.innerText = value + '%';
+            barEl.className = 'f ' + getColorClass(value);
+        }
 
-let baseCpu = 20;   
-let baseRam = 80;  
-let baseDisk = 20;  
+        // refresh metrics
+        function updateBars() {
+            let liveCpu = Math.min(100, Math.max(2, (baseCpu + (Math.random() * 20 - 10)))).toFixed(1);
+            let liveRam = Math.min(100, Math.max(5, (baseRam + (Math.random() * 16 - 8)))).toFixed(1);
+            let liveDisk = Math.min(100, Math.max(2, (baseDisk + (Math.random() * 20 - 10)))).toFixed(1);
 
-function formatUptime(seconds) {
-    const d = Math.floor(seconds / 86400);
-    const h = Math.floor((seconds % 86400) / 3600);
-    const m = Math.floor((seconds % 3600) / 60);
-    const s = Math.floor(seconds % 60);
-    if (d > 0) return `${d}h ${h}j ${m}m ${s}d`;
-    return `${h}j ${m}m ${s}d`;
-}
+            applyBarState('cpuBar', 'cpuText', liveCpu);
+            applyBarState('ramBar', 'ramText', liveRam);
+            applyBarState('diskBar', 'diskText', liveDisk);
+        }
 
-setInterval(() => {
-    currentBotSec++;
-    currentSysSec++;
-    document.getElementById('botUptime').innerText = formatUptime(currentBotSec);
-    document.getElementById('sysUptime').innerText = formatUptime(currentSysSec);
-}, 1000);
+        // initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('botUptime').innerText = formatUptime(currentBotSec);
+            document.getElementById('sysUptime').innerText = formatUptime(currentSysSec);
 
-function getColorClass(val) {
-    const num = parseFloat(val);
-    if (num <= 35.0) return 'level-green';
-    if (num <= 75.0) return 'level-blue';
-    return 'level-red';
-}
+            let initCpu = Math.min(100, Math.max(2, baseCpu)).toFixed(1);
+            let initRam = Math.min(100, Math.max(5, baseRam)).toFixed(1);
+            let initDisk = Math.min(100, Math.max(2, baseDisk)).toFixed(1);
 
-function applyBarState(elementId, textId, value) {
-    const barEl = document.getElementById(elementId);
-    const textEl = document.getElementById(textId);
-    barEl.style.width = value + '%';
-    textEl.innerText = value + '%';
-    barEl.className = 'f ' + getColorClass(value);
-}
+            applyBarState('cpuBar', 'cpuText', initCpu);
+            applyBarState('ramBar', 'ramText', initRam);
+            applyBarState('diskBar', 'diskText', initDisk);
 
-function updateBars() {
-    let liveCpu = Math.min(100, Math.max(2, (baseCpu + (Math.random() * 20 - 10)))).toFixed(1);
-    let liveRam = Math.min(100, Math.max(5, (baseRam + (Math.random() * 16 - 8)))).toFixed(1);
-    let liveDisk = Math.min(100, Math.max(2, (baseDisk + (Math.random() * 20 - 10)))).toFixed(1);
-
-    applyBarState('cpuBar', 'cpuText', liveCpu);
-    applyBarState('ramBar', 'ramText', liveRam);
-    applyBarState('diskBar', 'diskText', liveDisk);
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('botUptime').innerText = formatUptime(currentBotSec);
-    document.getElementById('sysUptime').innerText = formatUptime(currentSysSec);
-
-    let initCpu = Math.min(100, Math.max(2, baseCpu)).toFixed(1);
-    let initRam = Math.min(100, Math.max(5, baseRam)).toFixed(1);
-    let initDisk = Math.min(100, Math.max(2, baseDisk)).toFixed(1);
-    applyBarState('cpuBar', 'cpuText', initCpu);
-    applyBarState('ramBar', 'ramText', initRam);
-    applyBarState('diskBar', 'diskText', initDisk);
-
-    setTimeout(updateBars, 100);
-    setInterval(updateBars, 2500);
-});
-</script>
+            setTimeout(updateBars, 120);
+            setInterval(updateBars, 2500);
+        });
+    </script>
 </body>
 </html>
