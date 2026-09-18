@@ -16,7 +16,7 @@
     {
       "category": "stalkers",
       "name": "GitHub Repo Stalk",
-      "url": "/stalker/repostalk?url=https://github.com/Keithkeizzah/KEITH-MD",
+      "url": "/stalker/repostalk?url=https://github.com/kkeizzahB/Keith",
       "description": "Stalk GitHub repository."
     },
     {
@@ -30,6 +30,12 @@
       "name": "Twitter Stalk",
       "url": "/stalker/twitter?user=keithkeizzah",
       "description": "Stalk Twitter profile."
+    },
+    {
+      "category": "stalkers",
+      "name": "Domain Stalk",
+      "url": "/stalker/domain?q=whatsapp.com",
+      "description": "Stalk domain registrant registrar lookup."
     },
     {
       "category": "stalkers",
