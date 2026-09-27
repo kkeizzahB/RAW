@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>KEITH HELP MENU</title>
+<title>JUNE-X HELP MENU</title>
 <style>
   :root{
     --bg:#0b141a;--panel:#111b21;--panel2:#182229;
@@ -22,7 +22,7 @@
     background:linear-gradient(135deg,var(--accent-dim),var(--panel));
     border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px}
   header .logo{width:44px;height:44px;flex:0 0 44px;border-radius:12px;display:grid;place-items:center;
-    background:rgba(0,168,132,.18);border:1px solid rgba(0,168,132,.4);font-size:22px}
+    background:rgba(0,168,132,.18);border:1px solid rgba(0,168,132,.4);color:var(--accent)}
   header .titles{min-width:0}
   header h1{margin:0;font-size:18px;font-weight:700;letter-spacing:.4px}
   header p{margin:3px 0 0;font-size:12.5px;color:var(--muted)}
@@ -43,21 +43,38 @@
     outline:none;transition:border-color .15s,box-shadow .15s}
   .search-wrap input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,168,132,.15)}
   .search-wrap input::placeholder{color:var(--muted)}
-  .search-wrap .icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);
-    color:var(--muted);font-size:15px;pointer-events:none}
+  .search-wrap .icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);
+    color:var(--muted);width:16px;height:16px;pointer-events:none;display:flex;align-items:center}
 
-  .cats{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:6px;scrollbar-width:none}
-  .cats::-webkit-scrollbar{display:none}
-  .cat-chip{flex:0 0 auto;padding:7px 13px;border-radius:999px;border:1px solid var(--border);
-    background:var(--panel);color:var(--muted);font-size:12.5px;font-weight:600;cursor:pointer;
-    transition:all .15s;white-space:nowrap}
-  .cat-chip.active{background:var(--accent);border-color:var(--accent);color:#04231d}
+  /* ---------- Vertical category list ---------- */
+  .cat-list{display:flex;flex-direction:column;gap:9px;margin-bottom:14px}
+  .cat-item{display:flex;align-items:center;gap:12px;padding:14px 16px;
+    background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+    cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
+  .cat-item:active{transform:scale(.99);background:var(--panel2)}
+  .cat-item .cat-icon{width:36px;height:36px;flex:0 0 36px;border-radius:10px;
+    display:grid;place-items:center;color:var(--accent);
+    background:rgba(0,168,132,.12);border:1px solid rgba(0,168,132,.3)}
+  .cat-item .cat-icon svg{width:18px;height:18px;display:block}
+  .cat-item .cat-name{flex:1;min-width:0;font-size:14.5px;font-weight:600;letter-spacing:.3px}
+  .cat-item .cat-count{flex:0 0 auto;padding:3px 9px;border-radius:999px;
+    background:rgba(0,168,132,.15);border:1px solid rgba(0,168,132,.35);
+    color:var(--accent);font-size:11.5px;font-weight:700;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .cat-item .cat-chev{flex:0 0 auto;color:var(--muted);display:flex;align-items:center}
+  .cat-item .cat-chev svg{width:14px;height:14px;display:block}
 
-  section.cat{margin-bottom:18px;animation:fade .2s ease}
-  section.cat>h2{display:flex;align-items:center;gap:8px;margin:0 0 10px 2px;
-    font-size:12.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent)}
-  section.cat>h2 .count{margin-left:auto;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:0}
+  /* ---------- Category view header ---------- */
+  .back-bar{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;
+    background:var(--panel);border:1px solid var(--border);color:var(--accent);
+    font-size:12.5px;font-weight:700;cursor:pointer;user-select:none}
+  .back-btn:active{background:var(--panel2)}
+  .back-btn svg{width:13px;height:13px;display:block}
+  .cat-title{font-size:13px;font-weight:700;letter-spacing:1px;
+    text-transform:uppercase;color:var(--accent)}
 
+  /* ---------- Command cards ---------- */
   .cmd{border:1px solid var(--border);background:var(--panel);border-radius:var(--radius);
     margin-bottom:9px;overflow:hidden;transition:border-color .15s,background .15s}
   .cmd.open{border-color:var(--accent);background:var(--panel2)}
@@ -68,7 +85,8 @@
   .cmd-name .pfx{color:var(--accent)}
   .cmd-desc{flex:1;min-width:0;font-size:12.5px;color:var(--muted);white-space:nowrap;
     overflow:hidden;text-overflow:ellipsis;text-align:right}
-  .chev{flex:0 0 auto;color:var(--muted);font-size:11px;transition:transform .2s}
+  .chev{flex:0 0 auto;color:var(--muted);transition:transform .2s;display:flex;align-items:center}
+  .chev svg{width:12px;height:12px;display:block}
   .cmd.open .chev{transform:rotate(90deg);color:var(--accent)}
 
   .cmd-body{display:none;padding:0 14px 14px;border-top:1px solid var(--border);animation:fade .18s ease}
@@ -84,12 +102,14 @@
   .alias{color:#7ef0d2}
 
   .empty{text-align:center;padding:50px 20px;color:var(--muted);font-size:14px}
-  .empty .big{font-size:40px;margin-bottom:10px}
+  .empty .big{display:flex;justify-content:center;margin-bottom:12px;color:var(--muted)}
+  .empty .big svg{width:40px;height:40px}
 
   footer{text-align:center;color:var(--muted);font-size:11px;padding:18px 0 6px;opacity:.75}
   #top{position:fixed;right:16px;bottom:18px;width:44px;height:44px;border-radius:50%;
-    border:1px solid var(--border);background:var(--panel2);color:var(--accent);font-size:18px;
+    border:1px solid var(--border);background:var(--panel2);color:var(--accent);
     display:none;place-items:center;cursor:pointer;box-shadow:var(--shadow);z-index:20}
+  #top svg{width:18px;height:18px}
   #top.show{display:grid}
   @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 </style>
@@ -97,10 +117,19 @@
 <body>
 
 <header>
-  <div class="logo">🤖</div>
+  <div class="logo">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="7" width="16" height="12" rx="3"/>
+      <path d="M12 7V4"/>
+      <circle cx="12" cy="3" r="1"/>
+      <circle cx="9" cy="13" r="1.2" fill="currentColor" stroke="none"/>
+      <circle cx="15" cy="13" r="1.2" fill="currentColor" stroke="none"/>
+      <path d="M9.5 16.5h5"/>
+    </svg>
+  </div>
   <div class="titles">
     <h1 id="botTitle">JUNE-X HELP MENU</h1>
-    <p>Tap a command to see usage, aliases &amp; description</p>
+    <p>Tap a category to view its commands</p>
   </div>
   <span class="prefix-chip" id="prefixChip">.</span>
 </header>
@@ -112,34 +141,40 @@
 </div>
 
 <div class="search-wrap">
-  <span class="icon">🔍</span>
+  <span class="icon">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="M21 21l-4.3-4.3"/>
+    </svg>
+  </span>
   <input id="search" type="text" placeholder="Search commands, aliases, descriptions…"
     autocomplete="off" autocapitalize="off" spellcheck="false" />
 </div>
 
-<div class="cats" id="cats"></div>
-
-<main id="list"></main>
+<main id="view"></main>
 
 <footer id="footer"></footer>
 
-<button id="top" aria-label="Back to top">↑</button>
+<button id="top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5"/>
+    <path d="M5 12l7-7 7 7"/>
+  </svg>
+</button>
 
 <script>
 (function () {
   "use strict";
 
-  // Injected by the help command
   const DATA = __MENUDATA__;
-
-  const cats   = (DATA && DATA.cats)   || {};
-  const prefix = (DATA && DATA.prefix) || ".";
-  const botname= (DATA && DATA.botname)|| "BOT";
-  const total  = (DATA && DATA.total)  || 0;
+  const cats    = (DATA && DATA.cats)   || {};
+  const prefix  = (DATA && DATA.prefix) || ".";
+  const botname = (DATA && DATA.botname)|| "BOT";
+  const total   = (DATA && DATA.total)  || 0;
 
   const catKeys = Object.keys(cats).sort();
-  const elList  = document.getElementById("list");
-  const elCats  = document.getElementById("cats");
+
+  const elView  = document.getElementById("view");
   const elSearch= document.getElementById("search");
   const elFooter= document.getElementById("footer");
   const elTop   = document.getElementById("top");
@@ -155,7 +190,7 @@
   elStatC.textContent  = catKeys.length;
   elFooter.textContent = total + " command" + (total === 1 ? "" : "s") + " available";
 
-  let activeCat = "__all__";
+  let activeCat = null;
   let query = "";
 
   function esc(s){
@@ -169,14 +204,60 @@
     const q = query.toLowerCase();
     if(cmd.n && cmd.n.toLowerCase().indexOf(q)!==-1) return true;
     if(cmd.d && cmd.d.toLowerCase().indexOf(q)!==-1) return true;
+    if(cmd.u && String(cmd.u).toLowerCase().indexOf(q)!==-1) return true;
     if(Array.isArray(cmd.a)){
       for(let i=0;i<cmd.a.length;i++){
         if(String(cmd.a[i]).toLowerCase().indexOf(q)!==-1) return true;
       }
     }
-    if(cmd.u && String(cmd.u).toLowerCase().indexOf(q)!==-1) return true;
     return false;
   }
+
+  // ---------- Inline SVG icon set (stroke-based, no emojis) ----------
+  const ICONS = {
+    general:   '<path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/>',
+    game:      '<rect x="3" y="7" width="18" height="10" rx="3"/><path d="M7 12h4"/><path d="M9 10v4"/><circle cx="16" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="18" cy="13" r="1" fill="currentColor" stroke="none"/>',
+    download:  '<path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/>',
+    media:     '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3V9Z" fill="currentColor" stroke="none"/>',
+    tool:      '<path d="M14.7 6.3a4 4 0 1 0 5 5L21 21l-3 .1L8.6 11.7a4 4 0 0 1-5-5l3 3 2.8-.7.7-2.8-3-3Z"/>',
+    ai:        '<path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/><rect x="7" y="7" width="10" height="10" rx="3"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/>',
+    system:    '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/>',
+    owner:     '<path d="M3 7l4 4 5-7 5 7 4-4v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/>',
+    group:     '<circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.2"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M15 20a4 4 0 0 1 6 0"/>',
+    fun:       '<circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/>',
+    search:    '<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
+    convert:   '<path d="M4 8h12"/><path d="M13 5l3 3-3 3"/><path d="M20 16H8"/><path d="M11 13l-3 3 3 3"/>',
+    sticker:   '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M14 20v-4a2 2 0 0 1 2-2h4"/><circle cx="9" cy="9" r="1" fill="currentColor" stroke="none"/>',
+    audio:     '<path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>',
+    text:      '<path d="M5 5h14"/><path d="M5 10h14"/><path d="M5 15h10"/><path d="M5 20h7"/>',
+    default:   '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/>'
+  };
+
+  function iconFor(name){
+    const n = name.toLowerCase();
+    let key = "default";
+    if(n.includes("general")) key = "general";
+    else if(n.includes("game")) key = "game";
+    else if(n.includes("download")) key = "download";
+    else if(n.includes("media") || n.includes("video") || n.includes("image")) key = "media";
+    else if(n.includes("tool")) key = "tool";
+    else if(n.includes("ai") || n.includes("chat")) key = "ai";
+    else if(n.includes("system") || n.includes("bot")) key = "system";
+    else if(n.includes("owner") || n.includes("admin")) key = "owner";
+    else if(n.includes("group")) key = "group";
+    else if(n.includes("fun")) key = "fun";
+    else if(n.includes("search")) key = "search";
+    else if(n.includes("convert")) key = "convert";
+    else if(n.includes("sticker")) key = "sticker";
+    else if(n.includes("audio") || n.includes("sound") || n.includes("music")) key = "audio";
+    else if(n.includes("text")) key = "text";
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+ICONS[key]+'</svg>';
+  }
+
+  const CHEVRON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+  const CHEVRON_SMALL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+  const BACK_ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>';
+  const SEARCH_BIG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>';
 
   function buildCard(cmd){
     const aliases = (Array.isArray(cmd.a) && cmd.a.length)
@@ -190,7 +271,7 @@
         '<div class="cmd-head">'+
           '<span class="cmd-name"><span class="pfx">'+esc(prefix)+'</span>'+esc(cmd.n)+'</span>'+
           '<span class="cmd-desc">'+(cmd.d?esc(cmd.d):"")+'</span>'+
-          '<span class="chev">▶</span>'+
+          '<span class="chev">'+CHEVRON_SMALL+'</span>'+
         '</div>'+
         '<div class="cmd-body">'+
           '<div class="row"><span class="label">Usage</span><span class="value"><span class="mono">'+usage+'</span></span></div>'+
@@ -201,61 +282,111 @@
     );
   }
 
-  function renderChips(){
-    let html = '<button class="cat-chip'+(activeCat==="__all__"?" active":"")+'" data-cat="__all__">All</button>';
+  function renderCategoryList(){
+    let html = '<div class="cat-list">';
     for(let i=0;i<catKeys.length;i++){
       const k = catKeys[i];
-      html += '<button class="cat-chip'+(activeCat===k?" active":"")+'" data-cat="'+esc(k)+'">'+
-                esc(k)+" · "+cats[k].length+"</button>";
+      const n = cats[k].length;
+      html +=
+        '<div class="cat-item" data-cat="'+esc(k)+'">'+
+          '<div class="cat-icon">'+iconFor(k)+'</div>'+
+          '<div class="cat-name">'+esc(k)+'</div>'+
+          '<span class="cat-count">'+n+'</span>'+
+          '<span class="cat-chev">'+CHEVRON+'</span>'+
+        '</div>';
     }
-    elCats.innerHTML = html;
+    html += '</div>';
+    elView.innerHTML = html;
+    elStatS.textContent = total;
+  }
+
+  function renderCategory(cat){
+    const list = (cats[cat]||[]).filter(matches);
+    const head =
+      '<div class="back-bar">'+
+        '<button class="back-btn" id="backBtn">'+BACK_ARROW+' Back</button>'+
+        '<span class="cat-title">'+esc(cat)+'</span>'+
+      '</div>';
+
+    if(!list.length){
+      elView.innerHTML = head +
+        '<div class="empty"><div class="big">'+SEARCH_BIG+'</div><div>No commands match <b>'+esc(query)+'</b></div></div>';
+      elStatS.textContent = 0;
+      return;
+    }
+    elView.innerHTML = head + list.map(buildCard).join("");
+    elStatS.textContent = list.length;
   }
 
   function render(){
-    const keys = activeCat==="__all__" ? catKeys : [activeCat];
-    let html="", shown=0;
-    for(let i=0;i<keys.length;i++){
-      const k = keys[i];
-      const list = (cats[k]||[]).filter(matches);
-      if(!list.length) continue;
-      shown += list.length;
-      html += '<section class="cat"><h2>'+esc(k)+
-              '<span class="count">'+list.length+'</span></h2>'+
-              list.map(buildCard).join("")+'</section>';
+    if(query){
+      let html = "";
+      let shown = 0;
+      for(let i=0;i<catKeys.length;i++){
+        const k = catKeys[i];
+        const list = (cats[k]||[]).filter(matches);
+        if(!list.length) continue;
+        shown += list.length;
+        html +=
+          '<section style="margin-bottom:18px">'+
+            '<h2 style="display:flex;align-items:center;gap:8px;margin:0 0 10px 2px;'+
+            'font-size:12.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;'+
+            'color:var(--accent)">'+esc(k)+
+            '<span style="margin-left:auto;color:var(--muted);font-size:11px;font-weight:600;'+
+            'letter-spacing:0">'+list.length+'</span></h2>'+
+            list.map(buildCard).join("")+
+          '</section>';
+      }
+      if(!shown){
+        html = '<div class="empty"><div class="big">'+SEARCH_BIG+'</div><div>No commands match <b>'+
+               esc(query)+'</b></div></div>';
+      }
+      elStatS.textContent = shown;
+      elView.innerHTML = html;
+      return;
     }
-    if(!shown){
-      html = '<div class="empty"><div class="big">🔎</div><div>No commands match <b>'+
-             esc(query)+'</b></div></div>';
-    }
-    elStatS.textContent = shown;
-    elList.innerHTML = html;
+
+    if(activeCat) renderCategory(activeCat);
+    else renderCategoryList();
   }
 
-  elCats.addEventListener("click", function(e){
-    const chip = e.target.closest(".cat-chip");
-    if(!chip) return;
-    activeCat = chip.getAttribute("data-cat");
-    renderChips(); render();
+  elView.addEventListener("click", function(e){
+    if(e.target.closest("#backBtn")){
+      activeCat = null;
+      render();
+      window.scrollTo({top:0,behavior:"smooth"});
+      return;
+    }
+    const catItem = e.target.closest(".cat-item");
+    if(catItem){
+      activeCat = catItem.getAttribute("data-cat");
+      query = "";
+      elSearch.value = "";
+      render();
+      window.scrollTo({top:0,behavior:"smooth"});
+      return;
+    }
+    const head = e.target.closest(".cmd-head");
+    if(head){
+      const card = head.parentElement;
+      const wasOpen = card.classList.contains("open");
+      const open = elView.querySelectorAll(".cmd.open");
+      for(let i=0;i<open.length;i++) open[i].classList.remove("open");
+      if(!wasOpen){
+        card.classList.add("open");
+        setTimeout(function(){ card.scrollIntoView({behavior:"smooth",block:"nearest"}); },60);
+      }
+    }
   });
 
   let searchTimer=null;
   elSearch.addEventListener("input", function(){
     clearTimeout(searchTimer);
     const val = elSearch.value;
-    searchTimer = setTimeout(function(){ query = val.trim(); render(); }, 120);
-  });
-
-  elList.addEventListener("click", function(e){
-    const head = e.target.closest(".cmd-head");
-    if(!head) return;
-    const card = head.parentElement;
-    const wasOpen = card.classList.contains("open");
-    const open = elList.querySelectorAll(".cmd.open");
-    for(let i=0;i<open.length;i++) open[i].classList.remove("open");
-    if(!wasOpen){
-      card.classList.add("open");
-      setTimeout(function(){ card.scrollIntoView({behavior:"smooth",block:"nearest"}); },60);
-    }
+    searchTimer = setTimeout(function(){
+      query = val.trim();
+      render();
+    }, 120);
   });
 
   window.addEventListener("scroll", function(){
@@ -267,7 +398,6 @@
     window.scrollTo({top:0,behavior:"smooth"});
   });
 
-  renderChips();
   render();
 })();
 </script>
