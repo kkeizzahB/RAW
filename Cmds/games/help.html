@@ -3,40 +3,67 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>JUNE-X HELP MENU</title>
+<title>KEITH MD HELP MENU</title>
 <style>
   :root{
-    --bg:#0b141a;--panel:#111b21;--panel2:#182229;
-    --accent:#00a884;--accent-dim:#005c4b;
-    --text:#e9edef;--muted:#8696a0;--border:#222d34;
-    --radius:14px;--shadow:0 6px 24px rgba(0,0,0,.35);
+    --bg:#0a0b14;
+    --bg-2:#0f1120;
+    --panel:#141628;
+    --panel2:#1b1e35;
+    --border:#262a45;
+    --text:#eef0ff;
+    --muted:#8a90b8;
+
+    --accent:#7c5cff;          /* indigo/violet */
+    --accent-2:#22d3ee;        /* cyan */
+    --accent-soft:rgba(124,92,255,.14);
+    --accent-border:rgba(124,92,255,.42);
+    --accent-glow:rgba(124,92,255,.28);
+
+    --radius:14px;
+    --shadow:0 8px 28px rgba(0,0,0,.45);
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     font-size:15px;line-height:1.4;min-height:100%}
   body{padding:12px 12px 90px;
-    background:radial-gradient(1200px 500px at 50% -200px,rgba(0,168,132,.14),transparent 70%),var(--bg)}
+    background:
+      radial-gradient(900px 420px at 15% -10%, rgba(124,92,255,.20), transparent 65%),
+      radial-gradient(900px 420px at 100% 10%, rgba(34,211,238,.12), transparent 65%),
+      linear-gradient(180deg, var(--bg-2), var(--bg));
+    background-attachment:fixed}
 
-  /* ---------- Header (compact) ---------- */
+  /* ---------- Header ---------- */
   header{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:var(--radius);
-    background:linear-gradient(135deg,var(--accent-dim),var(--panel));
-    border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:10px}
+    background:linear-gradient(135deg, rgba(124,92,255,.28), rgba(34,211,238,.10) 60%, var(--panel));
+    border:1px solid var(--accent-border);box-shadow:var(--shadow);margin-bottom:10px;
+    position:relative;overflow:hidden}
+  header:before{content:"";position:absolute;inset:0;
+    background:radial-gradient(400px 120px at 100% 0%, rgba(34,211,238,.18), transparent 70%);
+    pointer-events:none}
   header .logo{width:38px;height:38px;flex:0 0 38px;border-radius:10px;display:grid;place-items:center;
-    background:rgba(0,168,132,.18);border:1px solid rgba(0,168,132,.4);color:var(--accent)}
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    color:#0a0b14;box-shadow:0 6px 18px var(--accent-glow)}
   header .logo svg{width:20px;height:20px}
   header .titles{min-width:0}
-  header h1{margin:0;font-size:16px;font-weight:700;letter-spacing:.3px}
+  header h1{margin:0;font-size:16px;font-weight:800;letter-spacing:.4px;
+    background:linear-gradient(90deg, #fff, #c9c4ff 60%, #9de9f5);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   header p{margin:2px 0 0;font-size:11.5px;color:var(--muted)}
-  .prefix-chip{margin-left:auto;flex:0 0 auto;padding:4px 9px;border-radius:999px;
-    background:rgba(0,168,132,.15);border:1px solid rgba(0,168,132,.45);color:var(--accent);
-    font-size:11.5px;font-weight:700;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
+  .prefix-chip{margin-left:auto;flex:0 0 auto;padding:4px 10px;border-radius:999px;
+    background:var(--accent-soft);border:1px solid var(--accent-border);color:#cfc6ff;
+    font-size:11.5px;font-weight:800;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap;
+    box-shadow:0 0 0 3px rgba(124,92,255,.06) inset}
 
-  /* ---------- Stats (compact) ---------- */
+  /* ---------- Stats ---------- */
   .stats{display:flex;gap:6px;margin-bottom:10px}
-  .stat{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;
-    padding:8px 10px;text-align:center}
-  .stat .v{font-size:15px;font-weight:700;color:var(--accent);
+  .stat{flex:1;background:linear-gradient(180deg, var(--panel), var(--bg-2));
+    border:1px solid var(--border);border-radius:12px;padding:9px 10px;text-align:center}
+  .stat .v{font-size:15px;font-weight:800;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
   .stat .l{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-top:1px}
 
@@ -44,86 +71,99 @@
   .search-sticky{
     position:sticky;top:0;z-index:15;
     padding:8px 0 10px;margin:-4px 0 6px;
-    background:linear-gradient(to bottom,var(--bg) 70%,rgba(11,20,26,0));
-  }
+    background:linear-gradient(to bottom,var(--bg) 72%, rgba(10,11,20,0));
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
   .search-wrap{position:relative}
   .search-wrap input{width:100%;padding:11px 14px 11px 40px;border-radius:12px;
     border:1px solid var(--border);background:var(--panel);color:var(--text);font-size:14px;
     outline:none;transition:border-color .15s,box-shadow .15s}
-  .search-wrap input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,168,132,.15)}
   .search-wrap input::placeholder{color:var(--muted)}
+  .search-wrap input:focus{border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(124,92,255,.18), 0 0 0 1px var(--accent-border)}
   .search-wrap .icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);
     color:var(--muted);width:16px;height:16px;pointer-events:none;display:flex;align-items:center}
 
-  /* ---------- Vertical category list ---------- */
+  /* ---------- Category list ---------- */
   .cat-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
   .cat-item{display:flex;align-items:center;gap:11px;padding:12px 14px;
-    background:var(--panel);border:1px solid var(--border);border-radius:12px;
-    cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
-  .cat-item:active{transform:scale(.99);background:var(--panel2)}
+    background:linear-gradient(180deg, var(--panel), var(--bg-2));
+    border:1px solid var(--border);border-radius:12px;
+    cursor:pointer;transition:border-color .15s,background .15s,transform .1s,box-shadow .15s;
+    position:relative;overflow:hidden}
+  .cat-item:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(180deg, var(--accent), var(--accent-2));opacity:.85}
+  .cat-item:active{transform:scale(.99);background:var(--panel2);
+    box-shadow:0 6px 16px rgba(0,0,0,.35)}
   .cat-item .cat-icon{width:34px;height:34px;flex:0 0 34px;border-radius:9px;
-    display:grid;place-items:center;color:var(--accent);
-    background:rgba(0,168,132,.12);border:1px solid rgba(0,168,132,.3)}
+    display:grid;place-items:center;color:#d9d2ff;
+    background:var(--accent-soft);border:1px solid var(--accent-border)}
   .cat-item .cat-icon svg{width:17px;height:17px;display:block}
-  .cat-item .cat-name{flex:1;min-width:0;font-size:14px;font-weight:600;letter-spacing:.2px}
+  .cat-item .cat-name{flex:1;min-width:0;font-size:14px;font-weight:700;letter-spacing:.2px}
   .cat-item .cat-count{flex:0 0 auto;padding:2px 8px;border-radius:999px;
-    background:rgba(0,168,132,.15);border:1px solid rgba(0,168,132,.35);
-    color:var(--accent);font-size:11px;font-weight:700;
+    background:linear-gradient(135deg, rgba(124,92,255,.22), rgba(34,211,238,.16));
+    border:1px solid var(--accent-border);color:#d9d2ff;
+    font-size:11px;font-weight:800;
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
   .cat-item .cat-chev{flex:0 0 auto;color:var(--muted);display:flex;align-items:center}
   .cat-item .cat-chev svg{width:13px;height:13px;display:block}
 
-  /* ---------- Sticky category view header ---------- */
+  /* ---------- Sticky category header ---------- */
   .cat-sticky{
     position:sticky;top:0;z-index:15;
     padding:8px 0 10px;margin:-4px 0 6px;
-    background:linear-gradient(to bottom,var(--bg) 70%,rgba(11,20,26,0));
-  }
+    background:linear-gradient(to bottom,var(--bg) 72%, rgba(10,11,20,0));
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
   .back-bar{display:flex;align-items:center;gap:10px}
   .back-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border-radius:999px;
-    background:var(--panel);border:1px solid var(--border);color:var(--accent);
+    background:var(--panel);border:1px solid var(--accent-border);color:#d9d2ff;
     font-size:12px;font-weight:700;cursor:pointer;user-select:none}
   .back-btn:active{background:var(--panel2)}
   .back-btn svg{width:12px;height:12px;display:block}
-  .cat-title{font-size:12px;font-weight:700;letter-spacing:.9px;
-    text-transform:uppercase;color:var(--accent)}
+  .cat-title{font-size:12px;font-weight:800;letter-spacing:.9px;
+    text-transform:uppercase;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .cat-total{margin-left:auto;font-size:11px;color:var(--muted);font-weight:600}
 
-  /* ---------- Command cards (dense) ---------- */
+  /* ---------- Command cards ---------- */
   .cmd{border:1px solid var(--border);background:var(--panel);border-radius:12px;
     margin-bottom:6px;overflow:hidden;transition:border-color .15s,background .15s}
-  .cmd.open{border-color:var(--accent);background:var(--panel2)}
+  .cmd.open{border-color:var(--accent-border);
+    background:linear-gradient(180deg, var(--panel2), var(--panel))}
   .cmd-head{display:flex;align-items:center;gap:10px;padding:10px 13px;cursor:pointer;user-select:none}
-  .cmd-head:active{background:rgba(255,255,255,.03)}
-  .cmd-name{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;font-weight:600;
+  .cmd-head:active{background:rgba(124,92,255,.06)}
+  .cmd-name{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;font-weight:700;
     color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:0 0 auto;max-width:45%}
-  .cmd-name .pfx{color:var(--accent)}
+  .cmd-name .pfx{color:var(--accent-2)}
   .cmd-desc{flex:1;min-width:0;font-size:12px;color:var(--muted);white-space:nowrap;
     overflow:hidden;text-overflow:ellipsis;text-align:right}
   .chev{flex:0 0 auto;color:var(--muted);transition:transform .2s;display:flex;align-items:center}
   .chev svg{width:11px;height:11px;display:block}
-  .cmd.open .chev{transform:rotate(90deg);color:var(--accent)}
+  .cmd.open .chev{transform:rotate(90deg);color:var(--accent-2)}
 
   .cmd-body{display:none;padding:0 13px 12px;border-top:1px solid var(--border);animation:fade .18s ease}
   .cmd.open .cmd-body{display:block}
-  .row{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed rgba(134,150,160,.18)}
+  .row{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed rgba(138,144,184,.18)}
   .row:last-child{border-bottom:none;padding-bottom:0}
-  .row .label{flex:0 0 68px;font-size:10.5px;font-weight:700;letter-spacing:.5px;
+  .row .label{flex:0 0 68px;font-size:10.5px;font-weight:800;letter-spacing:.5px;
     text-transform:uppercase;color:var(--muted);padding-top:3px}
   .row .value{flex:1;min-width:0;font-size:12.5px;color:var(--text);word-break:break-word}
   .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
-    background:rgba(0,168,132,.1);border:1px solid rgba(0,168,132,.25);color:#7ef0d2;
+    background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.28);color:#9de9f5;
     padding:2px 6px;border-radius:6px;display:inline-block;margin:2px 4px 2px 0}
-  .alias{color:#7ef0d2}
+  .alias{color:#9de9f5}
 
   .empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:13.5px}
   .empty .big{display:flex;justify-content:center;margin-bottom:10px;color:var(--muted)}
   .empty .big svg{width:36px;height:36px}
 
   footer{text-align:center;color:var(--muted);font-size:11px;padding:14px 0 4px;opacity:.75}
+
   #top{position:fixed;right:14px;bottom:16px;width:42px;height:42px;border-radius:50%;
-    border:1px solid var(--border);background:var(--panel2);color:var(--accent);
-    display:none;place-items:center;cursor:pointer;box-shadow:var(--shadow);z-index:20}
+    border:1px solid var(--accent-border);
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    color:#0a0b14;display:none;place-items:center;cursor:pointer;
+    box-shadow:0 8px 22px var(--accent-glow);z-index:20}
   #top svg{width:17px;height:17px}
   #top.show{display:grid}
   @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
@@ -133,7 +173,7 @@
 
 <header>
   <div class="logo">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
       <rect x="4" y="7" width="16" height="12" rx="3"/>
       <path d="M12 7V4"/>
       <circle cx="12" cy="3" r="1"/>
@@ -143,7 +183,7 @@
     </svg>
   </div>
   <div class="titles">
-    <h1 id="botTitle">JUNE-X HELP MENU</h1>
+    <h1 id="botTitle">KEITH MD HELP MENU</h1>
     <p>Tap a category to view its commands</p>
   </div>
   <span class="prefix-chip" id="prefixChip">.</span>
@@ -173,7 +213,7 @@
 <footer id="footer"></footer>
 
 <button id="top" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 19V5"/>
     <path d="M5 12l7-7 7 7"/>
   </svg>
@@ -186,7 +226,7 @@
   const DATA = __MENUDATA__;
   const cats    = (DATA && DATA.cats)   || {};
   const prefix  = (DATA && DATA.prefix) || ".";
-  const botname = (DATA && DATA.botname)|| "BOT";
+  const botname = (DATA && DATA.botname)|| "KEITH MD";
   const total   = (DATA && DATA.total)  || 0;
 
   const catKeys = Object.keys(cats).sort();
@@ -202,7 +242,7 @@
   const elStatS = document.getElementById("statShown");
 
   elPrefix.textContent = prefix;
-  elTitle.textContent  = botname.toUpperCase() + " HELP MENU";
+  elTitle.textContent  = (botname || "KEITH MD").toUpperCase() + " HELP MENU";
   elStatT.textContent  = total;
   elStatC.textContent  = catKeys.length;
   elFooter.textContent = total + " command" + (total === 1 ? "" : "s") + " available";
@@ -270,10 +310,10 @@
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+ICONS[key]+'</svg>';
   }
 
-  const CHEVRON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+  const CHEVRON       = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
   const CHEVRON_SMALL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
-  const BACK_ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>';
-  const SEARCH_BIG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>';
+  const BACK_ARROW    = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>';
+  const SEARCH_BIG    = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>';
 
   function buildCard(cmd){
     const aliases = (Array.isArray(cmd.a) && cmd.a.length)
