@@ -15,30 +15,39 @@
   html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     font-size:15px;line-height:1.4;min-height:100%}
-  body{padding:14px 14px 96px;
+  body{padding:12px 12px 90px;
     background:radial-gradient(1200px 500px at 50% -200px,rgba(0,168,132,.14),transparent 70%),var(--bg)}
 
-  header{display:flex;align-items:center;gap:12px;padding:16px;border-radius:var(--radius);
+  /* ---------- Header (compact) ---------- */
+  header{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:var(--radius);
     background:linear-gradient(135deg,var(--accent-dim),var(--panel));
-    border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px}
-  header .logo{width:44px;height:44px;flex:0 0 44px;border-radius:12px;display:grid;place-items:center;
+    border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:10px}
+  header .logo{width:38px;height:38px;flex:0 0 38px;border-radius:10px;display:grid;place-items:center;
     background:rgba(0,168,132,.18);border:1px solid rgba(0,168,132,.4);color:var(--accent)}
+  header .logo svg{width:20px;height:20px}
   header .titles{min-width:0}
-  header h1{margin:0;font-size:18px;font-weight:700;letter-spacing:.4px}
-  header p{margin:3px 0 0;font-size:12.5px;color:var(--muted)}
-  .prefix-chip{margin-left:auto;flex:0 0 auto;padding:5px 10px;border-radius:999px;
+  header h1{margin:0;font-size:16px;font-weight:700;letter-spacing:.3px}
+  header p{margin:2px 0 0;font-size:11.5px;color:var(--muted)}
+  .prefix-chip{margin-left:auto;flex:0 0 auto;padding:4px 9px;border-radius:999px;
     background:rgba(0,168,132,.15);border:1px solid rgba(0,168,132,.45);color:var(--accent);
-    font-size:12px;font-weight:700;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
+    font-size:11.5px;font-weight:700;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
 
-  .stats{display:flex;gap:8px;margin-bottom:12px}
-  .stat{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:12px;
-    padding:10px 12px;text-align:center}
-  .stat .v{font-size:18px;font-weight:700;color:var(--accent);
+  /* ---------- Stats (compact) ---------- */
+  .stats{display:flex;gap:6px;margin-bottom:10px}
+  .stat{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;
+    padding:8px 10px;text-align:center}
+  .stat .v{font-size:15px;font-weight:700;color:var(--accent);
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-  .stat .l{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-top:2px}
+  .stat .l{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-top:1px}
 
-  .search-wrap{position:relative;margin-bottom:12px}
-  .search-wrap input{width:100%;padding:12px 14px 12px 40px;border-radius:12px;
+  /* ---------- Sticky search ---------- */
+  .search-sticky{
+    position:sticky;top:0;z-index:15;
+    padding:8px 0 10px;margin:-4px 0 6px;
+    background:linear-gradient(to bottom,var(--bg) 70%,rgba(11,20,26,0));
+  }
+  .search-wrap{position:relative}
+  .search-wrap input{width:100%;padding:11px 14px 11px 40px;border-radius:12px;
     border:1px solid var(--border);background:var(--panel);color:var(--text);font-size:14px;
     outline:none;transition:border-color .15s,box-shadow .15s}
   .search-wrap input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,168,132,.15)}
@@ -47,69 +56,75 @@
     color:var(--muted);width:16px;height:16px;pointer-events:none;display:flex;align-items:center}
 
   /* ---------- Vertical category list ---------- */
-  .cat-list{display:flex;flex-direction:column;gap:9px;margin-bottom:14px}
-  .cat-item{display:flex;align-items:center;gap:12px;padding:14px 16px;
-    background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+  .cat-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+  .cat-item{display:flex;align-items:center;gap:11px;padding:12px 14px;
+    background:var(--panel);border:1px solid var(--border);border-radius:12px;
     cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
   .cat-item:active{transform:scale(.99);background:var(--panel2)}
-  .cat-item .cat-icon{width:36px;height:36px;flex:0 0 36px;border-radius:10px;
+  .cat-item .cat-icon{width:34px;height:34px;flex:0 0 34px;border-radius:9px;
     display:grid;place-items:center;color:var(--accent);
     background:rgba(0,168,132,.12);border:1px solid rgba(0,168,132,.3)}
-  .cat-item .cat-icon svg{width:18px;height:18px;display:block}
-  .cat-item .cat-name{flex:1;min-width:0;font-size:14.5px;font-weight:600;letter-spacing:.3px}
-  .cat-item .cat-count{flex:0 0 auto;padding:3px 9px;border-radius:999px;
+  .cat-item .cat-icon svg{width:17px;height:17px;display:block}
+  .cat-item .cat-name{flex:1;min-width:0;font-size:14px;font-weight:600;letter-spacing:.2px}
+  .cat-item .cat-count{flex:0 0 auto;padding:2px 8px;border-radius:999px;
     background:rgba(0,168,132,.15);border:1px solid rgba(0,168,132,.35);
-    color:var(--accent);font-size:11.5px;font-weight:700;
+    color:var(--accent);font-size:11px;font-weight:700;
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
   .cat-item .cat-chev{flex:0 0 auto;color:var(--muted);display:flex;align-items:center}
-  .cat-item .cat-chev svg{width:14px;height:14px;display:block}
+  .cat-item .cat-chev svg{width:13px;height:13px;display:block}
 
-  /* ---------- Category view header ---------- */
-  .back-bar{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-  .back-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;
+  /* ---------- Sticky category view header ---------- */
+  .cat-sticky{
+    position:sticky;top:0;z-index:15;
+    padding:8px 0 10px;margin:-4px 0 6px;
+    background:linear-gradient(to bottom,var(--bg) 70%,rgba(11,20,26,0));
+  }
+  .back-bar{display:flex;align-items:center;gap:10px}
+  .back-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border-radius:999px;
     background:var(--panel);border:1px solid var(--border);color:var(--accent);
-    font-size:12.5px;font-weight:700;cursor:pointer;user-select:none}
+    font-size:12px;font-weight:700;cursor:pointer;user-select:none}
   .back-btn:active{background:var(--panel2)}
-  .back-btn svg{width:13px;height:13px;display:block}
-  .cat-title{font-size:13px;font-weight:700;letter-spacing:1px;
+  .back-btn svg{width:12px;height:12px;display:block}
+  .cat-title{font-size:12px;font-weight:700;letter-spacing:.9px;
     text-transform:uppercase;color:var(--accent)}
+  .cat-total{margin-left:auto;font-size:11px;color:var(--muted);font-weight:600}
 
-  /* ---------- Command cards ---------- */
-  .cmd{border:1px solid var(--border);background:var(--panel);border-radius:var(--radius);
-    margin-bottom:9px;overflow:hidden;transition:border-color .15s,background .15s}
+  /* ---------- Command cards (dense) ---------- */
+  .cmd{border:1px solid var(--border);background:var(--panel);border-radius:12px;
+    margin-bottom:6px;overflow:hidden;transition:border-color .15s,background .15s}
   .cmd.open{border-color:var(--accent);background:var(--panel2)}
-  .cmd-head{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;user-select:none}
+  .cmd-head{display:flex;align-items:center;gap:10px;padding:10px 13px;cursor:pointer;user-select:none}
   .cmd-head:active{background:rgba(255,255,255,.03)}
-  .cmd-name{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;font-weight:600;
-    color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cmd-name{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;font-weight:600;
+    color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:0 0 auto;max-width:45%}
   .cmd-name .pfx{color:var(--accent)}
-  .cmd-desc{flex:1;min-width:0;font-size:12.5px;color:var(--muted);white-space:nowrap;
+  .cmd-desc{flex:1;min-width:0;font-size:12px;color:var(--muted);white-space:nowrap;
     overflow:hidden;text-overflow:ellipsis;text-align:right}
   .chev{flex:0 0 auto;color:var(--muted);transition:transform .2s;display:flex;align-items:center}
-  .chev svg{width:12px;height:12px;display:block}
+  .chev svg{width:11px;height:11px;display:block}
   .cmd.open .chev{transform:rotate(90deg);color:var(--accent)}
 
-  .cmd-body{display:none;padding:0 14px 14px;border-top:1px solid var(--border);animation:fade .18s ease}
+  .cmd-body{display:none;padding:0 13px 12px;border-top:1px solid var(--border);animation:fade .18s ease}
   .cmd.open .cmd-body{display:block}
-  .row{display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed rgba(134,150,160,.18)}
+  .row{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed rgba(134,150,160,.18)}
   .row:last-child{border-bottom:none;padding-bottom:0}
-  .row .label{flex:0 0 76px;font-size:11px;font-weight:700;letter-spacing:.6px;
+  .row .label{flex:0 0 68px;font-size:10.5px;font-weight:700;letter-spacing:.5px;
     text-transform:uppercase;color:var(--muted);padding-top:3px}
-  .row .value{flex:1;min-width:0;font-size:13px;color:var(--text);word-break:break-word}
-  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;
+  .row .value{flex:1;min-width:0;font-size:12.5px;color:var(--text);word-break:break-word}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
     background:rgba(0,168,132,.1);border:1px solid rgba(0,168,132,.25);color:#7ef0d2;
-    padding:2px 7px;border-radius:7px;display:inline-block;margin:2px 4px 2px 0}
+    padding:2px 6px;border-radius:6px;display:inline-block;margin:2px 4px 2px 0}
   .alias{color:#7ef0d2}
 
-  .empty{text-align:center;padding:50px 20px;color:var(--muted);font-size:14px}
-  .empty .big{display:flex;justify-content:center;margin-bottom:12px;color:var(--muted)}
-  .empty .big svg{width:40px;height:40px}
+  .empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:13.5px}
+  .empty .big{display:flex;justify-content:center;margin-bottom:10px;color:var(--muted)}
+  .empty .big svg{width:36px;height:36px}
 
-  footer{text-align:center;color:var(--muted);font-size:11px;padding:18px 0 6px;opacity:.75}
-  #top{position:fixed;right:16px;bottom:18px;width:44px;height:44px;border-radius:50%;
+  footer{text-align:center;color:var(--muted);font-size:11px;padding:14px 0 4px;opacity:.75}
+  #top{position:fixed;right:14px;bottom:16px;width:42px;height:42px;border-radius:50%;
     border:1px solid var(--border);background:var(--panel2);color:var(--accent);
     display:none;place-items:center;cursor:pointer;box-shadow:var(--shadow);z-index:20}
-  #top svg{width:18px;height:18px}
+  #top svg{width:17px;height:17px}
   #top.show{display:grid}
   @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 </style>
@@ -118,7 +133,7 @@
 
 <header>
   <div class="logo">
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <rect x="4" y="7" width="16" height="12" rx="3"/>
       <path d="M12 7V4"/>
       <circle cx="12" cy="3" r="1"/>
@@ -140,15 +155,17 @@
   <div class="stat"><div class="v" id="statShown">0</div><div class="l">Showing</div></div>
 </div>
 
-<div class="search-wrap">
-  <span class="icon">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="11" cy="11" r="7"/>
-      <path d="M21 21l-4.3-4.3"/>
-    </svg>
-  </span>
-  <input id="search" type="text" placeholder="Search commands, aliases, descriptions…"
-    autocomplete="off" autocapitalize="off" spellcheck="false" />
+<div class="search-sticky">
+  <div class="search-wrap">
+    <span class="icon">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="M21 21l-4.3-4.3"/>
+      </svg>
+    </span>
+    <input id="search" type="text" placeholder="Search commands, aliases, descriptions…"
+      autocomplete="off" autocapitalize="off" spellcheck="false" />
+  </div>
 </div>
 
 <main id="view"></main>
@@ -213,7 +230,6 @@
     return false;
   }
 
-  // ---------- Inline SVG icon set (stroke-based, no emojis) ----------
   const ICONS = {
     general:   '<path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/>',
     game:      '<rect x="3" y="7" width="18" height="10" rx="3"/><path d="M7 12h4"/><path d="M9 10v4"/><circle cx="16" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="18" cy="13" r="1" fill="currentColor" stroke="none"/>',
@@ -303,9 +319,12 @@
   function renderCategory(cat){
     const list = (cats[cat]||[]).filter(matches);
     const head =
-      '<div class="back-bar">'+
-        '<button class="back-btn" id="backBtn">'+BACK_ARROW+' Back</button>'+
-        '<span class="cat-title">'+esc(cat)+'</span>'+
+      '<div class="cat-sticky">'+
+        '<div class="back-bar">'+
+          '<button class="back-btn" id="backBtn">'+BACK_ARROW+' Back</button>'+
+          '<span class="cat-title">'+esc(cat)+'</span>'+
+          '<span class="cat-total">'+list.length+'</span>'+
+        '</div>'+
       '</div>';
 
     if(!list.length){
@@ -328,9 +347,9 @@
         if(!list.length) continue;
         shown += list.length;
         html +=
-          '<section style="margin-bottom:18px">'+
-            '<h2 style="display:flex;align-items:center;gap:8px;margin:0 0 10px 2px;'+
-            'font-size:12.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;'+
+          '<section style="margin-bottom:14px">'+
+            '<h2 style="display:flex;align-items:center;gap:8px;margin:0 0 8px 2px;'+
+            'font-size:12px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;'+
             'color:var(--accent)">'+esc(k)+
             '<span style="margin-left:auto;color:var(--muted);font-size:11px;font-weight:600;'+
             'letter-spacing:0">'+list.length+'</span></h2>'+
