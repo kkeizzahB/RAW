@@ -3,338 +3,95 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>JUNE-X MINI MENU</title>
+<title>JUNE-X HELP MENU</title>
 <style>
-  :root {
-    --bg: #0b141a;
-    --panel: #111b21;
-    --panel-2: #182229;
-    --accent: #00a884;
-    --accent-dim: #005c4b;
-    --text: #e9edef;
-    --muted: #8696a0;
-    --border: #222d34;
-    --radius: 14px;
-    --shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  :root{
+    --bg:#0b141a;--panel:#111b21;--panel2:#182229;
+    --accent:#00a884;--accent-dim:#005c4b;
+    --text:#e9edef;--muted:#8696a0;--border:#222d34;
+    --radius:14px;--shadow:0 6px 24px rgba(0,0,0,.35);
   }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:15px;line-height:1.4;min-height:100%}
+  body{padding:14px 14px 96px;
+    background:radial-gradient(1200px 500px at 50% -200px,rgba(0,168,132,.14),transparent 70%),var(--bg)}
 
-  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  header{display:flex;align-items:center;gap:12px;padding:16px;border-radius:var(--radius);
+    background:linear-gradient(135deg,var(--accent-dim),var(--panel));
+    border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px}
+  header .logo{width:44px;height:44px;flex:0 0 44px;border-radius:12px;display:grid;place-items:center;
+    background:rgba(0,168,132,.18);border:1px solid rgba(0,168,132,.4);font-size:22px}
+  header .titles{min-width:0}
+  header h1{margin:0;font-size:18px;font-weight:700;letter-spacing:.4px}
+  header p{margin:3px 0 0;font-size:12.5px;color:var(--muted)}
+  .prefix-chip{margin-left:auto;flex:0 0 auto;padding:5px 10px;border-radius:999px;
+    background:rgba(0,168,132,.15);border:1px solid rgba(0,168,132,.45);color:var(--accent);
+    font-size:12px;font-weight:700;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
 
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 15px;
-    line-height: 1.4;
-    min-height: 100%;
-  }
+  .stats{display:flex;gap:8px;margin-bottom:12px}
+  .stat{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:10px 12px;text-align:center}
+  .stat .v{font-size:18px;font-weight:700;color:var(--accent);
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .stat .l{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-top:2px}
 
-  body {
-    padding: 14px 14px 96px;
-    background:
-      radial-gradient(1200px 500px at 50% -200px, rgba(0,168,132,0.14), transparent 70%),
-      var(--bg);
-  }
+  .search-wrap{position:relative;margin-bottom:12px}
+  .search-wrap input{width:100%;padding:12px 14px 12px 40px;border-radius:12px;
+    border:1px solid var(--border);background:var(--panel);color:var(--text);font-size:14px;
+    outline:none;transition:border-color .15s,box-shadow .15s}
+  .search-wrap input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,168,132,.15)}
+  .search-wrap input::placeholder{color:var(--muted)}
+  .search-wrap .icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);
+    color:var(--muted);font-size:15px;pointer-events:none}
 
-  /* ---------- Header ---------- */
-  header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px;
-    border-radius: var(--radius);
-    background: linear-gradient(135deg, var(--accent-dim), var(--panel));
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    margin-bottom: 14px;
-  }
+  .cats{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:6px;scrollbar-width:none}
+  .cats::-webkit-scrollbar{display:none}
+  .cat-chip{flex:0 0 auto;padding:7px 13px;border-radius:999px;border:1px solid var(--border);
+    background:var(--panel);color:var(--muted);font-size:12.5px;font-weight:600;cursor:pointer;
+    transition:all .15s;white-space:nowrap}
+  .cat-chip.active{background:var(--accent);border-color:var(--accent);color:#04231d}
 
-  header .logo {
-    width: 44px; height: 44px;
-    flex: 0 0 44px;
-    border-radius: 12px;
-    display: grid;
-    place-items: center;
-    background: rgba(0, 168, 132, 0.18);
-    border: 1px solid rgba(0, 168, 132, 0.4);
-    font-size: 22px;
-  }
+  section.cat{margin-bottom:18px;animation:fade .2s ease}
+  section.cat>h2{display:flex;align-items:center;gap:8px;margin:0 0 10px 2px;
+    font-size:12.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent)}
+  section.cat>h2 .count{margin-left:auto;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:0}
 
-  header .titles { min-width: 0; }
+  .cmd{border:1px solid var(--border);background:var(--panel);border-radius:var(--radius);
+    margin-bottom:9px;overflow:hidden;transition:border-color .15s,background .15s}
+  .cmd.open{border-color:var(--accent);background:var(--panel2)}
+  .cmd-head{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;user-select:none}
+  .cmd-head:active{background:rgba(255,255,255,.03)}
+  .cmd-name{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;font-weight:600;
+    color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cmd-name .pfx{color:var(--accent)}
+  .cmd-desc{flex:1;min-width:0;font-size:12.5px;color:var(--muted);white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis;text-align:right}
+  .chev{flex:0 0 auto;color:var(--muted);font-size:11px;transition:transform .2s}
+  .cmd.open .chev{transform:rotate(90deg);color:var(--accent)}
 
-  header h1 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-  }
+  .cmd-body{display:none;padding:0 14px 14px;border-top:1px solid var(--border);animation:fade .18s ease}
+  .cmd.open .cmd-body{display:block}
+  .row{display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed rgba(134,150,160,.18)}
+  .row:last-child{border-bottom:none;padding-bottom:0}
+  .row .label{flex:0 0 76px;font-size:11px;font-weight:700;letter-spacing:.6px;
+    text-transform:uppercase;color:var(--muted);padding-top:3px}
+  .row .value{flex:1;min-width:0;font-size:13px;color:var(--text);word-break:break-word}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;
+    background:rgba(0,168,132,.1);border:1px solid rgba(0,168,132,.25);color:#7ef0d2;
+    padding:2px 7px;border-radius:7px;display:inline-block;margin:2px 4px 2px 0}
+  .alias{color:#7ef0d2}
 
-  header p {
-    margin: 3px 0 0;
-    font-size: 12.5px;
-    color: var(--muted);
-  }
+  .empty{text-align:center;padding:50px 20px;color:var(--muted);font-size:14px}
+  .empty .big{font-size:40px;margin-bottom:10px}
 
-  .prefix-chip {
-    margin-left: auto;
-    flex: 0 0 auto;
-    padding: 5px 10px;
-    border-radius: 999px;
-    background: rgba(0, 168, 132, 0.15);
-    border: 1px solid rgba(0, 168, 132, 0.45);
-    color: var(--accent);
-    font-size: 12px;
-    font-weight: 700;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    white-space: nowrap;
-  }
-
-  /* ---------- Search ---------- */
-  .search-wrap {
-    position: relative;
-    margin-bottom: 14px;
-  }
-
-  .search-wrap input {
-    width: 100%;
-    padding: 12px 14px 12px 40px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: var(--panel);
-    color: var(--text);
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .search-wrap input:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.15);
-  }
-
-  .search-wrap input::placeholder { color: var(--muted); }
-
-  .search-wrap .icon {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted);
-    font-size: 15px;
-    pointer-events: none;
-  }
-
-  /* ---------- Category chips ---------- */
-  .cats {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    margin-bottom: 6px;
-    scrollbar-width: none;
-  }
-  .cats::-webkit-scrollbar { display: none; }
-
-  .cat-chip {
-    flex: 0 0 auto;
-    padding: 7px 13px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--panel);
-    color: var(--muted);
-    font-size: 12.5px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    white-space: nowrap;
-    text-transform: capitalize;
-  }
-
-  .cat-chip.active {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #04231d;
-  }
-
-  /* ---------- Category section ---------- */
-  section.cat {
-    margin-bottom: 18px;
-    animation: fade 0.2s ease;
-  }
-
-  section.cat > h2 {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0 0 10px 2px;
-    font-size: 12.5px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  section.cat > h2 .count {
-    margin-left: auto;
-    color: var(--muted);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0;
-  }
-
-  /* ---------- Command card ---------- */
-  .cmd {
-    border: 1px solid var(--border);
-    background: var(--panel);
-    border-radius: var(--radius);
-    margin-bottom: 9px;
-    overflow: hidden;
-    transition: border-color 0.15s ease, background 0.15s ease;
-  }
-
-  .cmd.open {
-    border-color: var(--accent);
-    background: var(--panel-2);
-  }
-
-  .cmd-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 14px;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .cmd-head:active { background: rgba(255, 255, 255, 0.03); }
-
-  .cmd-name {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .cmd-name .pfx { color: var(--accent); }
-
-  .cmd-desc {
-    flex: 1;
-    min-width: 0;
-    font-size: 12.5px;
-    color: var(--muted);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: right;
-  }
-
-  .chev {
-    flex: 0 0 auto;
-    color: var(--muted);
-    font-size: 11px;
-    transition: transform 0.2s ease;
-  }
-
-  .cmd.open .chev { transform: rotate(90deg); color: var(--accent); }
-
-  /* ---------- Expanded body ---------- */
-  .cmd-body {
-    display: none;
-    padding: 0 14px 14px;
-    border-top: 1px solid var(--border);
-    animation: fade 0.18s ease;
-  }
-
-  .cmd.open .cmd-body { display: block; }
-
-  .row {
-    display: flex;
-    gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px dashed rgba(134, 150, 160, 0.18);
-  }
-
-  .row:last-child { border-bottom: none; padding-bottom: 0; }
-
-  .row .label {
-    flex: 0 0 76px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding-top: 3px;
-  }
-
-  .row .value {
-    flex: 1;
-    min-width: 0;
-    font-size: 13px;
-    color: var(--text);
-    word-break: break-word;
-  }
-
-  .mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 12.5px;
-    background: rgba(0, 168, 132, 0.1);
-    border: 1px solid rgba(0, 168, 132, 0.25);
-    color: #7ef0d2;
-    padding: 2px 7px;
-    border-radius: 7px;
-    display: inline-block;
-    margin: 2px 4px 2px 0;
-  }
-
-  .alias { color: #7ef0d2; }
-
-  /* ---------- Empty state ---------- */
-  .empty {
-    text-align: center;
-    padding: 50px 20px;
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-  .empty .big { font-size: 40px; margin-bottom: 10px; }
-
-  /* ---------- Footer / back-to-top ---------- */
-  footer {
-    text-align: center;
-    color: var(--muted);
-    font-size: 11px;
-    padding: 18px 0 6px;
-    opacity: 0.75;
-  }
-
-  #top {
-    position: fixed;
-    right: 16px;
-    bottom: 18px;
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    background: var(--panel-2);
-    color: var(--accent);
-    font-size: 18px;
-    display: none;
-    place-items: center;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    z-index: 20;
-  }
-
-  #top.show { display: grid; }
-
-  @keyframes fade {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  footer{text-align:center;color:var(--muted);font-size:11px;padding:18px 0 6px;opacity:.75}
+  #top{position:fixed;right:16px;bottom:18px;width:44px;height:44px;border-radius:50%;
+    border:1px solid var(--border);background:var(--panel2);color:var(--accent);font-size:18px;
+    display:none;place-items:center;cursor:pointer;box-shadow:var(--shadow);z-index:20}
+  #top.show{display:grid}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
@@ -342,15 +99,22 @@
 <header>
   <div class="logo">🤖</div>
   <div class="titles">
-    <h1>JUNE-X MINI MENU</h1>
-    <p>Tap a command to see its usage</p>
+    <h1 id="botTitle">JUNE-X HELP MENU</h1>
+    <p>Tap a command to see usage, aliases &amp; description</p>
   </div>
   <span class="prefix-chip" id="prefixChip">.</span>
 </header>
 
+<div class="stats">
+  <div class="stat"><div class="v" id="statTotal">0</div><div class="l">Commands</div></div>
+  <div class="stat"><div class="v" id="statCats">0</div><div class="l">Categories</div></div>
+  <div class="stat"><div class="v" id="statShown">0</div><div class="l">Showing</div></div>
+</div>
+
 <div class="search-wrap">
   <span class="icon">🔍</span>
-  <input id="search" type="text" placeholder="Search commands…" autocomplete="off" autocapitalize="off" spellcheck="false" />
+  <input id="search" type="text" placeholder="Search commands, aliases, descriptions…"
+    autocomplete="off" autocapitalize="off" spellcheck="false" />
 </div>
 
 <div class="cats" id="cats"></div>
@@ -365,164 +129,144 @@
 (function () {
   "use strict";
 
-  // Injected by help.js
+  // Injected by the help command
   const DATA = __MENUDATA__;
 
-  const cats = (DATA && DATA.cats) || {};
+  const cats   = (DATA && DATA.cats)   || {};
   const prefix = (DATA && DATA.prefix) || ".";
+  const botname= (DATA && DATA.botname)|| "BOT";
+  const total  = (DATA && DATA.total)  || 0;
 
   const catKeys = Object.keys(cats).sort();
-  const total = catKeys.reduce((n, k) => n + cats[k].length, 0);
-
-  const elList = document.getElementById("list");
-  const elCats = document.getElementById("cats");
-  const elSearch = document.getElementById("search");
-  const elFooter = document.getElementById("footer");
-  const elTop = document.getElementById("top");
-  const elPrefix = document.getElementById("prefixChip");
+  const elList  = document.getElementById("list");
+  const elCats  = document.getElementById("cats");
+  const elSearch= document.getElementById("search");
+  const elFooter= document.getElementById("footer");
+  const elTop   = document.getElementById("top");
+  const elPrefix= document.getElementById("prefixChip");
+  const elTitle = document.getElementById("botTitle");
+  const elStatT = document.getElementById("statTotal");
+  const elStatC = document.getElementById("statCats");
+  const elStatS = document.getElementById("statShown");
 
   elPrefix.textContent = prefix;
+  elTitle.textContent  = botname.toUpperCase() + " HELP MENU";
+  elStatT.textContent  = total;
+  elStatC.textContent  = catKeys.length;
   elFooter.textContent = total + " command" + (total === 1 ? "" : "s") + " available";
 
   let activeCat = "__all__";
   let query = "";
 
-  // ---------- helpers ----------
-  function esc(s) {
-    return String(s == null ? "" : s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#39;");
+  function esc(s){
+    return String(s==null?"":s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
   }
 
-  function matches(cmd) {
-    if (!query) return true;
+  function matches(cmd){
+    if(!query) return true;
     const q = query.toLowerCase();
-    if (cmd.n && cmd.n.toLowerCase().indexOf(q) !== -1) return true;
-    if (cmd.d && cmd.d.toLowerCase().indexOf(q) !== -1) return true;
-    if (Array.isArray(cmd.a)) {
-      for (let i = 0; i < cmd.a.length; i++) {
-        if (String(cmd.a[i]).toLowerCase().indexOf(q) !== -1) return true;
+    if(cmd.n && cmd.n.toLowerCase().indexOf(q)!==-1) return true;
+    if(cmd.d && cmd.d.toLowerCase().indexOf(q)!==-1) return true;
+    if(Array.isArray(cmd.a)){
+      for(let i=0;i<cmd.a.length;i++){
+        if(String(cmd.a[i]).toLowerCase().indexOf(q)!==-1) return true;
       }
     }
+    if(cmd.u && String(cmd.u).toLowerCase().indexOf(q)!==-1) return true;
     return false;
   }
 
-  function buildCard(cmd) {
+  function buildCard(cmd){
     const aliases = (Array.isArray(cmd.a) && cmd.a.length)
-      ? cmd.a.map(function (a) { return '<span class="mono alias">' + esc(prefix + a) + "</span>"; }).join("")
+      ? cmd.a.map(a => '<span class="mono alias">'+esc(prefix+a)+'</span>').join("")
       : '<span style="color:var(--muted)">none</span>';
-
-    const desc = cmd.d ? esc(cmd.d) : '<span style="color:var(--muted)">No description</span>';
+    const desc  = cmd.d ? esc(cmd.d) : '<span style="color:var(--muted)">No description</span>';
     const usage = esc(cmd.u || (prefix + cmd.n));
 
     return (
-      '<article class="cmd">' +
-        '<div class="cmd-head">' +
-          '<span class="cmd-name"><span class="pfx">' + esc(prefix) + "</span>" + esc(cmd.n) + "</span>" +
-          '<span class="cmd-desc">' + (cmd.d ? esc(cmd.d) : "") + "</span>" +
-          '<span class="chev">▶</span>' +
-        "</div>" +
-        '<div class="cmd-body">' +
-          '<div class="row"><span class="label">Usage</span><span class="value"><span class="mono">' + usage + "</span></span></div>" +
-          '<div class="row"><span class="label">Aliases</span><span class="value">' + aliases + "</span></div>" +
-          '<div class="row"><span class="label">Desc</span><span class="value">' + desc + "</span></div>" +
-        "</div>" +
-      "</article>"
+      '<article class="cmd">'+
+        '<div class="cmd-head">'+
+          '<span class="cmd-name"><span class="pfx">'+esc(prefix)+'</span>'+esc(cmd.n)+'</span>'+
+          '<span class="cmd-desc">'+(cmd.d?esc(cmd.d):"")+'</span>'+
+          '<span class="chev">▶</span>'+
+        '</div>'+
+        '<div class="cmd-body">'+
+          '<div class="row"><span class="label">Usage</span><span class="value"><span class="mono">'+usage+'</span></span></div>'+
+          '<div class="row"><span class="label">Aliases</span><span class="value">'+aliases+'</span></div>'+
+          '<div class="row"><span class="label">Desc</span><span class="value">'+desc+'</span></div>'+
+        '</div>'+
+      '</article>'
     );
   }
 
-  function renderChips() {
-    let html = '<button class="cat-chip' + (activeCat === "__all__" ? " active" : "") + '" data-cat="__all__">All</button>';
-    for (let i = 0; i < catKeys.length; i++) {
+  function renderChips(){
+    let html = '<button class="cat-chip'+(activeCat==="__all__"?" active":"")+'" data-cat="__all__">All</button>';
+    for(let i=0;i<catKeys.length;i++){
       const k = catKeys[i];
-      html += '<button class="cat-chip' + (activeCat === k ? " active" : "") + '" data-cat="' + esc(k) + '">' +
-                esc(k) + " · " + cats[k].length +
-              "</button>";
+      html += '<button class="cat-chip'+(activeCat===k?" active":"")+'" data-cat="'+esc(k)+'">'+
+                esc(k)+" · "+cats[k].length+"</button>";
     }
     elCats.innerHTML = html;
   }
 
-  function render() {
-    const keys = activeCat === "__all__" ? catKeys : [activeCat];
-    let html = "";
-    let shown = 0;
-
-    for (let i = 0; i < keys.length; i++) {
+  function render(){
+    const keys = activeCat==="__all__" ? catKeys : [activeCat];
+    let html="", shown=0;
+    for(let i=0;i<keys.length;i++){
       const k = keys[i];
-      const list = (cats[k] || []).filter(matches);
-      if (!list.length) continue;
-
+      const list = (cats[k]||[]).filter(matches);
+      if(!list.length) continue;
       shown += list.length;
-      html +=
-        '<section class="cat">' +
-          "<h2>" + esc(k) + '<span class="count">' + list.length + "</span></h2>" +
-          list.map(buildCard).join("") +
-        "</section>";
+      html += '<section class="cat"><h2>'+esc(k)+
+              '<span class="count">'+list.length+'</span></h2>'+
+              list.map(buildCard).join("")+'</section>';
     }
-
-    if (!shown) {
-      html =
-        '<div class="empty">' +
-          '<div class="big">🔎</div>' +
-          "<div>No commands match <b>" + esc(query) + "</b></div>" +
-        "</div>";
+    if(!shown){
+      html = '<div class="empty"><div class="big">🔎</div><div>No commands match <b>'+
+             esc(query)+'</b></div></div>';
     }
-
+    elStatS.textContent = shown;
     elList.innerHTML = html;
   }
 
-  // ---------- events ----------
-  elCats.addEventListener("click", function (e) {
+  elCats.addEventListener("click", function(e){
     const chip = e.target.closest(".cat-chip");
-    if (!chip) return;
+    if(!chip) return;
     activeCat = chip.getAttribute("data-cat");
-    renderChips();
-    render();
+    renderChips(); render();
   });
 
-  let searchTimer = null;
-  elSearch.addEventListener("input", function () {
+  let searchTimer=null;
+  elSearch.addEventListener("input", function(){
     clearTimeout(searchTimer);
     const val = elSearch.value;
-    searchTimer = setTimeout(function () {
-      query = val.trim();
-      render();
-    }, 120);
+    searchTimer = setTimeout(function(){ query = val.trim(); render(); }, 120);
   });
 
-  // Tap a command card to expand/collapse — and collapse others for focus
-  elList.addEventListener("click", function (e) {
+  elList.addEventListener("click", function(e){
     const head = e.target.closest(".cmd-head");
-    if (!head) return;
+    if(!head) return;
     const card = head.parentElement;
     const wasOpen = card.classList.contains("open");
-
-    // Close every open card, then open the tapped one (if it wasn't already open)
     const open = elList.querySelectorAll(".cmd.open");
-    for (let i = 0; i < open.length; i++) open[i].classList.remove("open");
-
-    if (!wasOpen) {
+    for(let i=0;i<open.length;i++) open[i].classList.remove("open");
+    if(!wasOpen){
       card.classList.add("open");
-      // Gently bring it into view
-      setTimeout(function () {
-        card.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      }, 60);
+      setTimeout(function(){ card.scrollIntoView({behavior:"smooth",block:"nearest"}); },60);
     }
   });
 
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 400) elTop.classList.add("show");
+  window.addEventListener("scroll", function(){
+    if(window.scrollY>400) elTop.classList.add("show");
     else elTop.classList.remove("show");
-  }, { passive: true });
+  },{passive:true});
 
-  elTop.addEventListener("click", function () {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  elTop.addEventListener("click", function(){
+    window.scrollTo({top:0,behavior:"smooth"});
   });
 
-  // ---------- init ----------
   renderChips();
   render();
 })();
