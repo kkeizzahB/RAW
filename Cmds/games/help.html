@@ -1,350 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>KEITH MD HELP MENU</title>
-<style>
-  :root{
-    --bg:#0a0b14;
-    --bg-2:#0f1120;
-    --panel:#141628;
-    --panel-2:#1b1e35;
-    --border:#262a45;
-    --text:#eef0ff;
-    --muted:#8a90b8;
-
-    --accent:#7c5cff;
-    --accent-2:#22d3ee;
-    --accent-soft:rgba(124,92,255,.14);
-    --accent-border:rgba(124,92,255,.42);
-    --accent-glow:rgba(124,92,255,.28);
-
-    --radius:14px;
-    --shadow:0 8px 28px rgba(0,0,0,.45);
-  }
-  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    font-size:15px;line-height:1.4;min-height:100%}
-  body{padding:12px 12px 90px;
-    background:
-      radial-gradient(900px 420px at 15% -10%, rgba(124,92,255,.20), transparent 65%),
-      radial-gradient(900px 420px at 100% 10%, rgba(34,211,238,.12), transparent 65%),
-      linear-gradient(180deg, var(--bg-2), var(--bg));
-    background-attachment:fixed}
-
-  /* ---------- Header ---------- */
-  header{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:var(--radius);
-    background:linear-gradient(135deg, rgba(124,92,255,.28), rgba(34,211,238,.10) 60%, var(--panel));
-    border:1px solid var(--accent-border);box-shadow:var(--shadow);margin-bottom:10px;
-    position:relative;overflow:hidden}
-  header:before{content:"";position:absolute;inset:0;
-    background:radial-gradient(400px 120px at 100% 0%, rgba(34,211,238,.18), transparent 70%);
-    pointer-events:none}
-  header .logo{width:38px;height:38px;flex:0 0 38px;border-radius:10px;display:grid;place-items:center;
-    background:linear-gradient(135deg, var(--accent), var(--accent-2));
-    color:#0a0b14;box-shadow:0 6px 18px var(--accent-glow)}
-  header .logo svg{width:20px;height:20px}
-  header .titles{min-width:0}
-  header h1{margin:0;font-size:16px;font-weight:800;letter-spacing:.4px;
-    background:linear-gradient(90deg, #fff, #c9c4ff 60%, #9de9f5);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  header p{margin:2px 0 0;font-size:11.5px;color:var(--muted)}
-  .prefix-chip{margin-left:auto;flex:0 0 auto;padding:4px 10px;border-radius:999px;
-    background:var(--accent-soft);border:1px solid var(--accent-border);color:#cfc6ff;
-    font-size:11.5px;font-weight:800;
-    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
-
-  /* ---------- Sticky search + chips ---------- */
-  .topbar{position:sticky;top:0;z-index:15;
-    padding:8px 0 8px;margin:-4px 0 6px;
-    background:linear-gradient(to bottom,var(--bg) 78%, rgba(10,11,20,0));
-    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-
-  .search-wrap{position:relative;margin-bottom:8px}
-  .search-wrap input{width:100%;padding:11px 14px 11px 40px;border-radius:12px;
-    border:1px solid var(--border);background:var(--panel);color:var(--text);font-size:14px;
-    outline:none;transition:border-color .15s,box-shadow .15s}
-  .search-wrap input::placeholder{color:var(--muted)}
-  .search-wrap input:focus{border-color:var(--accent);
-    box-shadow:0 0 0 3px rgba(124,92,255,.18), 0 0 0 1px var(--accent-border)}
-  .search-wrap .icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);
-    color:var(--muted);width:16px;height:16px;pointer-events:none;display:flex;align-items:center}
-
-  /* Chips now WRAP instead of horizontal scroll → categories always visible */
-  .cats{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:2px}
-  .cat-chip{flex:0 0 auto;padding:6px 11px;border-radius:999px;
-    border:1px solid var(--border);background:var(--panel);color:var(--muted);
-    font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;
-    white-space:nowrap;text-transform:capitalize}
-  .cat-chip:active{transform:scale(.96)}
-  .cat-chip.active{background:linear-gradient(135deg, var(--accent), var(--accent-2));
-    border-color:transparent;color:#0a0b14;font-weight:800;
-    box-shadow:0 4px 14px var(--accent-glow)}
-
-  /* ---------- Category section ---------- */
-  section.cat{margin-bottom:14px;animation:fade .2s ease}
-  section.cat>h2{display:flex;align-items:center;gap:8px;margin:0 0 8px 2px;
-    font-size:12px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;
-    background:linear-gradient(90deg, var(--accent), var(--accent-2));
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  section.cat>h2 .count{margin-left:auto;color:var(--muted);font-size:11px;
-    font-weight:600;letter-spacing:0;-webkit-text-fill-color:var(--muted)}
-
-  /* ---------- Command card ---------- */
-  .cmd{border:1px solid var(--border);background:var(--panel);border-radius:12px;
-    margin-bottom:6px;overflow:hidden;transition:border-color .15s,background .15s}
-  .cmd.open{border-color:var(--accent-border);
-    background:linear-gradient(180deg, var(--panel-2), var(--panel))}
-  .cmd-head{display:flex;align-items:center;gap:10px;padding:10px 13px;
-    cursor:pointer;user-select:none}
-  .cmd-head:active{background:rgba(124,92,255,.06)}
-  .cmd-name{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;
-    font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;
-    text-overflow:ellipsis;flex:0 0 auto;max-width:45%}
-  .cmd-name .pfx{color:var(--accent-2)}
-  .cmd-desc{flex:1;min-width:0;font-size:12px;color:var(--muted);white-space:nowrap;
-    overflow:hidden;text-overflow:ellipsis;text-align:right}
-  .chev{flex:0 0 auto;color:var(--muted);transition:transform .2s;display:flex;align-items:center}
-  .chev svg{width:11px;height:11px;display:block}
-  .cmd.open .chev{transform:rotate(90deg);color:var(--accent-2)}
-
-  .cmd-body{display:none;padding:0 13px 12px;border-top:1px solid var(--border);
-    animation:fade .18s ease}
-  .cmd.open .cmd-body{display:block}
-  .row{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed rgba(138,144,184,.18)}
-  .row:last-child{border-bottom:none;padding-bottom:0}
-  .row .label{flex:0 0 68px;font-size:10.5px;font-weight:800;letter-spacing:.5px;
-    text-transform:uppercase;color:var(--muted);padding-top:3px}
-  .row .value{flex:1;min-width:0;font-size:12.5px;color:var(--text);word-break:break-word}
-
-  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
-    background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.28);color:#9de9f5;
-    padding:2px 6px;border-radius:6px;display:inline-block;margin:2px 4px 2px 0}
-  .alias{color:#9de9f5}
-
-  /* ---------- Empty state ---------- */
-  .empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:13.5px}
-  .empty .big{display:flex;justify-content:center;margin-bottom:10px;color:var(--muted)}
-  .empty .big svg{width:36px;height:36px}
-
-  footer{text-align:center;color:var(--muted);font-size:11px;padding:14px 0 4px;opacity:.75}
-
-  #top{position:fixed;right:14px;bottom:16px;width:42px;height:42px;border-radius:50%;
-    border:1px solid var(--accent-border);
-    background:linear-gradient(135deg, var(--accent), var(--accent-2));
-    color:#0a0b14;display:none;place-items:center;cursor:pointer;
-    box-shadow:0 8px 22px var(--accent-glow);z-index:20}
-  #top svg{width:17px;height:17px}
-  #top.show{display:grid}
-
-  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
-</style>
+  <meta charset="UTF-8">
+  <title>Keith-MD Help</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #111; color: #eee; margin: 0; padding: 20px; }
+    h1 { text-align: center; color: #00ffcc; }
+    input { width: 100%; padding: 10px; margin: 20px 0; border-radius: 5px; border: none; }
+    .category { margin-bottom: 30px; }
+    .category h2 { color: #ffcc00; border-bottom: 1px solid #444; padding-bottom: 5px; }
+    .command { margin: 8px 0; padding: 8px; background: #222; border-radius: 5px; }
+    .pattern { font-weight: bold; color: #00ffcc; }
+    .aliases { font-style: italic; color: #aaa; }
+    .description { margin-top: 5px; color: #ddd; }
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
+  <h1>📖 Keith-MD Help Dashboard</h1>
+  <input type="text" id="search" placeholder="Search commands, aliases, or categories...">
 
-<header>
-  <div class="logo">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="4" y="7" width="16" height="12" rx="3"/>
-      <path d="M12 7V4"/>
-      <circle cx="12" cy="3" r="1"/>
-      <circle cx="9" cy="13" r="1.2" fill="currentColor" stroke="none"/>
-      <circle cx="15" cy="13" r="1.2" fill="currentColor" stroke="none"/>
-      <path d="M9.5 16.5h5"/>
-    </svg>
+  <div id="commands">
+    <!-- Example category -->
+    <div class="category">
+      <h2>System</h2>
+      <div class="command">
+        <div class="pattern">test</div>
+        <div class="aliases">Aliases: stats, monitor, serverinfo, botstats</div>
+        <div class="description">Real-time bot dashboard with RAM, CPU, uptime</div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>General</h2>
+      <div class="command">
+        <div class="pattern">menu</div>
+        <div class="aliases">Aliases: menu2</div>
+        <div class="description">Interactive category-based menu</div>
+      </div>
+      <div class="command">
+        <div class="pattern">help</div>
+        <div class="aliases">Aliases: commands, cmds, assist</div>
+        <div class="description">Interactive help dashboard with commands, aliases, and descriptions</div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>Stalker</h2>
+      <div class="command">
+        <div class="pattern">crm-snip</div>
+        <div class="aliases">Aliases: snip, capture</div>
+        <div class="description">Capture and replay quoted message payloads</div>
+      </div>
+    </div>
+
+    <!-- Add more categories/commands here -->
   </div>
-  <div class="titles">
-    <h1>KEITH MD HELP MENU</h1>
-    <p>Tap a command to see its usage</p>
-  </div>
-  <span class="prefix-chip" id="prefixChip">.</span>
-</header>
 
-<div class="topbar">
-  <div class="search-wrap">
-    <span class="icon">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="7"/>
-        <path d="M21 21l-4.3-4.3"/>
-      </svg>
-    </span>
-    <input id="search" type="text" placeholder="Search commands…"
-      autocomplete="off" autocapitalize="off" spellcheck="false" />
-  </div>
-  <div class="cats" id="cats"></div>
-</div>
-
-<main id="list"></main>
-
-<footer id="footer"></footer>
-
-<button id="top" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 19V5"/>
-    <path d="M5 12l7-7 7 7"/>
-  </svg>
-</button>
-
-<script>
-(function () {
-  "use strict";
-
-  const DATA = __MENUDATA__;
-  const cats = (DATA && DATA.cats) || {};
-  const prefix = (DATA && DATA.prefix) || ".";
-
-  const catKeys = Object.keys(cats).sort();
-  const total = catKeys.reduce((n, k) => n + cats[k].length, 0);
-
-  const elList = document.getElementById("list");
-  const elCats = document.getElementById("cats");
-  const elSearch = document.getElementById("search");
-  const elFooter = document.getElementById("footer");
-  const elTop = document.getElementById("top");
-  const elPrefix = document.getElementById("prefixChip");
-
-  elPrefix.textContent = prefix;
-  elFooter.textContent = total + " command" + (total === 1 ? "" : "s") + " available";
-
-  let activeCat = "__all__";
-  let query = "";
-
-  function esc(s){
-    return String(s==null?"":s)
-      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
-  }
-
-  function matches(cmd){
-    if(!query) return true;
-    const q = query.toLowerCase();
-    if(cmd.n && cmd.n.toLowerCase().indexOf(q)!==-1) return true;
-    if(cmd.d && cmd.d.toLowerCase().indexOf(q)!==-1) return true;
-    if(cmd.u && String(cmd.u).toLowerCase().indexOf(q)!==-1) return true;
-    if(Array.isArray(cmd.a)){
-      for(let i=0;i<cmd.a.length;i++){
-        if(String(cmd.a[i]).toLowerCase().indexOf(q)!==-1) return true;
-      }
-    }
-    return false;
-  }
-
-  const CHEVRON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
-  const SEARCH_BIG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>';
-
-  function buildCard(cmd){
-    const aliases = (Array.isArray(cmd.a) && cmd.a.length)
-      ? cmd.a.map(a => '<span class="mono alias">'+esc(prefix+a)+'</span>').join("")
-      : '<span style="color:var(--muted)">none</span>';
-    const desc  = cmd.d ? esc(cmd.d) : '<span style="color:var(--muted)">No description</span>';
-    const usage = esc(cmd.u || (prefix + cmd.n));
-
-    return (
-      '<article class="cmd">'+
-        '<div class="cmd-head">'+
-          '<span class="cmd-name"><span class="pfx">'+esc(prefix)+'</span>'+esc(cmd.n)+'</span>'+
-          '<span class="cmd-desc">'+(cmd.d?esc(cmd.d):"")+'</span>'+
-          '<span class="chev">'+CHEVRON+'</span>'+
-        '</div>'+
-        '<div class="cmd-body">'+
-          '<div class="row"><span class="label">Usage</span><span class="value"><span class="mono">'+usage+'</span></span></div>'+
-          '<div class="row"><span class="label">Aliases</span><span class="value">'+aliases+'</span></div>'+
-          '<div class="row"><span class="label">Desc</span><span class="value">'+desc+'</span></div>'+
-        '</div>'+
-      '</article>'
-    );
-  }
-
-  function renderChips(){
-    let html = '<button class="cat-chip'+(activeCat==="__all__"?" active":"")+'" data-cat="__all__">All · '+total+'</button>';
-    for(let i=0;i<catKeys.length;i++){
-      const k = catKeys[i];
-      html += '<button class="cat-chip'+(activeCat===k?" active":"")+'" data-cat="'+esc(k)+'">'+
-                esc(k)+" · "+cats[k].length+"</button>";
-    }
-    elCats.innerHTML = html;
-  }
-
-  function render(){
-    // If searching → show matched commands across ALL categories (ignore active chip)
-    // Otherwise → show only the active category (or all)
-    const keys = query ? catKeys : (activeCat === "__all__" ? catKeys : [activeCat]);
-    let html = "";
-    let shown = 0;
-
-    for(let i=0;i<keys.length;i++){
-      const k = keys[i];
-      const list = (cats[k]||[]).filter(matches);
-      if(!list.length) continue;
-      shown += list.length;
-      html +=
-        '<section class="cat">'+
-          '<h2>'+esc(k)+'<span class="count">'+list.length+'</span></h2>'+
-          list.map(buildCard).join("")+
-        '</section>';
-    }
-
-    if(!shown){
-      html =
-        '<div class="empty">'+
-          '<div class="big">'+SEARCH_BIG+'</div>'+
-          '<div>No commands match <b>'+esc(query)+'</b></div>'+
-        '</div>';
-    }
-
-    elList.innerHTML = html;
-  }
-
-  elCats.addEventListener("click", function(e){
-    const chip = e.target.closest(".cat-chip");
-    if(!chip) return;
-    activeCat = chip.getAttribute("data-cat");
-    // Clear search when switching category, so the chip filter applies
-    query = "";
-    elSearch.value = "";
-    renderChips();
-    render();
-    window.scrollTo({top:0,behavior:"smooth"});
-  });
-
-  let searchTimer=null;
-  elSearch.addEventListener("input", function(){
-    clearTimeout(searchTimer);
-    const val = elSearch.value;
-    searchTimer = setTimeout(function(){
-      query = val.trim();
-      // Dim the chips visually while searching (search overrides category filter)
-      render();
-    }, 120);
-  });
-
-  elList.addEventListener("click", function(e){
-    const head = e.target.closest(".cmd-head");
-    if(!head) return;
-    const card = head.parentElement;
-    const wasOpen = card.classList.contains("open");
-    const open = elList.querySelectorAll(".cmd.open");
-    for(let i=0;i<open.length;i++) open[i].classList.remove("open");
-    if(!wasOpen){
-      card.classList.add("open");
-      setTimeout(function(){ card.scrollIntoView({behavior:"smooth",block:"nearest"}); },60);
-    }
-  });
-
-  window.addEventListener("scroll", function(){
-    if(window.scrollY>400) elTop.classList.add("show");
-    else elTop.classList.remove("show");
-  },{passive:true});
-
-  elTop.addEventListener("click", function(){
-    window.scrollTo({top:0,behavior:"smooth"});
-  });
-
-  renderChips();
-  render();
-})();
-</script>
+  <script>
+    const searchInput = document.getElementById('search');
+    searchInput.addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      document.querySelectorAll('.command').forEach(cmd => {
+        const text = cmd.innerText.toLowerCase();
+        cmd.classList.toggle('hidden', !text.includes(query));
+      });
+    });
+  </script>
 </body>
 </html>
