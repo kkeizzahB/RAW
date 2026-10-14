@@ -68,16 +68,11 @@
       "url": "/ai/venice?q=hi",
       "description": "Access the VENICE AI model."
     },
+    
     {
       "category": "ai",
-      "name": "Code Generator",
-      "url": "/ai/codegen?q=generate%20a%20rest%20api%20code",
-      "description": "Access all language codes using code generator."
-    },
-    {
-      "category": "ai",
-      "name": "Deepseek V3",
-      "url": "/ai/deepseekV3?q=which%20model%20are%20you",
+      "name": "Deepseek R1",
+      "url": "/ai/deepseekr?q=which%20model%20are%20you",
       "description": "Access the Deepseek AI model."
     },
     {
@@ -113,7 +108,7 @@
     },
     {
       "category": "ai",
-      "name": "Deeepseek R1",
+      "name": "Deeepseek",
       "url": "/ai/deepseek?q=which%20model%20are%20you",
       "description": "Access the Deepseek AI model."
     },
