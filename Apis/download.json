@@ -182,7 +182,14 @@
       "url": "/download/fbdl?url=https://www.facebook.com/share/r/19zyz6X8KJ/",
       "description": "Download videos from Facebook."
     },
-  
+    
+  {
+      "category": "downloaders",
+      "name": "capcut Download",
+      "url": "/download/capcut?url=https://www.capcut.com/tv2/ZSQudwHwr",
+      "description": "Download videos from capcut."
+    },
+    
     {
       "category": "downloaders",
       "name": "Twitter Download",
