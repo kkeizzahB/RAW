@@ -6,6 +6,15 @@
       "url": "/search/yts?query=spectre",
       "description": "Search for videos on YouTube."
     },
+
+      {
+      "category": "search",
+      "name": "apple music Search",
+      "url": "/search/apple?q=alan+walker",
+      "description": "Search for apple music link"
+    },
+
+    
     {
       "category": "search",
       "name": "images Search",
