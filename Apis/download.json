@@ -189,6 +189,13 @@
       "url": "/download/capcut?url=https://www.capcut.com/tv2/ZSQudwHwr",
       "description": "Download videos from capcut."
     },
+
+    {
+      "category": "downloaders",
+      "name": "apple music Download",
+      "url": "/download/apple?url=https://music.apple.com/us/album/faded/1196294554?i=1196294581",
+      "description": "Download music from apple."
+    },
     
     {
       "category": "downloaders",
