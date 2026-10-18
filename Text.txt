@@ -33,6 +33,14 @@ they are listed below
 │◦➛ 4. Copilot
 │◦➛╰─────────────
 ╰──────────────┈⊷
+╭────「 SETTINGS─┈┈⊷
+│◦➛╭───────────────
+│◦➛ 1.Prefix
+example prefix none 
+to make prefixless
+│◦➛╰─────────────
+╰──────────────┈⊷
+
 If you have any idea on what to be fixed 
 share your issues here 
 https://github.com/kkeizza/Keith/issues
