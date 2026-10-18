@@ -1,9 +1,38 @@
 ╭━━⟮ ‼️UPDATE ALERT‼️ ⟯━━┈⊷
-we are upgrading keith md this coming Sunday 
-what will be fixed 
-setstickercmd  you can see in screenshot 
-null prefix 
-and everything will be fixed 
+our team has fixed number of cmds and added some cool commands 
+they are listed below 
+╭────「 DOWNLOAD─┈┈⊷
+│◦➛╭───────────────
+│◦➛ 1.spotify
+│◦➛ 2. Soundcloud 
+│◦➛ 3. Apple Music ownloader 
+│◦➛ 4. fixed video downloader
+│◦➛ 5. ncs music downloader 
+│◦➛╰─────────────
+╰──────────────┈⊷
+╭────「 SEARCH─┈┈⊷
+│◦➛╭───────────────
+│◦➛ 1.spotifysearch
+│◦➛ 2. Soundcloudsearch
+│◦➛ 3. Applesearch  
+│◦➛ 4. ncssearch
+│◦➛╰─────────────
+╰──────────────┈⊷
+╭────「 STICKER─┈┈⊷
+│◦➛╭───────────────
+│◦➛ 1.setstickercmd
+│◦➛ 2. Liststickercmd
+│◦➛ 3. Delstickercmd 
+│◦➛╰─────────────
+╰──────────────┈⊷
+╭────「 AI─┈┈⊷
+│◦➛╭───────────────
+│◦➛ 1.imageedit
+│◦➛ 2. Deepseek
+│◦➛ 3. Wormgpt
+│◦➛ 4. Copilot
+│◦➛╰─────────────
+╰──────────────┈⊷
 If you have any idea on what to be fixed 
 share your issues here 
 https://github.com/kkeizza/Keith/issues
