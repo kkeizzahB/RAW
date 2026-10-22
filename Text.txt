@@ -1,6 +1,12 @@
 ╭━━⟮ ‼️UPDATE ALERT‼️ ⟯━━┈⊷
 our team has fixed number of cmds and added some cool commands 
 they are listed below 
+╭────「 OWNER─┈┈⊷
+│◦➛╭───────────────
+│◦➛ 1.pin
+│◦➛ 2. unpin
+│◦➛╰─────────────
+╰──────────────┈⊷
 ╭────「 DOWNLOAD─┈┈⊷
 │◦➛╭───────────────
 │◦➛ 1.spotify
