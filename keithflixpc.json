@@ -1,1 +1,8 @@
 
+{
+  "latestVersion": "1.0.0",
+  "minimumVersion": "1.0.0",
+  "downloadUrl": "YOUR_PC_EXE_RELEASE_URL",
+  "forceUpdate": false,
+  "message": "KeithFlix PC is up to date."
+}
