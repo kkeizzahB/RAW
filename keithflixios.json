@@ -1,1 +1,8 @@
 
+{
+  "latestVersion": "1.0.0",
+  "minimumVersion": "1.0.0",
+  "downloadUrl": "YOUR_APP_STORE_OR_TESTFLIGHT_URL",
+  "forceUpdate": false,
+  "message": "KeithFlix iOS is up to date."
+}
