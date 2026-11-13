@@ -1,7 +1,7 @@
 {
-  "latestVersion": "1.1.20",
+  "latestVersion": "1.1.26",
   "minimumVersion": "1.0.0",
   "downloadUrl": "https://github.com/kkeizzahB/keithflix/raw/refs/heads/main/keithflix.apk",
   "forceUpdate": false,
-  "message": "KeithFlix 1.1.20 is now available. Removed the unnecessary Lock and Play Next controls and improved the Local videos section."
+  "message": "i have fixed error in sports stream , fixed all movie errors"
 }
