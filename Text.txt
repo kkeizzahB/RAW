@@ -1,59 +1,22 @@
-╭━━⟮ ‼️UPDATE ALERT‼️ ⟯━━┈⊷
-our team has fixed number of cmds and added some cool commands 
-they are listed below 
-╭────「 OWNER─┈┈⊷
-│◦➛╭───────────────
-│◦➛ 1.pin
-│◦➛ 2. unpin
-│◦➛╰─────────────
-╰──────────────┈⊷
-╭────「 DOWNLOAD─┈┈⊷
-│◦➛╭───────────────
-│◦➛ 1.spotify
-│◦➛ 2. Soundcloud 
-│◦➛ 3. Apple Music ownloader 
-│◦➛ 4. fixed video downloader
-│◦➛ 5. ncs music downloader 
-│◦➛╰─────────────
-╰──────────────┈⊷
-╭────「 SEARCH─┈┈⊷
-│◦➛╭───────────────
-│◦➛ 1.spotifysearch
-│◦➛ 2. Soundcloudsearch
-│◦➛ 3. Applesearch  
-│◦➛ 4. ncssearch
-│◦➛╰─────────────
-╰──────────────┈⊷
-╭────「 STICKER─┈┈⊷
-│◦➛╭───────────────
-│◦➛ 1.setstickercmd
-│◦➛ 2. Liststickercmd
-│◦➛ 3. Delstickercmd 
-│◦➛╰─────────────
-╰──────────────┈⊷
-╭────「 AI─┈┈⊷
-│◦➛╭───────────────
-│◦➛ 1.imageedit
-│◦➛ 2. Deepseek
-│◦➛ 3. Wormgpt
-│◦➛ 4. Copilot
-│◦➛╰─────────────
-╰──────────────┈⊷
-╭────「 SETTINGS─┈┈⊷
-│◦➛╭───────────────
-│◦➛ 1.Prefix
-example prefix none 
-to make prefixless
-│◦➛╰─────────────
-╰──────────────┈⊷
 
-If you have any idea on what to be fixed 
-share your issues here 
-https://github.com/kkeizza/Keith/issues
+ ‼️UPDATE ALERT‼️ 
+Hello guys,
 
-our hosting is still live and one of the cheapest sites 
+Keith MD is moving to v4 with a new short session format. If you already have a running bot, don't renew it — let it expire or deploy a new one.
 
-hosting.keithsite.lol 
-Signup now 
-And grab your bot ASAP 
+· hosting.keithsite.lol users: No worries — deploying will automatically give you the latest Keith MD.
+· Panel users: Download the latest zip from the Keith repository and redeploy to get the latest version.
+
+Many things have been fixed, and this time it's hotter than ever 🔥
+
+Also, make sure your number is updated in your profile on hosting.keithsite.lol so the admin team can easily locate and assist you. Our hosting AI chatbot is there to handle your problems — and if it can't, it flags your message to the nearest admin.
+
+Last but not least: Ever wished you had a genius by your side — one that codes, teaches, and answers like it reads your mind? That's exactly what this AI feels like. The most legit one I've ever met — once you try it, you won't look back. 🔥
+
+Want to become a developer? Give this AI a try and it will show you how, with ease — and boom 💥. I believe many developers will love it and thank me later.
+
+Beginners especially: this AI agent can help you build websites and even host them for free.
+
+Your next-level coding and learning partner is one click away — don't keep it waiting:
+https://manus.im/invitation/YOFBTCKUR7HD3?utm_source=invitation&utm_medium=social&utm_campaign=copy_link
 
